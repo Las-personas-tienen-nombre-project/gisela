@@ -1,0 +1,267 @@
+{
+  "schema_version": "gisela.e1.invariants.v1",
+  "scope": "E1 contrato estático evaluate v1.4",
+  "invariants": [
+    {
+      "id": "E1-01",
+      "stage": "E1",
+      "statement": "Los 13 schemas v1.4 están registrados y son JSON Schema válido",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_01_thirteen_v14_schemas_are_valid"
+      ]
+    },
+    {
+      "id": "E1-02",
+      "stage": "E1",
+      "statement": "Un paquete v1.4 admitido queda congelado con digest",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_02_admission_and_digest"
+      ]
+    },
+    {
+      "id": "E1-03",
+      "stage": "E1",
+      "statement": "La normalización produce exactamente la solicitud para el puente TRAITS–DICE",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_03_normalized_request_is_exact_bridge_input"
+      ]
+    },
+    {
+      "id": "E1-04",
+      "stage": "E1",
+      "statement": "La compilación no modifica autoría, mundo ni RNG",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_04_does_not_consume_rng_or_mutate_world"
+      ]
+    },
+    {
+      "id": "E1-05",
+      "stage": "E1",
+      "statement": "Los IDs de perfiles DICE son únicos",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_05_rejects_duplicate_profile_ids"
+      ]
+    },
+    {
+      "id": "E1-06",
+      "stage": "E1",
+      "statement": "Perfiles matemáticos inconsistentes se rechazan en admisión",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_06_rejects_invalid_dice_profile"
+      ]
+    },
+    {
+      "id": "E1-07",
+      "stage": "E1",
+      "statement": "Un perfil desconocido no se utiliza",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_07_rejects_missing_profile"
+      ]
+    },
+    {
+      "id": "E1-08",
+      "stage": "E1",
+      "statement": "Cada resultado DICE tiene una rama obligatoria",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_08_rejects_missing_branch"
+      ]
+    },
+    {
+      "id": "E1-09",
+      "stage": "E1",
+      "statement": "Las ramas repetidas son inválidas",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_09_rejects_duplicate_branch"
+      ]
+    },
+    {
+      "id": "E1-10",
+      "stage": "E1",
+      "statement": "Una rama con outcome ajeno al perfil es inválida",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_10_rejects_unexpected_branch"
+      ]
+    },
+    {
+      "id": "E1-11",
+      "stage": "E1",
+      "statement": "Los efectos de ramas pasan la validación causal existente",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_11_rejects_invalid_branch_effect"
+      ]
+    },
+    {
+      "id": "E1-12",
+      "stage": "E1",
+      "statement": "Los destinos de las ramas son comprobados",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_12_rejects_bad_branch_destination"
+      ]
+    },
+    {
+      "id": "E1-13",
+      "stage": "E1",
+      "statement": "La referencia S.O.F.I.A. requiere una carta compatible",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_13_rejects_missing_stat_card"
+      ]
+    },
+    {
+      "id": "E1-14",
+      "stage": "E1",
+      "statement": "Las referencias S.O.F.I.A. deben existir",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_14_rejects_unknown_stat_actor"
+      ]
+    },
+    {
+      "id": "E1-15",
+      "stage": "E1",
+      "statement": "Una entidad no aparece dos veces en la misma evaluación TRAITS",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_15_rejects_duplicate_participants"
+      ]
+    },
+    {
+      "id": "E1-16",
+      "stage": "E1",
+      "statement": "Un participante TRAITS debe tener clase válida",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_16_rejects_participant_wrong_kind"
+      ]
+    },
+    {
+      "id": "E1-17",
+      "stage": "E1",
+      "statement": "Una elección no combina evaluación y efectos propios",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_17_rejects_choice_evaluation_with_effects"
+      ]
+    },
+    {
+      "id": "E1-18",
+      "stage": "E1",
+      "statement": "Elecciones y acciones de escena comparten contrato de evaluación",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_18_choice_evaluation_and_scene_action_supported"
+      ]
+    },
+    {
+      "id": "E1-19",
+      "stage": "E1",
+      "statement": "Las acciones exploratorias no admiten saltos locales de nodo",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_19_scene_local_destination_is_rejected"
+      ]
+    },
+    {
+      "id": "E1-20",
+      "stage": "E1",
+      "statement": "v1.2 rechaza evaluar sin cambio de versión",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_20_v12_rejects_evaluation"
+      ]
+    },
+    {
+      "id": "E1-21",
+      "stage": "E1",
+      "statement": "Tras E2, el ejecutor admite una evaluación oculta v1.4",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_21_runtime_executes_hidden_v14"
+      ]
+    },
+    {
+      "id": "E1-22",
+      "stage": "E1",
+      "statement": "Tras E2, los guardados v1.4 validados son restaurables",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_22_v14_snapshot_is_restorable_with_matching_digest"
+      ]
+    },
+    {
+      "id": "E1-23",
+      "stage": "E1",
+      "statement": "DICE no exige TRAITS o S.O.F.I.A. sin referencias",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_23_no_missing_dice_dependencies_for_literal"
+      ]
+    },
+    {
+      "id": "E1-24",
+      "stage": "E1",
+      "statement": "Los presupuestos de literales se comprueban en admisión",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_24_rejects_invalid_literal_bound"
+      ]
+    },
+    {
+      "id": "E1-25",
+      "stage": "E1",
+      "statement": "Las etiquetas de contexto no se repiten",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_25_rejects_duplicate_tags"
+      ]
+    },
+    {
+      "id": "E1-26",
+      "stage": "E1",
+      "statement": "Los perfiles ausentes no admiten evaluaciones",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_26_rejects_missing_catalog"
+      ]
+    },
+    {
+      "id": "E1-27",
+      "stage": "E1",
+      "statement": "Los perfiles DICE respetan la cantidad máxima de bandas",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_27_rejects_math_profiles_with_excessive_bands"
+      ]
+    },
+    {
+      "id": "E1-28",
+      "stage": "E1",
+      "statement": "La normalización aleatoria no efectúa el sorteo",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_28_differs_for_dice_modes_without_rolling"
+      ]
+    },
+    {
+      "id": "E1-29",
+      "stage": "E1",
+      "statement": "Un paquete sin personaje jugador, TRAITS ni S.O.F.I.A. se admite con entradas literales",
+      "status": "enforced",
+      "tests": [
+        "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_29_generic_package_without_player_is_admitted"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.traits.invalid/v1/evaluation.schema.json",
+  "title": "TRAITS neutral evaluation request v1",
+  "type": "object",
+  "required": ["schema_version", "participants", "tags", "slots"],
+  "properties": {
+    "schema_version": {"const": "traits.evaluation.v1"},
+    "participants": {
+      "type": "array", "maxItems": 128,
+      "items": {
+        "type": "object", "required": ["entity", "kind", "role", "traits"],
+        "properties": {
+          "entity": {"$ref": "#/$defs/id"},
+          "kind": {"$ref": "#/$defs/id"},
+          "role": {"$ref": "#/$defs/id"},
+          "traits": {"$ref": "#/$defs/ids"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "tags": {"$ref": "#/$defs/ids"},
+    "slots": {"$ref": "#/$defs/ids"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string", "minLength": 1, "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "ids": {
+      "type": "array", "uniqueItems": true, "maxItems": 256,
+      "items": {"$ref": "#/$defs/id"}
+    }
+  }
+}

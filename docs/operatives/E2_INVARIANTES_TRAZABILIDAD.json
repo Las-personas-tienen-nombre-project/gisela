@@ -1,0 +1,259 @@
+{
+  "schema_version": "gisela.e2.invariants.v1",
+  "scope": "E2 evaluación oculta v1.4",
+  "invariants": [
+    {
+      "id": "E2-01",
+      "stage": "E2",
+      "statement": "El paso oculto se ejecuta y la sesión v1.4 confirmada se restaura sin otro resultado",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_01_hidden_step_commits_branch_and_restores"
+      ]
+    },
+    {
+      "id": "E2-02",
+      "stage": "E2",
+      "statement": "El RNG compartido da igual estado, semilla y efectos bajo repetición",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_02_random_dice_sum_is_reproducible"
+      ]
+    },
+    {
+      "id": "E2-03",
+      "stage": "E2",
+      "statement": "Los modificadores negativos extremos seleccionan la rama correcta sin dados",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_03_deterministic_negative_difficulty"
+      ]
+    },
+    {
+      "id": "E2-04",
+      "stage": "E2",
+      "statement": "Varios perfiles DICE coexisten sin confundir sus ramas ni consumir de más",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_04_multiple_profiles_are_isolated"
+      ]
+    },
+    {
+      "id": "E2-05",
+      "stage": "E2",
+      "statement": "La evaluación de una opción solo sucede tras Act y registra una selección",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_05_choice_runs_branch_after_authorization"
+      ]
+    },
+    {
+      "id": "E2-06",
+      "stage": "E2",
+      "statement": "La acción exploratoria aplica su evaluación y traza sin incrementar turnos",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_06_scene_action_is_atomic"
+      ]
+    },
+    {
+      "id": "E2-07",
+      "stage": "E2",
+      "statement": "La acción de elemento conserva su procedencia causal independiente",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_07_element_action_resolves_independently"
+      ]
+    },
+    {
+      "id": "E2-08",
+      "stage": "E2",
+      "statement": "Una consecuencia inválida no confirma RNG, mundo, historial ni selección",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_08_invalid_branch_rolls_back_rng"
+      ]
+    },
+    {
+      "id": "E2-09",
+      "stage": "E2",
+      "statement": "Una referencia a S.O.F.I.A. sin TRAITS consulta atributos efectivos",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_09_stat_is_read_from_effective_world"
+      ]
+    },
+    {
+      "id": "E2-10",
+      "stage": "E2",
+      "statement": "El ejecutor de E2 rechaza presentaciones de E3 de manera explícita",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_10_non_hidden_is_reserved_for_e3"
+      ]
+    },
+    {
+      "id": "E2-11",
+      "stage": "E2",
+      "statement": "Clientes de software no humanos usan Act solo a través de autoridad E0",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_11_unknown_client_cannot_act"
+      ]
+    },
+    {
+      "id": "E2-12",
+      "stage": "E2",
+      "statement": "Distintas semillas se preservan, sin reescribir el contrato reproducible",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_12_different_seed_can_change_outcome_without_violating_contract"
+      ]
+    },
+    {
+      "id": "E2-13",
+      "stage": "E2",
+      "statement": "Un digest inconsistente impide restaurar la sesión v1.4",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hidden.test_e2_13_restore_rejects_wrong_digest"
+      ]
+    },
+    {
+      "id": "E2-14",
+      "stage": "E2",
+      "statement": "TRAITS y S.O.F.I.A. se componen con DICE desde el estado real de sesión",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_14_traits_and_sofia_resolve_together"
+      ]
+    },
+    {
+      "id": "E2-15",
+      "stage": "E2",
+      "statement": "Los atributos modificados en la transacción se leen al evaluar y no en admisión",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_15_current_stat_after_prior_effect_is_used"
+      ]
+    },
+    {
+      "id": "E2-16",
+      "stage": "E2",
+      "statement": "Una suma efectiva fuera de presupuesto se rechaza antes de consumir RNG",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_16_preflight_overflow_does_not_draw"
+      ]
+    },
+    {
+      "id": "E2-17",
+      "stage": "E2",
+      "statement": "Una evaluación con decisión auxiliar se reconstruye y consume dados exactamente una vez",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_17_pending_replay_restores_same_dice"
+      ]
+    },
+    {
+      "id": "E2-18",
+      "stage": "E2",
+      "statement": "Una cancelación voluntaria descarta la tirada provisional sin mutar mundo",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_18_pending_cancel_preserves_world_and_rng"
+      ]
+    },
+    {
+      "id": "E2-19",
+      "stage": "E2",
+      "statement": "MARY reacciona a la rama confirmada y no duplica yields al restaurar",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_19_mary_yield_is_exactly_once"
+      ]
+    },
+    {
+      "id": "E2-20",
+      "stage": "E2",
+      "statement": "Todos los modos DICE preservan reproducibilidad y presupuesto nominal",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_20_all_dice_modes_keep_rng_reproducible"
+      ]
+    },
+    {
+      "id": "E2-21",
+      "stage": "E2",
+      "statement": "El salto A a B fallido no confirma cierre, RNG ni consecuencias",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_21_atomic_transition_into_invalid_node"
+      ]
+    },
+    {
+      "id": "E2-22",
+      "stage": "E2",
+      "statement": "Una revisión vencida no vuelve a ejecutar una evaluación ni duplicar consecuencias",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_22_wrong_revision_cannot_repeat_branch"
+      ]
+    },
+    {
+      "id": "E2-23",
+      "stage": "E2",
+      "statement": "Observe no anuncia valores ni identificadores internos de evaluaciones futuras",
+      "subsystem": "GISELA",
+      "decision": "ADR-022 / ADR-007 / ADR-020 / ADR-021",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e2_evaluations.py::E2Hardening.test_e2_23_future_evaluation_is_not_public_before_act"
+      ]
+    }
+  ]
+}

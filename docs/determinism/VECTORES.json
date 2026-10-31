@@ -1,0 +1,128 @@
+{
+  "canonical_profile": "GISELA-CJSON-1",
+  "digest_profile": "GISELA-PACKAGE-DIGEST-v1",
+  "digest_vectors": [
+    {
+      "name": "order",
+      "input": {
+        "b": 2,
+        "a": 1
+      },
+      "canonical": "{\"a\":1,\"b\":2}",
+      "digest": "71f9517491c6e88f57079c8863c0a9d743df687ec07f4eb60a375b85fb14d85e"
+    },
+    {
+      "name": "unicode",
+      "input": {
+        "café": "niño",
+        "a": [
+          3,
+          true,
+          null
+        ]
+      },
+      "canonical": "{\"a\":[3,true,null],\"café\":\"niño\"}",
+      "digest": "a258243abed9942bc6cb6be2d27bec588d0a4b8a2b4792419181df11570f50fb"
+    },
+    {
+      "name": "fraction",
+      "input": {
+        "u": 1.0,
+        "v": 0.1
+      },
+      "canonical": "{\"u\":1,\"v\":0.1}",
+      "digest": "b3cc881308865f2399929106b8e13f495546ca8d354e08b78698142220adea86"
+    }
+  ],
+  "fixture_package_digest": {
+    "package": "gisela/contracts/example.package.json",
+    "digest": "f6ffaf227c512a4aa10510703811f9f18539521a288ea57959350c648d81cabb"
+  },
+  "rng_algorithm": "sha256_counter_v1",
+  "rng_vectors": [
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 1,
+      "result": 1,
+      "next_counter": 1
+    },
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 2,
+      "result": 2,
+      "next_counter": 1
+    },
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 6,
+      "result": 6,
+      "next_counter": 1
+    },
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 10,
+      "result": 6,
+      "next_counter": 1
+    },
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 100,
+      "result": 76,
+      "next_counter": 1
+    },
+    {
+      "seed": "0000000000000000000000000000000000000000000000000000000000000000",
+      "counter": 0,
+      "sides": 1000003,
+      "result": 523749,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 1,
+      "result": 1,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 2,
+      "result": 2,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 6,
+      "result": 4,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 10,
+      "result": 10,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 100,
+      "result": 100,
+      "next_counter": 1
+    },
+    {
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "counter": 0,
+      "sides": 1000003,
+      "result": 107399,
+      "next_counter": 1
+    }
+  ]
+}

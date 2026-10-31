@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.2",
+  "package_id": "central_clasificadora_fixture",
+  "package_digest": "bbfc7858e6bf16dd2030bdba4943dea0f53d9dd80692c38cec7268f2574dbdad",
+  "session_id": "test_session",
+  "revision": 2,
+  "world_revision": 1,
+  "turn": 0,
+  "status": "exploring",
+  "world_time": "1998-08-13T19:00:00-04:00",
+  "rng": {
+    "algorithm": "sha256_counter_v1",
+    "seed": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "counter": 0
+  },
+  "identity": {
+    "used_instance_ids": [
+      "porteria",
+      "alberto",
+      "gisela",
+      "casete_01",
+      "intuicion_01"
+    ],
+    "next_sequence": 1
+  },
+  "world": {
+    "locations": [
+      {
+        "id": "porteria",
+        "card": "porteria"
+      }
+    ],
+    "characters": [
+      {
+        "id": "alberto",
+        "card": "alberto",
+        "location": "porteria",
+        "status": {}
+      },
+      {
+        "id": "gisela",
+        "card": "gisela",
+        "location": "porteria",
+        "status": {}
+      }
+    ],
+    "objects": [
+      {
+        "id": "casete_01",
+        "card": "casete",
+        "owner": "alberto"
+      }
+    ],
+    "skills": [
+      {
+        "id": "intuicion_01",
+        "card": "intuicion",
+        "character": "alberto",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "alberto",
+        "hand": 3,
+        "reserve": 2
+      },
+      {
+        "character": "gisela",
+        "hand": 2,
+        "reserve": 1
+      }
+    ],
+    "relationships": [],
+    "world_variables": {}
+  },
+  "narrative": {
+    "session_variables": {
+      "casete_prestado": false
+    }
+  },
+  "history": {
+    "facts": [],
+    "executions": [],
+    "trace": []
+  },
+  "current_scene": "porteria_noche",
+  "pending_transaction": {
+    "origin": "voluntary",
+    "source": {
+      "kind": "scene_action",
+      "scene": "porteria_noche",
+      "action": "examinar"
+    },
+    "initiated_revision": 1,
+    "context": {
+      "$actor": "alberto",
+      "$target": "gisela"
+    },
+    "answers": [],
+    "request": {
+      "request_id": "descarte_02",
+      "kind": "select_one",
+      "purpose": "discard_skill",
+      "options": [
+        "intuicion_01"
+      ]
+    }
+  }
+}

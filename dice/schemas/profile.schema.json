@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://schemas.dice.invalid/v1/profile.schema.json",
+  "type":"object","required":["schema_version","id","mode","bands"],
+  "properties":{
+    "schema_version":{"const":"dice.profile.v1"},
+    "id":{"type":"string","pattern":"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"},
+    "mode":{"enum":["deterministic","single_die","dice_sum","dice_pool"]},
+    "count":{"type":"integer","minimum":1,"maximum":64},
+    "sides":{"type":"integer","minimum":2,"maximum":1000000},
+    "bands":{"type":"array","minItems":1,"maxItems":16,
+      "items":{"type":"object","required":["id","min"],
+        "properties":{"id":{"type":"string","pattern":"^[a-z][a-z0-9_]*$"},"min":{"type":"integer","minimum":-1000000000,"maximum":1000000000}},
+        "additionalProperties":false}}
+  },"additionalProperties":false,
+  "allOf":[
+    {"if":{"properties":{"mode":{"const":"deterministic"}}},"then":{"not":{"anyOf":[{"required":["count"]},{"required":["sides"]}]}}},
+    {"if":{"properties":{"mode":{"enum":["single_die","dice_sum","dice_pool"]}}},"then":{"required":["count","sides"]}},
+    {"if":{"properties":{"mode":{"const":"single_die"}}},"then":{"properties":{"count":{"const":1}}}}
+  ]
+}

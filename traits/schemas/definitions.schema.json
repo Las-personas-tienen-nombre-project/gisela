@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.traits.invalid/v1/definitions.schema.json",
+  "title": "TRAITS catalog v1",
+  "type": "object",
+  "required": ["schema_version", "traits"],
+  "properties": {
+    "schema_version": {"const": "traits.v1"},
+    "max_traits": {"type": "integer", "minimum": 0, "maximum": 256},
+    "traits": {
+      "type": "array", "maxItems": 1024,
+      "items": {"$ref": "#/$defs/trait"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "string", "minLength": 1, "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "ids": {
+      "type": "array", "uniqueItems": true, "maxItems": 256,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "when": {
+      "type": "object", "required": ["role"],
+      "properties": {
+        "role": {"$ref": "#/$defs/id"},
+        "all_tags": {"$ref": "#/$defs/ids"},
+        "none_tags": {"$ref": "#/$defs/ids"}
+      },
+      "additionalProperties": false
+    },
+    "add": {
+      "type": "object", "required": ["slot", "amount"],
+      "properties": {
+        "slot": {"$ref": "#/$defs/id"},
+        "amount": {"type": "integer", "minimum": -1000, "maximum": 1000}
+      },
+      "additionalProperties": false
+    },
+    "contribution": {
+      "type": "object", "required": ["id", "when", "add"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "when": {"$ref": "#/$defs/when"},
+        "add": {"$ref": "#/$defs/add"}
+      },
+      "additionalProperties": false
+    },
+    "trait": {
+      "type": "object", "required": ["id", "entity_kinds", "contributions"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "label": {"type": "string", "maxLength": 160},
+        "description": {"type": "string", "maxLength": 1024},
+        "visibility": {"enum": ["public", "hidden"]},
+        "entity_kinds": {"$ref": "#/$defs/ids", "minItems": 1},
+        "excludes": {"$ref": "#/$defs/ids"},
+        "contributions": {
+          "type": "array", "maxItems": 16,
+          "items": {"$ref": "#/$defs/contribution"}
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

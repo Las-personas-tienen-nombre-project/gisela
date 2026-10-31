@@ -1,0 +1,32 @@
+Metadata-Version: 2.4
+Name: gisela-narrative-engine
+Version: 0.1.0
+Summary: Independent transactional narrative engine
+License-Expression: Apache-2.0
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: jsonschema<5,>=4.20
+Requires-Dist: referencing<1,>=0.34
+Dynamic: license-file
+
+# GISELA — independent narrative engine
+
+Candidate extraction EX-001 from `las-personas-tienen-nombre(20261031-201649).zip`.
+
+GISELA is the narrative engine; the Ren'Py demo is its consumer. This candidate does not modify the source demo.
+
+## Development installation
+
+```sh
+python -m pip install -e .
+python -m pytest -q gisela/contracts gisela/engine/tests
+```
+
+## License boundary
+
+Source code is intended for release under Apache License 2.0, subject to a final rights and dependency audit. All stories, literary texts, original characters and narrative packages (including test examples) are **all rights reserved** and not covered by the software license. Do not upload narrative packages without checking publication permission.
+
+## Extraction status
+
+This is a candidate source tree, not yet a finished public repository. The demo has not yet been migrated to consume an installed package. The Ren'Py SDK was not downloaded. See `EX001_ESTADO.md`.

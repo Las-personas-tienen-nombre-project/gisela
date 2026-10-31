@@ -1,0 +1,30 @@
+{
+  "session_id": "test_session",
+  "revision": 2,
+  "world_revision": 1,
+  "world_time": "1998-08-13T19:00:00-04:00",
+  "turn": 1,
+  "status": "exploring",
+  "content": {
+    "kind": "pending_transaction",
+    "request_id": "descarte_02",
+    "purpose": "discard_skill"
+  },
+  "actions": [
+    {
+      "kind": "resolve_pending",
+      "action_id": "resolve_pending_01",
+      "id": "elige_01",
+      "label": "Continuar",
+      "enabled": true
+    },
+    {
+      "kind": "cancel_pending",
+      "action_id": "cancel_pending_01",
+      "id": "elige_01",
+      "label": "Continuar",
+      "enabled": true
+    }
+  ],
+  "scene": "porteria_noche"
+}

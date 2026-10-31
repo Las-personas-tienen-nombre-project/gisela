@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gisela-narrative-engine"
+version = "0.1.0"
+description = "Independent transactional narrative engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dependencies = ["jsonschema>=4.20,<5", "referencing>=0.34,<1"]
+
+[tool.setuptools]
+packages = ["gisela", "gisela.contracts", "gisela.engine", "mary", "dice", "traits", "narrative_conditions"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+"gisela.contracts" = ["*.json", "v1_3/*.json", "v1_4/*.json", "v1_5/*.json"]
+"mary" = ["schemas/*.json"]
+"dice" = ["schemas/*.json"]
+"traits" = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "gisela/contracts", "tools"]
+testpaths = ["gisela/contracts", "gisela/engine/tests"]
+addopts = "-ra"

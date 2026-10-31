@@ -1,0 +1,248 @@
+{
+  "schema_version": "gisela.e3.invariants.v1",
+  "scope": "E3 evaluaciones visibles v1.5",
+  "invariants": [
+    {
+      "id": "E3-01",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "El RNG y los dados se confirman sin efectos ni turno y sobreviven la restauración",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_01_entry_pending_no_world_or_turn_and_restore"
+      ]
+    },
+    {
+      "id": "E3-02",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Ambas presentaciones visibles requieren el mismo comando autorizado",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_02_acknowledged_same_command_and_no_automatic_commit"
+      ]
+    },
+    {
+      "id": "E3-03",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La elección no queda confirmada hasta la continuación",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_03_choice_uncommitted_before_continue"
+      ]
+    },
+    {
+      "id": "E3-04",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Acción de escena y elemento comparten la misma ruta causal",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_04_scene_and_element_routes"
+      ]
+    },
+    {
+      "id": "E3-05",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Los efectos anteriores a evaluar permanecen provisionales",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_05_effects_before_visible_remain_uncommitted"
+      ]
+    },
+    {
+      "id": "E3-06",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Varias evaluaciones visibles suspenden sin commits narrativos parciales",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_06_visible_chain_replays_both_without_partial_world"
+      ]
+    },
+    {
+      "id": "E3-07",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La solicitud auxiliar después de la tirada preserva el resultado y RNG",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_07_auxiliary_after_fixed_does_not_reroll"
+      ]
+    },
+    {
+      "id": "E3-08",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "El fallo de preflight no consume RNG",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_08_preflight_failure_before_roll"
+      ]
+    },
+    {
+      "id": "E3-09",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Las acciones obsoletas o no ofrecidas no mutan el estado",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_09_reject_stale_foreign_and_unoffered"
+      ]
+    },
+    {
+      "id": "E3-10",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La restauración rechaza resultado, RNG, origen, identidad o traza manipulados",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_10_restore_rejects_forged_result_and_rng"
+      ]
+    },
+    {
+      "id": "E3-11",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Observe no publica contribuciones privadas de TRAITS ni S.O.F.I.A.",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_11_traits_and_sofia_opaque"
+      ]
+    },
+    {
+      "id": "E3-12",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "El gateway admite clientes no humanos, rechaza ajenos y deduplica comandos",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_12_gateway_nonhuman_idempotent"
+      ]
+    },
+    {
+      "id": "E3-13",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La versión v1.4 mantiene su rechazo dinámico de evaluaciones visibles",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_13_v14_still_rejects_visible"
+      ]
+    },
+    {
+      "id": "E3-14",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Snapshots, Observe y Act v1.5 satisfacen sus contratos JSON",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_14_schema_snapshot_and_observe"
+      ]
+    },
+    {
+      "id": "E3-15",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Un error en la rama deja la evaluación pendiente con RNG fijo",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_15_branch_error_preserves_pending_and_rng"
+      ]
+    },
+    {
+      "id": "E3-16",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Evaluaciones ocultas antes y entre visibles se reproducen sin confundirse",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_16_hidden_before_visible_and_between_results"
+      ]
+    },
+    {
+      "id": "E3-17",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "MARY y los hechos se aplican exactamente una vez",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_17_mary_applied_once_after_continue"
+      ]
+    },
+    {
+      "id": "E3-18",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La restauración rechaza opciones auxiliares forjadas",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_18_restore_rejects_forged_auxiliary_offer"
+      ]
+    },
+    {
+      "id": "E3-19",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "La transición A→B sigue siendo atómica ante un fallo posterior",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_19_transition_to_another_node_remains_atomic"
+      ]
+    },
+    {
+      "id": "E3-20",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "Los guardados no se restauran con definiciones o digest divergentes",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_20_restore_requires_exact_package_digest"
+      ]
+    },
+    {
+      "id": "E3-21",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
+      "statement": "El checkpoint persistente recupera resultado y recibos idempotentes",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_21_checkpoint_gateway_recovers_frozen_result_and_receipt"
+      ]
+    },
+    {
+      "id": "E3-22",
+      "stage": "E3",
+      "subsystem": "GISELA",
+      "decision": "ADR-023 / ADR-022 / ADR-020",
+      "statement": "Las evaluaciones ocultas de v1.5 conservan el commit único de E2",
+      "status": "enforced",
+      "tests": [
+        "gisela/engine/tests/test_e3_visible.py::E3Visible.test_22_v15_hidden_retains_single_atomic_commit"
+      ]
+    }
+  ]
+}
