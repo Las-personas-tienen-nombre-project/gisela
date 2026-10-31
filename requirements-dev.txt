@@ -2,3 +2,4 @@ jsonschema>=4.20,<5
 referencing>=0.34,<1
 setuptools-scm>=8,<10
 build>=1,<2
+pytest>=8,<10

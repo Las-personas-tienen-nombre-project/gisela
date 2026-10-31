@@ -66,7 +66,8 @@ This map lists entry points and responsibilities rather than every private helpe
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
 python -m unittest gisela.engine.tests.test_e2_evaluations -q
 python -m unittest gisela.engine.tests.test_e3_visible -q
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
 ```
 
 The tests cover transactional failures, pending replay, stale actions, version compatibility, deterministic evaluations, scene actions, and narrative integration packages. Passing the unit tests does not prove graphical Ren'Py behavior.

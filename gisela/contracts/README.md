@@ -70,7 +70,8 @@ The `examples` and `semantic_examples` directories contain validation fixtures. 
 ```bash
 python gisela/contracts/verify_contracts.py
 python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
 ```
 
 ## Compatibility and safety

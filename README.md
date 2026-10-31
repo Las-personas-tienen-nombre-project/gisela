@@ -23,6 +23,7 @@ Install the development requirements from the repository root.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+python -m pip install -e .
 python -m pip install -r requirements-dev.txt
 ```
 
@@ -38,7 +39,7 @@ Run the Central Clasificadora test adaptation.
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
-The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md).
+The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md). The CLI `--auto` mode is not a guaranteed route to an ending for the Faro and Central packages; use the scripted walkthroughs with `--verify-restores` for acceptance.
 
 ## Admission before execution
 
@@ -56,7 +57,21 @@ A valid schema does not mean every possible operation is executable. The engine 
 
 Create a session from an admitted package. GISELA initializes the world and enters the declared starting point. It then runs automatic steps until it reaches a public action, a pending decision, a visible evaluation, or the end of the session.
 
-Observe returns the public view of the current confirmed state. It contains a revision, visible content, and a list of offered actions. Act takes the current session identifier, revision, and a currently offered action identifier. It does not accept arbitrary world operations from a client.
+Observe returns the public view of the current confirmed state. It contains a revision, visible content, and a list of offered actions. Act takes the current session identifier, revision, and a currently offered action identifier. It does not accept arbitrary world operations from a client. For example:
+
+```python
+view = session.observe()
+action = next(a for a in view['actions'] if a['enabled'])
+reply = session.act({
+    'session_id': view['session_id'],
+    'revision': view['revision'],
+    'action_id': action['action_id'],
+})
+if reply['status'] != 'ok':
+    print(reply)  # Act returns an error dictionary instead of raising it.
+```
+
+A session bound to `ExecutionGateway` rejects direct `session.act()` calls; its authenticated clients use the gateway's command interface instead. See [Client API](docs/architecture/API_CLIENTES.md) for the full contract.
 
 A successful action runs against a draft. GISELA resolves conditions, world effects, reactions, objectives, and narrative transitions before committing. A failed action leaves the previous confirmed state unchanged. Repeated or stale requests cannot be used to bypass the authorization boundary.
 

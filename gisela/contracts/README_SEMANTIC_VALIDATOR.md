@@ -39,7 +39,8 @@ The repository contains historical v1.2, v1.3, and v1.4 contracts and current v1
 ```bash
 python gisela/contracts/verify_contracts.py
 python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
 ```
 
 Read [Contracts](README.md) for the main authoring and version guide, [Engine](../engine/README.md) for dynamic semantics, and `SEMANTIC_VALIDATION.md` for the technical boundary summary.

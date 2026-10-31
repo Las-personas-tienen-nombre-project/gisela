@@ -38,7 +38,8 @@ The main user of this code is the GISELA and MARY test suite.
 
 ```bash
 python -m unittest discover -s mary/tests -p 'test_*.py' -q
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
 ```
 
 For detailed rationale see ADR 018 under `docs/decisions`. The original record is retained in Spanish as a historical decision document.

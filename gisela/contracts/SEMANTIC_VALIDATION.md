@@ -28,4 +28,4 @@ python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
 ```
 
-The complete project verification uses `python tools/check_project.py`. See [Contracts README](README.md), [Validator README](README_SEMANTIC_VALIDATOR.md), and [GISELA](../README.md).
+For repository checks run `python tools/check_quality.py` and `python tools/check_doc_links.py` in addition to the suites above. See [Contracts README](README.md), [Validator README](README_SEMANTIC_VALIDATOR.md), and [GISELA](../README.md).

@@ -23,3 +23,18 @@ class LocalDocumentationLinks(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class OperationalDocumentationCommands(unittest.TestCase):
+    def test_current_entrypoints_do_not_reference_removed_orchestrators(self):
+        root = Path(__file__).resolve().parents[1]
+        pages = [root / 'README.md', root / 'docs/guides/QUICK_START.md',
+                 root / 'gisela/engine/README.md', root / 'gisela/contracts/README.md',
+                 root / 'gisela/contracts/README_SEMANTIC_VALIDATOR.md',
+                 root / 'gisela/contracts/SEMANTIC_VALIDATION.md',
+                 root / 'narrative_conditions/README.md']
+        obsolete = ('python tools/check_project.py',
+                    'python tools/check_documentation.py')
+        for page in pages:
+            with self.subTest(page=page.relative_to(root)):
+                content = page.read_text(encoding='utf-8')
+                self.assertFalse(any(command in content for command in obsolete))
