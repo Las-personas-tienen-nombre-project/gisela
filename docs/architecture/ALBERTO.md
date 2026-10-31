@@ -98,7 +98,7 @@ Para repetir las pruebas de ALBERTO y la verificación integral:
 
 ```bash
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
-python tools/check_project.py
+python tools/check_gisela.py --full
 ```
 
 Los errores de dominio se expresan mediante códigos estables como `INVALID_REFERENCE`, `INVALID_STATE`, `INSTANCE_COLLISION`, `ENTITY_IN_USE`, `CAPACITY_EXCEEDED` y `REACTION_CONFLICT`. Los casos exactos dependen de las precondiciones de cada operación. La API externa devuelve errores de ejecución tipados; el anfitrión no debe intentar reparar directamente el estado.

@@ -21,9 +21,6 @@ class LocalDocumentationLinks(unittest.TestCase):
             self.assertEqual([], broken_links(root))
 
 
-if __name__ == '__main__':
-    unittest.main()
-
 class OperationalDocumentationCommands(unittest.TestCase):
     def test_current_entrypoints_do_not_reference_removed_orchestrators(self):
         root = Path(__file__).resolve().parents[1]
@@ -38,3 +35,22 @@ class OperationalDocumentationCommands(unittest.TestCase):
             with self.subTest(page=page.relative_to(root)):
                 content = page.read_text(encoding='utf-8')
                 self.assertFalse(any(command in content for command in obsolete))
+
+
+class CurrentDocumentationIntegrity(unittest.TestCase):
+    def test_current_architecture_and_entrypoints_use_existing_checks(self):
+        root = Path(__file__).resolve().parents[1]
+        pages = [root / 'README.md', *sorted((root / 'docs/architecture').glob('*.md')),
+                 root / 'docs/guides/VERIFICACION_GISELA.md']
+        for page in pages:
+            with self.subTest(page=str(page.relative_to(root))):
+                body = page.read_text(encoding='utf-8')
+                self.assertNotIn('python tools/check_project.py', body)
+                for name in ('check_gisela.py', 'check_quality.py', 'check_doc_links.py',
+                             'verify_e0_invariants.py', 'verify_e1_invariants.py',
+                             'verify_e2_invariants.py', 'verify_e3_invariants.py'):
+                    if 'python tools/' + name in body:
+                        self.assertTrue((root / 'tools' / name).is_file())
+
+if __name__ == '__main__':
+    unittest.main()

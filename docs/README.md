@@ -12,6 +12,9 @@ GISELA es un motor narrativo independiente. Este repositorio contiene su impleme
 6. [Decisiones ADR](decisions/GISELA_ADR_001_017.md) y [ADR-020](decisions/ADR_020_E0_FRONTERA_AUTORIDAD_Y_COMPROMISO.md): decisiones de diseño.
 7. [Roadmap actual](operatives/ROADMAP.md) y [cierre técnico PA-001](operatives/PA001_CIERRE_2026_10_31.md): estado y límites verificados.
 
+Para ejecutar los controles del repositorio independiente, consulte la
+[guía del verificador GISELA](guides/VERIFICACION_GISELA.md).
+
 ## Cómo leer el archivo documental
 
 `docs/architecture` contiene contratos de arquitectura y también propuestas anteriores; no toda propuesta está implementada. `docs/decisions` conserva decisiones aprobadas y antecedentes. `docs/operatives` reúne informes de implementación, verificación y auditoría. `docs/history` preserva material de etapas anteriores; sus referencias al repositorio original no son instrucciones vigentes.

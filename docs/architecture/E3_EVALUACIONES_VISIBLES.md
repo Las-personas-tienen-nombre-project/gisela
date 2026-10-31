@@ -26,7 +26,7 @@ Una entrada visible en el inicio de sesión utiliza `status=preparing` más `pre
 
 ## E3.6: auditoría
 
-Las pruebas nuevas verifican los tres orígenes, dos presentaciones visibles, efecto previo, cadenas visibles/ocultas, RNG, decisiones auxiliares, MARY, rollback, transición A→B, privacidad, restauración y gateway no humano. Ejecutar `python tools/check_project.py` para la comprobación integral, junto con `tools/verify_e3_invariants.py`.
+Las pruebas nuevas verifican los tres orígenes, dos presentaciones visibles, efecto previo, cadenas visibles/ocultas, RNG, decisiones auxiliares, MARY, rollback, transición A→B, privacidad, restauración y gateway no humano. Ejecutar `python tools/check_gisela.py --full` para la comprobación integral, junto con `tools/verify_e3_invariants.py`.
 
 ## Límites
 

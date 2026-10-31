@@ -131,23 +131,25 @@ Current packages use v1.5 for visible evaluation support. Earlier v1.2, v1.3, an
 
 ## Tests
 
-Run the local offline checks (the historical `tools/check_project.py` monorepo orchestrator is not included in this extracted repository).
+Desde la raíz del repositorio, el verificador oficial de GISELA ejecuta pruebas
+unitarias del motor, contratos, bibliotecas y herramientas, calidad, enlaces e
+invariantes E0–E3:
 
 ```bash
-python tools/check_quality.py
-python tools/check_doc_links.py
-python -m unittest discover -s tools -p 'test_*.py' -q
-python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
+python tools/check_gisela.py
 ```
 
-For further checks, run the engine unit tests, independent libraries, and invariant verification scripts explicitly. The former monorepo-wide orchestrator is not present in this standalone extraction.
+Para añadir los seis recorridos narrativos y sus restauraciones:
 
 ```bash
-python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
-python -m unittest discover -s dice/tests -p 'test_*.py' -q
-python -m unittest discover -s traits/tests -p 'test_*.py' -q
-python -m unittest discover -s mary/tests -p 'test_*.py' -q
+python tools/check_gisela.py --full
 ```
+
+Desde otro directorio, invoque la **ruta absoluta del script**; este localiza
+internamente la raíz y ejecuta las comprobaciones desde allí. Los recorridos
+requieren las dependencias de desarrollo indicadas en `requirements-dev.txt`.
+La guía de verificación y sus límites están en
+[Verificación independiente](docs/guides/VERIFICACION_GISELA.md).
 
 ## Known limits
 
@@ -173,21 +175,3 @@ This includes demonstration and testing materials, such as *El faro de niebla* a
 These materials are included solely for demonstration, development, and testing purposes. Their inclusion does not grant permission to modify, redistribute, republish, or commercially exploit them without prior authorization from the copyright holder.
 
 This restriction does not affect the rights granted to the GISELA software under the Apache License 2.0.
-
-### Verificación independiente de GISELA
-
-Desde cualquier directorio, ejecutando con Python instalado y las dependencias de
-prueba disponibles:
-
-```bash
-python tools/check_gisela.py
-python tools/check_gisela.py --full
-```
-
-La herramienta utiliza la raíz del repositorio determinada por su propia ubicación:
-no depende del demo «Las personas tienen nombre» ni de `project_check`.
-Ejecuta pruebas de motor, contratos, bibliotecas y herramientas, verificadores
-E0–E3, calidad y enlaces. `--full` agrega los recorridos de Faro de Niebla y
-Central Clasificadora con comprobación de restauración. Cada comprobación informa
-código de salida y duración; un fallo produce salida no cero. `--timeout N`
-permite establecer un límite por comprobación sin modificar sus pruebas.

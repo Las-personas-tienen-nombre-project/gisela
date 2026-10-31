@@ -46,7 +46,7 @@ python -m unittest discover -s mary/tests -p 'test_*.py' -q
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
 python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
 python tools/check_quality.py
-python tools/check_project.py
+python tools/check_gisela.py --full
 ```
 
 El comando integral del proyecto encadena pruebas, admisión y recorridos CLI, por lo que puede superar el tiempo de una herramienta de ejecución. En caso de que eso ocurra, no se debe declarar aprobado sin haber completado también los recorridos restantes.

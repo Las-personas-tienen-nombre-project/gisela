@@ -30,4 +30,4 @@ La evaluación no añade turno ni expone su resultado en `Observe`. Un paso ocul
 
 ## Verificación
 
-`python tools/check_project.py` ejecuta las pruebas y la matriz E2, verificable mediante `python tools/verify_e2_invariants.py`. La batería `gisela/engine/tests/test_e2_evaluations.py` prueba las rutas, perfiles, RNG, efectos, replay, MARY, la frontera E0, rollback y restore. Los tests de E0/E1 y los paquetes anteriores constituyen la regresión.
+`python tools/check_gisela.py --full` ejecuta las pruebas y la matriz E2, verificable mediante `python tools/verify_e2_invariants.py`. La batería `gisela/engine/tests/test_e2_evaluations.py` prueba las rutas, perfiles, RNG, efectos, replay, MARY, la frontera E0, rollback y restore. Los tests de E0/E1 y los paquetes anteriores constituyen la regresión.
