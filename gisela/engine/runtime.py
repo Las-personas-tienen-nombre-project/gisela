@@ -178,7 +178,7 @@ class GiselaSession:
 
     def _validate_state(self, state: dict) -> None:
         """Rechaza un borrador que incumpla el schema o invariantes semánticas."""
-        issues = Validator().validate_session(state, self._package, expected_digest=self._admitted.digest)
+        issues = Validator()._validate_admitted_session(state, self._package, self._admitted.digest)
         errors = [i for i in issues if i.severity == 'error']
         if errors:
             raise WorldError('INVALID_STATE', f'Sesión inconsistente: {errors[0].code} {errors[0].message}')

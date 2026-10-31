@@ -1,8 +1,11 @@
 """Validación de Act y coordinación del compromiso transaccional de GISELA."""
 from __future__ import annotations
+import logging
 import copy
 from gisela.contracts.semantic_validator import Validator
 from .world_base import WorldError
+LOGGER = logging.getLogger(__name__)
+
 from .pending import DecisionRequired, DecisionReplay, EvaluationPause, EvaluationReplay
 
 
@@ -137,4 +140,5 @@ def act(session, request: dict) -> dict:
     except WorldError as exc:
         return session._fail(exc.code, str(exc))
     except (KeyError, TypeError, ValueError, StopIteration) as exc:
-        return session._fail('INVALID_STATE', f'Error de ejecución: {exc}')
+        LOGGER.exception('Defecto interno durante Act')
+        return session._fail('INVALID_STATE', 'Error interno de ejecución')

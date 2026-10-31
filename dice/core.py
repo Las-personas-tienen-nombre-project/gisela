@@ -12,6 +12,18 @@ class DiceError(ValueError):
     """Solicitud o perfil de evaluación inválido."""
 
 
+class _CompiledProfile(dict):
+    """Copia validada con huella para detectar mutación posterior."""
+    def __init__(self, document: dict):
+        super().__init__(copy.deepcopy(document))
+        self.signature = _profile_signature(self)
+
+
+def _profile_signature(profile: dict) -> str:
+    """Huella barata que evita repetir JSON Schema sin confiar en mutabilidad."""
+    return json.dumps(profile, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+
+
 def compile_profile(document: dict) -> dict:
     """Compila un perfil neutral y verifica los umbrales."""
     issues = list(Draft202012Validator(SCHEMA).iter_errors(document))
@@ -23,7 +35,14 @@ def compile_profile(document: dict) -> dict:
     ids = [band['id'] for band in document['bands']]
     if len(ids) != len(set(ids)):
         raise DiceError('Los identificadores de resultado deben ser únicos')
-    return copy.deepcopy(document)
+    return _CompiledProfile(document)
+
+
+def _validated_profile(profile: dict) -> dict:
+    """Reutiliza una compilación intacta; mutaciones vuelven a validarse."""
+    if isinstance(profile, _CompiledProfile) and profile.signature == _profile_signature(profile):
+        return profile
+    return compile_profile(profile)
 
 
 def evaluate(profile: dict, request: dict, draw=None) -> dict:
@@ -31,7 +50,7 @@ def evaluate(profile: dict, request: dict, draw=None) -> dict:
     if (not isinstance(request, dict) or set(request) != {'base', 'bonus', 'difficulty'}
             or any(type(v) is not int or abs(v) > 1000000 for v in request.values())):
         raise DiceError('Solicitud numérica inválida')
-    profile = compile_profile(profile)
+    profile = _validated_profile(profile)
     mode = profile['mode']
     count = profile.get('count', 0)
     sides = profile.get('sides', 0)

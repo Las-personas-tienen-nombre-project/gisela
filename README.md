@@ -173,3 +173,21 @@ This includes demonstration and testing materials, such as *El faro de niebla* a
 These materials are included solely for demonstration, development, and testing purposes. Their inclusion does not grant permission to modify, redistribute, republish, or commercially exploit them without prior authorization from the copyright holder.
 
 This restriction does not affect the rights granted to the GISELA software under the Apache License 2.0.
+
+### Verificación independiente de GISELA
+
+Desde cualquier directorio, ejecutando con Python instalado y las dependencias de
+prueba disponibles:
+
+```bash
+python tools/check_gisela.py
+python tools/check_gisela.py --full
+```
+
+La herramienta utiliza la raíz del repositorio determinada por su propia ubicación:
+no depende del demo «Las personas tienen nombre» ni de `project_check`.
+Ejecuta pruebas de motor, contratos, bibliotecas y herramientas, verificadores
+E0–E3, calidad y enlaces. `--full` agrega los recorridos de Faro de Niebla y
+Central Clasificadora con comprobación de restauración. Cada comprobación informa
+código de salida y duración; un fallo produce salida no cero. `--timeout N`
+permite establecer un límite por comprobación sin modificar sus pruebas.

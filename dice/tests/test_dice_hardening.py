@@ -1,8 +1,15 @@
 """E0-D01..D06: perfiles son unívocos, totales cubiertos sin reroll."""
 import copy
+import subprocess
+import sys
 import unittest
+from pathlib import Path
+from unittest import mock
 from dice import DiceError, compile_profile, evaluate
 from dice.tests.test_dice import profile
+
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 class DiceHardening(unittest.TestCase):
@@ -53,3 +60,23 @@ class DiceHardening(unittest.TestCase):
         import dice.core
         self.assertNotIn('gisela', dice.core.__dict__)
         self.assertNotIn('traits', dice.core.__dict__)
+
+    def test_e0_d08_independent_import(self):
+        script = "import dice; import sys; assert 'gisela' not in sys.modules; assert 'traits' not in sys.modules; assert 'mary' not in sys.modules"
+        result = subprocess.run([sys.executable, '-c', script], cwd=ROOT,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_e0_d09_compiled_profile_skips_schema_revalidation(self):
+        compiled = compile_profile(profile('deterministic'))
+        with mock.patch('dice.core.Draft202012Validator.iter_errors',
+                        side_effect=AssertionError('revalidación')):
+            result = evaluate(compiled, {'base':1, 'bonus':0, 'difficulty':0})
+        self.assertEqual(result['outcome'], 'failure')
+
+    def test_e0_d10_mutated_compiled_profile_is_revalidated(self):
+        compiled = compile_profile(profile('deterministic'))
+        compiled['bands'][1]['min'] = -1000000
+        with self.assertRaises(DiceError):
+            evaluate(compiled, {'base':1, 'bonus':0, 'difficulty':0})
+

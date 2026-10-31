@@ -8,11 +8,21 @@ except ImportError:
 class SessionsMixin:
     """Grupo de comprobaciones sessions de un mismo validador."""
     def validate_session(self, snapshot: dict, package: dict, expected_digest: str|None=None) -> list[Diagnostic]:
-        """Devuelve diagnósticos de integridad del guardado."""
+        """Valida snapshot y paquete cuando ambos llegan desde una frontera no confiable."""
+        return self._validate_session(snapshot, (package, expected_digest, True))
+
+    def _validate_admitted_session(self, snapshot: dict, package: dict, expected_digest: str) -> list[Diagnostic]:
+        """Valida solo el snapshot cuando el paquete ya pasó por admisión."""
+        return self._validate_session(snapshot, (package, expected_digest, False))
+
+    def _validate_session(self, snapshot: dict, detail: tuple) -> list[Diagnostic]:
+        """Implementa las invariantes comunes sin duplicar semántica."""
+        package, expected_digest, validate_package = detail
         self.issues=[]
         version = package.get('manifest', {}).get('format_version') if isinstance(package, dict) else None
         if not self.use_version(version):return self.issues[:]
-        if not self.check_schema('package',package) or not self.check_schema('session',snapshot):return self.issues[:]
+        if validate_package and not self.check_schema('package', package):return self.issues[:]
+        if not self.check_schema('session',snapshot):return self.issues[:]
         if snapshot['schema_version'] != version:
             self.report('SCHEMA_VERSION_MISMATCH', '/schema_version', 'Versión de sesión incompatible')
         if version in ('1.3', '1.4', '1.5'):self._check_traits_snapshot(snapshot, package)

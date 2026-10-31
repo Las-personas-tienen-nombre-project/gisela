@@ -2,7 +2,7 @@
 from __future__ import annotations
 from gisela.contracts.rng import RNGState, draw as rng_draw
 from traits import evaluate as traits_evaluate
-from dice import compile_profile, evaluate as dice_evaluate, DiceError
+from dice import evaluate as dice_evaluate, DiceError
 from .world_base import WorldError, instance
 from .sofia import read as read_stat
 
@@ -38,7 +38,7 @@ def resolve(state: dict, spec: dict, definitions) -> dict:
         base += read_stat(state, spec['stat'], definitions)
     if any(type(v) is not int or abs(v) > 1000000 for v in (base, bonus, difficulty)):
         raise DiceError('La solicitud efectiva supera el límite numérico antes de tirar')
-    profile = compile_profile(spec['profile'])
+    profile = spec['profile']  # EvaluationRoutes ya compiló el perfil al crear la sesión.
     rng = RNGState(**state['rng'])
     if rng.counter + profile.get('count', 0) > 9007199254740991:
         raise DiceError('Presupuesto del RNG insuficiente para la evaluación')

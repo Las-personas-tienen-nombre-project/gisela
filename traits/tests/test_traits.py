@@ -1,13 +1,19 @@
 """Pruebas neutrales y sin dependencia del ejecutor de GISELA."""
 import copy
 import json
+import subprocess
+import sys
 import unittest
+from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
 from traits import (TraitsError, compile_catalog, evaluate, has_trait,
                     validate_assignments)
 from traits.contracts import REQUEST_SCHEMA, SCHEMA
+
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def example():
@@ -38,6 +44,12 @@ def request():
 
 
 class TraitsCatalogTest(unittest.TestCase):
+    def test_independent_imports(self):
+        script = "import traits; import sys; assert 'gisela' not in sys.modules; assert 'dice' not in sys.modules; assert 'mary' not in sys.modules"
+        result = subprocess.run([sys.executable, '-c', script], cwd=ROOT,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_schemas_valid(self):
         Draft202012Validator.check_schema(SCHEMA)
         Draft202012Validator.check_schema(REQUEST_SCHEMA)

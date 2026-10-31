@@ -10,7 +10,7 @@ GISELA owns the deterministic random state. It validates effective inputs and bu
 
 ## Public API
 
-`compile_profile(document)` validates a neutral `dice.profile.v1` document and returns a deep copy. `evaluate(profile, request, draw=None)` validates the request and profile, makes any required draws, and returns a `dice.result.v1` result. Contract problems raise `DiceError`.
+`compile_profile(document)` validates a neutral `dice.profile.v1` document and returns a defensive compiled mapping. `evaluate(profile, request, draw=None)` validates the request and reuses that compilation while the mapping remains intact; a raw or subsequently mutated profile is validated again before use. It then makes any required draws and returns a `dice.result.v1` result. Contract problems raise `DiceError`.
 
 The profile schema lives in `dice/schemas/profile.schema.json`. It defines the accepted modes and value budgets. Code verifies that band thresholds are ordered and unique and that outcome identifiers are unique.
 
