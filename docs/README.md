@@ -4,7 +4,7 @@ GISELA es un motor narrativo independiente. Este repositorio contiene su impleme
 
 ## Lectura recomendada
 
-1. [Inicio rápido](guides/QUICK_START.md): instalación, ejecución y pruebas.
+1. [Inicio rápido](guides/QUICK_START.md): instalación, ejecución y pruebas. [Crea tu primer paquete](guides/CREAR_PAQUETE.md) enseña a escribir un relato pequeño.
 2. [Arquitectura vigente v1.5](architecture/GISELA_Arquitectura_Consolidada_v1_5.md): modelo narrativo y autoridad transaccional.
 3. [API de clientes](architecture/API_CLIENTES.md) y [ejecutor](../gisela/engine/README.md): observación, acciones, errores y persistencia.
 4. [Contratos](../gisela/contracts/README.md): paquetes, schemas y admisión.

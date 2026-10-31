@@ -14,7 +14,7 @@ A package declares a manifest, cards, nodes, scenes, rules, and initial state as
 
 A package may declare DICE profiles, a TRAITS catalog, and MARY definitions where the selected contract version permits them. These are optional capabilities and must not be used to impose game specific behavior on the engine.
 
-For a complete working v1.5 example, inspect `gisela/packages/h46_faro_de_niebla.package.json`. It uses scenes, characters, objects, skills, traits, DICE, and missions. The package is more reliable than a fabricated partial JSON fragment because all required references are present.
+For a first package, follow [Crea tu primer paquete](../../docs/guides/CREAR_PAQUETE.md). Its small v1.5 package is complete and playable. For an example with scenes, characters, objects, skills, traits, DICE, and missions, inspect `gisela/packages/h46_faro_de_niebla.package.json`.
 
 ## Admission
 

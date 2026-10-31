@@ -20,6 +20,8 @@ Otro paquete de ejemplo:
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
+Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
+
 Admisión de un paquete:
 
 ```bash
