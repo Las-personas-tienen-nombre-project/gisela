@@ -40,4 +40,4 @@ El verificador principal incorpora el nuevo ejemplo. Conserva las pruebas de H1,
 
 H3.4d incorporó la ejecución de habilidades, sus requisitos, ventanas, resultados y retorno. H4 debe incorporar acciones de exploración y autorización de consultas. Ren'Py sigue sin conectar al ejecutor. No se implementa un programador de vencimientos independiente ni un reloj que avance fuera de las operaciones declarativas.
 
-La documentación de uso se encuentra en [la guía de efectos](../guides/EFECTOS.md) y el estado general en [ROADMAP](ROADMAP.md).
+La documentación de uso se encuentra en [la guía de efectos](../architecture/ALBERTO.md) y el estado general en [ROADMAP](ROADMAP.md).

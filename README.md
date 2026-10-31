@@ -1,6 +1,6 @@
 # GISELA. Interactive story engine
 
-GISELA means _enGine for Interactive Stories through Events, Links, and Actions_. It is a general engine for declared interactive narratives. Its current home is the Las personas tienen nombre demo repository. The plan is to move it to its own repository when the project is ready. No code in GISELA should require the demo story to function.
+GISELA means _enGine for Interactive Stories through Events, Links, and Actions_. GISELA is an independent general engine for declared interactive narratives. This repository contains the engine, its independent libraries, CLI client GLAUQUIR, tests, documentation, and example narrative packages. The Ren'Py integration belongs to a separate demo repository; it is not required to use GISELA.
 
 This README explains the current implementation. For design history and architecture decisions, use the links at the end. The older documents describe important decisions but some were written before later features were implemented.
 
@@ -14,7 +14,7 @@ A story package contains the world definitions and declared story behavior. The 
 
 ALBERTO is the internal world model for characters, places, objects, knowledge, relations, skills, effects, and traits assigned to entities. S.O.F.I.A. is an optional set of five numerical attributes. TRAITS is an independent library for contextual trait contributions. DICE is an independent mathematical evaluator. MARY is an independent mission and objective evaluator. The narrative conditions package provides shared logical operations.
 
-GLAUQUIR and Ren'Py are clients. They show public content and send requests through the authorized client boundary. They do not decide world consequences or commit changes. For formal names and individual guides, read [Names and responsibilities](../docs/reference/NAMING.md).
+GLAUQUIR is the bundled CLI client. A Ren'Py adapter exists in the separate demo project. Clients show public content and send requests through the authorized client boundary; they do not decide world consequences or commit changes. For formal names and individual guides, read [Names and responsibilities](docs/reference/NAMING.md).
 
 ## Start an adventure
 
@@ -38,7 +38,7 @@ Run the Central Clasificadora test adaptation.
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
-The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](../docs/guides/QUICK_START.md).
+The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md).
 
 ## Admission before execution
 
@@ -82,7 +82,7 @@ restored = restore_session(admitted, snapshot)
 assert restored.export() == snapshot
 ```
 
-The standard production boundary is `ExecutionGateway` from `gisela.engine.authorized_gateway`. The gateway binds trusted client identities and their granted capabilities. Do not take the principal identity from untrusted Act input. The host is responsible for authenticating a caller before binding it.
+An optional boundary for authenticated external clients is `ExecutionGateway` from `gisela.engine.authorized_gateway`. The gateway binds trusted client identities and their granted capabilities. Do not take the principal identity from untrusted Act input. The host is responsible for authenticating a caller before binding it.
 
 ## Hidden and visible DICE evaluations
 
@@ -90,7 +90,7 @@ DICE is a pure numerical library. GISELA resolves effective values, calls DICE t
 
 A hidden evaluation resolves within the action transaction. A visible or acknowledged evaluation fixes the result and random state, then exposes a pending evaluation without applying its branch consequences. The client later chooses the offered continuation action. Saving or restoring must not roll new dice for that pending result. Several visible results can be preserved in an ordered replay when a causal operation contains multiple evaluation points.
 
-The default public view of a pending evaluation exposes the result category and dice only. Private attributes and internal contributions are not published automatically. Refer to [Engine execution](engine/README.md) and [Contracts](contracts/README.md).
+The default public view of a pending evaluation exposes the result category and dice only. Private attributes and internal contributions are not published automatically. Refer to [Engine execution](gisela/engine/README.md) and [Contracts](gisela/contracts/README.md).
 
 ## Auxiliary decisions and replay
 
@@ -116,13 +116,16 @@ Current packages use v1.5 for visible evaluation support. Earlier v1.2, v1.3, an
 
 ## Tests
 
-Run the complete offline verifier.
+Run the local offline checks (the historical `tools/check_project.py` monorepo orchestrator is not included in this extracted repository).
 
 ```bash
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
+python -m unittest discover -s tools -p 'test_*.py' -q
+python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
 ```
 
-For focused checks, run the engine unit tests and the independent libraries. The full verifier also checks invariants and existing CLI routes.
+For further checks, run the engine unit tests, independent libraries, and invariant verification scripts explicitly. The former monorepo-wide orchestrator is not present in this standalone extraction.
 
 ```bash
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
@@ -133,18 +136,18 @@ python -m unittest discover -s mary/tests -p 'test_*.py' -q
 
 ## Known limits
 
-The Ren'Py H5 bridge is implemented and passes offline adapter tests. The real graphical SDK and exported builds still need acceptance testing. The Central Clasificadora adventure is a condensed narrative test, not an approved final script. Musical recordings, rights clearance, finished art, and distribution are outside this engine milestone.
+The Ren'Py H5 bridge was implemented in the separate demo project and is not included in this repository. The real graphical SDK and exported builds still need acceptance testing. The Central Clasificadora adventure is a condensed narrative test, not an approved final script. Musical recordings, rights clearance, finished art, and distribution are outside this engine milestone.
 
 ## Further reading
 
-Read [Engine implementation](engine/README.md) for transaction and source module details, [Contracts](contracts/README.md) for authoring formats, [Documentation index](../docs/README.md) for learning paths, and [Current roadmap](../docs/operatives/ROADMAP.md) for the implementation status.
+Read [Engine implementation](gisela/engine/README.md) for transaction and source module details, [Contracts](gisela/contracts/README.md) for authoring formats, [Documentation index](docs/README.md) for learning paths, and [Current roadmap](docs/operatives/ROADMAP.md) for the implementation status.
 
 Read ADR 020 for authorized callers, ADR 021 for evaluation authoring, ADR 022 for hidden evaluations, and ADR 023 for visible evaluations. These source decision records remain in `docs/decisions` in their original language. The implemented v1.5 design is recorded in `docs/architecture/E3_EVALUACIONES_VISIBLES.md`.
 
 
 ## License and Copyright
 
-GISELA, its software components, development tools, and associated source code are licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE.md) file for details.
+GISELA, its software components, development tools, and associated source code are licensed under the **Apache License, Version 2.0**. See the [LICENSE](LICENSE) file for details.
 
 **Narrative content is excluded from the Apache 2.0 license.**
 

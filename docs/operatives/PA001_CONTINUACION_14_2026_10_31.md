@@ -1,4 +1,4 @@
-# PA-001 — Intervención 14 — recuperación tras fallos causales anidados
+# PA-001: Intervención 14: recuperación tras fallos causales anidados
 
 ## Alcance
 

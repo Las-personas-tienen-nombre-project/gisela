@@ -22,7 +22,7 @@ Los elementos sin `entity` son elementos narrativos declarativos y se rigen por 
 
 Las acciones asociadas a un elemento solo se ofrecen si el elemento es visible. `Act` revalida las acciones antes de ejecutarlas, incluida su presencia; las peticiones con IDs no ofrecidos se rechazan. Los IDs de las acciones exploratorias dependen de la posición declarada y no se renumeran cuando desaparece un elemento. Los IDs siguen estando sujetos a la revisión de sesión.
 
-**Límite explícito:** las acciones generales de escena no tienen un campo de destino físico. Una acción como «Hablar con Gisela», declarada a nivel de escena, no puede inferir su objetivo por el texto de la etiqueta. El autor debe declarar `visible_if` o `enabled_if` para ese caso, o asociar la acción a un elemento `entity: "gisela"`. No se añade un parser semántico ni un motor de relaciones paralelo.
+**Límite explícito:** las acciones generales de escena no tienen un campo de destino físico. Una acción como "Hablar con Gisela", declarada a nivel de escena, no puede inferir su objetivo por el texto de la etiqueta. El autor debe declarar `visible_if` o `enabled_if` para ese caso, o asociar la acción a un elemento `entity: "gisela"`. No se añade un parser semántico ni un motor de relaciones paralelo.
 
 ## Inspección textual
 

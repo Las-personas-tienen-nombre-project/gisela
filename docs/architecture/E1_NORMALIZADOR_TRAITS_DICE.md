@@ -1,6 +1,6 @@
 > **Actualización posterior (E2, ADR-022):** las limitaciones de ejecución v1.4 descritas a continuación corresponden al cierre histórico E1. El runtime E2 ejecuta evaluaciones ocultas y admite guardados v1.4; las evaluaciones visibles y reconocidas siguen pendientes.
 
-# E1 — Contrato declarativo y normalizador de GISELA v1.4
+# E1: Contrato declarativo y normalizador de GISELA v1.4
 
 **Implementado:** validación de autoría y compilación pura. **No ejecutable:** el motor rechaza sesiones de un paquete v1.4 hasta E2.
 

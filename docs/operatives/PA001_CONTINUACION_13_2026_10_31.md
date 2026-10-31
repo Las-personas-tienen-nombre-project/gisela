@@ -1,4 +1,4 @@
-# PA-001 — Intervención 13 — PT-02R (evaluaciones visibles y causalidad anidada)
+# PA-001: Intervención 13: PT-02R (evaluaciones visibles y causalidad anidada)
 
 ## Alcance
 

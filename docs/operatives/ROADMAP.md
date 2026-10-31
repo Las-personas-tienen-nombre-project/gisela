@@ -4,7 +4,7 @@ This file is a current status guide, not a timeline of every previous implementa
 
 ## Project direction
 
-This repository belongs to the Las personas tienen nombre visual novel demo. GISELA is being developed here temporarily as an independent general narrative engine. The engine is planned to move to its own repository later. See [Repository scope](../project/REPOSITORY_SCOPE.md).
+GISELA now lives in its own repository. The narrative demo and the Ren'Py host are separate integration targets, not prerequisites for running the engine. See [Repository scope](../reference/REPOSITORY_SCOPE.md).
 
 ## Implemented and tested offline
 
@@ -14,9 +14,9 @@ E2 implemented hidden declarative evaluations. E3 implemented visible and acknow
 
 H4.6 added El faro de niebla, an independent end to end integration adventure. H4.6b added a condensed Central Clasificadora test adaptation. Both can be played in GLAUQUIR, and both have automated test routes.
 
-H5 implemented the Ren'Py adapter and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
+H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
-These are descriptions of implemented capabilities found in this repository. For the exact list of verified tests run on a particular release, use its test logs and the current `tools/check_project.py` result.
+These describe capabilities implemented across the engine and its original demo; Ren'Py files are not included here. For the exact list of verified tests run on a particular release, use its test logs and the tests executed in this repository.
 
 ## Outstanding work
 
@@ -26,17 +26,20 @@ Review and approve the narrative structure of the Central Clasificadora adaptati
 
 H6 concerns the production vertical with visual and sound resources, script integration, and playtest feedback. H7 concerns full validation and deliverable readiness. These milestones are not declared complete by an offline engine test.
 
-Plan the future repository extraction of GISELA separately. Establish dependencies, package distribution, tests, and documentation ownership before moving files.
+Repository extraction is complete. Future work may verify standalone package distribution and external client integration without bringing demo-only files into the engine repository.
 
 ## Start and verify
 
 ```bash
 python tools/glauquir.py --package gisela/packages/h46_faro_de_niebla.package.json
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
-python tools/check_project.py
+python tools/check_quality.py
+python tools/check_doc_links.py
+python -m unittest discover -s tools -p 'test_*.py' -q
+python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
 ```
 
-For a developer route, read [Quick start](../guides/QUICK_START.md), [GISELA](../../gisela/README.md), [Ren'Py](../../renpy/README.md), and the [documentation index](../README.md).
+For a developer route, read [Quick start](../guides/QUICK_START.md), [GISELA](../../gisela/README.md), [Ren'Py integration status](H5_RENPY_INTEGRACION.md), and the [documentation index](../README.md).
 
 ## Historical records
 

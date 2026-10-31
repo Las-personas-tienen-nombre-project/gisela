@@ -1,6 +1,6 @@
-# TRAITS — Contrato de rasgos, pertinencia y composición (PROPUESTA)
+# TRAITS: Contrato de rasgos, pertinencia y composición (PROPUESTA)
 
-**Proyecto:** GISELA — motor narrativo general.
+**Proyecto:** GISELA, motor narrativo general.
 **Estado:** contrato histórico. El núcleo TRAITS v1 está implementado y su persistencia en ALBERTO funciona en GISELA v1.3; las ampliaciones de reglas avanzadas siguen propuestas. Véase `TRAITS_DICE_INTEGRACION_FASE_1.md`.
 **Fecha:** 30-10-2026.
 **Referencias:** `docs/architecture/ALBERTO.md`, `SOFIA.md`, `GISELA_Arquitectura_Consolidada_v1_5.md`, `docs/decisions/GISELA_ADR_001_017.md` (ADR-007/008), `ADR_019_DICE_EVALUACIONES_VISIBLES_PROPUESTA.md` y `DICE_EVALUACION_DECLARATIVA_PROPUESTA.md` (si ya se aplicó el parche incremental).
@@ -17,7 +17,7 @@ TRAITS significa **Trait Rules and Attribute Interaction Tracking System**. Defi
 
 **Invariante:** un rasgo no obliga a un personaje a actuar siempre de cierta manera. Una característica puede habilitar una posibilidad, alterar una evaluación o no intervenir.
 
-## 2. Límite de rasgos por entidad — DECIDIDO
+## 2. Límite de rasgos por entidad: DECIDIDO
 
 Cada juego declara su máximo de rasgos **por entidad**; si no lo declara, el máximo es **5**. Tener rasgos es opcional: **cero** es válido. Esta capacidad es una regla del juego, no un límite inmutable de TRAITS.
 
@@ -31,7 +31,7 @@ Cada juego declara su máximo de rasgos **por entidad**; si no lo declara, el m�
 
 **ABIERTO:** si el autor desea permitir rasgos asignados pero suspendidos, deberá diseñarse explícitamente el estado de suspensión. V1 no lo necesita: un rasgo puede estar asignado y simplemente no resultar pertinente.
 
-## 3. Definición declarativa de rasgo — PROPUESTO
+## 3. Definición declarativa de rasgo: PROPUESTO
 
 Cada rasgo tiene, como mínimo:
 
@@ -63,7 +63,7 @@ Las condiciones narrativas más complejas (`knows`, `believes`, relaciones, hech
 
 La evaluación de pertinencia es **pura**, determinista y sin consumo RNG. Las etiquetas no son poderes mágicos: deben definirse con semántica estable en el juego, sin agregar tags ad hoc para forzar un resultado.
 
-## 5. Contribuciones admitidas en v1 — PROPUESTO
+## 5. Contribuciones admitidas en v1: PROPUESTO
 
 Para el primer contrato implementable, TRAITS devuelve solamente:
 
@@ -85,7 +85,7 @@ Conviene separar **conflictos de asignación** de **conflictos de aportación**:
 
 Ejemplo de principio: `brave` y `prudent` pueden coexistir. Una acción arriesgada y una planificación cuidadosa no son situaciones equivalentes. El autor decide qué aportación es pertinente a cada contexto; TRAITS no concluye que uno cancela al otro ni modela por sí mismo la voluntad del personaje.
 
-**Determinismo:** ordenar para producir diagnósticos o trazas estables es válido; ordenar para escoger silenciosamente qué contribución «gana» es incorrecto. La composición debe producir el mismo resultado sin importar el orden físico de las cartas o asignaciones.
+**Determinismo:** ordenar para producir diagnósticos o trazas estables es válido; ordenar para escoger silenciosamente qué contribución "gana" es incorrecto. La composición debe producir el mismo resultado sin importar el orden físico de las cartas o asignaciones.
 
 ## 7. Contrato neutral y ciclo causal
 

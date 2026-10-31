@@ -1,4 +1,4 @@
-# PA-001 — Continuación 9: aislamiento de suites offline
+# PA-001: Continuación 9: aislamiento de suites offline
 
 **Estado: PARCIAL.** No se descargó ni ejecutó Ren'Py.
 
@@ -16,6 +16,6 @@ Se partió del ZIP acumulativo de la intervención 8. Se inspeccionó la matriz 
 
 ## Hallazgos y límites
 
-Esta intervención no aporta un defecto nuevo confirmado. La compatibilidad entre versiones 1.2–1.5 sigue respaldada por la prueba cruzada de la intervención 8, pero falta cobertura exhaustiva por capacidad y estado pendiente. PT-01 (trazabilidad completa), PT-02 (rutas exhaustivas), PT-05 (fronteras), PT-07 (regresión integral) permanecen abiertos. PT-08 queda excluido por instrucción del usuario y no aprobado.
+Esta intervención no aporta un defecto nuevo confirmado. La compatibilidad entre versiones 1.2-1.5 sigue respaldada por la prueba cruzada de la intervención 8, pero falta cobertura exhaustiva por capacidad y estado pendiente. PT-01 (trazabilidad completa), PT-02 (rutas exhaustivas), PT-05 (fronteras), PT-07 (regresión integral) permanecen abiertos. PT-08 queda excluido por instrucción del usuario y no aprobado.
 
 **No se declara cerrada PA-001.**

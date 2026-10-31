@@ -1,4 +1,4 @@
-# PA-001 — Intervención 15 — respuestas inválidas en estados pendientes
+# PA-001: Intervención 15: respuestas inválidas en estados pendientes
 
 ## Alcance
 

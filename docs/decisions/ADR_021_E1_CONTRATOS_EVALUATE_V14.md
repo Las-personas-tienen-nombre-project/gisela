@@ -1,6 +1,6 @@
 > **Actualización posterior (E2, ADR-022):** las limitaciones de ejecución v1.4 descritas a continuación corresponden al cierre histórico E1. El runtime E2 ejecuta evaluaciones ocultas y admite guardados v1.4; las evaluaciones visibles y reconocidas siguen pendientes.
 
-# ADR-021 — E1: contrato de autoría `evaluate` v1.4
+# ADR-021: E1: contrato de autoría `evaluate` v1.4
 
 **Estado:** IMPLEMENTADO (admisión y compilación estática E1); **ejecución NO habilitada**.
 **Fecha:** 30 de octubre de 2026. **Ámbito:** GISELA y sus contratos, no DICE ni TRAITS.
@@ -24,7 +24,7 @@ Máximo 64 perfiles por paquete, 16 bandas por perfil, 16 ramas por evaluación,
 
 ## Garantías deliberadamente pendientes
 
-E1 **no** crea ofertas `Act`, nuevos estados `Observe`, `pending_evaluation` ni guardados v1.4 válidos. Tampoco decide quién ve cifras privadas. El tratamiento de elecciones e historial, la presentación antes de efectos, las decisiones auxiliares y el consumo de RNG se implementarán y probarán en E2–E4, respetando ADR-007/008/019/020. No se altera la semántica de `roll` anterior.
+E1 **no** crea ofertas `Act`, nuevos estados `Observe`, `pending_evaluation` ni guardados v1.4 válidos. Tampoco decide quién ve cifras privadas. El tratamiento de elecciones e historial, la presentación antes de efectos, las decisiones auxiliares y el consumo de RNG se implementarán y probarán en E2-E4, respetando ADR-007/008/019/020. No se altera la semántica de `roll` anterior.
 
 ## Invariantes y pruebas
 

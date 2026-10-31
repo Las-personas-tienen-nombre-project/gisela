@@ -1,12 +1,12 @@
-# ADR-019 — Evaluaciones visibles y resultados preparados de DICE
+# ADR-019: Evaluaciones visibles y resultados preparados de DICE
 
 **Fecha:** 30 de octubre de 2026
 
-**Revisión:** 2 — propuesta de políticas de continuación, retirada y persistencia.
+**Revisión:** 2, propuesta de políticas de continuación, retirada y persistencia.
 
 **Estado:** PROPUESTA, NO APROBADA EN SU TOTALIDAD
 
-**Base:** ADR-001–008, ADR-012, determinismo `sha256_counter_v1` y precisión aprobada de ADR-007/008 del 30-10-2026.
+**Base:** ADR-001-008, ADR-012, determinismo `sha256_counter_v1` y precisión aprobada de ADR-007/008 del 30-10-2026.
 
 ## 1. Motivación y alcance
 
@@ -49,7 +49,7 @@ Las dos transacciones pertenecen al **mismo turno narrativo** cuando se originan
 
 ## 4. Estado persistente y exclusión de pendientes
 
-**PROPUESTO:** ampliar el esquema versionado de sesión con una evaluación fijada pendiente de aplicación, distinta de la `pending_transaction` auxiliar de ADR-001–005.
+**PROPUESTO:** ampliar el esquema versionado de sesión con una evaluación fijada pendiente de aplicación, distinta de la `pending_transaction` auxiliar de ADR-001-005.
 
 Datos mínimos de la evaluación: identificador de operación, procedencia e intención, perfil y versión, digest de entradas/contexto, valores individuales de dados, modificadores aplicados, resultado categórico, estado RNG anterior y posterior o prueba equivalente de consumo, política de presentación, estado de continuación y revisión de preparación (sin agregar un estado público de sesión).
 
@@ -142,7 +142,7 @@ Solo habrá **un proceso causal pendiente** por sesión. La decisión de retener
 - **D14:** una evaluación preparada bloquea acciones mutantes no autorizadas de su contexto.
 - **D15:** un snapshot o perfil incompatible se rechaza sin nueva tirada.
 
-**Alcance de implementación actual:** ninguno de D02–D07 está implementado por el ejecutor del ZIP. `roll` solo funciona dentro del borrador de la transacción normal.
+**Alcance de implementación actual:** ninguno de D02-D07 está implementado por el ejecutor del ZIP. `roll` solo funciona dentro del borrador de la transacción normal.
 
 ## 8. Condiciones para aprobar e implementar
 

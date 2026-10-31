@@ -1,10 +1,10 @@
 # ALBERTO. Modelo de mundo y operaciones del motor GISELA
 
-**Estado del documento:** H3, primera etapa implementada y verificada. H3 global continúa EN CURSO.
+**Estado del documento:** registro de la etapa H3; consulte el [roadmap vigente](../operatives/ROADMAP.md) para el estado actual.
 
 **Público:** autores de paquetes, responsables de integración y desarrolladores del motor. La especificación de datos está en `gisela/contracts/` y el seguimiento se encuentra en `docs/operatives/ROADMAP.md`.
 
-Para comenzar a utilizar estas capacidades, consulte el [README de ALBERTO](../alberto/README.md) y la [guía de inicio rápido](../guides/INICIO_RAPIDO.md). Incluyen un ejemplo ejecutable de transferencia y explican por qué las operaciones de mundo siempre se confirman mediante GISELA.
+Para comenzar a utilizar estas capacidades, consulte la presente arquitectura de ALBERTO y el [inicio rápido](../guides/QUICK_START.md). Explican por qué las operaciones de mundo siempre se confirman mediante GISELA.
 
 ## 1. Responsabilidad y frontera con GISELA
 
@@ -113,15 +113,15 @@ La admisión estática conoce algunas de estas estructuras, pero el ejecutor tod
 
 Las propiedades se definen en cada carta de personaje, lugar u objeto. Las relaciones se declaran mediante `manifest.relationship_fields` y son dirigidas. Una lectura de una propiedad o relación ausente devuelve su valor inicial, sin materializarla. `set` y `add` escriben el borrador, comprueban tipos y límites y generan `state_changed` solo si cambia el valor.
 
-Las reglas de una ronda usan un estado base común. GISELA combina las operaciones `add` y consolida los `set` iguales; las asignaciones contradictorias y la mezcla `set` con `add` se rechazan. Consulte la [guía ejecutable](../guides/PROPIEDADES_Y_RELACIONES.md) y el [registro de H3.4a](../operatives/H3_4A_CIERRE.md).
+Las reglas de una ronda usan un estado base común. GISELA combina las operaciones `add` y consolida los `set` iguales; las asignaciones contradictorias y la mezcla `set` con `add` se rechazan. Consulte la [guía ejecutable](../architecture/ALBERTO.md) y el [registro de H3.4a](../operatives/H3_4A_CIERRE.md).
 
 ## H3.4b. Datos de S.O.F.I.A. implementados
 
-ALBERTO resuelve los atributos opcionales de las cartas y las instancias. `base` es inmutable, `current` es transaccional y `effective` se calcula desde los modificadores de los efectos activos. La consulta Scoresheet lee únicamente el estado confirmado; no mantiene un segundo registro de atributos. Consulte [la especificación de S.O.F.I.A.](SOFIA.md) y [su guía ejecutable](../guides/SOFIA_ATRIBUTOS.md).
+ALBERTO resuelve los atributos opcionales de las cartas y las instancias. `base` es inmutable, `current` es transaccional y `effective` se calcula desde los modificadores de los efectos activos. La consulta Scoresheet lee únicamente el estado confirmado; no mantiene un segundo registro de atributos. Consulte [la especificación de S.O.F.I.A.](SOFIA.md) y [su guía ejecutable](../architecture/SOFIA.md).
 
 ## H3.4d. Habilidades ejecutables
 
-GISELA autoriza y ejecuta las habilidades de ventanas de nodo. ALBERTO mantiene únicamente instancias, zonas, capacidad e identidad. Los destinos `discard`, `hand` y `reserve` se aplican transaccionalmente. Consulte [HABILIDADES.md](../guides/HABILIDADES.md). Las acciones de exploración permanecen fuera del alcance actual.
+GISELA autoriza y ejecuta las habilidades de ventanas de nodo. ALBERTO mantiene únicamente instancias, zonas, capacidad e identidad. Los destinos `discard`, `hand` y `reserve` se aplican transaccionalmente. Consulte [HABILIDADES.md](../architecture/ALBERTO.md). Las acciones de exploración permanecen fuera del alcance actual.
 
 ## Integración opcional TRAITS (formato GISELA v1.3)
 

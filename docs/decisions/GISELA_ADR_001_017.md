@@ -64,7 +64,7 @@ Una sola autoridad aplica las operaciones ordenadas de la acción originaria y l
 **Condiciones de implementación y ampliaciones pendientes:**
 
 - Los límites actuales del código son `MAX_ROUNDS = 32` y `MAX_AUTOMATIC_STEPS = 512`; son presupuestos de implementación, no reglas narrativas universales.
-- Una evaluación visible de DICE antes de sus efectos **no** equivale a publicar el borrador de una `pending_transaction` actual. El mecanismo para fijar resultado, RNG y consecuencias pendientes requiere contrato/versionado propio (véase ADR-019, en propuesta), sin romper ADR-001–005 ni ADR-012.
+- Una evaluación visible de DICE antes de sus efectos **no** equivale a publicar el borrador de una `pending_transaction` actual. El mecanismo para fijar resultado, RNG y consecuencias pendientes requiere contrato/versionado propio (véase ADR-019, en propuesta), sin romper ADR-001-005 ni ADR-012.
 
 
 ### ADR-009  -  Instancias y referencias  -  SELECCIONADO

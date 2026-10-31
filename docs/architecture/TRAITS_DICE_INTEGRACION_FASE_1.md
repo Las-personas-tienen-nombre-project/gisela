@@ -1,4 +1,4 @@
-# TRAITS–ALBERTO y TRAITS–DICE — Implementación y límites
+# TRAITS-ALBERTO y TRAITS-DICE: Implementación y límites
 
 **Base:** `las-personas-tienen-nombre(8).zip` más parche del núcleo TRAITS v1.
 **Alcance:** primera integración ejecutable, reutilizable entre juegos.
@@ -7,7 +7,7 @@
 ## Fases ejecutadas
 
 1. **Inventario y compatibilidad.** Contratos GISELA v1.2 intactos. Se incorpora la familia de contratos de paquete y sesión **v1.3**, con registro de validación separado, sin migración automática ni inserción silenciosa de campos en guardados antiguos.
-2. **TRAITS–ALBERTO.** Catálogos declarados en `package.traits`, con límite de cinco rasgos por entidad por defecto (`max_traits` configurable). Cartas `character`, `location` y `object` pueden declarar `traits`; las instancias iniciales los heredan cuando omiten el campo y los sustituyen cuando lo incluyen, incluso `[]`. El conjunto actual se materializa en `session.world` y se conserva en el guardado.
+2. **TRAITS-ALBERTO.** Catálogos declarados en `package.traits`, con límite de cinco rasgos por entidad por defecto (`max_traits` configurable). Cartas `character`, `location` y `object` pueden declarar `traits`; las instancias iniciales los heredan cuando omiten el campo y los sustituyen cuando lo incluyen, incluso `[]`. El conjunto actual se materializa en `session.world` y se conserva en el guardado.
 3. **Operaciones.** `assign_trait` y `remove_trait` validan identidad, clase, capacidad y exclusiones, trabajan en el borrador transaccional y son idempotentes. `has_trait` consulta sin consumir RNG. Las escrituras de reglas reactivas sobre rasgos de una misma entidad compiten por la misma clave y producen `REACTION_CONFLICT` cuando son incompatibles.
 4. **DICE independiente.** Perfiles neutrales v1 con modos `deterministic`, `single_die`, `dice_sum` y `dice_pool`, bandas de resultados y fuente de aleatoriedad inyectable. DICE no importa módulos de TRAITS, ALBERTO, S.O.F.I.A., MARY ni GISELA.
 5. **Adaptador de integración.** `gisela.engine.traits_dice_bridge.resolve` consulta instancias actuales de ALBERTO, evalúa las contribuciones contextuales de TRAITS y, opcionalmente, un atributo S.O.F.I.A.; transforma los sumandos a entradas neutrales de DICE. Devuelve dados, resultado, contribuciones y siguiente estado RNG **sin mutar el guardado**.

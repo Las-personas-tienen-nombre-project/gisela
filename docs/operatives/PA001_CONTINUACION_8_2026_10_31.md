@@ -1,10 +1,10 @@
-# PA-001 — Continuación 8: compatibilidad negativa y regresión offline
+# PA-001: Continuación 8: compatibilidad negativa y regresión offline
 
 **Estado: PARCIAL.** Solo GISELA. No se descargó ni ejecutó Ren'Py.
 
 ## PT-05: defecto o riesgo investigado
 
-La matriz anterior verificaba versiones 1.2–1.5 separadamente, pero no comprobaba todos los cruces entre versiones. Se añadió `test_snapshots_cannot_cross_supported_versions` a `gisela/engine/tests/test_pa001_version_restore.py`. Admite un paquete representativo de cada versión (1.2: `h4_exploracion`; 1.3: fixture TRAITS; 1.4: fixture de evaluación oculta; 1.5: `h46b_central_clasificadora`), crea snapshots de sesión y comprueba las **12 combinaciones cruzadas**. En todos los casos debe producir `EngineFailure` con código `RESTORE_MISMATCH`. Los cuatro casos de misma versión ya estaban cubiertos con roundtrip; esto no prueba todas las capacidades de cada versión.
+La matriz anterior verificaba versiones 1.2-1.5 separadamente, pero no comprobaba todos los cruces entre versiones. Se añadió `test_snapshots_cannot_cross_supported_versions` a `gisela/engine/tests/test_pa001_version_restore.py`. Admite un paquete representativo de cada versión (1.2: `h4_exploracion`; 1.3: fixture TRAITS; 1.4: fixture de evaluación oculta; 1.5: `h46b_central_clasificadora`), crea snapshots de sesión y comprueba las **12 combinaciones cruzadas**. En todos los casos debe producir `EngineFailure` con código `RESTORE_MISMATCH`. Los cuatro casos de misma versión ya estaban cubiertos con roundtrip; esto no prueba todas las capacidades de cada versión.
 
 | Versión de destino | Snapshot 1.2 | Snapshot 1.3 | Snapshot 1.4 | Snapshot 1.5 |
 |---|---|---|---|---|

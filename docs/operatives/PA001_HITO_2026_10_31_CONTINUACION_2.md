@@ -1,4 +1,4 @@
-# PA-001 — Continuación 2: caracterización, contratos y riesgos
+# PA-001: Continuación 2: caracterización, contratos y riesgos
 
 **Estado:** PARCIAL; no equivale a la aprobación del plan. **Origen:** `gisela_pa001_continuacion_20261031.zip`. Se mantiene intacta la semántica del motor. No hay refactorizaciones sin defecto reproducible.
 
@@ -25,8 +25,8 @@ El árbol conserva contratos de base y subdirectorios `v1_3`, `v1_4`, `v1_5`. La
 
 ## Hallazgos nuevos o afinados
 
-1. **H6 — Rendimiento/diagnóstico de integración:** la suite `test_h46_adventure.py` no concluyó con un límite de 9 s, sin diagnóstico de fallo. La ejecución de `test_h46b_central.py` quedó interrumpida por el límite del comando contenedor. Es preciso aislar métodos concretos y distinguir un caso que tarda de un posible bucle. No se puede atribuir causalidad al motor sin más evidencia.
-2. **H7 — Mensaje de CLI de admisión potencialmente obsoleto:** `gisela/contracts/admit_package.py::cli()` usa una descripción fija «contratos v1.2», mientras que el árbol contiene contratos posteriores. Es una divergencia de presentación, no evidencia de admisión incorrecta. Requiere confirmar el alcance de la CLI antes de actualizar la etiqueta; no modificar la lógica de admisión.
+1. **H6, Rendimiento/diagnóstico de integración:** la suite `test_h46_adventure.py` no concluyó con un límite de 9 s, sin diagnóstico de fallo. La ejecución de `test_h46b_central.py` quedó interrumpida por el límite del comando contenedor. Es preciso aislar métodos concretos y distinguir un caso que tarda de un posible bucle. No se puede atribuir causalidad al motor sin más evidencia.
+2. **H7, Mensaje de CLI de admisión potencialmente obsoleto:** `gisela/contracts/admit_package.py::cli()` usa una descripción fija "contratos v1.2", mientras que el árbol contiene contratos posteriores. Es una divergencia de presentación, no evidencia de admisión incorrecta. Requiere confirmar el alcance de la CLI antes de actualizar la etiqueta; no modificar la lógica de admisión.
 3. La fuente de verdad de los contratos es el schema complementado por validación semántica; la aprobación de una definición no sustituye su ejecutabilidad ni restaurabilidad (arquitectura vigente §1 y §11).
 
 ## Cambios y decisiones

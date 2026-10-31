@@ -1,4 +1,4 @@
-# GISELA E0 — Frontera de ejecución y recuperación
+# GISELA E0: Frontera de ejecución y recuperación
 
 **Estado:** implementado en la base Python; `evaluate`/ADR-019 continúa pendiente. Esta etapa **no** agrega `evaluate`, `pending_evaluation`, red ni un protocolo entre instancias. Las cartas y los snapshots 1.2/1.3 conservan sus esquemas y sus turnos. Se corrige aditivamente el catálogo de códigos de error devueltos en `result.schema.json`.
 

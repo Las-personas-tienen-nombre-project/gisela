@@ -1,6 +1,6 @@
-# PA-001 — Continuación 7: auditoría offline de GISELA
+# PA-001: Continuación 7: auditoría offline de GISELA
 
-**Estado: PARCIAL.** Esta intervención se limita a GISELA. No se descargó ni ejecutó el SDK Ren’Py; PT-08 conserva aceptación gráfica pendiente.
+**Estado: PARCIAL.** Esta intervención se limita a GISELA. No se descargó ni ejecutó el SDK Ren'Py; PT-08 conserva aceptación gráfica pendiente.
 
 ## Protocolo y base
 
@@ -19,10 +19,10 @@ Total observado en suites focalizadas: **121 pruebas PASS**; este total no susti
 ## Hallazgos y límites
 
 - H9: la guarda de inicio y la de confirmación no inicial permanecen presentes, y las pruebas focalizadas pasaron. No se extiende esta conclusión a todas las rutas de causalidad.
-- H1–H6: auditoría todavía abierta; no se ha demostrado un defecto adicional en las suites focalizadas, lo cual no equivale a cierre.
+- H1-H6: auditoría todavía abierta; no se ha demostrado un defecto adicional en las suites focalizadas, lo cual no equivale a cierre.
 - H7: permanece documentado como corregido; H8: frontera intencional ADR-022/023 conservada.
 - PT-01/PT-05: falta acreditar matriz completa de anclajes y compatibilidad negativa y de frontera en todas las versiones.
 - PT-07: ejecución integral no acreditada por timeout.
-- PT-08: Ren’Py explícitamente excluido de esta ejecución, sin aceptación gráfica.
+- PT-08: Ren'Py explícitamente excluido de esta ejecución, sin aceptación gráfica.
 
 **Cambios:** solo se incorpora este registro de auditoría. No se modificaron código, contratos, schemas, paquetes narrativos ni pruebas; no hubo motivo demostrado para hacerlo en esta intervención.

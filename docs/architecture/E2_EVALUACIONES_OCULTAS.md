@@ -1,4 +1,4 @@
-# E2 — Integración ejecutable de evaluaciones ocultas
+# E2: Integración ejecutable de evaluaciones ocultas
 
 **Estado:** implementado sobre GISELA v1.4. Las versiones v1.2/v1.3 no cambian.
 

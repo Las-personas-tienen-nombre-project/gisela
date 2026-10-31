@@ -1,4 +1,4 @@
-# H5 — Integración de GISELA con Ren'Py (laboratorio)
+# H5: Integración de GISELA con Ren'Py (laboratorio)
 
 ## Alcance
 

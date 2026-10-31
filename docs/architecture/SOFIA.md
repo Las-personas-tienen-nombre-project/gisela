@@ -4,7 +4,7 @@
 
 S.O.F.I.A. es un conjunto opcional de cinco atributos de personaje. No es un motor independiente, no establece reglas narrativas universales y no confirma transacciones. GISELA conserva la autoridad sobre las acciones, mientras que ALBERTO resuelve los atributos de las instancias y sus restricciones.
 
-La API implementada se explica con ejemplos en la [guía de S.O.F.I.A.](../guides/SOFIA_ATRIBUTOS.md). Para comenzar desde cero, consulte la [guía de inicio rápido](../guides/INICIO_RAPIDO.md).
+La API implementada se explica con ejemplos en este contrato de S.O.F.I.A.. Para comenzar desde cero, consulte el [inicio rápido](../guides/QUICK_START.md).
 
 ## Atributos y definiciones
 
@@ -45,14 +45,14 @@ La proyección Scoresheet no se persiste por separado. Se obtiene a partir de la
 
 ## Verificación y límites
 
-El paquete de ejemplo se encuentra en `gisela/packages/h3_sofia.package.json`. Puede ejecutarse mediante `python -m docs.guides.examples.ejemplo_sofia_dinamica`. El verificador general, `python tools/check_project.py`, incluye las pruebas de S.O.F.I.A., los ejemplos y la política estructural de mantenimiento.
+El paquete de ejemplo se encuentra en `gisela/packages/h3_sofia.package.json`. Sus operaciones están cubiertas por `gisela/engine/tests/test_h34b_sofia.py` (no se distribuye el antiguo módulo de ejemplos del demo). Las pruebas de S.O.F.I.A. pueden ejecutarse con `python -m unittest gisela.engine.tests.test_h34b_sofia -q`; la política estructural se verifica mediante `python tools/check_quality.py`.
 
 No están disponibles los chequeos universales de atributos, las acciones de habilidades fuera de las ventanas de nodo ni una interfaz de Ren'Py para Scoresheet. Esas capacidades se mantienen expresamente como trabajo pendiente en el [ROADMAP](../operatives/ROADMAP.md).
 
 ## Habilidades y S.O.F.I.A.
 
-Los requisitos y resultados de habilidades pueden consultar `base`, `current` o `effective` mediante condiciones declarativas. S.O.F.I.A. no ejecuta ni consume cartas. Véase [Habilidades](../guides/HABILIDADES.md).
+Los requisitos y resultados de habilidades pueden consultar `base`, `current` o `effective` mediante condiciones declarativas. S.O.F.I.A. no ejecuta ni consume cartas. Véase [ALBERTO, operaciones de habilidades](ALBERTO.md).
 
 ## Significado de atributos e integración con DICE
 
-`openness` representa apertura interpersonal, empatía y carisma; `awareness` está orientado a la percepción de fenómenos sobrenaturales. No deben tratarse como estadísticas intercambiables ni deducir de su valor un interés romántico universal. El adaptador interno TRAITS–DICE puede solicitar un atributo efectivo opcional mediante una referencia S.O.F.I.A. que resuelve ALBERTO; DICE solo recibe números. La evaluación declarativa y su presentación visible siguen pendientes de ADR-019. Véase [integración fase 1](TRAITS_DICE_INTEGRACION_FASE_1.md).
+`openness` representa apertura interpersonal, empatía y carisma; `awareness` está orientado a la percepción de fenómenos sobrenaturales. No deben tratarse como estadísticas intercambiables ni deducir de su valor un interés romántico universal. El adaptador interno TRAITS-DICE puede solicitar un atributo efectivo opcional mediante una referencia S.O.F.I.A. que resuelve ALBERTO; DICE solo recibe números. La evaluación declarativa y su presentación visible fueron implementadas posteriormente en E2 y E3. Véase [integración fase 1](TRAITS_DICE_INTEGRACION_FASE_1.md).

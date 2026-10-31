@@ -1,9 +1,9 @@
-# DICE — Contrato declarativo de evaluación (propuesta)
+# DICE: Contrato declarativo de evaluación (propuesta)
 
 **Proyecto:** GISELA, motor narrativo de propósito general
 **Fecha:** 30 de octubre de 2026
 **Estado de este documento histórico:** propuesta original. **Actualización E1:** los contratos `evaluate` de autoría ya están admitidos y normalizados en v1.4 (ADR-021), pero aún no se ejecutan; no hay presentación visible ni ramas aplicadas por GISELA.
-**Relación:** ADR-007/008, ADR-012–014, ADR-019 (revisión 2), `DICE_CONTRATO_API_SESION_PROPUESTA.md`.
+**Relación:** ADR-007/008, ADR-012-014, ADR-019 (revisión 2), `DICE_CONTRATO_API_SESION_PROPUESTA.md`.
 
 ## 1. Alcance y constataciones del código
 
@@ -150,13 +150,13 @@ Una ficha S.O.F.I.A. podría sustituir `{"literal": 3}` por una referencia de `v
 
 **DECIDIDO previamente:** motor general, submódulos desacoplados, GISELA como autoridad de confirmación, RNG reproducible, tiradas visibles antes de efectos, resultado revelado comprometido por defecto, y transición atómica de nodos.
 
-**IMPLEMENTADO en E1/ADR-021 (admisión, no ejecución):** objeto `evaluation` único, tres orígenes declarativos, sintaxis v1.4, exclusión de efectos inmediatos, ramificaciones exhaustivas y normalización de perfiles. **PENDIENTE en E2–E4:** ejecución de pasos observables y efectos, historial causal y tiradas visibles.
+**IMPLEMENTADO en E1/ADR-021 (admisión, no ejecución):** objeto `evaluation` único, tres orígenes declarativos, sintaxis v1.4, exclusión de efectos inmediatos, ramificaciones exhaustivas y normalización de perfiles. **PENDIENTE en E2-E4:** ejecución de pasos observables y efectos, historial causal y tiradas visibles.
 
 **ABIERTO:** forma final y versionado del perfil matemático, sintaxis definitiva, presupuesto de complejidad, contratos específicos de aportaciones TRAITS, ajustes a habilidades, forma de migración de sesiones y granularidad exacta de los datos públicos de cada evaluación.
 
 **Actualización:** `node.schema.json` y `common.schema.json` v1.4 ya incluyen este contrato. El ejemplo sigue siendo ilustrativo e incompleto como paquete; el motor permanece cerrado a v1.4 hasta E2.
 
-## Reconciliación E0 con el adaptador TRAITS–DICE (diseño de E1/v1.4)
+## Reconciliación E0 con el adaptador TRAITS-DICE (diseño de E1/v1.4)
 
 La muestra original `inputs.ability` fue sustituida por `inputs.base` en E1. El normalizador implementado en `evaluation_plan.py` realiza esta transformación estática sin leer estado:
 

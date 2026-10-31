@@ -1,15 +1,15 @@
-# PA-001 — Continuación 4: H4.6b y versiones de restauración
+# PA-001: Continuación 4: H4.6b y versiones de restauración
 
 **Estado:** PARCIAL. Fuente: `gisela_pa001_continuacion_3_20261031.zip`. No se alteró la lógica narrativa ni la semántica del ejecutor.
 
 ## Resultados verificados
 
-- H4.6b completo: `python -m unittest gisela.engine.tests.test_h46b_central -q` — **11/11 PASS**, 21,708 s.
+- H4.6b completo: `python -m unittest gisela.engine.tests.test_h46b_central -q`, **11/11 PASS**, 21,708 s.
 - Los cuatro métodos pendientes se ejecutaron individualmente y pasaron: `test_rng_reproducible_entre_semillas`, `test_mary_y_reaccion_causal`, `test_compartir_proyeccion_sin_privados` y `test_rechazo_y_revision_obsoleta`.
-- Contratos: `python -m unittest discover -s gisela/contracts -p 'test_*.py' -q` — **180/180 PASS**.
-- Nueva batería `python -m unittest gisela.engine.tests.test_pa001_version_restore -q` — **4/4 PASS**.
-- `python tools/check_quality.py` y `python tools/check_documentation.py` — **PASS**.
-- `python -m unittest gisela.engine.tests.test_h46_adventure -q` — **no concluyó en el límite agregado de ejecución**. La prueba de estrés aislada había pasado en el hito previo; esto no prueba un fallo funcional.
+- Contratos: `python -m unittest discover -s gisela/contracts -p 'test_*.py' -q`, **180/180 PASS**.
+- Nueva batería `python -m unittest gisela.engine.tests.test_pa001_version_restore -q`, **4/4 PASS**.
+- `python tools/check_quality.py` y `python tools/check_documentation.py`, **PASS**.
+- `python -m unittest gisela.engine.tests.test_h46_adventure -q`, **no concluyó en el límite agregado de ejecución**. La prueba de estrés aislada había pasado en el hito previo; esto no prueba un fallo funcional.
 
 ## Matriz de versiones observadas
 
@@ -20,7 +20,7 @@
 | 1.4 | `e1_reparacion_sin_jugador.package.json` | PASS | Rechazo `UNSUPPORTED_FORMAT` de evaluación visible E3, **esperado según `support.py`** | No procede para ese paquete |
 | 1.5 | `h46b_central_clasificadora.package.json` | PASS | PASS | Roundtrip y observación idénticos PASS; rechazo digest/versión PASS |
 
-**Hallazgo H8 — Diferencia entre admisión y ejecutabilidad.** El paquete 1.4 E1 es estructural y semánticamente admisible, pero su evaluación visible no es soportada en ejecución. Es una frontera documentada en el código (`check_supported`); no debe confundirse con compatibilidad de runtime. Antes de modificar algo, revisar el propósito del ejemplo y la documentación de la admisión, y decidir si necesita un diagnóstico de capacidad adicional.
+**Hallazgo H8, Diferencia entre admisión y ejecutabilidad.** El paquete 1.4 E1 es estructural y semánticamente admisible, pero su evaluación visible no es soportada en ejecución. Es una frontera documentada en el código (`check_supported`); no debe confundirse con compatibilidad de runtime. Antes de modificar algo, revisar el propósito del ejemplo y la documentación de la admisión, y decidir si necesita un diagnóstico de capacidad adicional.
 
 ## Invariantes nuevas ancladas a tests
 

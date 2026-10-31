@@ -1,6 +1,6 @@
-# GISELA E0 — Plan, cierre y riesgos residuales
+# GISELA E0: Plan, cierre y riesgos residuales
 
-**Base:** ZIP (8) + núcleo TRAITS + parche TRAITS–ALBERTO/DICE; este cierre se aplica incrementalmente sobre esas integraciones. **Fuera de alcance:** ejecutar `evaluate`, mostrar dados, Ren'Py y transporte GISELA↔GISELA.
+**Base:** ZIP (8) + núcleo TRAITS + parche TRAITS-ALBERTO/DICE; este cierre se aplica incrementalmente sobre esas integraciones. **Fuera de alcance:** ejecutar `evaluate`, mostrar dados, Ren'Py y transporte GISELA↔GISELA.
 
 ## E0.1 · Correcciones locales
 
@@ -27,7 +27,7 @@
 - ADR-020, arquitectura de frontera y actualización del contrato DICE hacia el futuro **v1.4**.
 - Contrato matemático `dice.profile.v1` **sí** ejecutable; `evaluate` declarativo, perfiles en paquete y `pending_evaluation` continúan **propuestos**, sin implementación ni esquemas v1.4 falsamente anunciados.
 - Registro estructurado de invariantes y test de su anclaje; verificar que **cada test nuevo E0** aparece en el registro, que cada anclaje existe y que todos los comandos de QA se ejecutan.
-- La integración TRAITS–ALBERTO y la composición TRAITS–DICE previas mantienen responsabilidades, versiones y suites existentes; la puerta E0 no cambia sus contratos.
+- La integración TRAITS-ALBERTO y la composición TRAITS-DICE previas mantienen responsabilidades, versiones y suites existentes; la puerta E0 no cambia sus contratos.
 
 ## Restricciones no resueltas antes de E1
 

@@ -1,9 +1,9 @@
-# E2 — Auditoría diferencial y riesgos residuales
+# E2: Auditoría diferencial y riesgos residuales
 
 ## Inconsistencias de la base antes de corregir
 
 1. E1 aceptaba v1.4 pero el runtime rechazaba todos los paquetes y guardados v1.4; esto era deliberado y documentado. Se activó únicamente el alcance oculto de E2.
-2. El puente TRAITS–DICE era puro, pero aún no hacía comprobación de rangos *efectivos* antes del RNG. Se añadió preflight numérico de componentes neutrales y presupuesto nominal del contador.
+2. El puente TRAITS-DICE era puro, pero aún no hacía comprobación de rangos *efectivos* antes del RNG. Se añadió preflight numérico de componentes neutrales y presupuesto nominal del contador.
 3. Los pasos `evaluate` no tenían despachador, y opciones/acciones ignoraban sus ramas. Se añadió `EvaluationRoutes` compartido, sin segunda autoridad.
 4. Dos tests e invariantes E1 exigían la suspensión histórica del runtime v1.4. Se actualizaron al estado E2 y se conservó el registro de transición en ADR-021.
 

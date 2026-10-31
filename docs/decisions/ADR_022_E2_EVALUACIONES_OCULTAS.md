@@ -1,4 +1,4 @@
-# ADR-022 — E2: ejecución transaccional de evaluaciones ocultas
+# ADR-022: E2: ejecución transaccional de evaluaciones ocultas
 
 **Estado:** implementado y sujeto a las pruebas de `E2_INVARIANTES_TRAZABILIDAD.json`.
 **Fecha:** 30 de octubre de 2026.

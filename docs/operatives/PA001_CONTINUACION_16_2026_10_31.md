@@ -1,4 +1,4 @@
-# PA-001 — Intervención 16 — validación de solicitudes malformadas durante pendientes
+# PA-001: Intervención 16: validación de solicitudes malformadas durante pendientes
 
 ## Alcance y fuente
 
@@ -13,11 +13,11 @@ Continuación acumulativa de la intervención 15. Se examinó la frontera públi
 
 ## Ejecución verificable
 
-1. `python -m pytest -q gisela/engine/tests/test_pa001_malformed_auxiliary.py` — 2 passed, salida 0.
-2. `python -m pytest -q gisela/engine/tests/test_pa001_malformed_auxiliary.py gisela/engine/tests/test_pa001_invalid_pending_recovery.py gisela/engine/tests/test_pa001_error_recovery.py gisela/engine/tests/test_pa001_differential_restore.py gisela/engine/tests/test_pending.py gisela/engine/tests/test_e3_visible.py` — 47 passed, 7 subtests passed, salida 0.
-3. `python tools/check_quality.py` — PASS, salida 0.
-4. `python tools/check_documentation.py` — PASS, 31 páginas, salida 0.
-5. `python tools/check_project.py --help` — interrupción por timeout; **sin resultado final**. El script no expone una ayuda inocua: arranca la comprobación integral. No contar esta ejecución como aprobada.
+1. `python -m pytest -q gisela/engine/tests/test_pa001_malformed_auxiliary.py`, 2 passed, salida 0.
+2. `python -m pytest -q gisela/engine/tests/test_pa001_malformed_auxiliary.py gisela/engine/tests/test_pa001_invalid_pending_recovery.py gisela/engine/tests/test_pa001_error_recovery.py gisela/engine/tests/test_pa001_differential_restore.py gisela/engine/tests/test_pending.py gisela/engine/tests/test_e3_visible.py`, 47 passed, 7 subtests passed, salida 0.
+3. `python tools/check_quality.py`, PASS, salida 0.
+4. `python tools/check_documentation.py`, PASS, 31 páginas, salida 0.
+5. `python tools/check_project.py --help`, interrupción por timeout; **sin resultado final**. El script no expone una ayuda inocua: arranca la comprobación integral. No contar esta ejecución como aprobada.
 
 ## Cobertura y límites
 

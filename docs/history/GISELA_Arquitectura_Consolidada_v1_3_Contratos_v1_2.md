@@ -1,13 +1,13 @@
-# GISELA — Arquitectura consolidada y contratos del motor narrativo
+# GISELA: Arquitectura consolidada y contratos del motor narrativo
 
-**Versión documental:** 1.3 — sincronización con los contratos JSON 1.2 y la admisión semántica del 29 de octubre de 2026  
+**Versión documental:** 1.3, sincronización con los contratos JSON 1.2 y la admisión semántica del 29 de octubre de 2026
 **Proyecto de referencia:** *Central Clasificadora. Demo Ren'Py*; primer caso de uso: *Las personas tienen nombre*  
 **Alcance:** arquitectura del motor general GISELA, subsistema ALBERTO y sistema opcional S.O.F.I.A.; auditoría y preparación de schemas.  
 **Estado:** **ARQUITECTURA CONSOLIDADA / SCHEMAS 1.2 Y VALIDACIÓN SEMÁNTICA ESTÁTICA IMPLEMENTADOS / EJECUCIÓN DINÁMICA PENDIENTE / MVP PENDIENTE DE APROBACIÓN EXPRESA**. No constituye una declaración de implementación completa.
 
-> **Regla de precedencia.** Esta revisión y las ADR-001–014 reemplazan las decisiones arquitectónicas incompatibles de los documentos antiguos y del diseño candidato del 29 de octubre. **No reemplazan el contenido narrativo ni el canon de *Blue Forever*.** El código antiguo de `lptn.zip` es una referencia histórica y funcional, no la base obligatoria del nuevo ejecutor. Los 13 schemas originales de `GISELA_Schemas_v1(1).zip` son históricos y fueron reemplazados por los contratos 1.1 y posteriormente por los schemas 1.2 con validador semántico v0.2, que incorporan correcciones estructurales, semánticas y sus pruebas. **La validación semántica estática ya existe; la conformidad de ejecución permanece pendiente**; no debe confundirse metavalidación con funcionamiento del motor.
+> **Regla de precedencia.** Esta revisión y las ADR-001-014 reemplazan las decisiones arquitectónicas incompatibles de los documentos antiguos y del diseño candidato del 29 de octubre. **No reemplazan el contenido narrativo ni el canon de *Blue Forever*.** El código antiguo de `lptn.zip` es una referencia histórica y funcional, no la base obligatoria del nuevo ejecutor. Los 13 schemas originales de `GISELA_Schemas_v1(1).zip` son históricos y fueron reemplazados por los contratos 1.1 y posteriormente por los schemas 1.2 con validador semántico v0.2, que incorporan correcciones estructurales, semánticas y sus pruebas. **La validación semántica estática ya existe; la conformidad de ejecución permanece pendiente**; no debe confundirse metavalidación con funcionamiento del motor.
 
-**Nombres:** GISELA — *enGine for Interactive Stories through Events, Links, and Actions*; ALBERTO — *Autonomous Layer for Beings, Environments, Relationships, Traits, and Objects*; S.O.F.I.A. — *Strength, Openness, Fortune, Intelligence, Awareness*. Los nombres técnicos, `op`, campos y enumeraciones estarán en inglés; el texto literario permanece en el idioma del autor.
+**Nombres:** GISELA: *enGine for Interactive Stories through Events, Links, and Actions*; ALBERTO: *Autonomous Layer for Beings, Environments, Relationships, Traits, and Objects*; S.O.F.I.A.: *Strength, Openness, Fortune, Intelligence, Awareness*. Los nombres técnicos, `op`, campos y enumeraciones estarán en inglés; el texto literario permanece en el idioma del autor.
 
 ## 1. Principios, estatus y autoridad
 
@@ -24,7 +24,7 @@
 
 ### 1.2. Qué está decidido y qué no
 
-- **DECIDIDO:** principios anteriores; contratos conceptuales de nodos, pasos, mundo, S.O.F.I.A. y las ADR-001–014 de esta versión (ADR-006–014 fueron seleccionadas por delegación del autor en la revisión integral).
+- **DECIDIDO:** principios anteriores; contratos conceptuales de nodos, pasos, mundo, S.O.F.I.A. y las ADR-001-014 de esta versión (ADR-006-014 fueron seleccionadas por delegación del autor en la revisión integral).
 - **PROPUESTA DE ALCANCE:** ADR-015 define el primer MVP recomendado. **No autoriza comenzar a programarlo**; necesita aceptación expresa.
 - **PENDIENTE DE NORMALIZACIÓN:** validación semántica del contrato JSON 1.1, detalles de reconstrucción transaccional, formato canónico de digest, algoritmo exacto de RNG, presupuesto numérico de ejecución y semántica de algunos resultados condicionales. Son decisiones técnicas por precisar, no invitación a sustituir lo aprobado.
 - **DIFERIDO:** implementación completa de habilidades, expiración avanzada, S.O.F.I.A., migraciones, contrahechizos, desplazamientos específicos del demo y todas las tareas audiovisuales.
@@ -91,7 +91,7 @@ Las consultas múltiples son explícitas. Una operación que necesita una sola e
 
 El contenido es libre de expresarse en español u otro idioma; los tokens técnicos siguen en inglés. La resolución de `text_key` debe exigir texto en el idioma base del paquete y ofrecer una política explícita de fallback. Un digest de **contenido semántico completo** enlaza una sesión con las definiciones exactas. El algoritmo/canon de serialización se documentará antes de implementar restauración semántica: listas donde importa el orden se conservan; catálogos no ordenados pueden normalizarse por ID. Ninguna migración implícita altera un guardado de v1.
 
-## 4. Máquina narrativa y estados (ADR-006–007, DECIDIDO)
+## 4. Máquina narrativa y estados (ADR-006-007, DECIDIDO)
 
 ### 4.1. Estados principales
 
@@ -142,19 +142,19 @@ Si una cadena de pasos automáticos salta indefinidamente sin llegar a una esper
 
 Un único `world_time`, administrado como dato del mundo por ALBERTO bajo control transaccional de GISELA, solo avanza por `advance_time` u operación explícita equivalente. No depende del reloj del equipo; los clics, las consultas y los turnos no adelantan el tiempo automáticamente. Los umbrales cruzados se detectan incluso cuando un salto pasa por encima de ellos. Las recurrencias son una extensión declarativa, no un Scheduler separado. La convención exacta de instantes/husos históricos queda fuera del primer MVP.
 
-## 6. S.O.F.I.A. — sistema opcional
+## 6. S.O.F.I.A.: sistema opcional
 
-Atributos fijos: `strength`, `openness`, `fortune`, `intelligence`, `awareness`. Escala entera común configurable, 0–10 por defecto. Cada atributo conserva `base` y `current`; el valor `effective` **se calcula**, no se almacena como segundo estado mutable: `current + suma(modificadores activos)` por defecto. El efectivo puede exceder la escala; `base` y `current` permanecen dentro de ella. No existen tiradas universales ni consumo automático de atributos. El autor declara umbrales y comprobaciones.
+Atributos fijos: `strength`, `openness`, `fortune`, `intelligence`, `awareness`. Escala entera común configurable, 0-10 por defecto. Cada atributo conserva `base` y `current`; el valor `effective` **se calcula**, no se almacena como segundo estado mutable: `current + suma(modificadores activos)` por defecto. El efectivo puede exceder la escala; `base` y `current` permanecen dentro de ella. No existen tiradas universales ni consumo automático de atributos. El autor declara umbrales y comprobaciones.
 
 `GetScoresheet` consulta, en cualquier punto estable, los atributos, modificadores y efectos activos de un personaje autorizado. No crea turno, no cambia escena, mundo, historial, RNG ni revisión. No da acceso a estadísticas privadas de otros personajes salvo autorización explícita. La forma de dibujarlo pertenece al frontend. **S.O.F.I.A. y Scoresheet no forman parte de la vertical inicial propuesta.**
 
-## 7. Habilidades y efectos (ADR-010–011, DECIDIDO EN CONTRATO; DIFERIDO EN MVP)
+## 7. Habilidades y efectos (ADR-010-011, DECIDIDO EN CONTRATO; DIFERIDO EN MVP)
 
 ### 7.1. Habilidades
 
 Cada personaje puede tener mano de capacidad N y reserva M, configuradas por autor. Una habilidad se juega **solo** desde mano y solo en una ventana autorizada por el contenido. Preparar/intercambiar mano y reserva tampoco crea turno salvo que inicie un nodo. Una habilidad consumible se consume por defecto al producirse el **intento jugable confirmado**, aunque su resultado narrativo fracase. Error técnico o cancelación restauran la habilidad y todo consumo provisional.
 
-El uso invoca el mismo ejecutor de operaciones de GISELA. `effects`, `outcomes` y `return_policy` permanecen como conceptos; el contrato JSON final debe fijar cuándo se evalúan las condiciones de resultado y de devolución, y cómo se detecta coincidencia incompatible, **sin asignar prioridad implícita por orden**. Si la concesión/retorno excede capacidades, se solicitan descartes mediante ADR-001–005, no se elige arbitrariamente ni se hace commit parcial. No hay contrahechizos universales ni segundo intérprete de habilidades.
+El uso invoca el mismo ejecutor de operaciones de GISELA. `effects`, `outcomes` y `return_policy` permanecen como conceptos; el contrato JSON final debe fijar cuándo se evalúan las condiciones de resultado y de devolución, y cómo se detecta coincidencia incompatible, **sin asignar prioridad implícita por orden**. Si la concesión/retorno excede capacidades, se solicitan descartes mediante ADR-001-005, no se elige arbitrariamente ni se hace commit parcial. No hay contrahechizos universales ni segundo intérprete de habilidades.
 
 ### 7.2. Efectos
 
@@ -185,7 +185,7 @@ El orden de archivos o diccionarios nunca decide un conflicto. Se fija un presup
 
 **Endurecimiento recomendado, todavía no codificado:** especificar si `state_changed` resume los cambios netos de una ronda (recomendación por simplicidad) y cómo interactúan escrituras concurrentes a relaciones y colecciones. No asumir que JSON Schema puede comprobar esas semánticas.
 
-### 8.3. Transacciones que necesitan al jugador (ADR-001–005, DECIDIDO)
+### 8.3. Transacciones que necesitan al jugador (ADR-001-005, DECIDIDO)
 
 Una operación puede descubrir una elección auxiliar (por ejemplo, descartar una habilidad por capacidad). **No se confirma nada** hasta completar todas las decisiones de esa operación y de su cadena causal. Existe a lo sumo **una transacción pendiente por sesión**; no se intercalan otras mutaciones ni avances narrativos. Se permiten consultas puras y exportación/restauración.
 
@@ -235,7 +235,7 @@ El comprobador incluido en el ZIP **original 1.0** ejecutaba satisfactoriamente 
 | **Bloqueante** | `session.schema.json` rechaza `exploring` sin `narrative.pending_choice`, aunque puede ser un estado válido. | Esperas opcionales y compatibles con el estado principal. |
 | **Bloqueante** | Acepta `node` sin `cursor` y `ended` sin desenlace. | Restricciones condicionales por `status`; validación semántica en restauración. |
 | **Alta** | Acepta `exploring` con `pending_choice.kind: overflow`, incluso con candidatos vacíos. | Separar `choice` de transacción pendiente y validar vinculación/contexto. |
-| **Bloqueante** | La `pending_choice` actual solo tiene `kind/step/candidates`: no guarda la intención, respuestas provisionales ni contexto de ADR-001–005. | Introducir una `pending_transaction` estable; no serializar el borrador. |
+| **Bloqueante** | La `pending_choice` actual solo tiene `kind/step/candidates`: no guarda la intención, respuestas provisionales ni contexto de ADR-001-005. | Introducir una `pending_transaction` estable; no serializar el borrador. |
 | **Alta** | `node.schema.json` acepta `choice` sin `prompt` (incluida la fixture), mientras `observe.schema.json` requiere `prompt` para esa misma elección. | Hacer opcional el `prompt` de la proyección o establecer una fuente y fallback inequívocos. **Recomendación: proyección sin prompt obligatorio.** |
 | **Alta** | El snapshot candidato duplica `narrative.facts` con `history.facts`; `narrative.executions` no tiene frontera clara con `history.trace`. | Un solo historial autoritativo y vistas/índices derivados. |
 | **Alta** | No consta un registro persistido de IDs retirados ni siguiente contador de asignación. | Incorporar el asignador de ADR-009 a `session`. |
@@ -249,7 +249,7 @@ No se han ejecutado pruebas de comportamiento del motor nuevo ni de restauració
 |---|---|---|
 | Semántica de cambios netos por ronda | Disparos repetidos o perdidos en escrituras consecutivas | **PENDIENTE TÉCNICO**: preferir evento de cambio neto por campo y ronda. |
 | Cadena automática de nodos sin espera | Bucle infinito o ejecución muy larga | **DERIVADO DE ADR-008**: presupuesto y error tipado, distinto de ciclos interactivos. |
-| Repetición de evaluación de operación pendiente | Concesiones dobles, RNG/IDs consumidos, exposición de borradores | **CUBIERTO CONCEPTUALMENTE POR ADR-001–005**: re-ejecutar desde estado confirmado y commit exact-once; faltan tests. |
+| Repetición de evaluación de operación pendiente | Concesiones dobles, RNG/IDs consumidos, exposición de borradores | **CUBIERTO CONCEPTUALMENTE POR ADR-001-005**: re-ejecutar desde estado confirmado y commit exact-once; faltan tests. |
 | Posible discrepancia entre validación estructural y proyección | Paquete válido que no puede mostrarse | **PENDIENTE**: fixtures de ida y vuelta autoría → Observe/Act. |
 | Colisiones o ciclos de referencias contextuales | Cambios al objetivo equivocado | **ADR-009**: resolución tipada y ámbitos vinculados. |
 | Expiraciones por `all` y recurrencias | Estado adicional y reglas difíciles de reconstruir | **DIFERIDO**: no complejizar v1 sin caso de uso. |
@@ -289,7 +289,7 @@ No se han ejecutado pruebas de comportamiento del motor nuevo ni de restauració
 
 **Criterios de cierre:** los schemas revisados pasan metavalidación y fixtures positivos/negativos; el validador semántico documenta las invariantes que JSON Schema no alcanza; cada ADR implementada cuenta con al menos una prueba observable. No se declarará completo el motor solo por el éxito de `verify_contracts.py`.
 
-## 12. ADR — Registro integrado y precedencia
+## 12. ADR: Registro integrado y precedencia
 
 | ADR | Estado | Resolución |
 |---|---|---|
@@ -317,7 +317,7 @@ La primera vertical debería demostrar el núcleo mediante un paquete de prueba 
 
 **Interfaz:** CLI inicial que consume `Observe/Act`; conexión mínima posterior de Ren'Py al mismo contrato. **Fuera del primer hito:** mano/reserva, consumo de habilidad, expiraciones avanzadas, S.O.F.I.A./Scoresheet, generación aleatoria si no es indispensable, scheduler de rutinas, contrahechizos y navegación propia del demo.
 
-**Criterios de aceptación:** una opción oculta/bloqueada no es ejecutable; la elección válida realiza exactamente sus consecuencias; el hecho persiste y es consultable; un conflicto reactivo revierte la unidad; una sesión restaurada conserva cursor y mundo; mismo paquete y entradas producen el mismo resultado. La operación pendiente interactiva de ADR-001–005 requiere un hito de integración propio, no una simulación incompleta dentro del MVP.
+**Criterios de aceptación:** una opción oculta/bloqueada no es ejecutable; la elección válida realiza exactamente sus consecuencias; el hecho persiste y es consultable; un conflicto reactivo revierte la unidad; una sesión restaurada conserva cursor y mundo; mismo paquete y entradas producen el mismo resultado. La operación pendiente interactiva de ADR-001-005 requiere un hito de integración propio, no una simulación incompleta dentro del MVP.
 
 **Puerta de entrada a programación:** aprobación expresa del alcance y de los contratos mínimos revisados. Hasta entonces, solo documentación, pruebas de schemas y validadores/fixtures preparatorios, no implementación del engine.
 
@@ -343,7 +343,7 @@ La primera vertical debería demostrar el núcleo mediante un paquete de prueba 
 
 ## 15. Próximos hitos y condiciones de cierre
 
-1. **Arquitectura:** cerrada en sus principios y ADR-001–014; los detalles de ejecución y validación pendientes continúan identificados.
+1. **Arquitectura:** cerrada en sus principios y ADR-001-014; los detalles de ejecución y validación pendientes continúan identificados.
 2. **Schemas:** revisión estructural 1.1 aplicada sobre los 13 archivos, con 41 pruebas de regresión y siete fixtures adicionales. Pendiente: validador semántico, digest canónico y pruebas del ejecutor.
 3. **Validación semántica:** definir matriz de errores reproducibles y pruebas de integridad cruzada, separando diagnósticos técnicos bloqueantes de advertencias de calidad narrativa.
 4. **MVP:** aprobar explícitamente ADR-015 y su criterio de aceptación, antes de comenzar la implementación del motor.
@@ -353,7 +353,7 @@ La primera vertical debería demostrar el núcleo mediante un paquete de prueba 
 
 - `GISELA_ALBERTO_SOFIA_Arquitectura_y_Schemas_v1(1).md` (29-10-2026): candidato conceptual y transcripción de 13 schemas; **reemplazado en arquitectura por este documento**.
 - `GISELA_Schemas_v1(1).zip`: conjunto de 13 schemas originales, ahora **histórico**, sustituido por el paquete versionado 1.1.
-- `GISELA_registro_de_decisiones_arquitectonicas_2026-10-29.md`: razonamiento de ADR-001–015 y selección delegada.
+- `GISELA_registro_de_decisiones_arquitectonicas_2026-10-29.md`: razonamiento de ADR-001-015 y selección delegada.
 - `Central_Clasificadora_Demo_RenPy_instrucciones.txt`, `Blue_Forever.md`, `lptn.zip`: restricciones originales del demo, obra y arquitectura histórica. Los dos últimos no se convierten en decisiones nuevas del motor por simple inclusión como fuente.
 
 **Conclusión de revisión:** el endurecimiento principal no consiste en sumar componentes, sino en hacer **inexpresables o rechazables** las sesiones inconsistentes, representar correctamente las transacciones pendientes, eliminar fuentes duplicadas de verdad y preservar el límite estricto entre definiciones, sesión e interfaz. No se ha implementado código de GISELA; los schemas corregidos son una nueva entrega 1.1 y no una modificación retrospectiva del ZIP original.

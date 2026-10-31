@@ -1,4 +1,4 @@
-# E3 — Evaluaciones visibles DICE: contrato ejecutable v1.5
+# E3: Evaluaciones visibles DICE: contrato ejecutable v1.5
 
 ## E3.1: decisiones de alcance
 

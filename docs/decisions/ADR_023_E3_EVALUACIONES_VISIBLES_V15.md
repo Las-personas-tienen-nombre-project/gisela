@@ -1,6 +1,6 @@
-# ADR-023 — E3: fijación y continuación de evaluaciones visibles (v1.5)
+# ADR-023: E3: fijación y continuación de evaluaciones visibles (v1.5)
 
-**Estado:** IMPLEMENTADO Y PROBADO (30-10-2026). **Alcance:** E3.1–E3.6.
+**Estado:** IMPLEMENTADO Y PROBADO (30-10-2026). **Alcance:** E3.1-E3.6.
 **Precedentes:** ADR-007, ADR-008, ADR-019 (propuesta parcialmente adoptada), ADR-020, ADR-021, ADR-022.
 
 ## Decisiones aprobadas
@@ -12,7 +12,7 @@
 5. **Fronteras de compromiso:** preparar fija únicamente `pending_evaluation`, RNG y revisión. `world`, `narrative`, `history`, MARY, `turn`, `world_time`, cursor y `world_revision` no se confirman. Continuar puede fijar otra evaluación visible antes de completar la intención: en ese caso se acumula otra entrada comprobable en la cinta sin aplicar efectos parciales. La confirmación final utiliza el ejecutor, las reacciones y el cierre atómico A→B existentes.
 6. **Errores y restauración:** un error previo a preparar no consume RNG confirmado. Un error en la continuación conserva el resultado, RNG y estado narrativo previos a esa continuación. Restaurar valida esquema, digest del paquete, origen, identidad, RNG y replay de resultados; una solicitud auxiliar pendiente también se verifica por replay. La duplicación y el principal autorizado siguen protegidos por el gateway de ADR-020.
 7. **Privacidad:** `Observe` publica únicamente dados y banda de resultado, más una acción autorizada o, si corresponde, las opciones auxiliares. Los valores efectivos, perfiles privados, TRAITS y S.O.F.I.A. no se publican. No se publica el total de forma automática.
-8. **Compatibilidad:** solo v1.5 habilita esta ejecución; v1.2–v1.4 y sus snapshots conservan su semántica. El contrato de autoría de `evaluate` conserva forma, perfiles y tres procedencias de v1.4. No hay migración implícita.
+8. **Compatibilidad:** solo v1.5 habilita esta ejecución; v1.2-v1.4 y sus snapshots conservan su semántica. El contrato de autoría de `evaluate` conserva forma, perfiles y tres procedencias de v1.4. No hay migración implícita.
 
 ## Decisiones no aprobadas / diferidas
 

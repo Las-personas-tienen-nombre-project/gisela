@@ -2,7 +2,7 @@
 
 **Fecha:** 30 de octubre de 2026.
 
-**Objetivo:** endurecer escenas y proyecciones antes de la autoría de la primera jornada canónica. GISELA mantiene la autoridad de ejecución y ALBERTO administra lugares y entidades. El cliente textual oficial se llama **GLAUQUIR — GISELA's Lightweight Access Utility for Queries, User Interaction, and Rendering**.
+**Objetivo:** endurecer escenas y proyecciones antes de la autoría de la primera jornada canónica. GISELA mantiene la autoridad de ejecución y ALBERTO administra lugares y entidades. El cliente textual oficial se llama **GLAUQUIR: GISELA's Lightweight Access Utility for Queries, User Interaction, and Rendering**.
 
 ## H4.5f.1. Escena narrativa y lugar físico
 

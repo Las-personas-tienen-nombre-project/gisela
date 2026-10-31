@@ -1,4 +1,4 @@
-# PA-001 — Intervención 12 — PT-02R
+# PA-001: Intervención 12: PT-02R
 
 ## Alcance
 

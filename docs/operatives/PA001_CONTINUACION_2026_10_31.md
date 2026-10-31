@@ -1,9 +1,9 @@
-# PA-001 — Continuación de la auditoría, 31 de octubre de 2026
+# PA-001: Continuación de la auditoría, 31 de octubre de 2026
 
 **Estado:** PARCIAL. Complementa `PA001_AUDITORIA_2026_10_31.md`.
 **Origen:** ZIP parcial del hito anterior, no una revisión Git. No se modificó lógica narrativa.
 
-## PT-00 — Nuevo hallazgo operativo
+## PT-00: Nuevo hallazgo operativo
 
 `tools/check_project.py` emplea `subprocess.run` con captura de salida y sin timeout por proceso. Durante una verificación extensa, los resultados de cada subprocess no se comunican hasta que terminan. Esto retrasa la identificación del componente que consume tiempo. La invocación integral volvió a exceder el límite de ejecución de este entorno: la salida alcanzó `OK: Trazabilidad invariantes E0` antes de interrumpirse. **No se interpreta como fallo del motor ni aprobación integral.**
 
@@ -13,7 +13,7 @@ Uso: `python tools/pa001_diagnose.py --suite gisela/engine/tests --per-file-time
 
 **Limitación:** separar pruebas por archivo no identifica un caso lento dentro de ese archivo; un timeout significa ausencia de resultado, no defecto funcional. La duración depende de recursos y ambiente.
 
-## PT-01 / PT-02 — Trazabilidad de invariantes (inspección y ejecución)
+## PT-01 / PT-02: Trazabilidad de invariantes (inspección y ejecución)
 
 | ID PA | Contrato/decisión | Prueba ejecutable existente | Evidencia actual |
 | --- | --- | --- | --- |
@@ -28,19 +28,19 @@ Uso: `python tools/pa001_diagnose.py --suite gisela/engine/tests --per-file-time
 
 El anclaje es a pruebas **existentes**; no se crean tests redundantes para cumplir el número de hitos. La existencia de una prueba no implica cobertura de todas las rutas causales.
 
-## PT-03 — Gateway
+## PT-03: Gateway
 
 ADR-020 especifica gateway opcional para clientes externos, operación local sin gateway y estado/recibo persistidos atómicamente cuando se usa `JsonCheckpointStore`. Las 35 pruebas E0 pasaron. Se conserva esta frontera: no se ha establecido defecto que justifique cambiarla.
 
-## PT-04 — Política y calidad
+## PT-04: Política y calidad
 
 Se mantiene la política vigente (500 líneas por archivo, 30 por función, tres parámetros explícitos). Modificarla exige decisión explícita. `check_quality.py`: PASS tras añadir las herramientas; `check_documentation.py`: PASS (31 páginas).
 
-## PT-05 — Schemas
+## PT-05: Schemas
 
 Vigentes en árbol: `gisela/contracts/v1_3/`, `v1_4/`, `v1_5/`. ADR-020 exige mantener 1.2/1.3 en la frontera donde aplique, aun si los schemas expuestos actualmente requieren verificar sus ubicaciones y compatibilidad. La validación completa y la matriz de persistencia por versión siguen pendientes; **no se declaran soportadas versiones únicamente por existir carpetas**.
 
-## PT-06 / PT-07 / PT-08 — Pruebas y aceptación
+## PT-06 / PT-07 / PT-08: Pruebas y aceptación
 
 - `python -m unittest discover -s tools -p test_pa001_diagnose.py -v`: **3 PASS**.
 - `python -m unittest discover -s gisela/engine/tests -p 'test_e0_*.py' -q`: **35 PASS**.
@@ -55,4 +55,4 @@ Vigentes en árbol: `gisela/contracts/v1_3/`, `v1_4/`, `v1_5/`. ADR-020 exige ma
 
 **DECIDIDO en esta intervención:** agregar diagnóstico de pruebas sin modificar el ejecutor, ni contratos, ni la política oficial de aceptación. Es reversible, acotado y comprobado con pruebas. No reabre las decisiones arquitectónicas ADR.
 
-**PENDIENTE:** completar ejecución íntegra sin truncamiento, caracterizar fuentes causales no cubiertas, construir matriz de versiones y verificar Ren'Py SDK real. No cerrar H1–H5 por los resultados parciales.
+**PENDIENTE:** completar ejecución íntegra sin truncamiento, caracterizar fuentes causales no cubiertas, construir matriz de versiones y verificar Ren'Py SDK real. No cerrar H1-H5 por los resultados parciales.

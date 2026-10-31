@@ -1,6 +1,6 @@
 # Invariantes verificadas de MARY v1
 
-Cada invariante identifica su prueba automatizada. «Verificada» se refiere al alcance implementado, no a funciones futuras de quest, password o integración visual.
+Cada invariante identifica su prueba automatizada. "Verificada" se refiere al alcance implementado, no a funciones futuras de quest, password o integración visual.
 
 | Invariante | Anclaje de prueba |
 |---|---|

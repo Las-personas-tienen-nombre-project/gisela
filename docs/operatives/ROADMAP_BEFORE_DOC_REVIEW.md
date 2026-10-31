@@ -220,11 +220,11 @@ Para anotar un avance nuevo, agregue una fila con su fecha real y cambie el esta
 
 **Evidencia:** `python -m docs.guides.examples.ejemplo_gisela`, `ejemplo_alberto`, `ejemplo_pendientes` y `ejemplo_sofia`. Los ejemplos se ejecutan también mediante `python tools/check_project.py`.
 
-**H3.4a:** TERMINADO. Las decisiones de relaciones dirigidas y dispersas, más la combinación de escrituras compatibles, se implementaron y probaron. Véanse [guía de propiedades y relaciones](../guides/PROPIEDADES_Y_RELACIONES.md) y [registro de cierre H3.4a](H3_4A_CIERRE.md).
+**H3.4a:** TERMINADO. Las decisiones de relaciones dirigidas y dispersas, más la combinación de escrituras compatibles, se implementaron y probaron. Véanse guía de propiedades y relaciones (guía histórica no incluida en este repositorio) y [registro de cierre H3.4a](H3_4A_CIERRE.md).
 
-**H3.4d:** TERMINADO para ventanas de nodo. Véanse [HABILIDADES.md](../guides/HABILIDADES.md) y [H3_4D_CIERRE.md](H3_4D_CIERRE.md).
+**H3.4d:** TERMINADO para ventanas de nodo. Véanse HABILIDADES.md (guía histórica no incluida en este repositorio) y [H3_4D_CIERRE.md](H3_4D_CIERRE.md).
 
-**H3.4c:** TERMINADO. La guía [EFECTOS.md](../guides/EFECTOS.md) muestra el ciclo de vida, la restauración y el vencimiento reproducibles. El cierre técnico se registra en [H3_4C_CIERRE.md](H3_4C_CIERRE.md).
+**H3.4c:** TERMINADO. La guía EFECTOS.md (guía histórica no incluida en este repositorio) muestra el ciclo de vida, la restauración y el vencimiento reproducibles. El cierre técnico se registra en [H3_4C_CIERRE.md](H3_4C_CIERRE.md).
 
 ## 14. Próxima acción recomendada
 
@@ -234,7 +234,7 @@ Continuar con H4.6: adaptar el guion oficial y estresar el recorrido en GLAUQUIR
 
 Se incorporó la lectura de los atributos opcionales de S.O.F.I.A., la escritura transaccional de `current`, la suma pura de modificadores de efectos activos y la proyección `scoresheet(character)`. Los valores `base` y `effective` no son destinos de escritura, y los personajes sin S.O.F.I.A. no reciben atributos inventados.
 
-La autorización de lectura de Scoresheet para anfitriones queda pendiente de H4. La admisión semántica rechaza definiciones incompatibles, y las regresiones cubren límites, tipos, conflictos de reglas, rollback, restauración y consultas durante una transacción pendiente. La [guía de S.O.F.I.A.](../guides/SOFIA_ATRIBUTOS.md) y el [registro de cierre](H3_4B_CIERRE.md) detallan el contrato ejecutable.
+La autorización de lectura de Scoresheet para anfitriones queda pendiente de H4. La admisión semántica rechaza definiciones incompatibles, y las regresiones cubren límites, tipos, conflictos de reglas, rollback, restauración y consultas durante una transacción pendiente. La guía de S.O.F.I.A. (guía histórica no incluida en este repositorio) y el [registro de cierre](H3_4B_CIERRE.md) detallan el contrato ejecutable.
 
 La política de ingeniería agrega un máximo de tres parámetros explícitos por función, sin contar `self` ni `cls`, conforme a los criterios de legibilidad, claridad y simplicidad del Zen de Python. El verificador general incorpora pruebas de esta regla. H3.4d y H4 se incorporaron posteriormente, con pruebas independientes.
 
@@ -258,6 +258,6 @@ Se completaron H4.1, H4.2, H4.3 y H4.4 para el subconjunto ejecutable. El paquet
 
 Se completó el endurecimiento de escenas físicas, presencia de entidades, inspección pública y autorización. La prueba de regresión incorpora el caso de identificadores estables de acciones cuando un elemento deja de ser visible. Se oficializa GLAUQUIR (GISELA's Lightweight Access Utility for Queries, User Interaction, and Rendering). Evidencia: `H4_5F_REVISION_Y_CIERRE.md` e `INVARIANTES_H4_5F.md`. La siguiente tarea es H4.6 antes de Ren'Py.
 
-## Laboratorio técnico H4.6 — Aventura independiente
+## Laboratorio técnico H4.6: Aventura independiente
 
 Se incorporó `gisela/packages/h46_faro_de_niebla.package.json` para probar en GLAUQUIR un recorrido original con decisiones, tres desenlaces, guardado/restauración, DICE oculto y visible, TRAITS, S.O.F.I.A., ALBERTO y MARY. Su documentación y matriz de cobertura están en [H46_FARO_DE_NIEBLA.md](H46_FARO_DE_NIEBLA.md). **No cierra el hito de adaptación de la primera jornada de la novela**, que continúa pendiente de aprobación narrativa.

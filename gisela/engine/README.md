@@ -32,7 +32,7 @@ The public pending view contains the outcome and the individual dice. It does no
 
 ## World operations
 
-`world.py` and the `world_*` modules implement entity state and operations. `world_base.py` supplies shared lookups and errors. `world_entities.py` covers entity changes, `world_values.py` handles values and relations, `world_traits.py` handles assigned traits, `world_skills.py` handles skill state, and `world_effects.py` handles effects. Specific capabilities are described in [ALBERTO](../../docs/alberto/README.md).
+`world.py` and the `world_*` modules implement entity state and operations. `world_base.py` supplies shared lookups and errors. `world_entities.py` covers entity changes, `world_values.py` handles values and relations, `world_traits.py` handles assigned traits, `world_skills.py` handles skill state, and `world_effects.py` handles effects. Specific capabilities are described in [ALBERTO](../../docs/architecture/ALBERTO.md).
 
 `sofia.py` computes optional numerical attribute components and allows writes to current values on transaction drafts. TRAITS and DICE remain imported through integration routes rather than through each other.
 

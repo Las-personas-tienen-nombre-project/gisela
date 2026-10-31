@@ -69,7 +69,7 @@ El campo opcional `scene.elements[].description` usa `localized_text` y llega a 
 
 Véanse [semántica de escenas](ESCENAS_Y_PRESENCIA.md) y [pruebas ancladas](../operatives/INVARIANTES_H4_5F.md).
 
-## E0 — Software solicitante no humano (implementado, anfitrión confiable)
+## E0: Software solicitante no humano (implementado, anfitrión confiable)
 
 `session.act()` y `session.observe()` se mantienen para clientes **locales confiables**. Para software externo o varias fuentes concurrentes existe `ExecutionGateway` (véase [frontera autorizada](E0_FRONTERA_AUTORIZADA_Y_PERSISTENCIA.md)). El anfitrión autentica a cada solicitante y le asigna capacidades; no hay relación automática entre ese principal, el `player_character` y la entidad narrativa de una acción. Una vez asociado el gateway, se bloquea la entrada `session.act()` directa. La API externa utiliza un `command_id` adicional, fuera del JSON `Act` versionado.
 

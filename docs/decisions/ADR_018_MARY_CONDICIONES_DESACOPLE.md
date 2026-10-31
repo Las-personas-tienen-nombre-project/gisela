@@ -20,7 +20,7 @@ El ejecutor ya dispone de condiciones, historial, reglas reactivas, borradores y
 
 **Decisión:** `milestone` conserva el cumplimiento y puede emitir un yield una sola vez. `current` se recalcula y no puede emitir yields. Una misión completada o fallida es terminal en v1.
 
-**Por qué:** «haber completado una ronda» no debe deshacerse al volver a la portería, pero «tener una linterna» deja de ser cierto si Alberto ya no la posee. Guardar ambos fenómenos como la misma variable persistente provocaría resultados falsos.
+**Por qué:** "haber completado una ronda" no debe deshacerse al volver a la portería, pero "tener una linterna" deja de ser cierto si Alberto ya no la posee. Guardar ambos fenómenos como la misma variable persistente provocaría resultados falsos.
 
 ## C. Los yields no son efectos ejecutados
 

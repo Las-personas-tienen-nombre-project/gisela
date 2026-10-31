@@ -1,4 +1,4 @@
-# PA-001 — Intervención 11: pruebas comportamentales de brechas de invariantes
+# PA-001: Intervención 11: pruebas comportamentales de brechas de invariantes
 
 **Estado: PARCIAL.** Continuación de la matriz de la intervención 10. No se descargó ni utilizó SDK Ren'Py; no hay aceptación gráfica.
 
@@ -8,10 +8,10 @@ Se añade `gisela/engine/tests/test_pa001_behavior_gaps.py` con ocho pruebas nue
 
 | Invariante | Pruebas nuevas | Resultado | Límite |
 |---|---|---|---|
-| I04 — definiciones inmutables | mutación del objeto original tras admisión; mutación de copia materializada | PASS | Demuestra aislamiento por API pública; no prueba que código interno nunca altere definiciones |
-| I05 — definición/estado separados | modificación de snapshot exportado frente a paquete y sesión | PASS | Una sesión y un paquete representativos |
-| I06 — consultas puras | nueve hojas de consulta de mundo, comparación y reloj; referencia inexistente sin inserción | PASS | No cubre todos los operadores compuestos, consultas avanzadas ni TRAITS |
-| I16 — no ejecutar Python autoral | rechazo por admisión de `op: python` en paso, efecto `op: python` y campo `python` extra | PASS | Verifica frontera de admisión para tres estructuras; no demuestra exhaustividad ante todas las entradas alternativas |
+| I04: definiciones inmutables | mutación del objeto original tras admisión; mutación de copia materializada | PASS | Demuestra aislamiento por API pública; no prueba que código interno nunca altere definiciones |
+| I05: definición/estado separados | modificación de snapshot exportado frente a paquete y sesión | PASS | Una sesión y un paquete representativos |
+| I06: consultas puras | nueve hojas de consulta de mundo, comparación y reloj; referencia inexistente sin inserción | PASS | No cubre todos los operadores compuestos, consultas avanzadas ni TRAITS |
+| I16: no ejecutar Python autoral | rechazo por admisión de `op: python` en paso, efecto `op: python` y campo `python` extra | PASS | Verifica frontera de admisión para tres estructuras; no demuestra exhaustividad ante todas las entradas alternativas |
 
 Los textos de ataque de I16 son cadenas inertes; no se ejecutó código suministrado como autoría. No se alteró la definición de la política de seguridad.
 

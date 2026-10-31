@@ -1,15 +1,15 @@
 > **Actualización posterior (E2, ADR-022):** las limitaciones de ejecución v1.4 descritas a continuación corresponden al cierre histórico E1. El runtime E2 ejecuta evaluaciones ocultas y admite guardados v1.4; las evaluaciones visibles y reconocidas siguen pendientes.
 
-# E1 — Cierre operativo: admisión y normalización de `evaluate`
+# E1: Cierre operativo: admisión y normalización de `evaluate`
 
-**Estado:** E1 implementada; E2–E5 pendientes. **Base:** ZIP (8) + parches TRAITS, TRAITS–ALBERTO/DICE y E0.
+**Estado:** E1 implementada; E2-E5 pendientes. **Base:** ZIP (8) + parches TRAITS, TRAITS-ALBERTO/DICE y E0.
 
 ## Plan ejecutado
 
 1. Congelar E0 como base diferencial y comparar esquemas v1.3 sin modificarlos.
 2. Añadir 13 esquemas v1.4 con `dice_profiles` y `evaluation` en tres tipos de origen.
 3. Extender puerta de admisión y validador semántico; recorrer las operaciones de todas las ramas para no omitir las validaciones ALBERTO/MARY.
-4. Crear compilador puro, con datos exactamente compatibles con el puente TRAITS–DICE.
+4. Crear compilador puro, con datos exactamente compatibles con el puente TRAITS-DICE.
 5. Mantener `check_supported` cerrado para v1.4 durante E1; preservar todos los paquetes de ejecución anteriores.
 6. Anclar cada invariante a un test; añadir un paquete de admisión sin protagonista ni TRAITS/S.O.F.I.A.; ejecutar regresiones y `tools/check_project.py`.
 

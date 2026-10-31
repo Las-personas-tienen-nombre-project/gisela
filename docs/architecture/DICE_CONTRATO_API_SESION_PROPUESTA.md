@@ -1,11 +1,11 @@
-# DICE — Contrato de sesión e interfaz pública (propuesta)
+# DICE: Contrato de sesión e interfaz pública (propuesta)
 
 **Proyecto:** GISELA, motor general de historias y juegos interactivos  
 **Fecha:** 30 de octubre de 2026  
-**Estado:** PROPUESTA DE API pública todavía no implementada. Ya existe núcleo DICE y adaptador interno TRAITS–DICE; no existe aún `pending_evaluation` ni tirada visible.
-**Relación:** complemento técnico de ADR-019 (revisión 2); no sustituye ADR-001–008, 012–014 ni el contrato v1.2.
+**Estado:** PROPUESTA DE API pública todavía no implementada. Ya existe núcleo DICE y adaptador interno TRAITS-DICE; no existe aún `pending_evaluation` ni tirada visible.
+**Relación:** complemento técnico de ADR-019 (revisión 2); no sustituye ADR-001-008, 012-014 ni el contrato v1.2.
 
-**Precisión E0/E1:** las menciones históricas al «jugador» son ejemplos, no una restricción del solicitante: pueden llamar clientes, servicios u otra instancia de GISELA, siempre a través de la autoridad confiable del anfitrión. E1 reservó v1.4 para autoría sin habilitar sesiones. Si E3 cambia un contrato de sesión ya ejecutable en E2, debe versionarlo explícitamente y no reinterpretar v1.4.
+**Precisión E0/E1:** las menciones históricas al "jugador" son ejemplos, no una restricción del solicitante: pueden llamar clientes, servicios u otra instancia de GISELA, siempre a través de la autoridad confiable del anfitrión. E1 reservó v1.4 para autoría sin habilitar sesiones. Si E3 cambia un contrato de sesión ya ejecutable en E2, debe versionarlo explícitamente y no reinterpretar v1.4.
 
 ## 1. Decisiones vigentes y alcance
 

@@ -1,4 +1,4 @@
-# GISELA — Informe técnico de procedencia y admisión v0.2
+# GISELA: Informe técnico de procedencia y admisión v0.2
 
 **Fecha:** 29 de octubre de 2026  
 **Origen:** schemas 1.1 + validador semántico v0.1  
@@ -44,4 +44,4 @@ El parser estricto evita que el último valor de una clave duplicada sobrescriba
 
 La admisión no comprueba atomicidad real, rollback, reacciones dinámicas, secretos de `Observe`, reconstrucción de transacciones pendientes, cálculo del digest, vectores de RNG ni migración de versiones anteriores. Los snapshots de `examples/` continúan siendo estructurales, no necesariamente sesiones válidas. Los warnings `DIGEST_UNVERIFIED` y `REPLAY_UNVERIFIED` conservan su significado.
 
-**Pendiente antes del ejecutor:** definir una canonicalización de digest, vectores de RNG y políticas de presupuesto de ejecución. La admisión no constituye un segundo subsistema de ejecución y no contradice ADR-001–014; ADR-015 sigue pendiente de aprobación expresa.
+**Pendiente antes del ejecutor:** definir una canonicalización de digest, vectores de RNG y políticas de presupuesto de ejecución. La admisión no constituye un segundo subsistema de ejecución y no contradice ADR-001-014; ADR-015 sigue pendiente de aprobación expresa.

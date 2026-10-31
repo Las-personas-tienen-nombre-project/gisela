@@ -1,4 +1,4 @@
-# E3 — Informe de implementación, pruebas y auditoría
+# E3: Informe de implementación, pruebas y auditoría
 
 **Base:** `GISELA_E2_codigo_integrado.zip`, que contiene E2 v1.4 y ADR-022. Este documento no implica modificaciones al repositorio local del autor.
 

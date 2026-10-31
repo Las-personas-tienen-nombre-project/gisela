@@ -1,4 +1,4 @@
-# TRAITS y ALBERTO — Persistencia y operaciones de asignación (PROPUESTA)
+# TRAITS y ALBERTO: Persistencia y operaciones de asignación (PROPUESTA)
 
 **Proyecto:** GISELA, motor general para distintos juegos.
 **Estado:** contrato de diseño; la persistencia y operaciones básicas se implementaron para GISELA v1.3. Los sucesos tipados y capacidades futuras siguen propuestos. Véase `TRAITS_DICE_INTEGRACION_FASE_1.md`.
@@ -29,10 +29,10 @@ Un mismo rasgo puede estar asignado a varias entidades. Esto no significa que co
 
 ## 3. Inicialización y representación efectiva
 
-**Propuesta:** adoptar el mismo patrón general de «definición inicial inmutable / instancia mutable» que S.O.F.I.A., sin introducir un archivo de estado exclusivo de TRAITS.
+**Propuesta:** adoptar el mismo patrón general de "definición inicial inmutable / instancia mutable" que S.O.F.I.A., sin introducir un archivo de estado exclusivo de TRAITS.
 
 1. **Carta (`cards[]`)**: puede declarar `traits: [trait_id, ...]` como valor predeterminado para futuras instancias de esa carta. Si falta, el predeterminado es `[]`.
-2. **Instancia del `initial_state`**: puede declarar `traits` para **reemplazar completamente** el predeterminado de su carta; la ausencia significa «heredar de la carta», pero `[]` explícito significa «comenzar sin rasgos».
+2. **Instancia del `initial_state`**: puede declarar `traits` para **reemplazar completamente** el predeterminado de su carta; la ausencia significa "heredar de la carta", pero `[]` explícito significa "comenzar sin rasgos".
 3. **Estado confirmado (`session.world`)**: para entidades compatibles, **materializar siempre** `traits` como lista sin repetidos, normalizada en orden canónico. Nunca reconstruir rasgos actuales desde la carta al restaurar el guardado.
 4. **Creación durante la partida (`create_instance`)**: la entidad creada hereda los rasgos predeterminados de su carta y se valida la capacidad. En v1, `create_instance` no lleva sobreescritura adicional de rasgos; para cambiarlos se usa una operación explícita posterior en la misma transacción, si corresponde.
 5. **Restauración**: el estado confirmado contiene el conjunto actual; la carta solo sirve como definición y referencia. La identidad del paquete y su versión/digest se validan, sin rehacer asignaciones desde la carta.
@@ -77,7 +77,7 @@ Si un juego necesita saber **cuándo, por qué o cuántas veces** cambió un ras
 
 **Idempotencia propuesta:** repetir `assign_trait` sobre un rasgo ya presente y `remove_trait` sobre uno ya ausente son operaciones válidas sin cambio efectivo, sin liberar/consumir capacidad adicional y sin disparar nuevos eventos de cambio. Aunque sea idempotente, una referencia a un rasgo o entidad **inexistentes** sigue siendo un error, no una operación silenciosamente aceptada. `has_trait` exige una entidad y un rasgo conocidos, aun cuando el resultado sea falso.
 
-**Orden de validación:** referencias → clase de entidad → definición y exclusiones → capacidad → mutación del borrador → sucesos de cambio efectivo. La validación previa al cambio impide escribir un estado transitoriamente inválido para «arreglarlo después».
+**Orden de validación:** referencias → clase de entidad → definición y exclusiones → capacidad → mutación del borrador → sucesos de cambio efectivo. La validación previa al cambio impide escribir un estado transitoriamente inválido para "arreglarlo después".
 
 **Límite:** `max_traits_per_entity`, predeterminado en **5** en el manifiesto o perfil de TRAITS del juego. Contar *todos* los rasgos asignados, sean pertinentes o no. Los rasgos circunstanciales que no son asignaciones no ocupan cupo. Valor 0 podría deshabilitar asignaciones si el contrato final lo admite; el techo numérico de seguridad queda por acordar.
 
@@ -85,7 +85,7 @@ Si un juego necesita saber **cuándo, por qué o cuántas veces** cambió un ras
 
 ### 4.1. Cambiar rasgos con capacidad completa
 
-Si una entidad tiene sus cinco espacios ocupados y el autor desea sustituir un rasgo, la secuencia explícita `remove_trait(A)` → `assign_trait(B)` **dentro de una misma transacción** resulta válida si cada operación satisface sus precondiciones; si la segunda falla, se revierte también el retiro. No introducir una operación implícita «reemplazar el peor rasgo».
+Si una entidad tiene sus cinco espacios ocupados y el autor desea sustituir un rasgo, la secuencia explícita `remove_trait(A)` → `assign_trait(B)` **dentro de una misma transacción** resulta válida si cada operación satisface sus precondiciones; si la segunda falla, se revierte también el retiro. No introducir una operación implícita "reemplazar el peor rasgo".
 
 ### 4.2. Sucesos y reacciones
 

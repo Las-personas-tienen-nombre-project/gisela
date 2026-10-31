@@ -1,4 +1,4 @@
-# ADR-020 — Frontera de solicitantes, confirmación y persistencia E0
+# ADR-020: Frontera de solicitantes, confirmación y persistencia E0
 
 **Estado:** aplicada en la implementación Python E0; **no** autoriza por sí sola una red ni `evaluate`.
 

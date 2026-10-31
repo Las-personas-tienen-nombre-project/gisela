@@ -45,7 +45,7 @@ Ejemplo: Alberto tiene una linterna. Si la entrega, deja de cumplirse ese requis
 - `distinct`: al menos N hechos distintos de una lista. Registrar dos veces el mismo hecho cuenta una sola vez.
 - `weighted`: suma de pesos de hechos distintos. La repetición de un hecho no vuelve a sumar.
 
-Estos dos últimos son una generalización limitada del «alambique» usado por Aureus Gaj en *Roadwarden*: distintos aportes pueden llegar a un mismo resultado sin multiplicar ramas argumentales. Los umbrales no pueden superar el máximo declarable y se validan al compilar.
+Estos dos últimos son una generalización limitada del "alambique" usado por Aureus Gaj en *Roadwarden*: distintos aportes pueden llegar a un mismo resultado sin multiplicar ramas argumentales. Los umbrales no pueden superar el máximo declarable y se validan al compilar.
 
 ## 5. Ejemplo declarativo
 
