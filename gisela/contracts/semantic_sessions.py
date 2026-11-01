@@ -1,8 +1,8 @@
 """Validación semántica, separada por responsabilidad."""
 from __future__ import annotations
-try:
+if __package__:
     from .semantic_shared import *
-except ImportError:
+else:  # Compatibilidad de ejecución directa desde contracts/
     from semantic_shared import *
 
 class SessionsMixin:

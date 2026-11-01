@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: gisela-narrative-engine
-Version: 0.1.2
+Version: 0.1.333
 Summary: Independent transactional narrative engine
 License-Expression: Apache-2.0
 Requires-Python: >=3.10
@@ -187,3 +187,16 @@ This includes demonstration and testing materials, such as *El faro de niebla* a
 These materials are included solely for demonstration, development, and testing purposes. Their inclusion does not grant permission to modify, redistribute, republish, or commercially exploit them without prior authorization from the copyright holder.
 
 This restriction does not affect the rights granted to the GISELA software under the Apache License 2.0.
+
+
+### Dependencias nativas en consumidores Ren'Py
+
+GISELA se distribuye como biblioteca Python independiente. El SDK Ren'Py usa
+su propio intérprete; si el consumidor incorpora dependencias a `python-packages`,
+debe elegir wheels de acuerdo con la versión, el ABI y la plataforma del SDK.
+Una extensión `cp314` no funciona dentro de CPython 3.12. No se necesita
+instalar `pip` dentro del SDK. La preparación y las pruebas del juego corresponden
+al repositorio consumidor. Las importaciones internas de contratos en modo paquete
+conservan errores de dependencias, sin fallbacks que los conviertan en errores de
+módulo local. Para ejecución directa de los CLI históricos se mantiene la vía
+explícita independiente de `__package__`.

@@ -1,9 +1,9 @@
 """E1: admisión semántica de evaluaciones, sin ejecutar DICE ni el mundo."""
 from __future__ import annotations
-try:
+if __package__:
     from .semantic_shared import RefLocation
     from .evaluation_plan import EvaluationPlanError, profile_catalog, normalize_evaluation
-except ImportError:
+else:
     from semantic_shared import RefLocation
     from evaluation_plan import EvaluationPlanError, profile_catalog, normalize_evaluation
 

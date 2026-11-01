@@ -10,9 +10,9 @@ import sys
 from typing import Any
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
-try:
+if __package__:
     from .canonical import package_digest, CanonicalError
-except ImportError:
+else:
     from canonical import package_digest, CanonicalError
 ROOT = Path(__file__).resolve().parent
 COLLECTION_KINDS = {'locations':'location', 'characters':'character', 'objects':'object',

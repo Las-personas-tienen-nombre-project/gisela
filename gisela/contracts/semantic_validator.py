@@ -1,26 +1,20 @@
 """Puerta pública de validación semántica GISELA v1.2."""
 from __future__ import annotations
-try:
+if __package__:
     from .semantic_shared import *
     from .semantic_definitions import DefinitionsMixin
     from .semantic_expressions import ExpressionsMixin
     from .semantic_packages import PackagesMixin
     from .semantic_sessions import SessionsMixin
-except ImportError:
+    from .semantic_traits import TraitsMixin
+    from .semantic_evaluations import EvaluationsMixin
+else:  # Compatibilidad con las herramientas CLI históricas
     from semantic_shared import *
     from semantic_definitions import DefinitionsMixin
     from semantic_expressions import ExpressionsMixin
     from semantic_packages import PackagesMixin
     from semantic_sessions import SessionsMixin
-
-try:
-    from .semantic_traits import TraitsMixin
-except ImportError:
     from semantic_traits import TraitsMixin
-
-try:
-    from .semantic_evaluations import EvaluationsMixin
-except ImportError:
     from semantic_evaluations import EvaluationsMixin
 
 from functools import lru_cache

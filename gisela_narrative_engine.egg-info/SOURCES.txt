@@ -36,6 +36,7 @@ gisela/contracts/test_cli_description_pa001.py
 gisela/contracts/test_contracts.py
 gisela/contracts/test_determinism.py
 gisela/contracts/test_e1_evaluations_v14.py
+gisela/contracts/test_package_import_errors.py
 gisela/contracts/test_semantic_validator.py
 gisela/contracts/test_traits_schema_v13.py
 gisela/contracts/verify_contracts.py

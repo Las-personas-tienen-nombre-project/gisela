@@ -13,10 +13,10 @@ import json
 from pathlib import Path
 import sys
 
-try:
+if __package__:
     from .semantic_validator import Diagnostic, Validator, load_json_strict
     from .canonical import canonical_json, package_digest, CanonicalError
-except ImportError:  # Ejecución directa desde el directorio contracts
+else:  # Ejecución directa desde el directorio contracts
     from semantic_validator import Diagnostic, Validator, load_json_strict
     from canonical import canonical_json, package_digest, CanonicalError
 
