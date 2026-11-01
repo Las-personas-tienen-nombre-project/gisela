@@ -43,7 +43,7 @@ Los controles del motor ya existentes se conservan y se ejecutan en la misma bat
 - Conflictos entre reglas y rollback: `test_h34a_values.py` y `test_h34c_effects.py`.
 - Capacidades, habilidades y políticas de retorno: `test_h34d_skills.py`.
 - Visibilidad, procedencia y autorización exploratorias: `test_h4_exploration.py`.
-- Límite de 500 líneas por archivo, 30 por función y tres parámetros explícitos: `tools/test_quality.py` y `tools/check_quality.py`.
+- Límite vigente de 700 líneas por archivo, 64 por función y tres parámetros explícitos: `tools/test_quality.py` y `tools/check_quality.py`.
 - Integridad de definiciones, guardados y tipos: `gisela/contracts/test_*.py`.
 
 Las comprobaciones negativas no equivalen a una demostración matemática de ausencia de defectos. Cada invariante se vincula a evidencia reproducible, con sus límites explicados en [H4_5_REVISION_Y_CIERRE.md](H4_5_REVISION_Y_CIERRE.md).

@@ -25,15 +25,14 @@ The result total is calculated from base plus bonus plus die value minus difficu
 ```python
 from dice import compile_profile, evaluate
 
-profile = compile_profile({
-    "schema_version": "dice.profile.v1",
-    "id": "check",
-    "mode": "deterministic",
-    "bands": [
-        {"id": "fail", "min": -100},
-        {"id": "pass", "min": 5}
-    ]
-})
+profile = compile_profile(
+    {
+        "schema_version": "dice.profile.v1",
+        "id": "check",
+        "mode": "deterministic",
+        "bands": [{"id": "fail", "min": -100}, {"id": "pass", "min": 5}],
+    }
+)
 result = evaluate(profile, {"base": 4, "bonus": 2, "difficulty": 0})
 assert result["outcome"] == "pass"
 assert result["rolls"] == []

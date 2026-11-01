@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """GLAUQUIR: GISELA's Lightweight Access Utility for Queries,
 User Interaction, and Rendering. Cliente textual oficial de GISELA.
 """
+
 from play_mvp import main
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     raise SystemExit(main())

@@ -21,25 +21,31 @@ This example does not need a GISELA session.
 ```python
 from traits import compile_catalog, evaluate
 
-catalog = compile_catalog({
-    "schema_version": "traits.v1",
-    "traits": [{
-        "id": "fragile",
-        "entity_kinds": ["object"],
-        "contributions": [{
-            "id": "handling",
-            "when": {"role": "target", "all_tags": ["handling"]},
-            "add": {"slot": "difficulty", "amount": 2}
-        }]
-    }]
-})
+catalog = compile_catalog(
+    {
+        "schema_version": "traits.v1",
+        "traits": [
+            {
+                "id": "fragile",
+                "entity_kinds": ["object"],
+                "contributions": [
+                    {
+                        "id": "handling",
+                        "when": {"role": "target", "all_tags": ["handling"]},
+                        "add": {"slot": "difficulty", "amount": 2},
+                    }
+                ],
+            }
+        ],
+    }
+)
 request = {
     "schema_version": "traits.evaluation.v1",
-    "participants": [{
-        "entity": "vase", "kind": "object", "role": "target", "traits": ["fragile"]
-    }],
+    "participants": [
+        {"entity": "vase", "kind": "object", "role": "target", "traits": ["fragile"]}
+    ],
     "tags": ["handling"],
-    "slots": ["difficulty"]
+    "slots": ["difficulty"],
 }
 result = evaluate(catalog, request)
 assert result["totals"] == {"difficulty": 2}

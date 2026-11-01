@@ -131,9 +131,15 @@ Current packages use v1.5 for visible evaluation support. Earlier v1.2, v1.3, an
 
 ## Tests
 
-Desde la raíz del repositorio, el verificador oficial de GISELA ejecuta pruebas
-unitarias del motor, contratos, bibliotecas y herramientas, calidad, enlaces e
-invariantes E0–E3:
+Instale las dependencias de desarrollo desde la raíz del repositorio:
+
+```bash
+python -m pip install -e .
+python -m pip install -r requirements-dev.txt
+```
+
+El verificador oficial ejecuta pruebas del motor, contratos, bibliotecas y
+herramientas, Ruff, Radon, Bandit, calidad estructural, enlaces e invariantes E0–E3:
 
 ```bash
 python tools/check_gisela.py
@@ -148,8 +154,83 @@ python tools/check_gisela.py --full
 Desde otro directorio, invoque la **ruta absoluta del script**; este localiza
 internamente la raíz y ejecuta las comprobaciones desde allí. Los recorridos
 requieren las dependencias de desarrollo indicadas en `requirements-dev.txt`.
+Ruff, la complejidad D–F y los hallazgos Bandit bloqueantes hacen fallar el kit.
+El índice MI y las 19 advertencias Bandit Low revisadas en pruebas son informativos.
 La guía de verificación y sus límites están en
 [Verificación independiente](docs/guides/VERIFICACION_GISELA.md).
+
+## Versioning and releases
+
+GISELA is versioned and published independently from its clients, including the Ren'Py demo. The Python distribution version is declared in `pyproject.toml` under `[project] version`. Git release tags use the form `vX.Y.Z` and **must correspond exactly** to distribution version `X.Y.Z`. This is separate from narrative contract versions such as `v1.5`: changing the Python package version does not automatically change a schema contract.
+
+### Prepare a release
+
+1. Work on a branch and review the intended changes. Update `[project] version` in `pyproject.toml` to the **new** distribution version, and update release-specific documentation where applicable.
+2. Install development dependencies and run the official checks. Run the extended narrative walkthroughs when the release changes behavior or compatibility:
+
+```bash
+python -m pip install -e .
+python -m pip install -r requirements-dev.txt
+python tools/check_gisela.py
+python tools/check_gisela.py --full
+```
+
+3. Build a wheel into a clean output directory and inspect its embedded metadata. The following commands check the version without trusting only the local `pyproject.toml`:
+
+```bash
+python -m pip wheel --no-deps --wheel-dir /tmp/gisela-release .
+python - /tmp/gisela-release <<'PYTHON'
+from pathlib import Path
+from email.parser import Parser
+import sys
+from zipfile import ZipFile
+
+wheels = list(Path(sys.argv[1]).glob('gisela_narrative_engine-*.whl'))
+if len(wheels) != 1:
+    raise SystemExit(f'Expected one GISELA wheel; found {len(wheels)}')
+with ZipFile(wheels[0]) as archive:
+    files = [name for name in archive.namelist() if name.endswith('.dist-info/METADATA')]
+    if len(files) != 1:
+        raise SystemExit('Missing or ambiguous wheel metadata')
+    info = Parser().parsestr(archive.read(files[0]).decode('utf-8'))
+    version = info['Version']
+    print(f"Distribution: {info['Name']} {version}")
+    if version != wheels[0].name.split('-')[1]:
+        raise SystemExit('Wheel filename and metadata versions differ')
+PYTHON
+```
+
+Use a newly emptied `/tmp/gisela-release` directory for each verification so an old wheel cannot be mistaken for the new release. For stronger release checks, also install the wheel in a fresh virtual environment and test imports from **outside** the repository.
+
+### Publish the Git tag
+
+After all required checks pass, commit and push the release to the intended branch. Tag the exact commit you intend to release (illustrative version shown; substitute the actual new version):
+
+```bash
+git add .
+git commit -m "release: GISELA 0.1.5"
+git push origin HEAD
+git tag -a v0.1.5 -m "GISELA v0.1.5"
+git push origin v0.1.5
+```
+
+Verify the tag content after publication:
+
+```bash
+git show v0.1.5:pyproject.toml
+```
+
+**Never move or reuse a published release tag.** If a tag points to a commit whose package metadata is wrong, publish a correction under a new version and tag. For example, `v0.1.3` was published with distribution version `0.1.333`; the corrective release uses `v0.1.4` and `0.1.4`.
+
+### Update downstream consumers
+
+The Ren'Py demo pins GISELA to a specific Codeberg tag. When publishing a new GISELA version, update the demo's `pyproject.toml` and the `VERSION` and `SOURCE` declarations in `tools/build_renpy_h5.py`, then rebuild and verify with the real Ren'Py SDK. GISELA itself does not install or control Ren'Py. A future public PyPI release should be validated separately before consumers switch from Git references to a PyPI requirement.
+
+### Native dependencies in Ren'Py consumers
+
+The Ren'Py SDK carries its own Python runtime. Consumers embedding GISELA dependencies under Ren'Py's `python-packages` must select wheels compatible with that runtime's Python version, ABI, operating system, and architecture. A `cp314` extension cannot be loaded by CPython 3.12. Installing `pip` into the SDK is not necessary; the downstream build process is responsible for preparation and runtime tests.
+
+With `referencing` and CPython 3.12, downstream packaging must also provide a suitable `typing_extensions` for `TypeVar(default=...)`. GISELA's semantic-contract imports preserve genuine missing-dependency errors rather than rewriting them as missing local modules. Direct execution of historical CLI modules continues to use the explicit `__package__` path.
 
 ## Known limits
 
@@ -175,16 +256,3 @@ This includes demonstration and testing materials, such as *El faro de niebla* a
 These materials are included solely for demonstration, development, and testing purposes. Their inclusion does not grant permission to modify, redistribute, republish, or commercially exploit them without prior authorization from the copyright holder.
 
 This restriction does not affect the rights granted to the GISELA software under the Apache License 2.0.
-
-
-### Dependencias nativas en consumidores Ren'Py
-
-GISELA se distribuye como biblioteca Python independiente. El SDK Ren'Py usa
-su propio intérprete; si el consumidor incorpora dependencias a `python-packages`,
-debe elegir wheels de acuerdo con la versión, el ABI y la plataforma del SDK.
-Una extensión `cp314` no funciona dentro de CPython 3.12. No se necesita
-instalar `pip` dentro del SDK. La preparación y las pruebas del juego corresponden
-al repositorio consumidor. Las importaciones internas de contratos en modo paquete
-conservan errores de dependencias, sin fallbacks que los conviertan en errores de
-módulo local. Para ejecución directa de los CLI históricos se mantiene la vía
-explícita independiente de `__package__`.

@@ -1,0 +1,100 @@
+[
+  {
+    "path": "dice/tests/test_dice_hardening.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 1,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "dice/tests/test_dice_hardening.py",
+    "rule": "B603",
+    "source": "result = subprocess.run(",
+    "count": 1,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "gisela/contracts/test_contracts.py",
+    "rule": "B105",
+    "source": "\"detail\": {\"draft_world\": {\"secret\": 1}},",
+    "count": 1,
+    "reason": "Dato sintético de prueba, no credencial."
+  },
+  {
+    "path": "gisela/engine/tests/test_h45_cli.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 3,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "gisela/engine/tests/test_h45_cli.py",
+    "rule": "B603",
+    "source": "run = subprocess.run(",
+    "count": 3,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "gisela/engine/tests/test_h4_exploration.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 1,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "gisela/engine/tests/test_h4_exploration.py",
+    "rule": "B603",
+    "source": "reload = subprocess.run(",
+    "count": 1,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "gisela/engine/tests/test_h4_exploration.py",
+    "rule": "B603",
+    "source": "result = subprocess.run(",
+    "count": 2,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "mary/tests/test_mary.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 1,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "mary/tests/test_mary.py",
+    "rule": "B603",
+    "source": "outcome = subprocess.run(",
+    "count": 1,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "narrative_conditions/tests/test_independence.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 1,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "narrative_conditions/tests/test_independence.py",
+    "rule": "B603",
+    "source": "result = subprocess.run(",
+    "count": 1,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  },
+  {
+    "path": "traits/tests/test_traits.py",
+    "rule": "B404",
+    "source": "import subprocess",
+    "count": 1,
+    "reason": "Importación de subprocess en prueba de integración."
+  },
+  {
+    "path": "traits/tests/test_traits.py",
+    "rule": "B603",
+    "source": "result = subprocess.run(",
+    "count": 1,
+    "reason": "Proceso de prueba con argv fijo, sin shell y con código de retorno comprobado."
+  }
+]

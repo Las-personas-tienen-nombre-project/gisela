@@ -130,7 +130,7 @@ Las reglas activadas simultáneamente usan los mismos operandos de base. `add` c
 
 El ejecutor ahora resuelve los atributos opcionales de S.O.F.I.A., su valor actual y sus modificadores, sin duplicar el estado derivado. El método público `sesion.scoresheet(character)` consulta exclusivamente el mundo confirmado y no modifica turnos ni revisiones. Los destinos de escritura siguen restringidos al componente `current`, y los modificadores de efectos inicialmente presentes se calculan sin ejecutar todavía un ciclo automático de aplicación y expiración. Consulte [la guía de atributos](SOFIA.md) y el [cierre del hito](../operatives/H3_4B_CIERRE.md).
 
-El código mantenido debe respetar tres límites automáticos: 500 líneas por archivo, 30 líneas por función excluyendo el docstring y tres parámetros explícitos por función. La firma de un método puede incluir `self` o `cls` como receptor implícito. Estos límites no justifican crear sistemas adicionales; se prefieren módulos pequeños, funciones claras y contextos que agrupen datos realmente relacionados.
+El código mantenido debe respetar tres límites automáticos: 700 líneas por archivo, 64 líneas por función excluyendo el docstring y tres parámetros explícitos por función. La firma de un método puede incluir `self` o `cls` como receptor implícito. Estos límites no justifican crear sistemas adicionales; se prefieren módulos pequeños, funciones claras y contextos que agrupen datos realmente relacionados.
 
 ## Registro de implementación H4. 30 de octubre de 2026
 

@@ -1,10 +1,12 @@
 """Fallo tipado durante creación o restauración de sesiones."""
+
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class EngineFailure(Exception):
     """Impide entregar una sesión inconsistente al anfitrión."""
+
     code: str
     message: str
 

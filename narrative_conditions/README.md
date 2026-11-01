@@ -14,12 +14,9 @@
 from narrative_conditions import compare, evaluate
 
 assert compare(4, 5, "lt")
-assert evaluate({
-    "all": [
-        {"constant": True},
-        {"not": {"constant": False}}
-    ]
-}, lambda query: False)
+assert evaluate(
+    {"all": [{"constant": True}, {"not": {"constant": False}}]}, lambda query: False
+)
 ```
 
 This example uses only the pure operations. A domain predicate needs a caller supplied resolver. Do not invent a universal resolver that can inspect every character and private value.
