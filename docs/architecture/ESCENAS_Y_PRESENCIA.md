@@ -26,7 +26,7 @@ Las acciones asociadas a un elemento solo se ofrecen si el elemento es visible. 
 
 ## Inspección textual
 
-`scene.elements[].description` es un `localized_text` opcional. GISELA lo proyecta como `Observe.elements[].description` únicamente cuando el elemento está visible. `mirar ELEMENTO` en GLAUQUIR usa esa descripción, o la ficha pública autorizada de su `entity` si no existe una descripción propia; nunca ejecuta una operación. El verbo `examinar` sigue priorizando una acción declarada, que puede producir efectos. Una consulta no registra un hecho, no consume RNG ni avanza el reloj.
+`scene.elements[].description` es un `localized_text` opcional. GISELA lo proyecta como `Observe.elements[].description` únicamente cuando el elemento está visible. `mirar ELEMENTO` en GLAUQUIR usa esa descripción, o la ficha pública autorizada de su `entity` si no existe una descripción propia; nunca ejecuta una operación. `examinar ACCIÓN` consulta las anotaciones sin ejecutar la oferta si `ACCIÓN` identifica inequívocamente por ID o etiqueta una acción visible; también informa si no hay notas. En los demás casos, `examinar` prioriza una acción declarada, que puede producir efectos, antes de consultar una ficha o elemento público. Una consulta no registra un hecho, no consume RNG ni avanza el reloj.
 
 Ejemplo declarativo:
 

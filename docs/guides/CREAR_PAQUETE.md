@@ -38,7 +38,7 @@ Juega desde la consola.
 python tools/glauquir.py --package mi_historia.package.json
 ```
 
-La consola muestra el primer texto. Escribe `1` para avanzar. Cuando aparezcan las opciones, escribe `1` para abrir la puerta o `2` para seguir de largo. Escribe `1` otra vez para avanzar al final. El resultado será `Final: adentro` o `Final: afuera`.
+La consola muestra el primer texto. Escribe `1` para avanzar. Cuando aparezcan las opciones, escribe `1` para abrir la puerta o `2` para seguir de largo. Escribe `1` otra vez para avanzar al final. El resultado será `Final: Dentro de la pieza` o `Final: Al final del pasillo`, según el título declarado para cada final.
 
 También puedes recorrer cada camino sin escribir opciones durante la partida.
 
