@@ -151,6 +151,20 @@ Para añadir los seis recorridos narrativos y sus restauraciones:
 python tools/check_gisela.py --full
 ```
 
+Si el kit informa `No module named ruff`, `radon` o `bandit`, faltan
+dependencias de desarrollo en el entorno virtual que ejecuta el script. Desde
+la raíz del repositorio, instálelas y repita la verificación con ese mismo
+intérprete:
+
+```bash
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python tools/check_gisela.py --full
+```
+
+El fallo de `tools/test_static_quality.py` también puede deberse a que Ruff no
+está instalado en ese entorno. No es necesario cambiar las políticas estáticas
+ni las pruebas para resolver una dependencia ausente.
+
 Desde otro directorio, invoque la **ruta absoluta del script**; este localiza
 internamente la raíz y ejecuta las comprobaciones desde allí. Los recorridos
 requieren las dependencias de desarrollo indicadas en `requirements-dev.txt`.
