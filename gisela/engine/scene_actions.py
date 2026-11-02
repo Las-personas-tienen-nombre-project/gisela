@@ -26,7 +26,9 @@ def _element_shown(session, state: dict, element: dict) -> bool:
     return "entity" not in element or present(state, scene, element["entity"])
 
 
-def sources(session, state: dict, language: str | None = None) -> list[tuple[dict, dict]]:
+def sources(
+    session, state: dict, language: str | None = None
+) -> list[tuple[dict, dict]]:
     """Construye acciones y procedencias inequívocas de la escena actual."""
     scene = session._scenes[state["current_scene"]]
     from .projection import text
@@ -131,7 +133,9 @@ def _actors(session, scene: dict, language: str | None = None) -> list[dict]:
         card = session._cards[instance["card"]]
         display = {
             "id": actor.get("public_id", identifier),
-            "name": text(card["title"], session, language) if "title" in card else identifier,
+            "name": text(card["title"], session, language)
+            if "title" in card
+            else identifier,
         }
         color, _ = explicit_color(instance, card, actor)
         if color is not None:

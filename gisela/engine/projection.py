@@ -14,7 +14,11 @@ def text(value: object, session=None, language: str | None = None) -> str:
     """
     if isinstance(value, str):
         return value
-    if isinstance(value, dict) and set(value) == {"text"} and isinstance(value["text"], str):
+    if (
+        isinstance(value, dict)
+        and set(value) == {"text"}
+        and isinstance(value["text"], str)
+    ):
         return value["text"]
     if isinstance(value, dict) and set(value) == {"text_key"} and session is not None:
         key = value["text_key"]
@@ -94,7 +98,9 @@ def _evaluation(session, view: dict, language: str | None = None) -> None:
                     "kind": "resolve_evaluation_auxiliary",
                     "action_id": "resolve_" + candidate,
                     "id": candidate,
-                    "label": text(card["title"], session, language) if card else candidate,
+                    "label": text(card["title"], session, language)
+                    if card
+                    else candidate,
                     "enabled": True,
                 }
             )
@@ -110,8 +116,9 @@ def _evaluation(session, view: dict, language: str | None = None) -> None:
         )
 
 
-def _choice(session, step: dict, view: dict, language: str | None = None) -> None:
+def _choice(session, view: dict, context: tuple[dict, str | None]) -> None:
     """Presenta únicamente las opciones visibles y sus estados habilitados."""
+    step, language = context
     state, definitions = session._state, session._definitions
     view["content"] = {"kind": "choice"}
     if "prompt" in step:
@@ -156,11 +163,14 @@ def _node(session, view: dict, language: str | None = None) -> None:
     """Construye el contenido observable del nodo activo."""
     step = session._current_step(session._state)
     if step["op"] == "choice":
-        _choice(session, step, view, language)
+        _choice(session, view, (step, language))
     elif step["op"] == "skill_window":
         _window(session, view, language)
     elif step["op"] in ("narrate", "dialogue"):
-        view["content"] = {"kind": step["op"], "text": text(step["text"], session, language)}
+        view["content"] = {
+            "kind": step["op"],
+            "text": text(step["text"], session, language),
+        }
         if step["op"] == "dialogue":
             view["content"]["speaker"] = step["speaker"]
         view["actions"].append(
@@ -197,8 +207,14 @@ def observe(session, language: str | None = None) -> dict:
     elif state["status"] == "ended":
         view["content"] = {"kind": "ending", "ending": state["ending"]}
         if session._package["manifest"]["format_version"] == "1.5":
-            ending = next((item for item in session._package["endings"]
-                           if item["id"] == state["ending"]), None)
+            ending = next(
+                (
+                    item
+                    for item in session._package["endings"]
+                    if item["id"] == state["ending"]
+                ),
+                None,
+            )
             if ending and "title" in ending:
                 view["content"]["title"] = text(ending["title"], session, language)
     elif state["status"] == "exploring":

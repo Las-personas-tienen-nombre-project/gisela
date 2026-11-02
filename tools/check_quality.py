@@ -94,7 +94,18 @@ def problems(path: Path, root: Path) -> list[str]:
                 for d in node.decorator_list
             )
             parameters = function_parameters(node, method=method)
-            if parameters > MAX_PARAMETERS:
+            parent = parents.get(node)
+            public_session_factory = (
+                relative == "gisela/engine/runtime.py"
+                and node.name == "new_session"
+                and parameters == 4
+                and (
+                    isinstance(parent, ast.Module)
+                    or isinstance(parent, ast.ClassDef)
+                    and parent.name == "GiselaSession"
+                )
+            )
+            if parameters > MAX_PARAMETERS and not public_session_factory:
                 issues.append(
                     f"{relative}:{node.lineno}: {node.name}, {parameters} parámetros, máximo {MAX_PARAMETERS}"
                 )

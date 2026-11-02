@@ -111,8 +111,10 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
         for item in annotations:
             description = item["text"]
             if item["scope"] == "action":
-                offer = next((a for a in view["actions"]
-                              if a["action_id"] == item["action_id"]), None)
+                offer = next(
+                    (a for a in view["actions"] if a["action_id"] == item["action_id"]),
+                    None,
+                )
                 if offer is not None:
                     description = offer["label"] + ": " + description
             _line("  " + description, "information", styler)

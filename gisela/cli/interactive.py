@@ -108,18 +108,41 @@ class TextClient:
             return self._choose_candidates(select(view["actions"], rest))
         if name in ("ficha", "leer") and self._card(view, rest):
             return False
+        if self._developer_query(name, rest):
+            return False
+        if (
+            name in ("examinar", "inspeccionar")
+            and rest
+            and self._annotation(view, rest)
+        ):
+            return False
+        if name in ("ver", "mirar", "look") and rest and self._element(view, rest):
+            return False
+        candidates = match(view["actions"], name, rest)
+        if (
+            not candidates
+            and name == "examinar"
+            and (self._element(view, rest) or self._card(view, rest))
+        ):
+            return False
+        if not candidates:
+            candidates = select(view["actions"], raw)
+        return self._choose_candidates(candidates)
+
+    def _developer_query(self, name: str, rest: str) -> bool:
+        """Atiende las consultas diagnósticas sin enviar acciones."""
         if name in ("depurar", "consultar"):
             if self.developer:
                 inspect(self.session, rest.split())
             else:
                 print("Active --developer para consultar datos internos.")
-            return False
+            return True
         if name in ("hechos", "relacion", "propiedad"):
             if self.developer:
                 inspect(self.session, [name, *rest.split()])
             else:
                 print("Active --developer para consultar datos internos.")
-            return False
+            return True
         if name == "disposicion":
             if not self.developer:
                 print("Active --developer para consultar la disposición.")
@@ -136,21 +159,8 @@ class TextClient:
                     )
                 except WorldError as exc:
                     print("Consulta rechazada: " + str(exc))
-            return False
-        if name in ("examinar", "inspeccionar") and rest and self._annotation(view, rest):
-            return False
-        if name in ("ver", "mirar", "look") and rest and self._element(view, rest):
-            return False
-        candidates = match(view["actions"], name, rest)
-        if (
-            not candidates
-            and name == "examinar"
-            and (self._element(view, rest) or self._card(view, rest))
-        ):
-            return False
-        if not candidates:
-            candidates = select(view["actions"], raw)
-        return self._choose_candidates(candidates)
+            return True
+        return False
 
     def _basic(self, view: dict, name: str, rest: str) -> tuple[bool, object]:
         """Atiende comandos universales que no provocan acciones del juego."""
@@ -270,12 +280,18 @@ class TextClient:
     def _annotation(self, view: dict, requested: str) -> bool:
         """Inspección de acciones ya ofertadas; nunca consulta acciones ocultas."""
         target = normalize(requested)
-        candidates = [a for a in view["actions"]
-                      if target in (normalize(a["id"]), normalize(a["label"]))]
+        candidates = [
+            a
+            for a in view["actions"]
+            if target in (normalize(a["id"]), normalize(a["label"]))
+        ]
         if len(candidates) != 1:
             return False
-        notes = [note for note in view.get("annotations", [])
-                 if note.get("action_id") == candidates[0]["action_id"]]
+        notes = [
+            note
+            for note in view.get("annotations", [])
+            if note.get("action_id") == candidates[0]["action_id"]
+        ]
         if notes:
             print("\n" + self.styler.paint("information", "INFORMACIÓN"))
             for item in notes:

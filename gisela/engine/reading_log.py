@@ -15,13 +15,17 @@ def _display(session, state: dict) -> tuple[str, str, str] | None:
     if kind == "exploring":
         scene = session._scenes[state["current_scene"]]
         name = text(scene.get("title", scene["id"]), session)
-        description = text(scene["description"], session) if "description" in scene else ""
+        description = (
+            text(scene["description"], session) if "description" in scene else ""
+        )
         return "scene", scene["id"], "\n\n".join(x for x in (name, description) if x)
     if kind == "ended":
         end = next(
             (e for e in session._package["endings"] if e["id"] == state["ending"]), None
         )
-        name = text(end["title"], session) if end and "title" in end else state["ending"]
+        name = (
+            text(end["title"], session) if end and "title" in end else state["ending"]
+        )
         return "ending", state["ending"], name
     if kind == "node":
         step = session._current_step(state)
@@ -94,7 +98,9 @@ def action(session, state: dict, source: dict) -> None:
         )
         if previous:
             card = session._cards[previous["detail"]["card"]]
-            append(state, ("skill", source["skill_instance"], text(card["title"], session)))
+            append(
+                state, ("skill", source["skill_instance"], text(card["title"], session))
+            )
 
 
 def history(session, limit: int | None = None) -> list[dict]:

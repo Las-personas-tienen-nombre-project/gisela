@@ -15,7 +15,9 @@ from dataclasses import dataclass
 from .action_handler import act as execute_act
 from .runtime import GiselaSession
 
-_ALLOWED = frozenset({"act", "observe_player", "export_private", "debug_private", "observe_glauquir"})
+_ALLOWED = frozenset(
+    {"act", "observe_player", "export_private", "debug_private", "observe_glauquir"}
+)
 _ID = re.compile(r"^[a-z][a-z0-9_.-]{0,95}$")
 
 
@@ -170,7 +172,9 @@ class ExecutionGateway:
             self._permit(principal, "observe_player")
             return copy.deepcopy(self._session.observe(language))
 
-    def _observe_glauquir(self, principal: Principal, language: str | None = None) -> dict:
+    def _observe_glauquir(
+        self, principal: Principal, language: str | None = None
+    ) -> dict:
         with self._lock:
             self._permit(principal, "observe_player")
             self._permit(principal, "observe_glauquir")

@@ -2,6 +2,7 @@
 
 Los archivos de autoría no se consultan después de admitir el paquete.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -21,7 +22,7 @@ def assemble(source: dict, catalogs: dict[str, dict[str, str]]) -> dict:
         if language in embedded:
             raise ValueError("Catálogo duplicado: " + language)
         if not isinstance(entries, dict):
-            raise ValueError("Catálogo inválido: " + language)
+            raise TypeError("Catálogo inválido: " + language)
         embedded[language] = copy.deepcopy(entries)
     admit_package(result)  # Estructura, claves, idioma base, semántica.
     return result
@@ -31,8 +32,9 @@ def assemble_files(source: Path, directory: Path, destination: Path) -> str:
     """Lee JSON estricto, verifica admisión y emite una salida canónica."""
     if not directory.is_dir():
         raise ValueError("Directorio de catálogos inexistente")
-    catalogs = {file.stem: load_json_strict(file)
-                for file in sorted(directory.glob("*.json"))}
+    catalogs = {
+        file.stem: load_json_strict(file) for file in sorted(directory.glob("*.json"))
+    }
     if not catalogs:
         raise ValueError("No se encontraron catálogos JSON")
     package = assemble(load_json_strict(source), catalogs)

@@ -22,6 +22,7 @@ from .initialization import initial_state
 from .pending import DecisionReplay, DecisionRequired, EvaluationPause
 from .projection import observe as project_observe
 from .reactions import ReactionContext, settle
+from .session_restore import RestoreMixin
 from .skill_window import exhausted
 from .support import check_supported
 from .world import WorldError
@@ -30,10 +31,12 @@ from .world_values import WorldDefinitions
 MAX_AUTOMATIC_STEPS = 512
 
 
-class GiselaSession:
+class GiselaSession(RestoreMixin):
     """Autoridad de estado confirmado, proyección y transacción narrativa."""
 
-    def __init__(self, admitted: AdmittedPackage, state: dict, language: str | None = None):
+    def __init__(
+        self, admitted: AdmittedPackage, state: dict, language: str | None = None
+    ):
         """Copia definiciones y estado; rechaza formatos no ejecutables."""
         self._admitted = admitted
         self._package = admitted.materialize()
@@ -152,48 +155,6 @@ class GiselaSession:
         self._state = draft
         return self
 
-    @classmethod
-    def restore_session(
-        cls, admitted: AdmittedPackage, snapshot: dict, language: str | None = None
-    ) -> GiselaSession:
-        """Congela la entrada, valida y reconstruye sin confirmar borradores."""
-        frozen = copy.deepcopy(snapshot)
-        issues = Validator().validate_session(
-            frozen, admitted.materialize(), expected_digest=admitted.digest
-        )
-        errors = [i for i in issues if i.severity == "error"]
-        if errors:
-            raise EngineFailure(
-                "RESTORE_MISMATCH",
-                f"{errors[0].code} {errors[0].path}: {errors[0].message}",
-            )
-        session = cls(admitted, frozen, language)
-        if frozen["status"] == "preparing" and (
-            not (frozen.get("pending_transaction") or frozen.get("pending_evaluation"))
-            or (frozen.get("pending_transaction") or frozen.get("pending_evaluation"))[
-                "source"
-            ]["kind"]
-            != "session_start"
-        ):
-            raise EngineFailure(
-                "INVALID_STATE", "Preparación exige un inicio pendiente"
-            )
-        try:
-            if frozen["status"] == "node":
-                step = session._current_step(frozen)
-                if step["op"] not in ("narrate", "dialogue", "choice", "skill_window"):
-                    raise WorldError("INVALID_STATE", "Cursor no observable")
-            if frozen.get("pending_transaction"):
-                session._validate_replay(frozen)
-            if frozen.get("pending_evaluation"):
-                session._validate_evaluation_replay(frozen)
-            session._project_state(frozen)
-        except (WorldError, KeyError, TypeError, ValueError, StopIteration) as exc:
-            raise EngineFailure(
-                "RESTORE_MISMATCH", f"Proyección restaurada inválida: {exc}"
-            ) from exc
-        return session
-
     def _start_scene_entry(self, state: dict) -> None:
         """Valida una entrada exploratoria sin iniciar turno ficticio."""
         state["current_scene"] = self._package["manifest"]["entry"]["scene"]
@@ -207,54 +168,6 @@ class GiselaSession:
         self._validate_state(state)
         self._project_state(state)
         self._state = state
-
-    def _validate_replay(self, snapshot: dict) -> None:
-        """Comprueba que una espera guardada se reconstruya exactamente."""
-        pending = snapshot["pending_transaction"]
-        kind = pending["source"]["kind"]
-        expected = (
-            "voluntary"
-            if kind in ("choice_option", "skill_play", "scene_action")
-            else "mandatory"
-        )
-        if (
-            kind
-            in (
-                "choice_option",
-                "skill_play",
-                "scene_action",
-                "node_step",
-                "session_start",
-            )
-            and pending["origin"] != expected
-        ):
-            raise EngineFailure(
-                "RESTORE_MISMATCH", "Origen y cancelabilidad no coinciden"
-            )
-        draft = copy.deepcopy(snapshot)
-        del draft["pending_transaction"]
-        try:
-            self._execute_source(
-                draft, pending["source"], DecisionReplay(pending["answers"])
-            )
-        except DecisionRequired as required:
-            if required.request != pending["request"]:
-                raise EngineFailure(
-                    "RESTORE_MISMATCH", "Solicitud distinta de la reconstrucción"
-                )
-        except (WorldError, KeyError, TypeError, ValueError, StopIteration) as exc:
-            raise EngineFailure(
-                "RESTORE_MISMATCH", f"Falló la reconstrucción: {exc}"
-            ) from exc
-        else:
-            raise EngineFailure(
-                "RESTORE_MISMATCH", "La operación ya no necesita respuesta"
-            )
-
-    def _validate_evaluation_replay(self, snapshot: dict) -> None:
-        from .evaluation_pending import validate_replay
-
-        validate_replay(self, snapshot)
 
     def export(self) -> dict:
         """Snapshot confirmado, copiado; el anfitrión decide cómo guardarlo."""
@@ -497,13 +410,21 @@ class GiselaSession:
     def observe(self, language: str | None = None) -> dict:
         """Vista sin mutación; puede solicitar idioma sin tocar el estado."""
         with self._lock:
-            selected = self._validate_language(language) if language is not None else self._language
+            selected = (
+                self._validate_language(language)
+                if language is not None
+                else self._language
+            )
             return project_observe(self, selected)
 
     def observe_glauquir(self, language: str | None = None) -> dict:
         """Vista autorizada de GLAUQUIR, separada del Observe ordinario."""
         with self._lock:
-            selected = self._validate_language(language) if language is not None else self._language
+            selected = (
+                self._validate_language(language)
+                if language is not None
+                else self._language
+            )
             view = project_observe(self, selected)
             from .annotations import visible_annotations
 
@@ -701,13 +622,20 @@ class GiselaSession:
 
 
 def new_session(
-    admitted: AdmittedPackage, *, session_id: str = "mvp_session", seed: str = "0" * 64,
+    admitted: AdmittedPackage,
+    *,
+    session_id: str = "mvp_session",
+    seed: str = "0" * 64,
     language: str | None = None,
 ) -> GiselaSession:
     """API pública de creación a partir de un paquete previamente admitido."""
-    return GiselaSession.new_session(admitted, session_id=session_id, seed=seed, language=language)
+    return GiselaSession.new_session(
+        admitted, session_id=session_id, seed=seed, language=language
+    )
 
 
-def restore_session(admitted: AdmittedPackage, snapshot: dict, *, language: str | None = None) -> GiselaSession:
+def restore_session(
+    admitted: AdmittedPackage, snapshot: dict, *, language: str | None = None
+) -> GiselaSession:
     """API pública de restauración contra el mismo digest de paquete."""
     return GiselaSession.restore_session(admitted, snapshot, language=language)

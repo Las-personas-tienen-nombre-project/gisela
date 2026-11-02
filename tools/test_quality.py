@@ -67,6 +67,20 @@ class QualityGuardTest(unittest.TestCase):
             path.write_text("def f(self, a, b, c): pass\n")
             self.assertIn("4 parámetros, máximo 3", " ".join(problems(path, root)))
 
+    def test_public_session_factory_exception_is_narrow(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "gisela/engine/runtime.py"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                "def new_session(a, b, c, d): pass\n"
+                "class GiselaSession:\n"
+                "    def new_session(cls, a, b, c, d): pass\n"
+                "    def other(cls, a, b, c, d): pass\n"
+            )
+            self.assertEqual(len(problems(path, root)), 1)
+            self.assertIn("other, 4 parámetros", problems(path, root)[0])
+
     def test_rejects_long_file(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

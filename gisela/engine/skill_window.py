@@ -64,7 +64,9 @@ def offered(session, language: str | None = None) -> list[dict]:
                 "kind": "play_skill",
                 "action_id": "play_" + skill["id"],
                 "id": skill["id"],
-                "label": text(card["play"].get("label", card["title"]), session, language),
+                "label": text(
+                    card["play"].get("label", card["title"]), session, language
+                ),
                 "enabled": allowed(state, skill, session),
             }
         )

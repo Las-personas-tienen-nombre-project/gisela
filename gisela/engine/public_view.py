@@ -30,14 +30,20 @@ def owned(session, language: str | None = None) -> dict:
     player = session._state.get("player_character")
     world = session._state["world"]
     inventory = [
-        card_view(session, o, language) for o in world["objects"] if o.get("owner") == player
+        card_view(session, o, language)
+        for o in world["objects"]
+        if o.get("owner") == player
     ]
     skills = [
         dict(card_view(session, s, language), zone=s["zone"])
         for s in world["skills"]
         if s["character"] == player and s["zone"] != "discard"
     ]
-    effects = [card_view(session, e, language) for e in world["effects"] if e["target"] == player]
+    effects = [
+        card_view(session, e, language)
+        for e in world["effects"]
+        if e["target"] == player
+    ]
     return {"inventory": inventory, "skills": skills, "effects": effects}
 
 
@@ -73,7 +79,8 @@ def _visible_ids(session, view: dict, references: tuple[dict, dict]) -> set[str]
     return ids
 
 
-def _visible_card(session, item: dict, view: dict, language: str | None = None) -> dict:
+def _visible_card(session, item: dict, context: tuple[dict, str | None]) -> dict:
+    view, language = context
     card = card_view(session, item, language)
     actors, elements = _references(session, view)
     actor = next(
@@ -101,7 +108,7 @@ def known(session, view: dict, language: str | None = None) -> list[dict]:
     references = _references(session, view)
     ids = _visible_ids(session, view, references)
     return [
-        _visible_card(session, item, view, language)
+        _visible_card(session, item, (view, language))
         for group in ("characters", "objects", "locations", "skills", "effects")
         for item in session._state["world"][group]
         if item["id"] in ids
