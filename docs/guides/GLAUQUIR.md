@@ -6,7 +6,11 @@ GLAUQUIR es el cliente textual de GISELA. Presenta lo publicado por `Observe` y 
 
 ```bash
 glauquir --package gisela/packages/h46b_central_clasificadora.package.json
+# Para repetir exactamente la secuencia aleatoria:
+glauquir --package gisela/packages/h46b_central_clasificadora.package.json --seed aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
+
+Las partidas nuevas generan una semilla aleatoria segura automáticamente. `--seed` acepta 64 caracteres hexadecimales en minúsculas para reproducir una partida; no se combina con `--restore`, que conserva el RNG del snapshot.
 
 `mirar` muestra la escena, las personas y elementos visibles, las salidas declaradas y las acciones habilitadas. `acciones` enumera solo ofertas habilitadas; `acciones ELEMENTO` hace lo mismo para un elemento visible. Las categorías vacías se omiten. Los elementos sin rol declarado figuran como «ELEMENTOS»; GLAUQUIR no deduce portabilidad ni cantidades a partir del nombre o de los verbos.
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import secrets
 import sys
 from pathlib import Path
 
@@ -29,6 +30,9 @@ def _arguments(argv):
     parser = argparse.ArgumentParser(description="GLAUQUIR: cliente textual de GISELA")
     parser.add_argument("--package", type=Path, default=DEFAULT)
     parser.add_argument("--restore", type=Path, help="Guardar JSON de sesión existente")
+    parser.add_argument(
+        "--seed", help="Semilla hexadecimal de 64 caracteres para reproducir la partida"
+    )
     parser.add_argument("--save", type=Path, help="Exportar estado final de sesión")
     parser.add_argument(
         "--auto",
@@ -46,7 +50,14 @@ def _arguments(argv):
         help="Opción preferida para el recorrido automático",
     )
     parser.add_argument("--color", choices=("auto", "always", "never"), default="auto")
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    if args.seed is not None and args.restore is not None:
+        parser.error("--seed no se puede combinar con --restore")
+    if args.seed is not None and (
+        len(args.seed) != 64 or any(c not in "0123456789abcdef" for c in args.seed)
+    ):
+        parser.error("--seed debe tener 64 caracteres hexadecimales en minúsculas")
+    return args
 
 
 def _choose_action(view, args, client):
@@ -111,7 +122,7 @@ def main(argv=None):
         session = (
             restore_session(admitted, load_json_strict(args.restore))
             if args.restore
-            else new_session(admitted)
+            else new_session(admitted, seed=args.seed or secrets.token_hex(32))
         )
         status, session = _run(session, args, admitted)
         if args.save and status == 0:
