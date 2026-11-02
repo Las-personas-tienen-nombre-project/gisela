@@ -42,7 +42,7 @@ def allowed(state: dict, skill: dict, session) -> bool:
     )
 
 
-def offered(session) -> list[dict]:
+def offered(session, language: str | None = None) -> list[dict]:
     """Construye acciones habilitadas sin publicar información provisional."""
     state = session._state
     from .projection import text
@@ -64,7 +64,7 @@ def offered(session) -> list[dict]:
                 "kind": "play_skill",
                 "action_id": "play_" + skill["id"],
                 "id": skill["id"],
-                "label": text(card["play"].get("label", card["title"])),
+                "label": text(card["play"].get("label", card["title"]), session, language),
                 "enabled": allowed(state, skill, session),
             }
         )

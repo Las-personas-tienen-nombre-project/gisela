@@ -48,3 +48,7 @@ python tools/glauquir.py --package mi_historia.package.json --auto --choose segu
 ```
 
 Si necesitas personajes, escenas, reglas o dados, consulta los [contratos](../../gisela/contracts/README.md) y los paquetes más completos en `gisela/packages`.
+
+## Catálogos y anotaciones
+
+Los textos literales del ejemplo pueden convertirse a `{"text_key":"..."}` para presentar la misma historia en diferentes idiomas. Las notas auxiliares dirigidas a GLAUQUIR pueden declararse en escenas, acciones, nodos y pasos observables de formato v1.5. Consulte [la guía de localización y anotaciones](LOCALIZACION_Y_ANOTACIONES.md) para ejemplos completos y el comando de ensamblado determinista.

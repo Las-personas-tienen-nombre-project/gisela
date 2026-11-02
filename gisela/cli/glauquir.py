@@ -49,6 +49,7 @@ def _arguments(argv):
         default="prestar",
         help="Opción preferida para el recorrido automático",
     )
+    parser.add_argument("--language", help="Idioma declarado en el paquete; por defecto, idioma base")
     parser.add_argument("--color", choices=("auto", "always", "never"), default="auto")
     args = parser.parse_args(argv)
     if args.seed is not None and args.restore is not None:
@@ -77,7 +78,7 @@ def _run(session, args, admitted):
     """Consume Observe y Act, sin ejecutar reglas en el anfitrión."""
     client = TextClient(session, args.developer, Styler(args.color))
     for _ in range(256):
-        view = session.observe()
+        view = session.observe_glauquir()
         client.display(view)
         if not view["actions"] and (args.auto or view["status"] == "ended"):
             return 0, session
@@ -92,6 +93,7 @@ def _run(session, args, admitted):
                 session = restore_session(
                     admitted, load_json_strict(Path(selected["path"]))
                 )
+                session.set_language(args.language or admitted.materialize()["manifest"]["language"])
                 client.session = session
             except (EngineFailure, OSError, ValueError, KeyError) as exc:
                 print("No se pudo cargar la sesión: " + str(exc))
@@ -120,10 +122,12 @@ def main(argv=None):
     try:
         admitted = admit_package_file(args.package)
         session = (
-            restore_session(admitted, load_json_strict(args.restore))
+            restore_session(admitted, load_json_strict(args.restore), language=args.language)
             if args.restore
-            else new_session(admitted, seed=args.seed or secrets.token_hex(32))
+            else new_session(admitted, seed=args.seed or secrets.token_hex(32), language=args.language)
         )
+        if args.language:
+            session.set_language(args.language)
         status, session = _run(session, args, admitted)
         if args.save and status == 0:
             _save(args.save, session.export())

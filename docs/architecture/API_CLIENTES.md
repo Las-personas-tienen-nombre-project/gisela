@@ -94,3 +94,11 @@ Véanse [semántica de escenas](ESCENAS_Y_PRESENCIA.md) y [pruebas ancladas](../
 `session.act()` y `session.observe()` se mantienen para clientes **locales confiables**. Para software externo o varias fuentes concurrentes existe `ExecutionGateway` (véase [frontera autorizada](E0_FRONTERA_AUTORIZADA_Y_PERSISTENCIA.md)). El anfitrión autentica a cada solicitante y le asigna capacidades; no hay relación automática entre ese principal, el `player_character` y la entidad narrativa de una acción. Una vez asociado el gateway, se bloquea la entrada `session.act()` directa. La API externa utiliza un `command_id` adicional, fuera del JSON `Act` versionado.
 
 La lectura externa solo publica el contenido del protagonista si se concede explícitamente `observe_player`. `export_private` y `debug_private` son permisos privilegiados. El transporte entre instancias y otras audiencias **no** son capacidades implementadas.
+
+## Localización y anotaciones (v1.5)
+
+`new_session(admitted, language=None)` y `restore_session(admitted, snapshot, language=None)` usan por defecto `manifest.language`. `session.observe(language=None)` es pura; `session.set_language(codigo)` modifica solo la preferencia efímera del anfitrión. El resolvedor único de `localized_text` consulta `strings[idioma][text_key]` y, si falta la traducción, vuelve a `strings[idioma_base][text_key]`. La admisión rechaza claves sin texto base. `history.reading` conserva el texto ya confirmado, sin retraducciones al cambiar idioma. El snapshot, sus revisiones y el RNG no incorporan la preferencia idiomática.
+
+`session.observe_glauquir(language=None)` es una vista local de GLAUQUIR separada de `session.observe()`; añade información de autor de la escena, acción, nodo y paso actualmente accesibles, sin modificar `Act`, historial o estado. El gateway requiere las capacidades conjuntas `observe_player` y `observe_glauquir` para `BoundClient.observe_glauquir()`; Ren'Py no dispone de esta última. Las anotaciones no equivalen a `debug_query` ni conceden `debug_private`.
+
+Los detalles del esquema, diagnóstico y ensamblado de catálogos están en la [guía v1.5](../guides/LOCALIZACION_Y_ANOTACIONES.md).

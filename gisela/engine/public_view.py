@@ -11,33 +11,33 @@ from .projection import text
 from .world_base import WorldError
 
 
-def card_view(session, item: dict) -> dict:
+def card_view(session, item: dict, language: str | None = None) -> dict:
     """Extrae los textos autorizados de una carta conocida."""
     card = session._cards[item["card"]]
     result = {
         "id": item["id"],
         "card": card["id"],
         "kind": card["kind"],
-        "title": text(card["title"]),
+        "title": text(card["title"], session, language),
     }
     if "description" in card:
-        result["description"] = text(card["description"])
+        result["description"] = text(card["description"], session, language)
     return result
 
 
-def owned(session) -> dict:
+def owned(session, language: str | None = None) -> dict:
     """Proyecta las posesiones del jugador, sin consultar otros inventarios."""
     player = session._state.get("player_character")
     world = session._state["world"]
     inventory = [
-        card_view(session, o) for o in world["objects"] if o.get("owner") == player
+        card_view(session, o, language) for o in world["objects"] if o.get("owner") == player
     ]
     skills = [
-        dict(card_view(session, s), zone=s["zone"])
+        dict(card_view(session, s, language), zone=s["zone"])
         for s in world["skills"]
         if s["character"] == player and s["zone"] != "discard"
     ]
-    effects = [card_view(session, e) for e in world["effects"] if e["target"] == player]
+    effects = [card_view(session, e, language) for e in world["effects"] if e["target"] == player]
     return {"inventory": inventory, "skills": skills, "effects": effects}
 
 
@@ -73,8 +73,8 @@ def _visible_ids(session, view: dict, references: tuple[dict, dict]) -> set[str]
     return ids
 
 
-def _visible_card(session, item: dict, view: dict) -> dict:
-    card = card_view(session, item)
+def _visible_card(session, item: dict, view: dict, language: str | None = None) -> dict:
+    card = card_view(session, item, language)
     actors, elements = _references(session, view)
     actor = next(
         (
@@ -96,22 +96,22 @@ def _visible_card(session, item: dict, view: dict) -> dict:
     return card
 
 
-def known(session, view: dict) -> list[dict]:
+def known(session, view: dict, language: str | None = None) -> list[dict]:
     """Enumera fichas autorizadas y aplica sus referencias públicas."""
     references = _references(session, view)
     ids = _visible_ids(session, view, references)
     return [
-        _visible_card(session, item, view)
+        _visible_card(session, item, view, language)
         for group in ("characters", "objects", "locations", "skills", "effects")
         for item in session._state["world"][group]
         if item["id"] in ids
     ]
 
 
-def augment(session, view: dict) -> None:
+def augment(session, view: dict, language: str | None = None) -> None:
     """Agrega información pública incluso durante una transacción pendiente."""
-    view.update(owned(session))
-    view["cards"] = known(session, view)
+    view.update(owned(session, language))
+    view["cards"] = known(session, view, language)
 
 
 def inspect(session, identifier: str) -> dict:

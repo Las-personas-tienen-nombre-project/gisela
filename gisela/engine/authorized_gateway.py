@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from .action_handler import act as execute_act
 from .runtime import GiselaSession
 
-_ALLOWED = frozenset({"act", "observe_player", "export_private", "debug_private"})
+_ALLOWED = frozenset({"act", "observe_player", "export_private", "debug_private", "observe_glauquir"})
 _ID = re.compile(r"^[a-z][a-z0-9_.-]{0,95}$")
 
 
@@ -57,8 +57,11 @@ class BoundClient:
         self._gateway = gateway
         self._principal = principal
 
-    def observe(self) -> dict:
-        return self._gateway._observe(self._principal)
+    def observe(self, language: str | None = None) -> dict:
+        return self._gateway._observe(self._principal, language)
+
+    def observe_glauquir(self, language: str | None = None) -> dict:
+        return self._gateway._observe_glauquir(self._principal, language)
 
     def act(self, request: dict, command_id: str) -> dict:
         return self._gateway._act(self._principal, request, command_id)
@@ -114,7 +117,9 @@ class ExecutionGateway:
             raise GatewayError("Checkpoint no corresponde a esta sesión y paquete")
         from .runtime import restore_session
 
-        self._session = restore_session(session._admitted, checkpoint["state"])
+        self._session = restore_session(
+            session._admitted, checkpoint["state"], language=session._language
+        )
         self._validate_receipts(checkpoint["receipts"], checkpoint["state"]["revision"])
         self._receipts = copy.deepcopy(checkpoint["receipts"])
 
@@ -160,10 +165,16 @@ class ExecutionGateway:
         if capability not in principal.capabilities:
             raise GatewayError("Permiso denegado")
 
-    def _observe(self, principal: Principal) -> dict:
+    def _observe(self, principal: Principal, language: str | None = None) -> dict:
         with self._lock:
             self._permit(principal, "observe_player")
-            return copy.deepcopy(self._session.observe())
+            return copy.deepcopy(self._session.observe(language))
+
+    def _observe_glauquir(self, principal: Principal, language: str | None = None) -> dict:
+        with self._lock:
+            self._permit(principal, "observe_player")
+            self._permit(principal, "observe_glauquir")
+            return copy.deepcopy(self._session.observe_glauquir(language))
 
     def _export(self, principal: Principal) -> dict:
         with self._lock:

@@ -14,19 +14,19 @@ def _display(session, state: dict) -> tuple[str, str, str] | None:
     kind = state["status"]
     if kind == "exploring":
         scene = session._scenes[state["current_scene"]]
-        name = text(scene.get("title", scene["id"]))
-        description = text(scene["description"]) if "description" in scene else ""
+        name = text(scene.get("title", scene["id"]), session)
+        description = text(scene["description"], session) if "description" in scene else ""
         return "scene", scene["id"], "\n\n".join(x for x in (name, description) if x)
     if kind == "ended":
         end = next(
             (e for e in session._package["endings"] if e["id"] == state["ending"]), None
         )
-        name = text(end["title"]) if end and "title" in end else state["ending"]
+        name = text(end["title"], session) if end and "title" in end else state["ending"]
         return "ending", state["ending"], name
     if kind == "node":
         step = session._current_step(state)
         if step["op"] in ("narrate", "dialogue"):
-            body = text(step["text"])
+            body = text(step["text"], session)
             if step["op"] == "dialogue":
                 body = step["speaker"] + ": " + body
             return step["op"], state["cursor"]["node"] + "." + step["id"], body
@@ -76,12 +76,12 @@ def action(session, state: dict, source: dict) -> None:
             if s["id"] == source["step"]
         )
         option = next(o for o in step["options"] if o["id"] == source["option"])
-        append(state, ("choice", source["step"], text(option["label"])))
+        append(state, ("choice", source["step"], text(option["label"], session)))
     elif kind == "scene_action":
         from .scene_actions import definition
 
         item = definition(session, source)
-        append(state, ("action", source["action"], text(item["label"])))
+        append(state, ("action", source["action"], text(item["label"], session)))
     elif kind == "skill_play":
         previous = next(
             (
@@ -94,7 +94,7 @@ def action(session, state: dict, source: dict) -> None:
         )
         if previous:
             card = session._cards[previous["detail"]["card"]]
-            append(state, ("skill", source["skill_instance"], text(card["title"])))
+            append(state, ("skill", source["skill_instance"], text(card["title"], session)))
 
 
 def history(session, limit: int | None = None) -> list[dict]:

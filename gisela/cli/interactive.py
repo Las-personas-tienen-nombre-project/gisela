@@ -137,6 +137,8 @@ class TextClient:
                 except WorldError as exc:
                     print("Consulta rechazada: " + str(exc))
             return False
+        if name in ("examinar", "inspeccionar") and rest and self._annotation(view, rest):
+            return False
         if name in ("ver", "mirar", "look") and rest and self._element(view, rest):
             return False
         candidates = match(view["actions"], name, rest)
@@ -263,6 +265,23 @@ class TextClient:
             render.card(self.session.read_public(item["entity"]))
         else:
             print("No tiene descripción pública.")
+        return True
+
+    def _annotation(self, view: dict, requested: str) -> bool:
+        """Inspección de acciones ya ofertadas; nunca consulta acciones ocultas."""
+        target = normalize(requested)
+        candidates = [a for a in view["actions"]
+                      if target in (normalize(a["id"]), normalize(a["label"]))]
+        if len(candidates) != 1:
+            return False
+        notes = [note for note in view.get("annotations", [])
+                 if note.get("action_id") == candidates[0]["action_id"]]
+        if notes:
+            print("\n" + self.styler.paint("information", "INFORMACIÓN"))
+            for item in notes:
+                print(self.styler.paint("information", item["text"]))
+        else:
+            print("Sin información adicional.")
         return True
 
     def _actions(self, view: dict, value: str):

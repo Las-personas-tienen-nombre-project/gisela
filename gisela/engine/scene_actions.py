@@ -26,7 +26,7 @@ def _element_shown(session, state: dict, element: dict) -> bool:
     return "entity" not in element or present(state, scene, element["entity"])
 
 
-def sources(session, state: dict) -> list[tuple[dict, dict]]:
+def sources(session, state: dict, language: str | None = None) -> list[tuple[dict, dict]]:
     """Construye acciones y procedencias inequívocas de la escena actual."""
     scene = session._scenes[state["current_scene"]]
     from .projection import text
@@ -53,7 +53,7 @@ def sources(session, state: dict) -> list[tuple[dict, dict]]:
                 "kind": "interact",
                 "action_id": f"interact_{group_index}_{action_index}",
                 "id": action.get("public_id", action["id"]),
-                "label": text(action["label"]),
+                "label": text(action["label"], session, language),
                 "enabled": predicate(
                     state,
                     action.get("enabled_if", {"constant": True}),
@@ -111,7 +111,7 @@ def execute_source(session, draft: dict, request: tuple) -> None:
         session._enter_node(draft, destination["node"], decisions)
 
 
-def _actors(session, scene: dict) -> list[dict]:
+def _actors(session, scene: dict, language: str | None = None) -> list[dict]:
     """Lista personajes presentes que cumplen las condiciones de visibilidad."""
     from .projection import text
 
@@ -131,7 +131,7 @@ def _actors(session, scene: dict) -> list[dict]:
         card = session._cards[instance["card"]]
         display = {
             "id": actor.get("public_id", identifier),
-            "name": text(card["title"]) if "title" in card else identifier,
+            "name": text(card["title"], session, language) if "title" in card else identifier,
         }
         color, _ = explicit_color(instance, card, actor)
         if color is not None:
@@ -139,7 +139,7 @@ def _actors(session, scene: dict) -> list[dict]:
         if "unknown_name" in actor and not _shown(
             session._state, {"visible_if": actor["known_if"]}, session._definitions
         ):
-            display["name"] = text(actor["unknown_name"])
+            display["name"] = text(actor["unknown_name"], session, language)
             display["identity_hidden"] = True
         if "presentation" in actor:
             display["presentation"] = actor["presentation"]
@@ -147,21 +147,21 @@ def _actors(session, scene: dict) -> list[dict]:
     return result
 
 
-def project(session, view: dict) -> None:
+def project(session, view: dict, language: str | None = None) -> None:
     """Expone únicamente actores y elementos visibles y sus acciones."""
     scene = session._scenes[session._state["current_scene"]]
     from .projection import text
 
-    view["scene_title"] = text(scene.get("title", scene["id"]))
+    view["scene_title"] = text(scene.get("title", scene["id"]), session, language)
     if "description" in scene:
-        view["scene_description"] = text(scene["description"])
-    offers = sources(session, session._state)
+        view["scene_description"] = text(scene["description"], session, language)
+    offers = sources(session, session._state, language)
     view["content"] = {"kind": "exploring"}
     view["actions"] = [entry for _, entry in offers]
     if scene.get("allow_skill_play", False):
         from .skill_window import offered
 
-        view["actions"].extend(offered(session))
+        view["actions"].extend(offered(session, language))
     view["elements"] = []
     for element in scene.get("elements", []):
         if _element_shown(session, session._state, element):
@@ -172,7 +172,7 @@ def project(session, view: dict) -> None:
             ]
             item = {
                 "id": element.get("public_id", element["id"]),
-                "label": text(element["label"]),
+                "label": text(element["label"], session, language),
                 "actions": actions,
             }
             if isinstance(element.get("entity"), str) and not element[
@@ -189,13 +189,13 @@ def project(session, view: dict) -> None:
             if "role" in element:
                 item["role"] = element["role"]
             if "description" in element:
-                item["description"] = text(element["description"])
+                item["description"] = text(element["description"], session, language)
             if isinstance(element.get("entity"), str) and not element[
                 "entity"
             ].startswith("$"):
                 item["entity"] = element.get("public_entity", element["entity"])
             view["elements"].append(item)
-    view["actors"] = _actors(session, scene)
+    view["actors"] = _actors(session, scene, language)
     if "presentation" in scene:
         view["presentation"] = scene["presentation"]
 

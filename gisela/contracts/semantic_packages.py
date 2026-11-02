@@ -392,46 +392,63 @@ class PackagesMixin:
                 self.report("UNKNOWN_NODE", path + "/next", "Nodo no declarado")
 
     def _check_language(self, pkg: dict) -> None:
-        """Comprueba referencias de lengua y textos."""
-        mani = pkg["manifest"]
+        """Claves base bloqueantes; traducciones incompletas son warnings."""
+        import re
+
+        manifest = pkg["manifest"]
         base = self.base_language
-        langs = mani.get("languages", [base])
-        if base not in langs:
-            self.report(
-                "LANGUAGE_BASE",
-                pointer("manifest", "languages"),
-                "La lengua base debe figurar en languages",
-            )
-        if len(langs) != len(set(langs)):
-            self.report(
-                "DUPLICATE_LANGUAGE",
-                pointer("manifest", "languages"),
-                "Idioma duplicado",
-            )
-        table = pkg.get("strings", {}).get(base, {})
+        languages = manifest.get("languages", [base])
+        catalogs = pkg.get("strings", {})
+        if base not in languages:
+            self.report("LANGUAGE_BASE", pointer("manifest", "languages"),
+                        "El idioma base debe figurar en languages")
+        if len(languages) != len(set(languages)):
+            self.report("DUPLICATE_LANGUAGE", pointer("manifest", "languages"),
+                        "Idioma duplicado")
+        base_table = catalogs.get(base, {})
+        referenced: dict[str, list[str]] = {}
 
         def visit(obj, path):
-            """Recorre referencias de texto en una estructura declarativa."""
             if isinstance(obj, dict):
-                if set(obj) == {"text_key"} and obj["text_key"] not in table:
-                    self.report(
-                        "MISSING_TEXT", path, "text_key no disponible en idioma base"
-                    )
-                for k, v in obj.items():
-                    visit(v, path + "/" + str(k))
+                if set(obj) == {"text_key"}:
+                    key = obj["text_key"]
+                    referenced.setdefault(key, []).append(path)
+                    if key not in base_table:
+                        self.report("MISSING_TEXT", path,
+                                    "text_key no disponible en idioma base")
+                for key, value in obj.items():
+                    visit(value, path + "/" + str(key))
             elif isinstance(obj, list):
-                for i, v in enumerate(obj):
-                    visit(v, path + "/" + str(i))
+                for index, value in enumerate(obj):
+                    visit(value, path + "/" + str(index))
 
-        for k in ("nodes", "cards", "scenes", "endings"):
-            visit(pkg[k], "/" + k)
-        for language in pkg.get("strings", {}):
-            if language not in langs:
-                self.report(
-                    "UNDECLARED_LANGUAGE",
-                    pointer("strings", language),
-                    "Idioma no declarado",
-                )
+        for section in ("nodes", "cards", "scenes", "endings"):
+            visit(pkg[section], "/" + section)
+        for language in catalogs:
+            if language not in languages:
+                self.report("UNDECLARED_LANGUAGE", pointer("strings", language),
+                            "Idioma no declarado")
+        for language in languages:
+            if language != base and language not in catalogs:
+                self.report("MISSING_CATALOG", pointer("strings", language),
+                            "Idioma declarado sin catálogo")
+        # No se interpolan plantillas todavía. Se comprueba la correspondencia
+        # de marcadores declarativos simples para prevenir traducciones rotas.
+        marker = re.compile(r"(?<!\{)\{([a-z][a-z0-9_]*)\}(?!\})")
+        for language, translations in catalogs.items():
+            if language == base:
+                continue
+            for key, original in base_table.items():
+                if key in referenced and key not in translations:
+                    self.warn("MISSING_TRANSLATION", pointer("strings", language, key),
+                              "Se utilizará el idioma base")
+                elif key in referenced:
+                    expected = set(marker.findall(original))
+                    found = set(marker.findall(translations[key]))
+                    if expected != found:
+                        self.report("TRANSLATION_PARAMETERS",
+                                    pointer("strings", language, key),
+                                    "Marcadores incompatibles con el idioma base")
 
     def _check_mary_refs(self, value, path: str) -> None:
         """Comprueba que MARY lea solo hechos y variables publicados."""

@@ -24,6 +24,7 @@ PALETTE = {
     "dialogue": "35",
     "warning": "1;31",
     "debug": "2;37",
+    "information": "36",
 }
 
 

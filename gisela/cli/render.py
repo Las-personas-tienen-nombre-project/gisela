@@ -84,7 +84,7 @@ def _show_content(view: dict, styler: Styler) -> None:
     elif kind == "pending_evaluation":
         evaluation(content)
     elif kind == "ending":
-        print("\nFinal: " + content["ending"])
+        print("\nFinal: " + content.get("title", content["ending"]))
     else:
         print("\n" + kind.replace("_", " ").capitalize())
 
@@ -105,6 +105,17 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
     """Imprime la proyección pública y un resumen opcional de desarrollo."""
     styler = styler or Styler()
     _show_content(view, styler)
+    annotations = view.get("annotations", [])
+    if annotations:
+        print("\n" + styler.paint("information", "INFORMACIÓN"))
+        for item in annotations:
+            description = item["text"]
+            if item["scope"] == "action":
+                offer = next((a for a in view["actions"]
+                              if a["action_id"] == item["action_id"]), None)
+                if offer is not None:
+                    description = offer["label"] + ": " + description
+            _line("  " + description, "information", styler)
     _show_actions(view, styler)
     if developer:
         print(

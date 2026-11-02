@@ -30,22 +30,14 @@ from .world_values import WorldDefinitions
 MAX_AUTOMATIC_STEPS = 512
 
 
-def _text(value: object) -> str:
-    """Extrae texto localizado en el idioma principal de la vertical."""
-    if isinstance(value, str):
-        return value
-    if isinstance(value, dict) and isinstance(value.get("text"), str):
-        return value["text"]
-    raise WorldError("INVALID_STATE", "Texto localizado sin variante principal")
-
-
 class GiselaSession:
     """Autoridad de estado confirmado, proyección y transacción narrativa."""
 
-    def __init__(self, admitted: AdmittedPackage, state: dict):
+    def __init__(self, admitted: AdmittedPackage, state: dict, language: str | None = None):
         """Copia definiciones y estado; rechaza formatos no ejecutables."""
         self._admitted = admitted
         self._package = admitted.materialize()
+        self._language = self._validate_language(language)
         check_supported(self._package)
         self._nodes = {node["id"]: node for node in self._package["nodes"]}
         self._cards = {card["id"]: card for card in self._package["cards"]}
@@ -84,13 +76,14 @@ class GiselaSession:
         admitted: AdmittedPackage,
         session_id: str = "mvp_session",
         seed: str = "0" * 64,
+        language: str | None = None,
     ) -> GiselaSession:
         """Inicializa y valida hasta un paso observable o rechaza la creación."""
         pkg = admitted.materialize()
         state = initial_state(
             pkg, admitted.digest, {"session_id": session_id, "seed": seed}
         )
-        session = cls(admitted, state)
+        session = cls(admitted, state, language)
         if "scene" in pkg["manifest"]["entry"]:
             session._start_scene_entry(state)
             from .reading_log import entry
@@ -161,7 +154,7 @@ class GiselaSession:
 
     @classmethod
     def restore_session(
-        cls, admitted: AdmittedPackage, snapshot: dict
+        cls, admitted: AdmittedPackage, snapshot: dict, language: str | None = None
     ) -> GiselaSession:
         """Congela la entrada, valida y reconstruye sin confirmar borradores."""
         frozen = copy.deepcopy(snapshot)
@@ -174,7 +167,7 @@ class GiselaSession:
                 "RESTORE_MISMATCH",
                 f"{errors[0].code} {errors[0].path}: {errors[0].message}",
             )
-        session = cls(admitted, frozen)
+        session = cls(admitted, frozen, language)
         if frozen["status"] == "preparing" and (
             not (frozen.get("pending_transaction") or frozen.get("pending_evaluation"))
             or (frozen.get("pending_transaction") or frozen.get("pending_evaluation"))[
@@ -488,10 +481,34 @@ class GiselaSession:
             )
         return result
 
-    def observe(self) -> dict:
-        """Entrega la proyección confirmada sin publicar el borrador."""
+    def _validate_language(self, language: str | None) -> str:
+        manifest = self._package["manifest"]
+        available = manifest.get("languages", [manifest["language"]])
+        selected = manifest["language"] if language is None else language
+        if selected not in available:
+            raise ValueError("Idioma no declarado en el paquete: " + str(selected))
+        return selected
+
+    def set_language(self, language: str) -> None:
+        """Preferencia efímera del anfitrión; no altera revisión ni snapshot."""
         with self._lock:
-            return project_observe(self)
+            self._language = self._validate_language(language)
+
+    def observe(self, language: str | None = None) -> dict:
+        """Vista sin mutación; puede solicitar idioma sin tocar el estado."""
+        with self._lock:
+            selected = self._validate_language(language) if language is not None else self._language
+            return project_observe(self, selected)
+
+    def observe_glauquir(self, language: str | None = None) -> dict:
+        """Vista autorizada de GLAUQUIR, separada del Observe ordinario."""
+        with self._lock:
+            selected = self._validate_language(language) if language is not None else self._language
+            view = project_observe(self, selected)
+            from .annotations import visible_annotations
+
+            view["annotations"] = visible_annotations(self, view, selected)
+            return view
 
     def _source_start(self, draft: dict, decisions: DecisionReplay) -> None:
         """Reproduce el inicio de sesión desde el estado confirmado."""
@@ -684,12 +701,13 @@ class GiselaSession:
 
 
 def new_session(
-    admitted: AdmittedPackage, *, session_id: str = "mvp_session", seed: str = "0" * 64
+    admitted: AdmittedPackage, *, session_id: str = "mvp_session", seed: str = "0" * 64,
+    language: str | None = None,
 ) -> GiselaSession:
     """API pública de creación a partir de un paquete previamente admitido."""
-    return GiselaSession.new_session(admitted, session_id=session_id, seed=seed)
+    return GiselaSession.new_session(admitted, session_id=session_id, seed=seed, language=language)
 
 
-def restore_session(admitted: AdmittedPackage, snapshot: dict) -> GiselaSession:
+def restore_session(admitted: AdmittedPackage, snapshot: dict, *, language: str | None = None) -> GiselaSession:
     """API pública de restauración contra el mismo digest de paquete."""
-    return GiselaSession.restore_session(admitted, snapshot)
+    return GiselaSession.restore_session(admitted, snapshot, language=language)

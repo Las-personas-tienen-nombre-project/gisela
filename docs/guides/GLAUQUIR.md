@@ -41,3 +41,9 @@ Inicie con `--developer` para consultar datos privados en una sesión local conf
 En modo normal, el color de una persona u objeto procede solo de un rol narrativo explícito o del tema. En `--developer`, una persona sin color explícito puede tomar el color de su categoría de disposición real. `default` es un rol explícito que aplica el estilo ANSI predeterminado; también prevalece sobre la disposición.
 
 Para declarar colores, referencias públicas y escalas en un paquete v1.5, consulte la [API de clientes](../architecture/API_CLIENTES.md) y los [contratos](../../gisela/contracts/README.md).
+
+## Idioma y anotaciones de GLAUQUIR (v1.5)
+
+`--language es_cl` (por defecto el idioma base) o `--language en` cuando esté declarado en el paquete permite elegir el catálogo narrativo. No se traducen automáticamente comandos de consola ni la interfaz.
+
+Las anotaciones de autor de la escena, nodo o acciones actualmente visibles aparecen en un apartado `INFORMACIÓN`, separado de la narración. Se consultan con `mirar` y, para una acción que ya esté ofertada, con `examinar ACCIÓN`. Son lecturas puras, no órdenes de juego. No requieren `--developer`, mientras que los datos privados siguen requiriéndolo. Véase [guía de localización y anotaciones](LOCALIZACION_Y_ANOTACIONES.md).
