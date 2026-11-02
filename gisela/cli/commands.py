@@ -47,6 +47,12 @@ def instructions() -> None:
         "También: misiones, history [N|all], guardar RUTA, cargar RUTA, ayuda, salir."
     )
     print("Para ejecutar una oferta específica: accion ID (consulte acciones).")
+    print("Con --developer: acciones bloqueadas, acciones todas, hechos,")
+    print("relacion ORIGEN DESTINO CAMPO, propiedad ENTIDAD CAMPO.")
+    print(
+        "Con --developer: disposicion PERSONA muestra afinidad real y fuente de color."
+    )
+    print("Color: --color auto|always|never; NO_COLOR desactiva auto.")
     print(
         "Con --developer: consultar personaje ID, entidad ID, propiedad ENTIDAD CAMPO,"
     )

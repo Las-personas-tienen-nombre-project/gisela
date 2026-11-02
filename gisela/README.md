@@ -38,7 +38,7 @@ Run the Central Clasificadora test adaptation.
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
-The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](../docs/guides/QUICK_START.md).
+The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](../docs/guides/QUICK_START.md) and the [GLAUQUIR command and color guide](../docs/guides/GLAUQUIR.md).
 
 ## Admission before execution
 
@@ -112,27 +112,18 @@ The package digest prevents silently loading a save against changed definitions.
 
 ## Contracts and compatibility
 
-Current packages use v1.5 for visible evaluation support. Earlier v1.2, v1.3, and v1.4 contracts remain present for compatibility. Do not assign v1.5 meaning to older saved sessions. JSON schemas and semantic validation are under `gisela/contracts`.
+Current packages use v1.5 for visible evaluation and optional presentation roles. Earlier v1.2, v1.3, and v1.4 contracts remain present for compatibility. Do not assign v1.5 meaning to older saved sessions. JSON schemas and semantic validation are under `gisela/contracts`.
 
 ## Tests
 
-Run the local offline checks (the historical `tools/check_project.py` monorepo orchestrator is not included in this extracted repository).
+Run the official standalone verification kit from the repository root:
 
 ```bash
-python tools/check_quality.py
-python tools/check_doc_links.py
-python -m unittest discover -s tools -p 'test_*.py' -q
-python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
+python tools/check_gisela.py
+python tools/check_gisela.py --full
 ```
 
-For further checks, run the engine unit tests, independent libraries, and invariant verification scripts explicitly. The former monorepo-wide orchestrator is not present in this standalone extraction.
-
-```bash
-python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
-python -m unittest discover -s dice/tests -p 'test_*.py' -q
-python -m unittest discover -s traits/tests -p 'test_*.py' -q
-python -m unittest discover -s mary/tests -p 'test_*.py' -q
-```
+The normal kit covers tests, static checks, structural quality, local documentation links, and invariants. `--full` adds complete narrative routes with restore checks. See the [verification guide](../docs/guides/VERIFICACION_GISELA.md) for dependencies and limits; the historical `tools/check_project.py` monorepo orchestrator is not included here.
 
 ## Known limits
 

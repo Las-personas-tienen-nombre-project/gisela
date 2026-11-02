@@ -14,6 +14,8 @@ E2 implemented hidden declarative evaluations. E3 implemented visible and acknow
 
 H4.6 added El faro de niebla, an independent end to end integration adventure. H4.6b added a condensed Central Clasificadora test adaptation. Both can be played in GLAUQUIR, and both have automated test routes.
 
+GLAUQUIR now filters unavailable actions in normal play, groups declared scene roles, and supports semantic ANSI color. A separate privileged diagnostic can show directed disposition; it does not add private relationship data to Observe. See the [GLAUQUIR guide](../guides/GLAUQUIR.md) for the exact command and color contract.
+
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
 These describe capabilities implemented across the engine and its original demo; Ren'Py files are not included here. For the exact list of verified tests run on a particular release, use its test logs and the tests executed in this repository.
@@ -33,13 +35,11 @@ Repository extraction is complete. Future work may verify standalone package dis
 ```bash
 python tools/glauquir.py --package gisela/packages/h46_faro_de_niebla.package.json
 python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
-python tools/check_quality.py
-python tools/check_doc_links.py
-python -m unittest discover -s tools -p 'test_*.py' -q
-python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
+python tools/check_gisela.py
+python tools/check_gisela.py --full
 ```
 
-For a developer route, read [Quick start](../guides/QUICK_START.md), [GISELA](../../gisela/README.md), [Ren'Py integration status](H5_RENPY_INTEGRACION.md), and the [documentation index](../README.md).
+For a developer route, read [Quick start](../guides/QUICK_START.md), [GLAUQUIR](../guides/GLAUQUIR.md), [GISELA](../../gisela/README.md), [Ren'Py integration status](H5_RENPY_INTEGRACION.md), and the [documentation index](../README.md).
 
 ## Historical records
 

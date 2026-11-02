@@ -10,6 +10,7 @@ else:  # Compatibilidad de ejecución directa desde contracts/
     from semantic_shared import *
 
 evaluation_operations = semantic_operation_paths.evaluation_operations
+COLOR_ROLES = {"default", "red", "yellow", "green", "cyan", "blue", "magenta", "white"}
 
 
 class PackagesMixin:
@@ -24,17 +25,43 @@ class PackagesMixin:
     def _check_card_and_nodes(self, pkg: dict) -> None:
         """Reparte las comprobaciones entre cartas, nodos, escenas y reglas."""
         self._check_cards(pkg)
+        self._check_disposition_display(pkg["manifest"])
         self._check_nodes(pkg)
         self._check_scenes(pkg)
         self._check_rules(pkg)
         for operation, path in self.all_operations(pkg):
             self.operation(operation, path)
+            self._check_color_assignment(operation, path)
+
+    def _check_color_assignment(self, operation: dict, path: str) -> None:
+        if operation.get("op") != "set":
+            return
+        target = operation.get("target", {})
+        if not isinstance(target, dict):
+            return
+        if target.get("property", {}).get("key") != "presentation_color":
+            return
+        value = operation.get("value", {})
+        if (
+            isinstance(value, dict)
+            and "literal" in value
+            and (
+                not isinstance(value["literal"], str)
+                or value["literal"] not in COLOR_ROLES | {"inherit"}
+            )
+        ):
+            self.report(
+                "INVALID_PRESENTATION_COLOR",
+                path + "/value",
+                "Rol de color desconocido",
+            )
 
     def _check_cards(self, pkg: dict) -> None:
         """Comprueba propiedades, estadísticas y reglas de cada carta."""
         for index, card in enumerate(pkg["cards"]):
             path = pointer("cards", index)
             self._check_card_properties(card, path)
+            self._check_color(card, path)
             if card["kind"] == "character" and "sofia" in card:
                 scale = pkg["manifest"].get("sofia_scale", {"min": 0, "max": 10})
                 for name, value in card["sofia"].items():
@@ -63,6 +90,14 @@ class PackagesMixin:
         self.unique(card["properties"], path + "/properties")
         for index, field in enumerate(card["properties"]):
             point = pointer(path, "properties", index)
+            if field["id"] == "presentation_color" and (
+                field["type"] != "string" or field["initial"] != "inherit"
+            ):
+                self.report(
+                    "INVALID_PRESENTATION_COLOR",
+                    point,
+                    "presentation_color requiere string inicial inherit",
+                )
             self.check_type(field["initial"], field["type"], point + "/initial")
             if "min" in field and "max" in field and field["min"] > field["max"]:
                 self.report("PROPERTY_RANGE", point, "min supera max")
@@ -195,6 +230,7 @@ class PackagesMixin:
         """Comprueba procedencia local de actores, elementos y acciones."""
         for index, scene in enumerate(pkg["scenes"]):
             path = pointer("scenes", index)
+            self._check_color(scene, path)
             if "location" in scene:
                 self.entity_ref(
                     scene["location"], "location", RefLocation(path + "/location")
@@ -212,17 +248,58 @@ class PackagesMixin:
             self.unique(scene.get("actions", []), path + "/actions")
             for i, actor in enumerate(scene.get("actors", [])):
                 point = pointer(path, "actors", i)
+                self._check_color(actor, point)
                 self.entity_ref(
                     actor["character"], "character", RefLocation(point + "/character")
                 )
                 if "visible_if" in actor:
                     self.condition(actor["visible_if"], point + "/visible_if")
             for i, element in enumerate(scene.get("elements", [])):
+                self._check_color(element, pointer(path, "elements", i))
                 self._check_element(
                     element, pointer(path, "elements", i), scene.get("location")
                 )
             for i, action in enumerate(scene.get("actions", [])):
                 self._check_action(action, node=None, path=pointer(path, "actions", i))
+
+    def _check_color(self, item: dict, path: str) -> None:
+        presentation = item.get("presentation", {})
+        if not isinstance(presentation, dict):
+            return
+        color = presentation.get("color")
+        if color is not None and (
+            not isinstance(color, str) or color not in COLOR_ROLES
+        ):
+            self.report(
+                "INVALID_PRESENTATION_COLOR",
+                path + "/presentation/color",
+                "Rol de color desconocido",
+            )
+
+    def _check_disposition_display(self, manifest: dict) -> None:
+        from math import isfinite
+
+        config = manifest.get("disposition_display")
+        if not isinstance(config, dict):
+            return
+        if not all(k in config for k in ("minimum", "neutral", "maximum")):
+            return
+        values = [config[k] for k in ("minimum", "neutral", "maximum")]
+        cuts = config.get("thresholds", [-60, -20, 20, 60])
+        if (
+            not isinstance(cuts, list)
+            or len(cuts) != 4
+            or not all(
+                type(x) in (int, float) and isfinite(x) for x in [*values, *cuts]
+            )
+            or not values[0] < values[1] < values[2]
+            or not -100 < cuts[0] < cuts[1] < cuts[2] < cuts[3] < 100
+        ):
+            self.report(
+                "INVALID_DISPOSITION_SCALE",
+                "/manifest/disposition_display",
+                "Escala o umbrales inválidos",
+            )
 
     def _check_actor_duplicates(self, scene: dict, path: str) -> None:
         """Detecta actores literales repetidos sin indexar consultas dinámicas."""

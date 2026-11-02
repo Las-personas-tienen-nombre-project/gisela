@@ -5,17 +5,29 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from gisela.engine.world_base import WorldError
+
 from . import render
+from .color import Styler
 from .commands import inspect, instructions
 from .match import match, normalize, select
+
+DISPOSITION_COLORS = {
+    "hostile": "red",
+    "unfriendly": "yellow",
+    "neutral": "white",
+    "friendly": "green",
+    "very_friendly": "cyan",
+}
 
 
 class TextClient:
     """Traduce comandos de texto a acciones publicadas por Observe."""
 
-    def __init__(self, session, developer: bool = False):
+    def __init__(self, session, developer: bool = False, styler: Styler | None = None):
         self.session = session
         self.developer = developer
+        self.styler = styler or Styler()
 
     def choose(self, view: dict):
         """Atiende consultas sin consumir acciones hasta recibir una selección."""
@@ -30,6 +42,21 @@ class TextClient:
             answer = self._command(view, raw)
             if answer is not False:
                 return answer
+
+    def display(self, view: dict) -> None:
+        """Añade color diagnóstico solo a una copia local de la observación."""
+        if not self.developer:
+            render.show(view, styler=self.styler)
+            return
+        shown = dict(view)
+        shown["actors"] = [dict(actor) for actor in view.get("actors", [])]
+        for actor in shown["actors"]:
+            if "color" not in actor:
+                result = self.session.debug_query(
+                    {"kind": "disposition", "actor": actor["id"]}
+                )
+                actor["color"] = DISPOSITION_COLORS.get(result["category"], "person")
+        render.show(shown, True, self.styler)
 
     def _command(self, view: dict, raw: str):
         """Resuelve consultas o envía acciones únicamente desde Observe."""
@@ -48,6 +75,29 @@ class TextClient:
             else:
                 print("Active --developer para consultar datos internos.")
             return False
+        if name in ("hechos", "relacion", "propiedad"):
+            if self.developer:
+                inspect(self.session, [name, *rest.split()])
+            else:
+                print("Active --developer para consultar datos internos.")
+            return False
+        if name == "disposicion":
+            if not self.developer:
+                print("Active --developer para consultar la disposición.")
+            else:
+                try:
+                    print(
+                        json.dumps(
+                            self.session.debug_query(
+                                {"kind": "disposition", "actor": rest.strip()}
+                            ),
+                            ensure_ascii=False,
+                            indent=2,
+                        )
+                    )
+                except WorldError as exc:
+                    print("Consulta rechazada: " + str(exc))
+            return False
         if name in ("ver", "mirar", "look") and rest and self._element(view, rest):
             return False
         candidates = match(view["actions"], name, rest)
@@ -65,12 +115,9 @@ class TextClient:
         """Atiende comandos universales que no provocan acciones del juego."""
         if name.isdecimal():
             number = int(name)
-            if 1 <= number <= len(view["actions"]):
-                action = view["actions"][number - 1]
-                if action["enabled"]:
-                    return True, action
-                print("Esa acción no está disponible.")
-                return True, False
+            choices = render.available(view["actions"])
+            if 1 <= number <= len(choices):
+                return True, choices[number - 1]
             print("Número fuera de las opciones.")
             return True, False
         if name in ("salir", "quit"):
@@ -80,7 +127,7 @@ class TextClient:
         if name in ("guardar", "save"):
             return True, self._save(rest)
         if name in ("ver", "mirar", "look") and not rest:
-            render.show(view)
+            self.display(view)
             return True, False
         if name in ("ayuda", "help"):
             instructions()
@@ -178,8 +225,19 @@ class TextClient:
 
     def _actions(self, view: dict, value: str):
         """Enumera todas las acciones o las vinculadas a un elemento visible."""
+        if value in ("bloqueadas", "todas"):
+            if not self.developer:
+                print("Active --developer para inspeccionar acciones bloqueadas.")
+            elif value == "bloqueadas":
+                render.blocked(view["actions"], self.styler)
+            else:
+                print("DISPONIBLES")
+                render.offers(view["actions"], self.styler)
+                print("BLOQUEADAS")
+                render.blocked(view["actions"], self.styler)
+            return False
         if not value:
-            render.offers(view["actions"])
+            render.offers(view["actions"], self.styler)
             return False
         matches = [
             item
@@ -187,7 +245,7 @@ class TextClient:
             if normalize(value) in (normalize(item["id"]), normalize(item["label"]))
         ]
         if len(matches) == 1:
-            render.offers(matches[0]["actions"])
+            render.offers(matches[0]["actions"], self.styler)
         else:
             print("No existe un elemento único con ese nombre.")
         return False

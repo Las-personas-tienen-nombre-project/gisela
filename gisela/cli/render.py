@@ -2,27 +2,63 @@
 
 from __future__ import annotations
 
+from .color import Styler
 
-def show(view: dict) -> None:
-    """Imprime la proyección narrativa y las acciones de GISELA."""
+
+def available(actions: list[dict]) -> list[dict]:
+    return [action for action in actions if action["enabled"]]
+
+
+def _line(value: str, role: str, styler: Styler) -> None:
+    print(styler.paint(role, value))
+
+
+def _show_exploring(view: dict, styler: Styler) -> None:
+    from datetime import datetime
+
+    title = view.get("scene_title", view["scene"])
+    when = view.get("world_time")
+    if when:
+        title += " — " + datetime.fromisoformat(when).strftime("%H:%M")
+    _line("\n" + title.upper(), "scene_title", styler)
+    if view.get("scene_description"):
+        _line("\n" + view["scene_description"], "description", styler)
+    if view.get("actors"):
+        print("\nPERSONAS")
+        for actor in view["actors"]:
+            _line("  " + actor["name"], actor.get("color", "person"), styler)
+    for role, heading in (
+        ("portable_object", "OBJETOS RECOGIBLES"),
+        ("fixed_object", "OBJETOS FIJOS"),
+        ("element", "ELEMENTOS"),
+    ):
+        items = [
+            item
+            for item in view.get("elements", [])
+            if item.get("role", "element") == role
+        ]
+        if items:
+            print("\n" + heading)
+            for item in items:
+                _line(
+                    "  " + item["label"],
+                    item.get("color", role if role != "element" else "fixed_object"),
+                    styler,
+                )
+
+
+def _show_content(view: dict, styler: Styler) -> None:
     content = view["content"]
     kind = content["kind"]
     if kind == "exploring":
-        print("\nEscena: " + view["scene"])
-        print("\n" + view.get("scene_title", view["scene"]))
-        if view.get("scene_description"):
-            print("\n" + view["scene_description"])
-        for title, group, key in [
-            ("Personas", "actors", "name"),
-            ("Elementos", "elements", "label"),
-        ]:
-            if view.get(group):
-                print(
-                    title + ": " + ", ".join(o.get(key, o["id"]) for o in view[group])
-                )
+        _show_exploring(view, styler)
     elif kind in ("narrate", "dialogue"):
         speaker = content.get("speaker", "")
-        print("\n" + (speaker + ": " if speaker else "") + content["text"])
+        _line(
+            "\n" + (speaker + ": " if speaker else "") + content["text"],
+            "dialogue" if kind == "dialogue" else "description",
+            styler,
+        )
     elif kind == "choice":
         print("\n" + content.get("prompt", "Elija una opción:"))
     elif kind == "pending_transaction":
@@ -33,7 +69,41 @@ def show(view: dict) -> None:
         print("\nFinal: " + content["ending"])
     else:
         print("\n" + kind.replace("_", " ").capitalize())
-    offers(view["actions"])
+
+
+def _show_actions(view: dict, styler: Styler) -> None:
+    exits = [a for a in available(view["actions"]) if a.get("role") == "exit"]
+    context = [a for a in available(view["actions"]) if a.get("role") != "exit"]
+    if exits:
+        print("\nSALIDAS")
+        offers(exits, styler=styler, role="exit")
+    if context:
+        print("\nACCIONES")
+        offers(context, styler=styler)
+
+
+def show(view: dict, developer: bool = False, styler: Styler | None = None) -> None:
+    """Imprime la proyección pública y un resumen opcional de desarrollo."""
+    styler = styler or Styler()
+    _show_content(view, styler)
+    _show_actions(view, styler)
+    if developer:
+        print(
+            styler.paint(
+                "debug", f"\nAcciones disponibles: {len(available(view['actions']))}"
+            )
+        )
+        print(
+            styler.paint(
+                "debug",
+                f"Acciones bloqueadas: {len(view['actions']) - len(available(view['actions']))}",
+            )
+        )
+        print(
+            styler.paint(
+                "debug", "acciones bloqueadas — muestra identificadores y motivos"
+            )
+        )
 
 
 def evaluation(content: dict) -> None:
@@ -46,11 +116,21 @@ def evaluation(content: dict) -> None:
         print(content["auxiliary_request"]["prompt"])
 
 
-def offers(actions: list[dict]) -> None:
+def offers(
+    actions: list[dict], styler: Styler | None = None, role: str = "action"
+) -> None:
     """Presenta acciones como comandos, sin imponer un menú numérico."""
+    styler = styler or Styler()
+    for action in available(actions):
+        _line(f"  {action['label']}  [accion {action['id']}]", role, styler)
+
+
+def blocked(actions: list[dict], styler: Styler | None = None) -> None:
+    styler = styler or Styler()
     for action in actions:
-        suffix = "" if action["enabled"] else " (no disponible)"
-        print(f"  {action['label']}  [accion {action['id']}]{suffix}")
+        if not action["enabled"]:
+            suffix = " — " + action["reason"] if action.get("reason") else ""
+            _line(f"  {action['id']} — {action['label']}{suffix}", "debug", styler)
 
 
 def catalogue(items: list[dict], title: str) -> None:

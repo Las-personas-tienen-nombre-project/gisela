@@ -4,7 +4,7 @@ This directory defines JSON schemas, package admission, semantic validation, can
 
 ## Contract versions
 
-The repository retains v1.2, v1.3, v1.4, and v1.5 schemas. Current integration packages use v1.5. Version 1.3 introduced TRAITS integration contracts. Version 1.4 added declarative evaluation admission and hidden execution. Version 1.5 adds visible evaluation state and continuation. Older package and save semantics must not be silently changed.
+The repository retains v1.2, v1.3, v1.4, and v1.5 schemas. Current integration packages use v1.5. Version 1.3 introduced TRAITS integration contracts. Version 1.4 added declarative evaluation admission and hidden execution. Version 1.5 adds visible evaluation state and continuation, plus optional client presentation roles and diagnostic disposition configuration. Older package and save semantics must not be silently changed.
 
 The unversioned schemas at the top of this directory are part of the earlier contract set. Do not assume they are the current v1.5 authoring reference. Use the version directory appropriate for the package.
 
@@ -44,6 +44,12 @@ Structural and semantic errors reject a package. Warnings do not reject it by de
 The session schema describes committed state, history, random state, and the optional current pending operation. Session export is private data. Restore validates the snapshot against the exact admitted package and checks pending replay when applicable.
 
 The Observe contract describes public content and offered actions. It must not expose private world data merely because it exists in the snapshot. The Act contract accepts the current session identifier, revision, and offered action identifier. It is not a general purpose operation language.
+
+In v1.5, `presentation.color` accepts `default`, `red`, `yellow`, `green`, `cyan`, `blue`, `magenta`, or `white` on a card, scene actor, or scene element. An instance can override its card with a declared string property `presentation_color` whose initial value is `inherit`; an ordinary `set` changes or resets it. Admission, writes, and restore validate these values. `Observe` publishes only the effective color role. The [client API](../../docs/architecture/API_CLIENTES.md#glauquir-y-presentación-v15-vigente) specifies precedence and privacy.
+
+`manifest.disposition_display` is optional and separate from `relationship_fields`: it names a numeric relationship field and declares `minimum`, `neutral`, and `maximum`, plus four optional normalized `thresholds`. It is validated at admission. The directed effective value and its category are available only through a privileged `debug_query`, never through `Observe`. A package without this configuration remains playable and its diagnostic disposition is `unknown`.
+
+Scene actors may declare `unknown_name`, `known_if`, and a stable public `public_id`; elements may declare `public_id` and `public_entity`; scene actions may declare `public_id`. These are optional author supplied aliases, so authors must review any remaining IDs and labels that could reveal information the player has not learned. The action execution token remains `action_id` from the current observation.
 
 ## Evaluate declarations
 

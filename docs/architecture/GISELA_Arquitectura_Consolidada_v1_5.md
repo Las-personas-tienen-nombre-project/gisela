@@ -1,6 +1,6 @@
 # GISELA, ALBERTO y S.O.F.I.A. Arquitectura consolidada, versión 1.5
 
-**Fecha:** 29 de octubre de 2026. **Estado:** consolidación arquitectónica vigente y normalización determinista comprobada. **Primer caso de uso:** "Las personas tienen nombre", dentro del proyecto Central Clasificadora. El motor es general y no puede incorporar como obligaciones universales las mecánicas específicas de este demo.
+**Fecha:** 29 de octubre de 2026. **Estado:** base arquitectónica v1.5 con secciones de avance histórico. **Primer caso de uso:** "Las personas tienen nombre", dentro del proyecto Central Clasificadora. El motor es general y no puede incorporar como obligaciones universales las mecánicas específicas de este demo. Para la interfaz y los campos de presentación actuales, consulte la [API de clientes](API_CLIENTES.md) y la [guía de GLAUQUIR](../guides/GLAUQUIR.md).
 
 ## 1. Alcance y precedencia
 
@@ -14,7 +14,7 @@ ALBERTO significa "Autonomous Layer for Beings, Environments, Relationships, Tra
 
 S.O.F.I.A. significa "Strength, Openness, Fortune, Intelligence, Awareness". Es una capacidad opcional de ALBERTO. Sus cinco atributos enteros tienen escala común configurable, por defecto de 0 a 10. Cada personaje puede tener valores base y actuales; el efectivo resulta del actual más modificadores activos y puede superar la escala. No hay tiradas universales, porque el autor declara los chequeos que necesita.
 
-Ren'Py y CLI son anfitriones. Presentan una proyección autorizada y envían identificadores de acción; no interpretan condiciones ni inventan consecuencias. Los aspectos de volumen, animación, recursos visuales y presentación quedan fuera del estado narrativo. Ren'Py no es requisito para probar los contratos del motor.
+Ren'Py y CLI son anfitriones. Presentan una proyección autorizada y envían identificadores de acción; no interpretan condiciones ni inventan consecuencias. Volumen, animación, recursos visuales y secuencias ANSI pertenecen al anfitrión. Los roles semánticos de color declarados por el autor pueden formar parte del estado narrativo confirmado. Ren'Py no es requisito para probar los contratos del motor.
 
 ## 3. Paquete narrativo
 
@@ -72,7 +72,7 @@ La restauración debe reconstruir la transacción desde la intención y las resp
 
 ## 10. Persistencia
 
-GISELA exportará y restaurará una representación completa del estado confirmado de sesión en JSON. La escritura y lectura de archivos corresponde al anfitrión. El estado incluye cursor, turnos, reloj ficticio, instancias, ubicaciones, propiedades, hechos, ejecuciones, relaciones, conocimientos, habilidades, efectos, RNG, identidades utilizadas, revisiones y, cuando corresponda, la transacción pendiente.
+GISELA exporta y restaura una representación completa del estado confirmado de sesión en JSON. La escritura y lectura de archivos corresponde al anfitrión. El estado incluye cursor, turnos, reloj ficticio, instancias, ubicaciones, propiedades, hechos, ejecuciones, relaciones, conocimientos, habilidades, efectos, RNG, identidades utilizadas, revisiones y, cuando corresponda, la transacción pendiente.
 
 Los guardados almacenan `package_digest`, un SHA-256 de 64 caracteres hexadecimales calculado sobre `GISELA-CJSON-1` con separación de dominio. El algoritmo exacto, los límites numéricos y los vectores están especificados en `docs/determinism/DIGEST_CANONICO.md`. Un cambio en las definiciones cambia el digest y la restauración contra ese paquete debe rechazarse. Las migraciones automáticas entre versiones no están permitidas.
 
@@ -84,20 +84,20 @@ Todo paquete debe entrar a través de la puerta de admisión, que aplica lectura
 
 Un guardado requiere comprobaciones adicionales de formato, origen, digest, identidades, historia, cursor e invariantes de mundo. La parte estática de estas comprobaciones ya existe, pero no reemplaza la restauración dinámica. La implementación de Ren'Py tampoco podrá modificar directamente las estructuras internas del motor para eludir esta admisión.
 
-## 12. Frontera de implementación
+## 12. Frontera de implementación en la etapa H2 (registro histórico)
 
 Están implementados la validación estática, los dos contratos deterministas y un ejecutor narrativo H2 reducido. Se restauran sesiones confirmadas y pendientes de descarte dentro de ese alcance. Ren'Py todavía no consume `Observe` y `Act`; su árbol es un anfitrión de preproducción. El código antiguo permanece aislado en `archive/`.
 
 ADR-015 autoriza una vertical funcional de CLI con narración, diálogo, elección, condición, transferencia de objeto, hecho histórico y al menos una reacción causal. Se excluyen, en esta primera etapa, las habilidades avanzadas, los efectos temporales compuestos, S.O.F.I.A., los mecanismos de contrahechizos y las rutinas específicas del demo. El encargo de continuar con el MVP autorizó iniciar esta implementación limitada.
 
-## 13. Puntos pendientes, sin introducir nuevos subsistemas
+## 13. Puntos pendientes en la etapa H2 (registro histórico)
 
 Se implementaron parcialmente el ejecutor, el cierre de turnos, el rollback ante conflictos y el replay de decisiones auxiliares de descarte. Siguen pendientes los orígenes asociados a operaciones aún no implementadas, como acciones de exploración y uso de habilidades, las conversiones de contenido del demo anterior, la integración con Ren'Py y la política de migración futura de sesiones. El ejecutor H2 aplica límites operativos de 32 rondas reactivas y 512 pasos automáticos; no son una decisión narrativa general. Estas tareas se deben resolver dentro de GISELA, no mediante otro motor.
 
 Las decisiones de producción, derechos y publicación siguen separadas. La existencia de un ZIP integrado no equivale a una demo terminada ni a un acuerdo contractual con terceros.
 
 
-## 14. Implementación verificada de la vertical CLI. Versión 0.1
+## 14. Implementación verificada de la vertical CLI 0.1 (registro histórico)
 
 El código nuevo se ubica en `gisela/engine/`, sin reutilizar el sistema histórico de acontecimientos. Se conserva la distinción arquitectónica entre GISELA como ejecutor y autoridad de transacciones, ALBERTO como gestor de operaciones sobre instancias y las capacidades opcionales de S.O.F.I.A. como datos y cálculos de H3.4b. El anfitrión de consola solo muestra proyecciones y remite acciones, utilizando la misma frontera Observe y Act prevista para Ren'Py.
 

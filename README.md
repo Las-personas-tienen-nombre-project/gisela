@@ -39,7 +39,7 @@ Run the Central Clasificadora test adaptation.
 glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
-The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md). The CLI `--auto` mode is not a guaranteed route to an ending for the Faro and Central packages; use the scripted walkthroughs with `--verify-restores` for acceptance.
+The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md) and the [GLAUQUIR command and color guide](docs/guides/GLAUQUIR.md). The CLI `--auto` mode is not a guaranteed route to an ending for the Faro and Central packages; use the scripted walkthroughs with `--verify-restores` for acceptance.
 
 Validate an author package with `gisela validate historia.package.json`. Add `--json` for structured diagnostics. Running `glauquir` without `--package` uses its bundled default story, including from outside this repository.
 

@@ -146,7 +146,7 @@ class H45APresentation(unittest.TestCase):
         ):
             choice = TextClient(session).choose(view)
         self.assertIsNone(choice)
-        self.assertIn("no está disponible", output.getvalue())
+        self.assertIn("Número fuera de las opciones", output.getvalue())
 
 
 class H45BObjects(unittest.TestCase):

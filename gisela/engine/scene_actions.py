@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from .conditions import predicate
 from .effect_context import EffectContext
+from .presentation import explicit_color
 from .scene_presence import present
 from .world_base import WorldError
 
@@ -51,7 +52,7 @@ def sources(session, state: dict) -> list[tuple[dict, dict]]:
             entry = {
                 "kind": "interact",
                 "action_id": f"interact_{group_index}_{action_index}",
-                "id": action["id"],
+                "id": action.get("public_id", action["id"]),
                 "label": text(action["label"]),
                 "enabled": predicate(
                     state,
@@ -59,6 +60,8 @@ def sources(session, state: dict) -> list[tuple[dict, dict]]:
                     session._definitions,
                 ),
             }
+            if "role" in action:
+                entry["role"] = action["role"]
             result.append((source, entry))
     return result
 
@@ -127,9 +130,17 @@ def _actors(session, scene: dict) -> list[dict]:
             continue
         card = session._cards[instance["card"]]
         display = {
-            "id": identifier,
+            "id": actor.get("public_id", identifier),
             "name": text(card["title"]) if "title" in card else identifier,
         }
+        color, _ = explicit_color(instance, card, actor)
+        if color is not None:
+            display["color"] = color
+        if "unknown_name" in actor and not _shown(
+            session._state, {"visible_if": actor["known_if"]}, session._definitions
+        ):
+            display["name"] = text(actor["unknown_name"])
+            display["identity_hidden"] = True
         if "presentation" in actor:
             display["presentation"] = actor["presentation"]
         result.append(display)
@@ -160,16 +171,29 @@ def project(session, view: dict) -> None:
                 if source.get("element") == element["id"]
             ]
             item = {
-                "id": element["id"],
+                "id": element.get("public_id", element["id"]),
                 "label": text(element["label"]),
                 "actions": actions,
             }
+            if isinstance(element.get("entity"), str) and not element[
+                "entity"
+            ].startswith("$"):
+                from .world_base import instance
+
+                _, entity_instance = instance(session._state, element["entity"])
+                color, _ = explicit_color(
+                    entity_instance, session._cards[entity_instance["card"]], element
+                )
+                if color is not None:
+                    item["color"] = color
+            if "role" in element:
+                item["role"] = element["role"]
             if "description" in element:
                 item["description"] = text(element["description"])
             if isinstance(element.get("entity"), str) and not element[
                 "entity"
             ].startswith("$"):
-                item["entity"] = element["entity"]
+                item["entity"] = element.get("public_entity", element["entity"])
             view["elements"].append(item)
     view["actors"] = _actors(session, scene)
     if "presentation" in scene:

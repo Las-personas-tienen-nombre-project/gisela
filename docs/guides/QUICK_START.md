@@ -21,6 +21,8 @@ Otro paquete de ejemplo:
 glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
+Dentro de la sesión, use `mirar`, `acciones` y `accion ID`; las acciones bloqueadas se reservan al diagnóstico. La [guía de GLAUQUIR](GLAUQUIR.md) reúne los comandos, el modo `--developer` y las opciones de color.
+
 Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
 
 Desde cualquier directorio, `glauquir` inicia el paquete de ejemplo incorporado si se omite `--package`. Para comprobar un paquete propio antes de jugar, ejecuta `gisela validate historia.package.json`; `--json` entrega diagnósticos estructurados.
@@ -31,15 +33,14 @@ Admisión de un paquete:
 python gisela/contracts/admit_package.py gisela/packages/h46_faro_de_niebla.package.json
 ```
 
-Pruebas offline integrales (pueden tardar):
+Verificación oficial desde la raíz (el modo completo añade recorridos con restauración):
 
 ```bash
-python tools/check_quality.py
-python tools/check_doc_links.py
-python -m unittest discover -s tools -p 'test_*.py' -q
-python -m unittest discover -s gisela/contracts -p 'test_*.py' -q
-python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
+python tools/check_gisela.py
+python tools/check_gisela.py --full
 ```
+
+Véase la [guía de verificación](VERIFICACION_GISELA.md) para dependencias, alcance y criterios bloqueantes.
 
 Para integrar el motor desde Python, consulte el [ejemplo de sesión en el README](../../README.md#python-session-example), la [API de clientes](../architecture/API_CLIENTES.md) y los [contratos](../../gisela/contracts/README.md). La CLI y los ejemplos son herramientas de demostración; Ren'Py no forma parte de este repositorio.
 

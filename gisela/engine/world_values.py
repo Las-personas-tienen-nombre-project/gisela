@@ -80,6 +80,18 @@ def _checked(value, spec: dict) -> None:
     }[typ]
     if not valid:
         raise WorldError("TYPE_MISMATCH", "Valor incompatible con " + typ)
+    if spec["id"] == "presentation_color" and value not in {
+        "inherit",
+        "default",
+        "red",
+        "yellow",
+        "green",
+        "cyan",
+        "blue",
+        "magenta",
+        "white",
+    }:
+        raise WorldError("PROPERTY_RANGE", "Rol de color desconocido")
     if typ in ("integer", "number"):
         if type(value) is float and not isfinite(value):
             raise WorldError("PROPERTY_RANGE", "Valor no finito")

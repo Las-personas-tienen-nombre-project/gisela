@@ -103,11 +103,11 @@ python tools/check_gisela.py --full
 
 Los errores de dominio se expresan mediante códigos estables como `INVALID_REFERENCE`, `INVALID_STATE`, `INSTANCE_COLLISION`, `ENTITY_IN_USE`, `CAPACITY_EXCEEDED` y `REACTION_CONFLICT`. Los casos exactos dependen de las precondiciones de cada operación. La API externa devuelve errores de ejecución tipados; el anfitrión no debe intentar reparar directamente el estado.
 
-## 7. Límites y siguientes pasos
+## 7. Evolución y límites actuales
 
-H3.4a incorporó propiedades y relaciones mutables, lecturas predeterminadas y escrituras compatibles. H3.4c incorpora aplicación y vencimiento de efectos. Los atributos efectivos y Scoresheet están disponibles desde H3.4b. Quedan pendientes la ejecución de cartas de habilidad y sus políticas de retorno. También faltan acciones desde escenas o elementos y ligaduras de referencias contextuales, correspondientes a la evolución del motor y a H4.
+H3.4a incorporó propiedades y relaciones mutables; H3.4b añadió atributos efectivos y Scoresheet; H3.4c incorporó efectos. Desde H4, el ejecutor también admite habilidades y acciones declaradas en escenas y elementos. Las referencias contextuales sin ligadura implementada siguen sin poder resolverse por aproximación: el motor rechaza su ejecución en la puerta de soporte.
 
-La admisión estática conoce algunas de estas estructuras, pero el ejecutor todavía las rechaza. La planificación y el inventario de hallazgos están en [H3. Revisión, hallazgos y plan](../operatives/H3_REVISION_PLAN_IMPLEMENTACION.md). No se debe marcar H3 completo antes de verificar las capacidades pendientes y sus consecuencias para la persistencia.
+La [revisión histórica de H3](../operatives/H3_REVISION_PLAN_IMPLEMENTACION.md) registra las decisiones y pendientes de aquella etapa; no describe por sí sola el estado vigente. Para la proyección pública, las referencias autorales y los colores narrativos, consulte la [API de clientes](API_CLIENTES.md).
 
 ## 8. Propiedades y relaciones en H3.4a
 

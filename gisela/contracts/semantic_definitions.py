@@ -143,6 +143,22 @@ class DefinitionsMixin:
             else:
                 spec = defs[key]
                 self.check_type(val, spec["type"], path + "/properties/" + key)
+                if key == "presentation_color" and val not in {
+                    "inherit",
+                    "default",
+                    "red",
+                    "yellow",
+                    "green",
+                    "cyan",
+                    "blue",
+                    "magenta",
+                    "white",
+                }:
+                    self.report(
+                        "INVALID_PRESENTATION_COLOR",
+                        path + "/properties/" + key,
+                        "Rol de color desconocido",
+                    )
                 if (
                     isinstance(val, (float, int))
                     and not isinstance(val, bool)

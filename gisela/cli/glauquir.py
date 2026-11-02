@@ -11,9 +11,9 @@ from gisela.contracts.admit_package import admit_package_file
 from gisela.contracts.semantic_validator import load_json_strict
 from gisela.engine.runtime import EngineFailure, new_session, restore_session
 
+from .color import Styler
 from .interactive import TextClient
 from .render import confirmed
-from .render import show as display
 
 DEFAULT = Path(__file__).resolve().parents[1] / "packages" / "mvp_casete.package.json"
 
@@ -45,12 +45,15 @@ def _arguments(argv):
         default="prestar",
         help="Opción preferida para el recorrido automático",
     )
+    parser.add_argument("--color", choices=("auto", "always", "never"), default="auto")
     return parser.parse_args(argv)
 
 
 def _choose_interactive(actions, session, args):
     """Traduce la interacción textual a un identificador autorizado."""
-    return TextClient(session, args.developer).choose(session.observe())
+    return TextClient(session, args.developer, Styler(args.color)).choose(
+        session.observe()
+    )
 
 
 def _choose_action(view, session, args):
@@ -58,6 +61,8 @@ def _choose_action(view, session, args):
     actions = view["actions"]
     if args.auto:
         candidates = [item for item in actions if item["enabled"]]
+        if not candidates:
+            return None
         return next(
             (item for item in candidates if item["id"] == args.choose), candidates[0]
         )
@@ -68,7 +73,7 @@ def _run(session, args, admitted):
     """Consume Observe y Act, sin ejecutar reglas en el anfitrión."""
     for _ in range(256):
         view = session.observe()
-        display(view)
+        TextClient(session, args.developer, Styler(args.color)).display(view)
         if not view["actions"] and (args.auto or view["status"] == "ended"):
             return 0, session
         selected = _choose_action(view, session, args)

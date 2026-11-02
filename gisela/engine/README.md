@@ -58,6 +58,8 @@ Never treat a string supplied by a remote client as proof of a trusted principal
 
 `runtime.py` owns session setup and orchestration. `action_handler.py` handles authorized actions. `initialization.py` creates initial state. `evaluation_execution.py` resolves evaluation routes. `evaluation_pending.py` manages pending visible evaluations. `pending.py` contains the replay primitives. `expiration.py` handles declared expiration. `skill_execution.py` and `support_skills.py` support skill effects. `support.py` checks executable capabilities. `errors.py` defines engine errors.
 
+`scene_actions.py` and `public_view.py` build the public scene and card projections. `presentation.py` resolves explicit color roles and calculates private diagnostic disposition; `queries.py` exposes that calculation through the diagnostic API. GLAUQUIR applies ANSI styles separately.
+
 This map lists entry points and responsibilities rather than every private helper. Read source and tests before extending behavior.
 
 ## Implementation tests
@@ -66,11 +68,11 @@ This map lists entry points and responsibilities rather than every private helpe
 python -m unittest discover -s gisela/engine/tests -p 'test_*.py' -q
 python -m unittest gisela.engine.tests.test_e2_evaluations -q
 python -m unittest gisela.engine.tests.test_e3_visible -q
-python tools/check_quality.py
-python tools/check_doc_links.py
+python -m unittest gisela.engine.tests.test_presentation_color -q
+python tools/check_gisela.py
 ```
 
-The tests cover transactional failures, pending replay, stale actions, version compatibility, deterministic evaluations, scene actions, and narrative integration packages. Passing the unit tests does not prove graphical Ren'Py behavior.
+The focused tests cover transactional failures, pending replay, stale actions, version compatibility, deterministic evaluations, scene actions, color projection, and narrative integration packages. The [official verification kit](../../docs/guides/VERIFICACION_GISELA.md) also runs static, structural, documentation, and invariant checks. Passing these checks does not prove graphical Ren'Py behavior.
 
 ## Rules for extensions
 

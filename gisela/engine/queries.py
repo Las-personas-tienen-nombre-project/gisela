@@ -8,8 +8,40 @@ from __future__ import annotations
 
 import copy
 
+from .presentation import disposition, explicit_color
 from .world_base import WorldError, find, instance
 from .world_values import read
+
+
+def _disposition(session, request: dict) -> dict:
+    """Acepta solo la referencia pública de un actor actualmente visible."""
+    view = session.observe()
+    actor = next(
+        (a for a in view.get("actors", []) if a["id"] == request["actor"]), None
+    )
+    if actor is None:
+        raise WorldError("NOT_VISIBLE", "Persona no visible")
+    scene = session._scenes[session._state["current_scene"]]
+    declaration = next(
+        a
+        for a in scene.get("actors", [])
+        if a.get("public_id", a["character"]) == actor["id"]
+    )
+    private_id = declaration["character"]
+    character = find(session._state, "characters", private_id)
+    card = session._cards[character["card"]]
+    color, source = explicit_color(character, card, declaration)
+    result = disposition(session, private_id)
+    return {
+        "actor": actor["id"],
+        "field": (result["scale"] or {}).get("field"),
+        "value": result["value"],
+        "scale": result["scale"],
+        "normalized": result["normalized"],
+        "category": result["category"],
+        "color": color,
+        "color_source": source,
+    }
 
 
 def _character(session, request: dict) -> dict:
@@ -57,6 +89,7 @@ def query(session, request: dict) -> dict:
         "relationship": {"from", "to", "key"},
         "scoresheet": {"character"},
         "facts": set(),
+        "disposition": {"actor"},
     }
     if kind not in required or set(request) != required[kind] | {"kind"}:
         raise WorldError(
@@ -64,6 +97,8 @@ def query(session, request: dict) -> dict:
         )
     if kind == "character":
         return _character(session, request)
+    if kind == "disposition":
+        return _disposition(session, request)
     if kind == "entity":
         return copy.deepcopy(instance(session._state, request["entity"])[1])
     if kind in ("property", "relationship"):

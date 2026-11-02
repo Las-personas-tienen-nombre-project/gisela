@@ -293,7 +293,7 @@ class H44Console(unittest.TestCase):
             check=False,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("Escena: porteria_noche", result.stdout)
+        self.assertIn("PORTERÍA EN LA NOCHE", result.stdout)
         self.assertIn("Final:", result.stdout)
 
     def test_console_save_load_and_inspect(self):
@@ -317,7 +317,7 @@ class H44Console(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(target.exists())
             self.assertIn('"character": "alberto"', result.stdout)
-            self.assertGreaterEqual(result.stdout.count("Escena: porteria_noche"), 2)
+            self.assertGreaterEqual(result.stdout.count("PORTERÍA EN LA NOCHE"), 2)
             reload = subprocess.run(
                 [
                     sys.executable,
