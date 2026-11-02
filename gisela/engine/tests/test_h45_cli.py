@@ -110,6 +110,31 @@ class H45APresentation(unittest.TestCase):
         self.assertIn("La entrada a la Central Clasificadora.", out.getvalue())
         self.assertIn("Conversar con Gisela", out.getvalue())
 
+    def test_renderer_advertises_commands_not_numbered_menu(self):
+        _, session = setup()
+        output = StringIO()
+        with redirect_stdout(output):
+            show(session.observe())
+        text = output.getvalue()
+        self.assertIn("[accion conversar]", text)
+        self.assertNotIn("1. ", text)
+
+    def test_action_command_selects_exact_offered_id(self):
+        _, session = setup()
+        view = session.observe()
+        choice = TextClient(session)._command(view, "accion conversar")
+        self.assertEqual(choice["id"], "conversar")
+
+    def test_ambiguous_actions_show_executable_commands(self):
+        _, session = setup()
+        actions = session.observe()["actions"][:2]
+        output = StringIO()
+        with redirect_stdout(output):
+            result = TextClient(session)._choose_candidates(actions)
+        self.assertIs(result, False)
+        self.assertIn("accion " + actions[0]["id"], output.getvalue())
+        self.assertNotIn("número correspondiente", output.getvalue())
+
     def test_disabled_choice_cannot_be_selected_by_number(self):
         _, session = setup()
         act(session, "tomar")

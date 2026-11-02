@@ -11,7 +11,7 @@ from .cli_match import match, normalize, select
 
 
 class TextClient:
-    """Traduce comandos y números a acciones ya publicadas por Observe."""
+    """Traduce comandos de texto a acciones publicadas por Observe."""
 
     def __init__(self, session, developer: bool = False):
         self.session = session
@@ -38,6 +38,8 @@ class TextClient:
         handled, answer = self._basic(view, name, rest)
         if handled:
             return answer
+        if name in ("accion", "action"):
+            return self._choose_candidates(select(view["actions"], rest))
         if name in ("ficha", "leer") and self._card(view, rest):
             return False
         if name in ("depurar", "consultar"):
@@ -216,14 +218,14 @@ class TextClient:
         return False
 
     def _choose_candidates(self, candidates: list[dict]):
-        """Rechaza elecciones ambiguas; permite seleccionarlas por número global."""
+        """Rechaza elecciones ambiguas y muestra comandos inequívocos."""
         if len(candidates) == 1:
             return candidates[0]
         if candidates:
             print("Hay varias acciones posibles:")
             for item in candidates:
-                print(item["action_id"] + ": " + item["label"])
-            print("Seleccione el número correspondiente en la lista de acciones.")
+                print("  accion " + item["id"] + " — " + item["label"])
+            print("Escriba uno de los comandos indicados.")
         else:
             print("Acción no disponible. Escriba acciones para ver las opciones.")
         return False

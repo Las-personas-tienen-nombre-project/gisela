@@ -46,7 +46,7 @@ def instructions() -> None:
     print(
         "También: misiones, history [N|all], guardar RUTA, cargar RUTA, ayuda, salir."
     )
-    print("Puede seleccionar una acción disponible por número.")
+    print("Para ejecutar una oferta específica: accion ID (consulte acciones).")
     print(
         "Con --developer: consultar personaje ID, entidad ID, propiedad ENTIDAD CAMPO,"
     )

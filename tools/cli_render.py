@@ -47,10 +47,10 @@ def evaluation(content: dict) -> None:
 
 
 def offers(actions: list[dict]) -> None:
-    """Enumera las acciones publicadas y sus estados."""
-    for index, action in enumerate(actions, 1):
+    """Presenta acciones como comandos, sin imponer un menú numérico."""
+    for action in actions:
         suffix = "" if action["enabled"] else " (no disponible)"
-        print(f"{index}. {action['label']}{suffix}")
+        print(f"  {action['label']}  [accion {action['id']}]{suffix}")
 
 
 def catalogue(items: list[dict], title: str) -> None:
