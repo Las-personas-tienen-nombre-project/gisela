@@ -1,5 +1,9 @@
 # Verificación independiente de GISELA
 
+Para preparar y publicar una nueva versión, siga el procedimiento de
+[versionado y publicaciones](../../README.md#versioning-and-releases). Incluye
+la comprobación de la wheel y de los comandos instalados fuera del repositorio.
+
 ## Alcance y comandos
 
 `tools/check_gisela.py` es el punto de entrada del **repositorio independiente**.

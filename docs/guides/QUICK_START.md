@@ -12,16 +12,18 @@ python -m pip install -r requirements-dev.txt
 Probar el cliente textual incluido, sin instalar Ren'Py:
 
 ```bash
-python tools/glauquir.py --package gisela/packages/h46_faro_de_niebla.package.json
+glauquir --package gisela/packages/h46_faro_de_niebla.package.json
 ```
 
 Otro paquete de ejemplo:
 
 ```bash
-python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
+glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
 Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
+
+Desde cualquier directorio, `glauquir` inicia el paquete de ejemplo incorporado si se omite `--package`. Para comprobar un paquete propio antes de jugar, ejecuta `gisela validate historia.package.json`; `--json` entrega diagnósticos estructurados.
 
 Admisión de un paquete:
 

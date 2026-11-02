@@ -27,19 +27,21 @@ python -m pip install -e .
 python -m pip install -r requirements-dev.txt
 ```
 
-Run the independent test adventure.
+Run the independent test adventure with the installed GLAUQUIR command.
 
 ```bash
-python tools/glauquir.py --package gisela/packages/h46_faro_de_niebla.package.json
+glauquir --package gisela/packages/h46_faro_de_niebla.package.json
 ```
 
 Run the Central Clasificadora test adaptation.
 
 ```bash
-python tools/glauquir.py --package gisela/packages/h46b_central_clasificadora.package.json
+glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 ```
 
 The game text and current client commands are in Spanish. This does not change the language of the engine contracts. For an interactive walkthrough, read [Quick start](docs/guides/QUICK_START.md). The CLI `--auto` mode is not a guaranteed route to an ending for the Faro and Central packages; use the scripted walkthroughs with `--verify-restores` for acceptance.
+
+Validate an author package with `gisela validate historia.package.json`. Add `--json` for structured diagnostics. Running `glauquir` without `--package` uses its bundled default story, including from outside this repository.
 
 ## Admission before execution
 
@@ -180,20 +182,23 @@ GISELA is versioned and published independently from its clients, including the 
 ### Prepare a release
 
 1. Work on a branch and review the intended changes. Update `[project] version` in `pyproject.toml` to the **new** distribution version, and update release-specific documentation where applicable.
-2. Install development dependencies and run the official checks. Run the extended narrative walkthroughs when the release changes behavior or compatibility:
+2. Install development dependencies and run the official checks. Use `--full` when the release changes narrative behavior or compatibility. For releases that change packaged modules, resources, dependencies, or console commands, also verify installation from a wheel:
 
 ```bash
 python -m pip install -e .
 python -m pip install -r requirements-dev.txt
 python tools/check_gisela.py
 python tools/check_gisela.py --full
+python tools/verify_cli_wheel.py
 ```
+
+`verify_cli_wheel.py` builds a wheel, installs it with its dependencies into a fresh temporary virtual environment, and runs `glauquir` and `gisela validate` from outside the source tree. It needs access to dependency wheels or a package index. Resolve any failed check before tagging.
 
 3. Build a wheel into a clean output directory and inspect its embedded metadata. The following commands check the version without trusting only the local `pyproject.toml`:
 
 ```bash
 python -m pip wheel --no-deps --wheel-dir /tmp/gisela-release .
-python - /tmp/gisela-release <<'PYTHON'
+python - /tmp/gisela-release X.Y.Z <<'PYTHON'
 from pathlib import Path
 from email.parser import Parser
 import sys
@@ -209,29 +214,30 @@ with ZipFile(wheels[0]) as archive:
     info = Parser().parsestr(archive.read(files[0]).decode('utf-8'))
     version = info['Version']
     print(f"Distribution: {info['Name']} {version}")
-    if version != wheels[0].name.split('-')[1]:
-        raise SystemExit('Wheel filename and metadata versions differ')
+    if version != sys.argv[2] or version != wheels[0].name.split('-')[1]:
+        raise SystemExit('Wheel, metadata, and intended version differ')
 PYTHON
 ```
 
-Use a newly emptied `/tmp/gisela-release` directory for each verification so an old wheel cannot be mistaken for the new release. For stronger release checks, also install the wheel in a fresh virtual environment and test imports from **outside** the repository.
+Replace `X.Y.Z` with the intended new version. Use a newly emptied `/tmp/gisela-release` directory for each verification so an old wheel cannot be mistaken for the new release. `verify_cli_wheel.py` performs the separate installation check for the console commands.
 
 ### Publish the Git tag
 
-After all required checks pass, commit and push the release to the intended branch. Tag the exact commit you intend to release (illustrative version shown; substitute the actual new version):
+After all required checks pass, review and stage only the intended changes, including any new files (`git add -- path/to/new-file` after `git add -p`). Then commit and push the release to the intended branch. Replace every `X.Y.Z` below with the new distribution version; tag the exact release commit:
 
 ```bash
-git add .
-git commit -m "release: GISELA 0.1.5"
+git status --short
+git add -p
+git commit -m "release: GISELA X.Y.Z"
 git push origin HEAD
-git tag -a v0.1.5 -m "GISELA v0.1.5"
-git push origin v0.1.5
+git tag -a vX.Y.Z -m "GISELA vX.Y.Z"
+git push origin vX.Y.Z
 ```
 
 Verify the tag content after publication:
 
 ```bash
-git show v0.1.5:pyproject.toml
+git show vX.Y.Z:pyproject.toml
 ```
 
 **Never move or reuse a published release tag.** If a tag points to a commit whose package metadata is wrong, publish a correction under a new version and tag. For example, `v0.1.3` was published with distribution version `0.1.333`; the corrective release uses `v0.1.4` and `0.1.4`.
