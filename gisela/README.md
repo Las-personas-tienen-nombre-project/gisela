@@ -1,14 +1,24 @@
 # GISELA. Interactive story engine
 
-GISELA means _enGine for Interactive Stories through Events, Links, and Actions_. GISELA is an independent general engine for declared interactive narratives. This repository contains the engine, its independent libraries, CLI client GLAUQUIR, tests, documentation, and example narrative packages. The Ren'Py integration belongs to a separate demo repository; it is not required to use GISELA.
+GISELA means _enGine for Interactive Stories through Events, Links, and Actions_. It is a narrative engine built around a declarative domain-specific language (DSL) for state-based interactive storytelling. This repository contains the engine, its independent libraries, CLI client GLAUQUIR, tests, documentation, and example narrative packages. The Ren'Py integration belongs to a separate demo repository; it is not required to use GISELA.
 
 This README explains the current implementation. For design history and architecture decisions, use the links at the end. The older documents describe important decisions but some were written before later features were implemented.
 
-## What GISELA does
+## Narrative language and execution
 
-GISELA admits JSON packages, starts and restores sessions, exposes a player view, accepts authorized actions, evaluates rules, applies world changes, processes reactions, advances the narrative, and saves the confirmed result. Every action is checked against the actions offered by the current observation.
+Authors define characters, scenes, events, actions, conditions, relationships, and consequences as structured data rather than writing procedural code for each narrative situation. The architecture separates five concerns:
 
-A story package contains the world definitions and declared story behavior. The engine does not execute arbitrary author Python code. GISELA is the only authority for the session, its current node and scene, transactions, time, and deterministic random state.
+- **Narrative language:** expresses what may happen, under which conditions, and with what consequences.
+- **Schemas and semantic contracts:** validate declarations, references, and supported operations.
+- **Engine:** evaluates declarations and executes authorized state transitions.
+- **Narrative state:** records facts, character knowledge, relationships, time, and session history.
+- **Client presentation:** exposes the narrative through GLAUQUIR, Ren'Py, or other compatible clients.
+
+JSON is the current representation of the DSL; JSON Schema alone does not define its behavior. GISELA's contracts and execution engine establish its narrative semantics. The engine admits packages, starts and restores sessions, and revalidates each action against the current observation before applying changes to confirmed state. It does not execute arbitrary author Python code.
+
+Beyond dialogue trees, declared events can depend on earlier events, world state, character relationships, and reproducible probabilistic evaluations. The same package can produce different outcomes without changing its declarations. Given the same initial state, inputs, and random seed, execution is reproducible.
+
+For the language concepts and execution model, see [Narrative language](../docs/architecture/NARRATIVE_LANGUAGE.md).
 
 ## Main parts
 
