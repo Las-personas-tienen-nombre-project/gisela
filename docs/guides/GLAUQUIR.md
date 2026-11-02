@@ -15,11 +15,14 @@ glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 | `mirar`, `mirar ELEMENTO` | Leer escena o inspeccionar un elemento público. |
 | `acciones`, `acciones ELEMENTO` | Consultar ofertas ejecutables. |
 | `accion ID` | Ejecutar una oferta habilitada por su ID público. |
+| `A`, `B`, …, `Z`, `AA`, … | Ejecutar la oferta que muestra esa letra en la observación actual. |
 | `hablar`, `ir`, `examinar`, `tomar`, `dejar`, `dar`, `usar` | Buscar una oferta habilitada por verbo y objeto. |
-| `inventario`, `estado`, `ficha`, `misiones`, `ayuda` | Leer información pública. |
+| `inventario`, `estado`, `ficha`, `misiones`, `history`, `ayuda` | Leer información pública; `history` muestra pasajes narrativos confirmados. |
 | `guardar RUTA`, `cargar RUTA`, `salir` | Gestionar la sesión. |
 
-Los números siguen aceptándose por compatibilidad y cuentan **solo** las ofertas habilitadas, en el orden de `Observe`; la pantalla presenta comandos `accion ID`. Una acción bloqueada no puede ejecutarse por ID, verbo ni número. `--auto` se detiene si no hay acciones habilitadas; no garantiza llegar a un final.
+Las letras y los números siguen el orden mostrado: primero las salidas y luego las demás acciones habilitadas. Las letras se reasignan al cambiar las opciones; `acciones ELEMENTO` conserva la letra de cada oferta en la lista completa. La pantalla también presenta el comando `accion ID` de cada oferta. Una acción bloqueada no puede ejecutarse por ID, verbo, letra ni número. `--auto` se detiene si no hay acciones habilitadas; no garantiza llegar a un final.
+
+Cuando tanto la entrada como la salida son terminales y Python dispone de `readline`, `↑` recorre los comandos escritos durante esta ejecución y `←` y `→` mueven el cursor para editarlos. Si se eligió una letra, `↑` recupera el comando completo `accion ID`. Este historial de entrada no se guarda en la partida y es distinto de `history`, el registro narrativo confirmado. La entrada redirigida o por tubería sigue aceptando los mismos comandos, sin edición interactiva de línea.
 
 ## Diagnóstico
 

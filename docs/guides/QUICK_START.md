@@ -23,7 +23,7 @@ glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 
 Dentro de la sesión, use `mirar`, `acciones` y `accion ID`; las acciones bloqueadas se reservan al diagnóstico. La [guía de GLAUQUIR](GLAUQUIR.md) reúne los comandos, el modo `--developer` y las opciones de color.
 
-También puede elegir una acción con la letra que aparece junto a ella (`A`, `B`, …, `AA`); las letras cambian con las opciones visibles. En un terminal, `↑` recorre los comandos de esta ejecución y recupera el comando completo (`accion ID`) cuando se eligió una letra. `←` y `→` permiten editar el texto antes de enviarlo.
+También puede elegir una acción con la letra que aparece junto a ella (`A`, `B`, …, `AA`); las letras cambian con las opciones visibles. Si la entrada y la salida son terminales y Python dispone de `readline`, `↑` recorre los comandos de esta ejecución y recupera el comando completo (`accion ID`) cuando se eligió una letra; `←` y `→` permiten editarlo. El comando `history` muestra la historia narrativa, no este historial de entrada.
 
 Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
 

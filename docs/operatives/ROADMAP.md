@@ -16,6 +16,8 @@ H4.6 added El faro de niebla, an independent end to end integration adventure. H
 
 GLAUQUIR now filters unavailable actions in normal play, groups declared scene roles, and supports semantic ANSI color. A separate privileged diagnostic can show directed disposition; it does not add private relationship data to Observe. See the [GLAUQUIR guide](../guides/GLAUQUIR.md) for the exact command and color contract.
 
+The current CLI also labels available actions with letters and accepts them as shortcuts. Interactive terminals with Python `readline` support command recall and cursor movement; this input history is separate from the engine's narrative history.
+
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
 These describe capabilities implemented across the engine and its original demo; Ren'Py files are not included here. For the exact list of verified tests run on a particular release, use its test logs and the tests executed in this repository.
