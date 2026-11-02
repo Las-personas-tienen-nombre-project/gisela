@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Create a compact tar.gz snapshot of the GISELA working tree."""
 
 from __future__ import annotations
@@ -41,8 +40,7 @@ def files_to_archive(root: Path, output: Path):
         directories[:] = sorted(
             name
             for name in directories
-            if name not in EXCLUDED_DIRS
-            and not name.endswith(EXCLUDED_SUFFIXES)
+            if name not in EXCLUDED_DIRS and not name.endswith(EXCLUDED_SUFFIXES)
         )
         for filename in sorted(filenames):
             path = current_path / filename
