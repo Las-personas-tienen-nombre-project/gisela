@@ -9,6 +9,24 @@ def available(actions: list[dict]) -> list[dict]:
     return [action for action in actions if action["enabled"]]
 
 
+def ordered_actions(actions: list[dict]) -> list[dict]:
+    """Orden visible de las ofertas: salidas primero, luego otras acciones."""
+    enabled = available(actions)
+    return [a for a in enabled if a.get("role") == "exit"] + [
+        a for a in enabled if a.get("role") != "exit"
+    ]
+
+
+def option_letter(index: int) -> str:
+    """Índice cero basado en letras: A..Z, AA..AZ, BA..."""
+    result = ""
+    index += 1
+    while index:
+        index, digit = divmod(index - 1, 26)
+        result = chr(65 + digit) + result
+    return result
+
+
 def _line(value: str, role: str, styler: Styler) -> None:
     print(styler.paint(role, value))
 
@@ -72,14 +90,15 @@ def _show_content(view: dict, styler: Styler) -> None:
 
 
 def _show_actions(view: dict, styler: Styler) -> None:
-    exits = [a for a in available(view["actions"]) if a.get("role") == "exit"]
-    context = [a for a in available(view["actions"]) if a.get("role") != "exit"]
+    ordered = ordered_actions(view["actions"])
+    exits = [a for a in ordered if a.get("role") == "exit"]
+    context = [a for a in ordered if a.get("role") != "exit"]
     if exits:
         print("\nSALIDAS")
-        offers(exits, styler=styler, role="exit")
+        offers(exits, styler=styler, start=0)
     if context:
         print("\nACCIONES")
-        offers(context, styler=styler)
+        offers(context, styler=styler, start=len(exits))
 
 
 def show(view: dict, developer: bool = False, styler: Styler | None = None) -> None:
@@ -117,12 +136,18 @@ def evaluation(content: dict) -> None:
 
 
 def offers(
-    actions: list[dict], styler: Styler | None = None, role: str = "action"
+    actions: list[dict],
+    styler: Styler | None = None,
+    start: int = 0,
 ) -> None:
     """Presenta acciones como comandos, sin imponer un menú numérico."""
     styler = styler or Styler()
-    for action in available(actions):
-        _line(f"  {action['label']}  [accion {action['id']}]", role, styler)
+    for index, action in enumerate(available(actions), start):
+        _line(
+            f"  {option_letter(index)}) {action['label']}  [accion {action['id']}]",
+            "exit" if action.get("role") == "exit" else "action",
+            styler,
+        )
 
 
 def blocked(actions: list[dict], styler: Styler | None = None) -> None:

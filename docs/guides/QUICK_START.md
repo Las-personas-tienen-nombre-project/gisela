@@ -23,6 +23,8 @@ glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 
 Dentro de la sesión, use `mirar`, `acciones` y `accion ID`; las acciones bloqueadas se reservan al diagnóstico. La [guía de GLAUQUIR](GLAUQUIR.md) reúne los comandos, el modo `--developer` y las opciones de color.
 
+También puede elegir una acción con la letra que aparece junto a ella (`A`, `B`, …, `AA`); las letras cambian con las opciones visibles. En un terminal, `↑` recorre los comandos de esta ejecución y recupera el comando completo (`accion ID`) cuando se eligió una letra. `←` y `→` permiten editar el texto antes de enviarlo.
+
 Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
 
 Desde cualquier directorio, `glauquir` inicia el paquete de ejemplo incorporado si se omite `--package`. Para comprobar un paquete propio antes de jugar, ejecuta `gisela validate historia.package.json`; `--json` entrega diagnósticos estructurados.

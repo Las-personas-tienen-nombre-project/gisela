@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from gisela.engine.world_base import WorldError
@@ -28,12 +29,13 @@ class TextClient:
         self.session = session
         self.developer = developer
         self.styler = styler or Styler()
+        self._history_started = False
 
     def choose(self, view: dict):
         """Atiende consultas sin consumir acciones hasta recibir una selección."""
         while True:
             try:
-                raw = input("> ").strip()
+                raw = self._read_command(view).strip()
             except (EOFError, KeyboardInterrupt):
                 print("\nSesión terminada por el jugador.")
                 return None
@@ -42,6 +44,43 @@ class TextClient:
             answer = self._command(view, raw)
             if answer is not False:
                 return answer
+
+    def _read_command(self, view: dict) -> str:
+        """Edita líneas en terminales y registra el comando expandido."""
+        line_editor = None
+        if sys.stdin.isatty() and sys.stdout.isatty():
+            try:
+                import readline
+
+                line_editor = readline
+            except ImportError:
+                pass
+        if line_editor and not self._history_started:
+            line_editor.clear_history()
+            self._history_started = True
+        before = line_editor.get_current_history_length() if line_editor else 0
+        raw = input("> ")
+        if line_editor and raw.strip():
+            command = raw.strip()
+            selected = self._letter_action(view, command)
+            if selected is not None:
+                command = "accion " + selected["id"]
+            after = line_editor.get_current_history_length()
+            if after > before:
+                line_editor.replace_history_item(after - 1, command)
+            else:
+                line_editor.add_history(command)
+        return raw
+
+    @staticmethod
+    def _letter_action(view: dict, raw: str):
+        """Resuelve exclusivamente letras ofrecidas en la observación actual."""
+        if not raw.isascii() or not raw.isalpha():
+            return None
+        for index, action in enumerate(render.ordered_actions(view["actions"])):
+            if raw.upper() == render.option_letter(index):
+                return action
+        return None
 
     def display(self, view: dict) -> None:
         """Añade color diagnóstico solo a una copia local de la observación."""
@@ -113,9 +152,12 @@ class TextClient:
 
     def _basic(self, view: dict, name: str, rest: str) -> tuple[bool, object]:
         """Atiende comandos universales que no provocan acciones del juego."""
+        letter_action = self._letter_action(view, name) if not rest else None
+        if letter_action is not None:
+            return True, letter_action
         if name.isdecimal():
             number = int(name)
-            choices = render.available(view["actions"])
+            choices = render.ordered_actions(view["actions"])
             if 1 <= number <= len(choices):
                 return True, choices[number - 1]
             print("Número fuera de las opciones.")
@@ -237,7 +279,7 @@ class TextClient:
                 render.blocked(view["actions"], self.styler)
             return False
         if not value:
-            render.offers(view["actions"], self.styler)
+            render.offers(render.ordered_actions(view["actions"]), self.styler)
             return False
         matches = [
             item
@@ -245,7 +287,14 @@ class TextClient:
             if normalize(value) in (normalize(item["id"]), normalize(item["label"]))
         ]
         if len(matches) == 1:
-            render.offers(matches[0]["actions"], self.styler)
+            indices = {
+                action["id"]: index
+                for index, action in enumerate(render.ordered_actions(view["actions"]))
+            }
+            for action in render.ordered_actions(matches[0]["actions"]):
+                index = indices.get(action["id"])
+                if index is not None:
+                    render.offers([action], self.styler, start=index)
         else:
             print("No existe un elemento único con ese nombre.")
         return False

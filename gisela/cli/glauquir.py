@@ -49,14 +49,7 @@ def _arguments(argv):
     return parser.parse_args(argv)
 
 
-def _choose_interactive(actions, session, args):
-    """Traduce la interacción textual a un identificador autorizado."""
-    return TextClient(session, args.developer, Styler(args.color)).choose(
-        session.observe()
-    )
-
-
-def _choose_action(view, session, args):
+def _choose_action(view, args, client):
     """Selecciona solo una acción visible en el último Observe."""
     actions = view["actions"]
     if args.auto:
@@ -66,17 +59,18 @@ def _choose_action(view, session, args):
         return next(
             (item for item in candidates if item["id"] == args.choose), candidates[0]
         )
-    return _choose_interactive(actions, session, args)
+    return client.choose(view)
 
 
 def _run(session, args, admitted):
     """Consume Observe y Act, sin ejecutar reglas en el anfitrión."""
+    client = TextClient(session, args.developer, Styler(args.color))
     for _ in range(256):
         view = session.observe()
-        TextClient(session, args.developer, Styler(args.color)).display(view)
+        client.display(view)
         if not view["actions"] and (args.auto or view["status"] == "ended"):
             return 0, session
-        selected = _choose_action(view, session, args)
+        selected = _choose_action(view, args, client)
         if selected is None:
             return 0, session
         if selected.get("command") == "load":
@@ -87,6 +81,7 @@ def _run(session, args, admitted):
                 session = restore_session(
                     admitted, load_json_strict(Path(selected["path"]))
                 )
+                client.session = session
             except (EngineFailure, OSError, ValueError, KeyError) as exc:
                 print("No se pudo cargar la sesión: " + str(exc))
             continue

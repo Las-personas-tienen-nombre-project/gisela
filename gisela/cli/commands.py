@@ -47,6 +47,8 @@ def instructions() -> None:
         "También: misiones, history [N|all], guardar RUTA, cargar RUTA, ayuda, salir."
     )
     print("Para ejecutar una oferta específica: accion ID (consulte acciones).")
+    print("También puede elegir la letra de una oferta: A, B, ..., Z, AA...")
+    print("En un terminal: ↑ recupera comandos; ← y → mueven el cursor.")
     print("Con --developer: acciones bloqueadas, acciones todas, hechos,")
     print("relacion ORIGEN DESTINO CAMPO, propiedad ENTIDAD CAMPO.")
     print(

@@ -6,6 +6,8 @@ import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from gisela.cli.color import Styler
 from gisela.cli.interactive import TextClient
@@ -20,6 +22,47 @@ PRODUCT = (
 
 
 class MudTest(unittest.TestCase):
+    def test_letters_follow_display_order_and_skip_disabled_actions(self):
+        actions = [
+            {
+                "id": str(i),
+                "action_id": str(i),
+                "kind": "interact",
+                "label": str(i),
+                "enabled": True,
+            }
+            for i in range(28)
+        ]
+        actions[2]["enabled"] = False
+        actions[27]["role"] = "exit"
+        view = {"actions": actions, "scene": "test", "content": {"kind": "choice"}}
+        client = TextClient(None)
+        output = StringIO()
+        with redirect_stdout(output):
+            show(view)
+        self.assertIn("A) 27", output.getvalue())
+        self.assertIn("AA) 26", output.getvalue())
+        self.assertEqual(client._command(view, "a")["id"], "27")
+        self.assertEqual(client._command(view, "AA")["id"], "26")
+        self.assertEqual(client._command(view, "1")["id"], "27")
+
+    def test_letter_history_records_full_action_command(self):
+        import readline
+
+        view = {"actions": [{"id": "salida", "enabled": True, "role": "exit"}]}
+        tty = SimpleNamespace(isatty=lambda: True)
+        fake_sys = SimpleNamespace(stdin=tty, stdout=tty)
+        client = TextClient(None)
+        with (
+            patch("gisela.cli.interactive.sys", fake_sys),
+            patch("builtins.input", side_effect=["A", "mirar"]),
+        ):
+            self.assertEqual(client._read_command(view), "A")
+            self.assertEqual(client._read_command(view), "mirar")
+        self.assertEqual(readline.get_history_item(1), "accion salida")
+        self.assertEqual(readline.get_history_item(2), "mirar")
+        readline.clear_history()
+
     def test_unknown_actor_name_and_card_are_public_aliases(self):
         source = (
             Path(__file__).resolve().parents[2]
