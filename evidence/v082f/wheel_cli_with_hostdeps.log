@@ -1,0 +1,22 @@
+usage: glauquir [-h] [--package PACKAGE] [--restore RESTORE] [--seed SEED]
+                [--save SAVE] [--actuation] [--rounds ROUNDS] [--auto]
+                [--developer] [--choose CHOOSE] [--language LANGUAGE]
+                [--color {auto,always,never}]
+
+GLAUQUIR: cliente textual de GISELA
+
+options:
+  -h, --help            show this help message and exit
+  --package PACKAGE
+  --restore RESTORE     Guardar JSON de sesión existente
+  --seed SEED           Semilla hexadecimal de 64 caracteres para reproducir
+                        la partida
+  --save SAVE           Exportar estado final de sesión
+  --actuation           Laboratorio del reloj autoral v0.7
+  --rounds ROUNDS       Rondas de laboratorio que se ejecutan con --actuation
+  --auto                Recorrer la historia sin entrada interactiva
+  --developer           Permitir consultas diagnósticas del mundo
+  --choose CHOOSE       Opción preferida para el recorrido automático
+  --language LANGUAGE   Idioma declarado en el paquete; por defecto, idioma
+                        base
+  --color {auto,always,never}

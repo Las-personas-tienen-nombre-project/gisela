@@ -14,6 +14,7 @@ gisela/cli/interactive.py
 gisela/cli/main.py
 gisela/cli/match.py
 gisela/cli/render.py
+gisela/cli/render_table.py
 gisela/contracts/__init__.py
 gisela/contracts/act.schema.json
 gisela/contracts/admit_package.py
@@ -27,7 +28,9 @@ gisela/contracts/initial_state.schema.json
 gisela/contracts/node.schema.json
 gisela/contracts/observe.schema.json
 gisela/contracts/package.schema.json
+gisela/contracts/presentation_templates_validation.py
 gisela/contracts/presentation_validation.py
+gisela/contracts/presentation_views_validation.py
 gisela/contracts/result.schema.json
 gisela/contracts/rng.py
 gisela/contracts/rule.schema.json
@@ -115,6 +118,8 @@ gisela/engine/initialization.py
 gisela/engine/mary_bridge.py
 gisela/engine/pending.py
 gisela/engine/presentation.py
+gisela/engine/presentation_semantics.py
+gisela/engine/presentation_views.py
 gisela/engine/projection.py
 gisela/engine/public_view.py
 gisela/engine/queries.py

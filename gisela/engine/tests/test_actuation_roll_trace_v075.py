@@ -1,8 +1,7 @@
 """Tiradas confirmadas de la operación general roll en Observe."""
 
-from test_actuation_public_v073 import fresh, request
-
 from gisela.contracts.semantic_validator import Validator
+from gisela.engine.tests.test_actuation_public_v073 import fresh, request
 
 
 def test_rolls_are_structured_and_do_not_mutate_on_observe():

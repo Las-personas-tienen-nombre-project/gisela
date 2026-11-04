@@ -32,6 +32,14 @@ Central Clasificadora. Los grupos muestran tiempo y código de salida; si uno
 falla, el resultado global es distinto de cero. `--timeout N` limita cada
 grupo y un agotamiento se informa con `exit=124`; no convierte fallos en éxito.
 
+Pytest usa `--import-mode=importlib` y el complemento local
+`tools.pytest_canonical` para cargar primero los paquetes mantenidos bajo
+`gisela/`. Esto evita que las copias `engine/` y `contracts/` de la raíz
+sustituyan módulos durante la colección. El complemento comprueba la ruta
+de los paquetes cargados y falla explícitamente si corresponde a otra copia.
+La configuración también incluye la ruta del simulador para sus imports
+históricos; se aplica tanto al kit como a las pruebas individuales.
+
 ## Política estática
 
 Ruff aplica los códigos fijados en `pyproject.toml` y comprueba formato sin

@@ -13,3 +13,4 @@ class EffectContext:
     decisions: object = None
     definitions: object = None
     skill_depth: int = 0
+    causal_execution_id: str | None = None

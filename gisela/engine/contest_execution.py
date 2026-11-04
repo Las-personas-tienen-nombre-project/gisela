@@ -9,6 +9,7 @@ from __future__ import annotations
 from dice import DiceError
 from traits import TraitsError
 
+from .causal_trace import correlate
 from .conditions import value
 from .effect_context import EffectContext
 from .traits_dice_bridge import resolve
@@ -60,6 +61,7 @@ def execute(state: dict, operation: dict, context: EffectContext) -> list[dict]:
         }
     )
     events = []
+    correlate(state["history"]["trace"][-1], context)
     for effect in operation["on_win" if won else "on_lose"]:
         events.extend(apply_operation(state, effect, context))
     return events

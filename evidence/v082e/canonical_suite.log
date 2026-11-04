@@ -1,0 +1,21 @@
+
+==================================== ERRORS ====================================
+_____ ERROR collecting gisela/engine/tests/test_causal_execution_v082c.py ______
+ImportError while importing test module '/mnt/data/v082e_work/gisela/gisela/engine/tests/test_causal_execution_v082c.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+gisela/engine/tests/test_causal_execution_v082c.py:7: in <module>
+    from gisela.engine.presentation_views import project_view
+E   ModuleNotFoundError: No module named 'gisela.engine.presentation_views'
+__ ERROR collecting gisela/engine/tests/test_presentation_semantics_v082d.py ___
+ImportError while importing test module '/mnt/data/v082e_work/gisela/gisela/engine/tests/test_presentation_semantics_v082d.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+gisela/engine/tests/test_presentation_semantics_v082d.py:13: in <module>
+    from gisela.contracts.presentation_templates_validation import errors
+E   ModuleNotFoundError: No module named 'gisela.contracts.presentation_templates_validation'
+=========================== short test summary info ============================
+ERROR gisela/engine/tests/test_causal_execution_v082c.py
+ERROR gisela/engine/tests/test_presentation_semantics_v082d.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 3.04s

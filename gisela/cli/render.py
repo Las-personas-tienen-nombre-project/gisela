@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .color import Styler
+from .render_table import show_table
 
 
 def available(actions: list[dict]) -> list[dict]:
@@ -141,7 +142,7 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
         for event in clock["events"][-3:]:
             print("  " + event["kind"] + ": " + event["detail"])
     if "presentation" in view:
-        show_presentation(view["presentation"])
+        show_presentation(view["presentation"], styler)
     else:
         _show_actions(view, styler)
     if developer:
@@ -163,31 +164,54 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
         )
 
 
-def show_causal(events: list[dict]) -> None:
+def show_causal(
+    events: list[dict], indent: str = "", styler: Styler | None = None
+) -> None:
     """Presenta solo el historial confirmado provisto por Observe."""
+    from gisela.engine.presentation_semantics import LABELS, clean
+
+    styler = styler or Styler()
+    colors = {
+        "damage": "red",
+        "healing": "green",
+        "buff": "cyan",
+        "debuff": "magenta",
+        "neutral": "default",
+    }
     for item in events:
-        detail = item["detail"]
-        kind = item["kind"]
-        if kind == "initiative":
-            result = "Iniciativa: " + detail["order"]
-        elif kind == "event_triggered":
-            result = "Acontecimiento: " + detail["event"]
-        elif kind == "encounter_completed":
-            result = "Desenlace: " + detail["outcome"]
-        elif kind == "dice_roll":
-            result = f"d{detail['sides']} = {detail['result']} ({detail['store']})"
-        elif kind == "contest_resolved":
-            result = (
-                f"{detail['profile']}: {detail['left_total']} vs "
-                f"{detail['right_total']} ({detail['winner']})"
-            )
-        elif kind == "variable_changed":
-            result = f"{detail['variable']}: {detail['before']} → {detail['after']}"
-        elif kind in ("skill_started", "skill_played"):
-            result = f"{detail['actor']} · {detail['card']}"
-        else:
-            result = detail.get("text", "")
-        print(f"  #{item['sequence']} {kind}: {result}")
+        role = item.get("semantic_role")
+        label = LABELS.get(role)
+        detail = item.get("display_text")
+        if detail is None:
+            detail = _causal_description(item)
+        text = (label + ": " if label else "") + clean(detail)
+        print(
+            indent
+            + styler.paint(colors.get(role, "default"), f"  #{item['sequence']} {text}")
+        )
+
+
+def _causal_description(item: dict) -> str:
+    detail = item.get("detail", {})
+    kind = item["kind"]
+    if kind == "initiative":
+        return "Orden de actuación: " + str(detail.get("order", "?"))
+    if kind == "event_triggered":
+        return "Acontecimiento: " + str(detail.get("event", "?"))
+    if kind == "encounter_completed":
+        return "Desenlace: " + str(detail.get("outcome", "?"))
+    if kind == "dice_roll":
+        return f"Tirada d{detail.get('sides', '?')}: {detail.get('result', '?')} ({detail.get('store', '?')})"
+    if kind == "contest_resolved":
+        return (
+            f"Concurso {detail.get('profile', '?')}: {detail.get('left_total', '?')} frente a "
+            f"{detail.get('right_total', '?')} · {detail.get('winner', '?')}"
+        )
+    if kind == "variable_changed":
+        return f"{detail.get('variable', '?')}: {detail.get('before', '?')} → {detail.get('after', '?')}"
+    if kind in ("skill_started", "skill_played"):
+        return str(detail.get("actor", "?")) + " · " + str(detail.get("card", "?"))
+    return str(detail.get("text", kind))
 
 
 def evaluation(content: dict) -> None:
@@ -208,8 +232,11 @@ def offers(
     """Presenta acciones como comandos, sin imponer un menú numérico."""
     styler = styler or Styler()
     for index, action in enumerate(available(actions), start):
+        label = action["label"]
+        if action.get("target") and " → " not in label:
+            label += " → " + str(action["target"])
         _line(
-            f"  {option_letter(index)}) {action['label']}  [accion {action['id']}]",
+            f"  {option_letter(index)}) {label}  [accion {action['id']}]",
             "exit" if action.get("role") == "exit" else "action",
             styler,
         )
@@ -267,166 +294,130 @@ def confirmed(entries: list[dict]) -> None:
             print("\nAcción confirmada: " + item["text"])
 
 
-def show_presentation(presentation: dict) -> None:
-    """Render declarative regions without changing Observe or action order."""
+def show_presentation(presentation: dict, styler: Styler | None = None) -> None:
+    """Render generic regions; action offers retain original Observe IDs."""
     for region in presentation["regions"]:
-        _show_region(region)
+        _show_region(region, 0, styler or Styler())
 
 
-def _show_region(region: dict, depth: int = 0) -> None:
+def _show_region(region: dict, depth: int, styler: Styler) -> None:
     if region.get("visible") is False:
         return
     indent = "  " * depth
     label = region.get("label") or region["id"].replace("_", " ")
     print("\n" + indent + label.upper())
     if region.get("missing"):
-        missing = region.get("text", "No disponible")
-        print(indent + "  " + ("Pendiente de confirmación" if missing == "No disponible" else missing))
+        print(indent + "  " + _display_text(region.get("text", "No disponible")))
         return
     for child in region.get("children", []):
-        _show_region(child, depth + 1)
-    kind = region["component"]
-    if kind == "choice_list":
-        items = region.get("items", [])
-        if items:
-            print(indent + "  Elija una letra o escriba: accion <id>")
-            offers(items)
-        else:
-            print(indent + "  No hay acciones disponibles.")
-    elif kind == "event_log":
-        items = region.get("items", [])
-        if items:
-            if len(items) > 10:
-                print(indent + f"  Últimos 10 de {len(items)} registros publicados")
-            show_causal(items[-10:], indent)
-        else:
-            print(indent + "  Todavía no hay acontecimientos confirmados.")
-    elif kind == "initiative_order":
-        for index, item in enumerate(region.get("items", []), 1):
-            print(f"{indent}  {index}. {_display_text(item)}")
-    elif kind == "entity_collection":
-        _show_collection(region.get("items", []), indent)
-    elif "items" in region and region["items"]:
-        for item in region["items"]:
-            print(indent + "  " + _display_text(item))
-    elif "value" in region:
-        value = _display_text(region["value"])
-        if value != "No disponible":
-            print(indent + "  " + value)
-        else:
-            print(indent + "  Pendiente de confirmación")
-    elif "text" in region:
-        text = region["text"]
-        print(indent + "  " + ("Pendiente de confirmación" if text == "No disponible" else text))
+        _show_region(child, depth + 1, styler)
+    handlers = {
+        "choice_list": _region_choices,
+        "event_log": _region_events,
+        "table": _region_table,
+        "initiative_order": _region_initiative,
+        "entity_collection": _region_collection,
+    }
+    handlers.get(region["component"], _region_value)(region, indent, styler)
 
 
 def _display_text(value) -> str:
-    """Provide a readable fallback for generic public values."""
+    from gisela.engine.presentation_semantics import clean
+
     if isinstance(value, dict):
         for field in ("label", "name", "actor", "id", "kind"):
             if field in value:
-                return str(value[field])
-    return str(value)
+                return clean(value[field])
+    text = clean(value)
+    return "Pendiente de confirmación" if text == "No disponible" else text
 
 
-def _show_collection(items: list, indent: str) -> None:
-    """Group public resources; never interpret their domain semantics."""
+def _region_choices(region, indent, styler):
+    items = region.get("items", [])
+    if items:
+        print(indent + "  Elija una letra o escriba: accion <id>")
+        offers(items, styler)
+    else:
+        print(indent + "  No hay acciones disponibles.")
+
+
+def _region_events(region, indent, styler):
+    items = region.get("items", [])
+    if not items:
+        print(indent + "  Todavía no hay acontecimientos confirmados.")
+    elif "count" in region:
+        print(indent + f"  {len(items)} de {region['count']} registros seleccionados")
+        if "blocks" in region:
+            _show_causal_blocks(region["blocks"], indent, styler)
+        else:
+            show_causal(items, indent, styler)
+    else:
+        if len(items) > 10:
+            print(indent + f"  Últimos 10 de {len(items)} registros publicados")
+        show_causal(items[-10:], indent, styler)
+
+
+def _show_causal_blocks(blocks, indent, styler):
+    for block in blocks:
+        if block["kind"] == "event":
+            show_causal([block["event"]], indent, styler)
+        else:
+            print(indent + "  Acción confirmada:")
+            show_causal(block["events"][:1], indent, styler)
+            if len(block["events"]) > 1:
+                print(indent + "    Resultados y registros correlacionados:")
+                show_causal(block["events"][1:], indent + "    ", styler)
+
+
+def _region_table(region, indent, styler):
+    show_table(region, indent)
+
+
+def _region_initiative(region, indent, styler):
+    for index, item in enumerate(region.get("items", []), 1):
+        print(f"{indent}  {index}. {_display_text(item)}")
+
+
+def _region_value(region, indent, styler):
+    if "items" in region:
+        for item in region["items"]:
+            print(indent + "  " + _display_text(item))
+    elif "value" in region:
+        print(indent + "  " + _display_text(region["value"]))
+    elif "text" in region:
+        print(indent + "  " + _display_text(region["text"]))
+
+
+def _region_collection(region, indent, styler):
+    items = region.get("items", [])
     if not items:
         print(indent + "  Ningún elemento vigente.")
-        return
-    if all(
+    elif all(
         isinstance(item, dict) and {"entity", "id", "value"} <= item.keys()
         for item in items
     ):
-        grouped = {}
+        _show_resources(items, indent)
+    else:
         for item in items:
-            grouped.setdefault(item["entity"], []).append(item)
-        for entity, resources in grouped.items():
-            print(indent + "  " + str(entity).upper())
-            for item in resources:
-                measure = str(item["value"])
-                if "maximum" in item:
-                    measure += "/" + str(item["maximum"])
-                print(indent + "    " + str(item["id"]) + ": " + measure)
-        return
+            print(indent + "  " + _collection_text(item))
+
+
+def _show_resources(items, indent):
+    grouped = {}
     for item in items:
-        if isinstance(item, dict) and {"id", "beneficiary", "remaining"} <= item.keys():
-            print(
-                indent + "  " + str(item["beneficiary"]) + " · " + str(item["id"])
-                + " (" + str(item["remaining"]) + " restantes)"
-            )
-        elif isinstance(item, dict) and {"actor", "die", "score"} <= item.keys():
-            print(
-                indent + "  " + str(item["actor"]) + ": "
-                + str(item["die"]) + " → " + str(item["score"])
-            )
-        else:
-            print(indent + "  " + _display_text(item))
+        grouped.setdefault(item["entity"], []).append(item)
+    for entity, resources in grouped.items():
+        print(indent + "  " + _display_text(entity).upper())
+        for item in resources:
+            measure = str(item["value"])
+            if "maximum" in item:
+                measure += "/" + str(item["maximum"])
+            print(indent + "    " + _display_text(item["id"]) + ": " + measure)
 
 
-def _causal_description(item: dict) -> str:
-    """Format only confirmed fields already projected into Observe."""
-    detail = item["detail"]
-    kind = item["kind"]
-    if kind == "initiative":
-        return "Orden de actuación: " + str(detail["order"])
-    if kind == "event_triggered":
-        return "Acontecimiento: " + str(detail["event"])
-    if kind == "encounter_completed":
-        return "Desenlace: " + str(detail["outcome"])
-    if kind == "dice_roll":
-        return f"Tirada d{detail['sides']}: {detail['result']} ({detail['store']})"
-    if kind == "contest_resolved":
-        return (
-            f"Concurso {detail['profile']}: {detail['left_total']} frente a "
-            f"{detail['right_total']} · {detail['winner']}"
-        )
-    if kind == "variable_changed":
-        return f"{detail['variable']}: {detail['before']} → {detail['after']}"
-    if kind in ("skill_started", "skill_played"):
-        return str(detail["actor"]) + " · " + str(detail["card"])
-    return str(detail.get("text", kind))
-
-
-def show_causal(events: list[dict], indent: str = "") -> None:
-    """Show a bounded window of confirmed causal records in original order."""
-    for item in events:
-        print(indent + f"  #{item['sequence']} " + _causal_description(item))
-
-
-def evaluation(content: dict) -> None:
-    """Present published evaluation values without recalculating dice."""
-    print("\nEvaluación de dados: " + str(content["evaluation_id"]))
-    rolls = ", ".join(str(value) for value in content["rolls"])
-    print("Tirada: " + (rolls or "(sin azar)"))
-    print("Resultado: " + content["outcome"])
-    if content.get("auxiliary_request"):
-        print(content["auxiliary_request"]["prompt"])
-
-
-def offers(
-    actions: list[dict],
-    styler: Styler | None = None,
-    start: int = 0,
-) -> None:
-    """Present authorized actions with exactly the current Observe identifiers."""
-    styler = styler or Styler()
-    for index, action in enumerate(available(actions), start):
-        label = action["label"]
-        if action.get("target") and " → " not in label:
-            label += " → " + str(action["target"])
-        _line(
-            f"  {option_letter(index)}) {label}  [accion {action['id']}]",
-            "exit" if action.get("role") == "exit" else "action",
-            styler,
-        )
-
-
-def blocked(actions: list[dict], styler: Styler | None = None) -> None:
-    """Report disabled offers without treating them as executable choices."""
-    styler = styler or Styler()
-    for action in actions:
-        if not action["enabled"]:
-            suffix = " — " + action["reason"] if action.get("reason") else ""
-            _line(f"  {action['id']} — {action['label']}{suffix}", "debug", styler)
-
+def _collection_text(item):
+    if isinstance(item, dict) and {"id", "beneficiary", "remaining"} <= item.keys():
+        return f"{item['beneficiary']} · {item['id']} ({item['remaining']} restantes)"
+    if isinstance(item, dict) and {"actor", "die", "score"} <= item.keys():
+        return f"{item['actor']}: {item['die']} → {item['score']}"
+    return _display_text(item)

@@ -1,0 +1,19 @@
+................F............... [ 49%]
+.................................                                        [100%]
+=================================== FAILURES ===================================
+________________ RuffPolicyTest.test_lint_and_format_boundaries ________________
+
+self = <tools.test_static_quality.RuffPolicyTest testMethod=test_lint_and_format_boundaries>
+
+    def test_lint_and_format_boundaries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sample.py"
+            config = quality.ROOT / "pyproject.toml"
+            path.write_text("value = 1\n")
+>           self.assertEqual(self._ruff("check", config, path), 0)
+E           AssertionError: 1 != 0
+
+tools/test_static_quality.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tools/test_static_quality.py::RuffPolicyTest::test_lint_and_format_boundaries - AssertionError: 1 != 0
+1 failed, 64 passed, 40 subtests passed in 25.37s

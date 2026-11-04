@@ -18,6 +18,12 @@ VISIBLE = {
 }
 
 
+def correlate(event: dict, context) -> None:
+    """Etiqueta solo un registro producido por un contexto explícito de habilidad."""
+    if context.causal_execution_id is not None:
+        event["causal_execution_id"] = context.causal_execution_id
+
+
 def record_actuation(state, kind, detail):
     """Registra el hito autoral en la misma cronología transaccional."""
     trace = state["history"]["trace"]
@@ -68,6 +74,7 @@ def record_variable(state, snapshot, context):
             "detail": {"variable": key, "before": before, "after": after},
         }
     )
+    correlate(history["trace"][-1], context)
 
 
 def project(state, limit=40):
@@ -90,6 +97,8 @@ def project(state, limit=40):
                 "detail": public,
             }
         )
+        if "causal_execution_id" in event:
+            entries[-1]["causal_execution_id"] = event["causal_execution_id"]
     return entries[-limit:]
 
 

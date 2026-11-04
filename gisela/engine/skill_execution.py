@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
+from .causal_trace import correlate
 from .conditions import predicate
 from .conditions import value as evaluate_value
 from .effect_context import EffectContext
@@ -80,25 +81,36 @@ def _trace(state: dict, execution: SkillExecution) -> None:
             "detail": detail,
         }
     )
+    correlate(state["history"]["trace"][-1], execution.context)
+
+
+def _start_execution(state: dict, execution: SkillExecution) -> SkillExecution:
+    """La identidad deriva de la secuencia del borrador, sin contador ni RNG."""
+    if "actuation" not in state:
+        return execution
+    trace = state["history"]["trace"]
+    sequence = len(state["history"]["facts"]) + len(trace) + 1
+    context = replace(execution.context, causal_execution_id=f"action_{sequence:08d}")
+    trace.append(
+        {
+            "sequence": sequence,
+            "kind": "skill_started",
+            "source": execution.skill["id"],
+            "causal_execution_id": context.causal_execution_id,
+            "detail": {
+                "card": execution.skill["card"],
+                "actor": execution.skill["character"],
+                "origin": execution.origin,
+            },
+        }
+    )
+    return replace(execution, context=context)
 
 
 def _run(state, execution: SkillExecution):
     """Proceso compartido: toma, efectos, outcomes, retorno e historial."""
+    execution = _start_execution(state, execution)
     skill, card, context = execution.skill, execution.card, execution.context
-    if "actuation" in state:
-        trace = state["history"]["trace"]
-        trace.append(
-            {
-                "sequence": len(state["history"]["facts"]) + len(trace) + 1,
-                "kind": "skill_started",
-                "source": skill["id"],
-                "detail": {
-                    "card": skill["card"],
-                    "actor": skill["character"],
-                    "origin": execution.origin,
-                },
-            }
-        )
     take_for_play(state, skill)
     events = []
     events.extend(execution.apply_group(state, card["play"]["effects"], context) or [])
@@ -226,10 +238,10 @@ def execute_scripted(state: dict, effect: dict, context: EffectContext) -> list[
 
     def run_operations(draft, operations, subcontext):
         events = []
-        nested_context = EffectContext(
-            subcontext.source,
-            decisions,
-            context.definitions,
+        nested_context = replace(
+            subcontext,
+            decisions=decisions,
+            definitions=context.definitions,
             skill_depth=context.skill_depth + 1,
         )
         for operation in operations:
@@ -307,10 +319,8 @@ def execute_first_available(
             context,
         )
     events = []
-    fallback_context = EffectContext(
-        context.source,
-        context.decisions,
-        context.definitions,
+    fallback_context = replace(
+        context,
         skill_depth=context.skill_depth + 1,
     )
     for operation in effect.get("otherwise", []):

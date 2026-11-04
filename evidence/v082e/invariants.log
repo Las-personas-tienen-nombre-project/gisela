@@ -1,0 +1,8 @@
+==== tools/verify_e0_invariants.py
+OK: invariantes E0, anclajes existentes y tests nuevos registrados
+==== tools/verify_e1_invariants.py
+OK: invariantes E1 ancladas en pruebas reales
+==== tools/verify_e2_invariants.py
+OK: invariantes E2 ancladas en pruebas existentes
+==== tools/verify_e3_invariants.py
+OK: E3; invariantes y pruebas enlazadas

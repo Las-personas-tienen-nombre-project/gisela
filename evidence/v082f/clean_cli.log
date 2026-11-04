@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/mnt/data/work_v082f/clean_venv/bin/glauquir", line 5, in <module>
+    from gisela.cli.glauquir import main
+  File "/mnt/data/work_v082f/clean_venv/lib/python3.13/site-packages/gisela/cli/glauquir.py", line 11, in <module>
+    from gisela.contracts.admit_package import admit_package_file
+  File "/mnt/data/work_v082f/clean_venv/lib/python3.13/site-packages/gisela/contracts/admit_package.py", line 18, in <module>
+    from .semantic_validator import Diagnostic, Validator, load_json_strict
+  File "/mnt/data/work_v082f/clean_venv/lib/python3.13/site-packages/gisela/contracts/semantic_validator.py", line 6, in <module>
+    from .semantic_definitions import DefinitionsMixin
+  File "/mnt/data/work_v082f/clean_venv/lib/python3.13/site-packages/gisela/contracts/semantic_definitions.py", line 6, in <module>
+    from .semantic_shared import *
+  File "/mnt/data/work_v082f/clean_venv/lib/python3.13/site-packages/gisela/contracts/semantic_shared.py", line 14, in <module>
+    from jsonschema import Draft202012Validator, FormatChecker
+ModuleNotFoundError: No module named 'jsonschema'

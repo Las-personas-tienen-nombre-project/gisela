@@ -5,10 +5,12 @@ Dirige cambios del mundo hacia ALBERTO y registra hechos en GISELA.
 
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import datetime, timedelta
 
 from gisela.contracts.rng import RNGState, draw
 
+from .causal_trace import correlate
 from .effect_context import EffectContext
 from .world import WorldError, var_access
 from .world import apply_operation as apply_world_operation
@@ -108,6 +110,7 @@ def _roll(state: dict, effect: dict, context: EffectContext) -> list[dict]:
             },
         }
     )
+    correlate(state["history"]["trace"][-1], context)
     if previous != result:
         return [{"on": "state_changed", "target": target}]
     return []
@@ -139,12 +142,7 @@ def _apply_effect(state: dict, effect: dict, context: EffectContext) -> list[dic
         )
     if instance.get("_refreshed"):
         return [{"on": "effect_refreshed"}]
-    child = EffectContext(
-        context.source,
-        context.decisions,
-        context.definitions,
-        skill_depth=context.skill_depth,
-    )
+    child = replace(context)
     return [{"on": "effect_applied"}] + _children(
         state, card.get("on_apply", []), child
     )
@@ -153,12 +151,7 @@ def _apply_effect(state: dict, effect: dict, context: EffectContext) -> list[dic
 def _end_effect(state: dict, identifier: str, context: EffectContext) -> list[dict]:
     """Termina un efecto y produce sus consecuencias sin duplicarlas."""
     info = remove_effect(state, identifier, context.definitions)
-    child = EffectContext(
-        context.source,
-        context.decisions,
-        context.definitions,
-        skill_depth=context.skill_depth,
-    )
+    child = replace(context)
     return [{"on": "effect_expired", "effect": info["card"]["id"]}] + _children(
         state, info["card"].get("on_expire", []), child
     )
@@ -206,4 +199,5 @@ def _emit_message(state: dict, effect: dict, context: EffectContext) -> list[dic
             "detail": {"text": message, "values": values},
         }
     )
+    correlate(state["history"]["trace"][-1], context)
     return []

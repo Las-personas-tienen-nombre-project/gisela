@@ -1,0 +1,10 @@
+usage: gisela [-h] {validate} ...
+
+Herramientas de autoría de GISELA
+
+positional arguments:
+  {validate}
+    validate  Validar un paquete narrativo
+
+options:
+  -h, --help  show this help message and exit
