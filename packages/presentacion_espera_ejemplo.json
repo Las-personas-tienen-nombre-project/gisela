@@ -1,0 +1,8 @@
+{
+  "id": "waiting_room",
+  "regions": [
+    {"id":"heading","component":"text","text":"Turnos de atención"},
+    {"id":"visitors","component":"entity_collection","source":"actors"},
+    {"id":"choices","component":"choice_list","source":"actions"}
+  ]
+}

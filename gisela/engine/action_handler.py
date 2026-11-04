@@ -114,6 +114,18 @@ def _intent(session, action: dict) -> tuple[dict, str, list, int]:
         if len(found) != 1:
             raise WorldError("INVALID_ACTION", "Acción de escena ambigua")
         return found[0], "voluntary", [], state["revision"]
+    if action["kind"] in ("actuation_skill", "actuation_advance", "actuation_pass"):
+        return (
+            {
+                "kind": "actuation_step",
+                "skill_instance": action["id"]
+                if action["kind"] == "actuation_skill"
+                else None,
+            },
+            "voluntary",
+            [],
+            state["revision"],
+        )
     if action["kind"] == "play_skill":
         return (
             {"kind": "skill_play", "skill_instance": action["id"]},

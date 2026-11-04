@@ -14,6 +14,7 @@ from gisela.contracts.admit_package import AdmittedPackage
 from gisela.contracts.semantic_validator import Validator
 
 from .action_handler import act as handle_act
+from .actuation_session import ActuationSessionMixin
 from .conditions import predicate
 from .consequences import apply_operation
 from .effect_context import EffectContext
@@ -31,7 +32,7 @@ from .world_values import WorldDefinitions
 MAX_AUTOMATIC_STEPS = 512
 
 
-class GiselaSession(RestoreMixin):
+class GiselaSession(ActuationSessionMixin, RestoreMixin):
     """Autoridad de estado confirmado, proyección y transacción narrativa."""
 
     def __init__(
@@ -52,12 +53,15 @@ class GiselaSession(RestoreMixin):
             if "traits" in self._package
             else None
         )
+        from gisela.contracts.evaluation_plan import profile_catalog
+
         self._definitions = WorldDefinitions(
             self._cards,
             {f["id"]: f for f in manifest.get("relationship_fields", [])},
             {(v["scope"], v["id"]): v for v in manifest.get("variables", [])},
             manifest.get("sofia_scale", {"min": 0, "max": 10}),
             self._traits,
+            profile_catalog(self._package),
         )
         self._rules = self._package["rules"]
         from mary import compile_plan
@@ -87,6 +91,10 @@ class GiselaSession(RestoreMixin):
             pkg, admitted.digest, {"session_id": session_id, "seed": seed}
         )
         session = cls(admitted, state, language)
+        if "actuation" in pkg:
+            from .actuation import initialize as initialize_actuation
+
+            initialize_actuation(session, state)
         if "scene" in pkg["manifest"]["entry"]:
             session._start_scene_entry(state)
             from .reading_log import entry
@@ -541,6 +549,10 @@ class GiselaSession(RestoreMixin):
             self._source_step(draft, source, decisions)
         elif kind == "choice_option":
             self._source_choice(draft, source, decisions)
+        elif kind == "actuation_step":
+            from .actuation import step as step_actuation
+
+            step_actuation(self, draft, source.get("skill_instance"))
         elif kind == "skill_play":
             self._source_skill(draft, source, decisions)
         elif kind == "scene_action":

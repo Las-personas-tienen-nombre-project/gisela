@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.2",
+  "package_id": "central_clasificadora_fixture",
+  "package_digest": "f6ffaf227c512a4aa10510703811f9f18539521a288ea57959350c648d81cabb",
+  "session_id": "test_session",
+  "revision": 2,
+  "world_revision": 1,
+  "turn": 0,
+  "status": "exploring",
+  "world_time": "1998-08-13T19:00:00-04:00",
+  "rng": {
+    "algorithm": "sha256_counter_v1",
+    "seed": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "counter": 0
+  },
+  "identity": {
+    "used_instance_ids": [
+      "porteria",
+      "alberto",
+      "gisela",
+      "casete_01",
+      "intuicion_01"
+    ],
+    "next_sequence": 1
+  },
+  "world": {
+    "locations": [
+      {
+        "id": "porteria",
+        "card": "porteria"
+      }
+    ],
+    "characters": [
+      {
+        "id": "alberto",
+        "card": "alberto",
+        "location": "porteria",
+        "status": {}
+      },
+      {
+        "id": "gisela",
+        "card": "gisela",
+        "location": "porteria",
+        "status": {}
+      }
+    ],
+    "objects": [
+      {
+        "id": "casete_01",
+        "card": "casete",
+        "owner": "alberto"
+      }
+    ],
+    "skills": [
+      {
+        "id": "intuicion_01",
+        "card": "intuicion",
+        "character": "alberto",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "alberto",
+        "hand": 3,
+        "reserve": 2
+      },
+      {
+        "character": "gisela",
+        "hand": 2,
+        "reserve": 1
+      }
+    ],
+    "relationships": [],
+    "world_variables": {}
+  },
+  "narrative": {
+    "session_variables": {
+      "casete_prestado": false
+    }
+  },
+  "history": {
+    "facts": [],
+    "executions": [],
+    "trace": []
+  },
+  "current_scene": "porteria_noche"
+}

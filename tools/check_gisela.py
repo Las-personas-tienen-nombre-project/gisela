@@ -10,7 +10,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LIBRARIES = ("mary/tests", "dice/tests", "traits/tests", "narrative_conditions/tests")
-CORE = ("gisela/contracts", "gisela/engine/tests")
+CORE = (
+    "gisela/contracts",
+    "gisela/engine/tests",
+    "gisela/packages/tegularis_the_son_of_the_volcan",
+)
 STATIC_SOURCES = ("gisela", "mary", "dice", "traits", "narrative_conditions", "tools")
 STATIC_CHECKS = (
     (
@@ -68,6 +72,7 @@ def main() -> int:
                 "tools/test_quality.py",
                 "tools/test_doc_links.py",
                 "tools/test_static_quality.py",
+                "tools/test_tegularis_campaign.py",
             ),
         ),
     ]

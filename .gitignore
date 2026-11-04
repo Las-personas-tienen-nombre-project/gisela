@@ -16,3 +16,6 @@ dist/
 .idea/
 .vscode/
 .DS_Store
+
+# Diagnósticos privados de campañas (snapshots y guion completo)
+.local/tegularis-campaigns/

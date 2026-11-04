@@ -1,0 +1,466 @@
+{
+  "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "round": 1,
+  "actor": "gillius",
+  "causal": [
+    {
+      "sequence": 98,
+      "kind": "variable_changed",
+      "source": "coletazo_01",
+      "detail": {
+        "variable": "tail_dmg_iosepus",
+        "before": 5,
+        "after": 50
+      }
+    },
+    {
+      "sequence": 99,
+      "kind": "variable_changed",
+      "source": "coletazo_01",
+      "detail": {
+        "variable": "hp_parnecio",
+        "before": 169,
+        "after": 116
+      }
+    },
+    {
+      "sequence": 100,
+      "kind": "author_message",
+      "source": "coletazo_01",
+      "detail": {
+        "text": "COLETAZO hizo 53 puntos a parnecio."
+      }
+    },
+    {
+      "sequence": 101,
+      "kind": "author_message",
+      "source": "coletazo_01",
+      "detail": {
+        "text": "gillius esquivó COLETAZO."
+      }
+    },
+    {
+      "sequence": 102,
+      "kind": "variable_changed",
+      "source": "coletazo_01",
+      "detail": {
+        "variable": "hp_clarisa",
+        "before": 121,
+        "after": 68
+      }
+    },
+    {
+      "sequence": 103,
+      "kind": "author_message",
+      "source": "coletazo_01",
+      "detail": {
+        "text": "COLETAZO hizo 53 puntos a clarisa."
+      }
+    },
+    {
+      "sequence": 104,
+      "kind": "variable_changed",
+      "source": "coletazo_01",
+      "detail": {
+        "variable": "hp_iosepus",
+        "before": 82,
+        "after": 32
+      }
+    },
+    {
+      "sequence": 105,
+      "kind": "author_message",
+      "source": "coletazo_01",
+      "detail": {
+        "text": "COLETAZO hizo 50 puntos a iosepus."
+      }
+    },
+    {
+      "sequence": 106,
+      "kind": "skill_played",
+      "source": "coletazo_01",
+      "detail": {
+        "card": "coletazo",
+        "actor": "tegularis",
+        "origin": "script"
+      }
+    },
+    {
+      "sequence": 107,
+      "kind": "skill_started",
+      "source": "slash_01",
+      "detail": {
+        "card": "slash",
+        "actor": "parnecio",
+        "origin": "player"
+      }
+    },
+    {
+      "sequence": 108,
+      "kind": "variable_changed",
+      "source": "slash_01",
+      "detail": {
+        "variable": "tp_parnecio",
+        "before": 0,
+        "after": 10
+      }
+    },
+    {
+      "sequence": 109,
+      "kind": "dice_roll",
+      "source": "slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 8,
+        "store": "session:scratch_hit_parnecio"
+      }
+    },
+    {
+      "sequence": 110,
+      "kind": "variable_changed",
+      "source": "slash_01",
+      "detail": {
+        "variable": "scratch_hit_parnecio",
+        "before": 8,
+        "after": 14
+      }
+    },
+    {
+      "sequence": 111,
+      "kind": "dice_roll",
+      "source": "slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 8,
+        "store": "session:scratch_eva_parnecio"
+      }
+    },
+    {
+      "sequence": 112,
+      "kind": "variable_changed",
+      "source": "slash_01",
+      "detail": {
+        "variable": "scratch_eva_parnecio",
+        "before": 8,
+        "after": 14
+      }
+    },
+    {
+      "sequence": 113,
+      "kind": "dice_roll",
+      "source": "slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 2,
+        "store": "session:scratch_damage_parnecio"
+      }
+    },
+    {
+      "sequence": 114,
+      "kind": "variable_changed",
+      "source": "slash_01",
+      "detail": {
+        "variable": "scratch_damage_parnecio",
+        "before": 2,
+        "after": 26
+      }
+    },
+    {
+      "sequence": 115,
+      "kind": "author_message",
+      "source": "slash_01",
+      "detail": {
+        "text": "tegularis esquivó SLASH."
+      }
+    },
+    {
+      "sequence": 116,
+      "kind": "skill_played",
+      "source": "slash_01",
+      "detail": {
+        "card": "slash",
+        "actor": "parnecio",
+        "origin": "player"
+      }
+    },
+    {
+      "sequence": 117,
+      "kind": "skill_started",
+      "source": "double_slash_01",
+      "detail": {
+        "card": "double_slash",
+        "actor": "parnecio",
+        "origin": "player"
+      }
+    },
+    {
+      "sequence": 118,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "tp_parnecio",
+        "before": 10,
+        "after": 0
+      }
+    },
+    {
+      "sequence": 119,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 9,
+        "store": "session:double_hit_1"
+      }
+    },
+    {
+      "sequence": 120,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_hit_1",
+        "before": 9,
+        "after": 15
+      }
+    },
+    {
+      "sequence": 121,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 8,
+        "store": "session:double_eva_1"
+      }
+    },
+    {
+      "sequence": 122,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_eva_1",
+        "before": 8,
+        "after": 14
+      }
+    },
+    {
+      "sequence": 123,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 5,
+        "store": "session:double_dmg_1"
+      }
+    },
+    {
+      "sequence": 124,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_dmg_1",
+        "before": 5,
+        "after": 29
+      }
+    },
+    {
+      "sequence": 125,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 3,
+        "store": "session:double_hit_2"
+      }
+    },
+    {
+      "sequence": 126,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_hit_2",
+        "before": 3,
+        "after": 9
+      }
+    },
+    {
+      "sequence": 127,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 9,
+        "store": "session:double_eva_2"
+      }
+    },
+    {
+      "sequence": 128,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_eva_2",
+        "before": 9,
+        "after": 15
+      }
+    },
+    {
+      "sequence": 129,
+      "kind": "dice_roll",
+      "source": "double_slash_01",
+      "detail": {
+        "sides": 10,
+        "result": 5,
+        "store": "session:double_dmg_2"
+      }
+    },
+    {
+      "sequence": 130,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "double_dmg_2",
+        "before": 5,
+        "after": 29
+      }
+    },
+    {
+      "sequence": 131,
+      "kind": "variable_changed",
+      "source": "double_slash_01",
+      "detail": {
+        "variable": "hp_tegularis",
+        "before": 541,
+        "after": 517
+      }
+    },
+    {
+      "sequence": 132,
+      "kind": "author_message",
+      "source": "double_slash_01",
+      "detail": {
+        "text": "DOUBLE SLASH impacto 1: 24 puntos."
+      }
+    },
+    {
+      "sequence": 133,
+      "kind": "author_message",
+      "source": "double_slash_01",
+      "detail": {
+        "text": "Tegularis esquivó DOUBLE SLASH impacto 2."
+      }
+    },
+    {
+      "sequence": 134,
+      "kind": "skill_played",
+      "source": "double_slash_01",
+      "detail": {
+        "card": "double_slash",
+        "actor": "parnecio",
+        "origin": "player"
+      }
+    },
+    {
+      "sequence": 135,
+      "kind": "skill_started",
+      "source": "stance_aggressive_01",
+      "detail": {
+        "card": "stance_aggressive",
+        "actor": "gillius",
+        "origin": "script"
+      }
+    },
+    {
+      "sequence": 136,
+      "kind": "author_message",
+      "source": "stance_aggressive_01",
+      "detail": {
+        "text": "Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion."
+      }
+    },
+    {
+      "sequence": 137,
+      "kind": "skill_played",
+      "source": "stance_aggressive_01",
+      "detail": {
+        "card": "stance_aggressive",
+        "actor": "gillius",
+        "origin": "script"
+      }
+    }
+  ],
+  "rolls": [
+    {
+      "source": "coletazo_01",
+      "sides": 10,
+      "result": 5,
+      "store": "session:tail_hit_iosepus"
+    },
+    {
+      "source": "coletazo_01",
+      "sides": 10,
+      "result": 5,
+      "store": "session:tail_eva_iosepus"
+    },
+    {
+      "source": "coletazo_01",
+      "sides": 10,
+      "result": 5,
+      "store": "session:tail_dmg_iosepus"
+    },
+    {
+      "source": "slash_01",
+      "sides": 10,
+      "result": 8,
+      "store": "session:scratch_hit_parnecio"
+    },
+    {
+      "source": "slash_01",
+      "sides": 10,
+      "result": 8,
+      "store": "session:scratch_eva_parnecio"
+    },
+    {
+      "source": "slash_01",
+      "sides": 10,
+      "result": 2,
+      "store": "session:scratch_damage_parnecio"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 9,
+      "store": "session:double_hit_1"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 8,
+      "store": "session:double_eva_1"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 5,
+      "store": "session:double_dmg_1"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 3,
+      "store": "session:double_hit_2"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 9,
+      "store": "session:double_eva_2"
+    },
+    {
+      "source": "double_slash_01",
+      "sides": 10,
+      "result": 5,
+      "store": "session:double_dmg_2"
+    }
+  ],
+  "contests": []
+}

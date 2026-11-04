@@ -20,16 +20,19 @@ def check_cards(package: dict) -> None:
             "Una ventana de habilidad requiere player_character explícito",
         )
     for card in package["cards"]:
+        if card["kind"] == "effect":
+            for effect in card.get("on_actor_turn_start", []):
+                check_effect(effect)
         if card["kind"] != "skill":
             continue
         play = card["play"]
         if "requires" in play:
-            check_condition(play["requires"])
+            check_condition(play["requires"], allow_parameter=True)
         for effect in play["effects"]:
-            check_effect(effect)
+            check_effect(effect, allow_parameter=True)
         for outcome in play.get("outcomes", []):
-            check_condition(outcome["when"])
+            check_condition(outcome["when"], allow_parameter=True)
             for effect in outcome["effects"]:
-                check_effect(effect)
+                check_effect(effect, allow_parameter=True)
         for entry in card.get("return_policy", {}).get("when", []):
-            check_condition(entry["if"])
+            check_condition(entry["if"], allow_parameter=True)

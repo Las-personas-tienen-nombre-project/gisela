@@ -21,6 +21,7 @@ class WorldDefinitions:
     variables: dict
     scale: dict = field(default_factory=lambda: {"min": 0, "max": 10})
     traits: dict | None = None
+    dice_profiles: dict = field(default_factory=dict)
 
 
 def _property(state: dict, ref: dict, defs: WorldDefinitions):

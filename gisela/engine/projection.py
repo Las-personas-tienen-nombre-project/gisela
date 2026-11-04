@@ -225,6 +225,14 @@ def observe(session, language: str | None = None) -> dict:
         _node(session, view, language)
     else:
         raise WorldError("INVALID_STATE", "Estado sin contenido observable")
+    if (
+        "actuation" in state
+        and not state.get("pending_transaction")
+        and not state.get("pending_evaluation")
+    ):
+        from .actuation_public import project as project_actuation
+
+        project_actuation(session, view, language)
     from .public_view import augment
 
     augment(session, view, language)
@@ -236,4 +244,10 @@ def observe(session, language: str | None = None) -> dict:
         from mary import public_quests
 
         view["quests"] = public_quests(session._mary, state["mary"])
+    if "presentation" in session._package:
+        from .author_presentation import project as project_presentation
+
+        view["presentation"] = project_presentation(
+            session._package["presentation"], view
+        )
     return view

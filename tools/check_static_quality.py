@@ -139,17 +139,32 @@ def check_radon() -> int:
     return int(bool(issues))
 
 
+def source_files(root: Path) -> tuple[str, ...]:
+    """Incluye fuentes mantenidas y excluye entornos y cachés anidados."""
+    excluded = {".venv", ".git", "__pycache__"}
+    return tuple(
+        sorted(
+            path.relative_to(root).as_posix()
+            for folder in SOURCES
+            for path in (root / folder).rglob("*.py")
+            if not excluded.intersection(path.relative_to(root).parts)
+        )
+    )
+
+
 def check_bandit() -> int:
-    report = run_json("bandit", ("-r", *SOURCES, "-f", "json", "-q"))
+    paths = source_files(ROOT)
+    report = run_json("bandit", (*paths, "-f", "json", "-q"))
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
     blocking, informational = bandit_issues(report, baseline, ROOT)
-    expected = {
-        path.relative_to(ROOT).as_posix()
-        for folder in SOURCES
-        for path in (ROOT / folder).rglob("*.py")
+    scanned = {
+        (ROOT / path).resolve().relative_to(ROOT.resolve()).as_posix()
+        for path in report["metrics"]
+        if path != "_totals"
     }
-    scanned = set(report["metrics"]) - {"_totals"}
-    blocking.extend(f"Bandit no analizó: {path}" for path in sorted(expected - scanned))
+    blocking.extend(
+        f"Bandit no analizó: {path}" for path in sorted(set(paths) - scanned)
+    )
     for issue in informational:
         print(f"INFO: {issue}")
     for issue in blocking:

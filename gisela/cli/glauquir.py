@@ -35,6 +35,15 @@ def _arguments(argv):
     )
     parser.add_argument("--save", type=Path, help="Exportar estado final de sesión")
     parser.add_argument(
+        "--actuation", action="store_true", help="Laboratorio del reloj autoral v0.7"
+    )
+    parser.add_argument(
+        "--rounds",
+        type=int,
+        default=3,
+        help="Rondas de laboratorio que se ejecutan con --actuation",
+    )
+    parser.add_argument(
         "--auto",
         action="store_true",
         help="Recorrer la historia sin entrada interactiva",
@@ -54,6 +63,8 @@ def _arguments(argv):
     )
     parser.add_argument("--color", choices=("auto", "always", "never"), default="auto")
     args = parser.parse_args(argv)
+    if args.rounds < 1 or args.rounds > 100:
+        parser.error("--rounds debe estar entre 1 y 100")
     if args.seed is not None and args.restore is not None:
         parser.error("--seed no se puede combinar con --restore")
     if args.seed is not None and (
@@ -76,10 +87,89 @@ def _choose_action(view, args, client):
     return client.choose(view)
 
 
+def _run_actuation(session, args, admitted):
+    """Cliente de laboratorio: consulta la sesión; nunca calcula iniciativa."""
+    client = TextClient(session, args.developer, Styler(args.color))
+    initial = session.actuation_observe()
+    if not initial["active"]:
+        print("Este paquete no declara un reloj de actuación.", file=sys.stderr)
+        return 1, session
+    final_round = initial["round"] + args.rounds
+    for _ in range(1024):
+        clock = session.actuation_observe()
+        if clock["round"] >= final_round:
+            print(f"\nLaboratorio completado: {args.rounds} rondas verificables.")
+            return 0, session
+        if not clock["active"]:
+            print("El encuentro no tiene un reloj de actuación activo.")
+            return 0, session
+        actor = clock["actor"]
+        print(f"\nRONDA {clock['round']} | {actor} | acciones: {clock['remaining']}")
+        view = _actuation_view(session, clock)
+        selected = _choose_action(view, args, client)
+        if selected is None:
+            return 0, session
+        if selected.get("command") == "load":
+            from gisela.engine.runtime import restore_session
+
+            try:
+                session = restore_session(
+                    admitted, load_json_strict(Path(selected["path"]))
+                )
+                client.session = session
+            except (EngineFailure, OSError, ValueError, KeyError) as exc:
+                print("No se pudo cargar: " + str(exc))
+            continue
+        revision = clock["revision"]
+        previous_trace = len(session.export()["history"]["trace"])
+        previous_reading = len(session.read_history())
+        previous_event = len(clock["events"])
+        skill = (
+            selected["id"]
+            if actor == session.export().get("player_character")
+            and selected["id"] != "pasar"
+            else None
+        )
+        result = session.actuation_step(revision, skill)
+        if result["status"] != "ok":
+            print(
+                "ERROR " + result["error"]["code"] + ": " + result["error"]["message"],
+                file=sys.stderr,
+            )
+            return 1, session
+        for item in session.export()["history"]["trace"][previous_trace:]:
+            if item["kind"] == "skill_played":
+                print(f"  {item['detail']['actor']} ejecutó {item['detail']['card']}")
+        for item in session.read_history()[previous_reading:]:
+            if item["kind"] == "action":
+                print("  " + item["text"])
+        for item in result["actuation"]["events"][previous_event:]:
+            if item["kind"] in ("effect_pulse", "effect_expired", "effect_started"):
+                print("  " + item["kind"] + ": " + str(item["detail"]))
+    raise EngineFailure("BUDGET_EXCEEDED", "Demasiadas actuaciones en laboratorio")
+
+
+def _actuation_view(session, clock):
+    offers = [
+        {
+            "kind": "actuation",
+            "id": item["id"],
+            "action_id": "actuation_" + item["id"],
+            "label": item["label"],
+            "enabled": item["enabled"],
+        }
+        for item in clock["offers"]
+    ]
+    view = dict(session.observe_glauquir())
+    view["content"] = {"kind": "choice", "prompt": "Elija una acción de actuación:"}
+    view["actions"] = offers
+    return view
+
+
 def _run(session, args, admitted):
     """Consume Observe y Act, sin ejecutar reglas en el anfitrión."""
     client = TextClient(session, args.developer, Styler(args.color))
-    for _ in range(256):
+    for _ in range(4096):
         view = session.observe_glauquir()
         client.display(view)
         if not view["actions"] and (args.auto or view["status"] == "ended"):
@@ -138,7 +228,11 @@ def main(argv=None):
         )
         if args.language:
             session.set_language(args.language)
-        status, session = _run(session, args, admitted)
+        status, session = (
+            _run_actuation(session, args, admitted)
+            if args.actuation
+            else _run(session, args, admitted)
+        )
         if args.save and status == 0:
             _save(args.save, session.export())
             print("Sesión guardada en " + str(args.save))

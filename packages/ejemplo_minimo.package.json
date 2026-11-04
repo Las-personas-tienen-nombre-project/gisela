@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "id": "ejemplo_minimo",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": ["es_cl"],
+    "entry": {"node": "inicio"}
+  },
+  "cards": [],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {"id": "entrada", "op": "narrate", "text": {"text": "Hay una puerta al fondo del pasillo."}},
+        {
+          "id": "decision",
+          "op": "choice",
+          "prompt": {"text": "Elige una opción."},
+          "options": [
+            {"id": "abrir", "label": {"text": "Abrir la puerta"}, "next": {"node": "puerta_abierta"}},
+            {"id": "seguir", "label": {"text": "Seguir de largo"}, "next": {"node": "pasillo"}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puerta_abierta",
+      "steps": [
+        {"id": "texto_puerta", "op": "narrate", "text": {"text": "La puerta se abre. En la pieza hay luz."}},
+        {"id": "fin_puerta", "op": "ending", "ending": "adentro"}
+      ]
+    },
+    {
+      "id": "pasillo",
+      "steps": [
+        {"id": "texto_pasillo", "op": "narrate", "text": {"text": "Sigues caminando y dejas la puerta atrás."}},
+        {"id": "fin_pasillo", "op": "ending", "ending": "afuera"}
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {"id": "adentro", "title": {"text": "Dentro de la pieza"}},
+    {"id": "afuera", "title": {"text": "Al final del pasillo"}}
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [],
+    "characters": [],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

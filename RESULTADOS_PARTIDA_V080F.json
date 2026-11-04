@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "actions": 59,
+  "round": 5,
+  "outcome": "victoria",
+  "seconds": 12.72,
+  "causal": 733,
+  "actors": {
+    "tegularis": 15,
+    "iosepus": 10,
+    "gillius": 15,
+    "parnecio": 11,
+    "clarisa": 8
+  }
+}

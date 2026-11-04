@@ -10,13 +10,14 @@ from traits import evaluate as traits_evaluate
 
 from .sofia import read as read_stat
 from .world_base import WorldError, instance
+from .world_traits import effective
 
 
 def _contributions(state: dict, spec: dict, definitions) -> dict:
     """Reúne participantes y computa contribuciones sin leer reglas de DICE."""
     participants = []
     for item in spec["participants"]:
-        group, entity = instance(state, item["entity"])
+        group, _entity = instance(state, item["entity"])
         if group not in ("characters", "objects", "locations"):
             raise WorldError("INVALID_REFERENCE", "Entidad sin rasgos")
         participants.append(
@@ -24,7 +25,7 @@ def _contributions(state: dict, spec: dict, definitions) -> dict:
                 "entity": item["entity"],
                 "kind": group[:-1],
                 "role": item["role"],
-                "traits": entity.get("traits", []),
+                "traits": effective(state, item["entity"], definitions),
             }
         )
     request = {
@@ -76,3 +77,12 @@ def resolve(state: dict, spec: dict, definitions) -> dict:
         profile, {"base": base, "bonus": bonus, "difficulty": difficulty}, take
     )
     return {"dice": result, "traits": contributions, "rng_after": rng.as_json()}
+
+
+def contribution_total(state: dict, spec: dict, definitions) -> int:
+    """Consulta pura de una contribución de TRAITS sin consumir DICE/RNG."""
+    result = _contributions(state, spec, definitions)
+    total = result["totals"].get(spec.get("slot", "bonus"), 0)
+    if type(total) is not int or abs(total) > 1000000:
+        raise WorldError("INVALID_STATE", "Contribución TRAITS fuera de rango")
+    return total

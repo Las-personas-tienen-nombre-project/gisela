@@ -1,0 +1,120 @@
+
+RONDA 1 | tegularis | acciones: 3
+  tegularis ejecutó firebreath
+
+RONDA 1 | tegularis | acciones: 2
+  tegularis ejecutó firebreath
+
+RONDA 1 | tegularis | acciones: 1
+  tegularis ejecutó firebreath
+
+RONDA 1 | clarisa | acciones: 2
+  clarisa ejecutó fenix
+
+RONDA 1 | clarisa | acciones: 1
+  clarisa ejecutó fenix
+
+RONDA 1 | gillius | acciones: 3
+  gillius ejecutó grito_de_guerra
+
+RONDA 1 | gillius | acciones: 2
+  gillius ejecutó grito_de_guerra
+
+RONDA 1 | gillius | acciones: 1
+  gillius ejecutó grito_de_guerra
+
+RONDA 1 | parnecio | acciones: 2
+  parnecio ejecutó slash
+  SLASH resolvió 23 puntos de daño.
+
+RONDA 1 | parnecio | acciones: 1
+  parnecio ejecutó double_slash
+  DOUBLE SLASH resolvió 28 puntos en un impacto.
+  DOUBLE SLASH resolvió 28 puntos en un impacto.
+
+RONDA 1 | iosepus | acciones: 2
+  iosepus ejecutó agarraguirre
+
+RONDA 1 | iosepus | acciones: 1
+  iosepus ejecutó agarraguirre
+
+RONDA 2 | tegularis | acciones: 3
+  tegularis ejecutó firebreath
+
+RONDA 2 | tegularis | acciones: 2
+  tegularis ejecutó firebreath
+
+RONDA 2 | tegularis | acciones: 1
+  tegularis ejecutó firebreath
+
+RONDA 2 | clarisa | acciones: 2
+  clarisa ejecutó fenix
+
+RONDA 2 | clarisa | acciones: 1
+  clarisa ejecutó fenix
+
+RONDA 2 | gillius | acciones: 3
+  gillius ejecutó grito_de_guerra
+
+RONDA 2 | gillius | acciones: 2
+  gillius ejecutó grito_de_guerra
+
+RONDA 2 | gillius | acciones: 1
+  gillius ejecutó grito_de_guerra
+
+RONDA 2 | parnecio | acciones: 2
+  parnecio ejecutó slash
+  SLASH resolvió 25 puntos de daño.
+
+RONDA 2 | parnecio | acciones: 1
+  parnecio ejecutó double_slash
+  DOUBLE SLASH resolvió 27 puntos en un impacto.
+  DOUBLE SLASH resolvió 22 puntos en un impacto.
+
+RONDA 2 | iosepus | acciones: 2
+  iosepus ejecutó agarraguirre
+
+RONDA 2 | iosepus | acciones: 1
+  iosepus ejecutó agarraguirre
+
+RONDA 3 | tegularis | acciones: 3
+  tegularis ejecutó firebreath
+
+RONDA 3 | tegularis | acciones: 2
+  tegularis ejecutó firebreath
+
+RONDA 3 | tegularis | acciones: 1
+  tegularis ejecutó firebreath
+
+RONDA 3 | clarisa | acciones: 2
+  clarisa ejecutó fenix
+
+RONDA 3 | clarisa | acciones: 1
+  clarisa ejecutó fenix
+
+RONDA 3 | gillius | acciones: 3
+  gillius ejecutó grito_de_guerra
+
+RONDA 3 | gillius | acciones: 2
+  gillius ejecutó grito_de_guerra
+
+RONDA 3 | gillius | acciones: 1
+  gillius ejecutó grito_de_guerra
+
+RONDA 3 | parnecio | acciones: 2
+  parnecio ejecutó slash
+  SLASH resolvió 20 puntos de daño.
+
+RONDA 3 | parnecio | acciones: 1
+  parnecio ejecutó double_slash
+  DOUBLE SLASH resolvió 28 puntos en un impacto.
+  DOUBLE SLASH resolvió 20 puntos en un impacto.
+
+RONDA 3 | iosepus | acciones: 2
+  iosepus ejecutó agarraguirre
+
+RONDA 3 | iosepus | acciones: 1
+  iosepus ejecutó agarraguirre
+
+Laboratorio completado: 3 rondas verificables.
+Sesión guardada en /mnt/data/work_v07/tegularis_v07_snapshot.json

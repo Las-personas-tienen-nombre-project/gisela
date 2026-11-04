@@ -38,6 +38,8 @@ def writable_key(effect: dict) -> str | None:
         return "belief:" + str(effect["character"]) + ":" + effect["claim"]
     if op in ("assign_trait", "remove_trait"):
         return "traits:" + str(effect["entity"])
+    if op == "play_skill":
+        return "skill_play:" + str(effect["skill_instance"])
     if op in ("grant_skill", "move_skill", "discard_skill"):
         return "skill_capacity:" + str(effect["character"])
     if op == "set_scene":
@@ -66,7 +68,7 @@ def apply_operation(state: dict, effect: dict, context: EffectContext) -> list[d
     if op in ("set", "add"):
         return _set_value(state, effect, context.definitions)
     if op == "grant_skill":
-        return grant_skill(state, effect, context.decisions)
+        return grant_skill(state, effect, context)
     operations = {
         "transfer": transfer,
         "move_character": move_character,

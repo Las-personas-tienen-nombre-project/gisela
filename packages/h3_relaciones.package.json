@@ -1,0 +1,440 @@
+{
+  "manifest": {
+    "id": "gisela_h34a_relaciones",
+    "format_version": "1.2",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "sofia_scale": {
+      "min": 0,
+      "max": 10
+    },
+    "variables": [
+      {
+        "scope": "session",
+        "id": "casete_prestado",
+        "type": "boolean",
+        "initial": false
+      },
+      {
+        "scope": "session",
+        "id": "gisela_reacciono",
+        "type": "boolean",
+        "initial": false
+      }
+    ],
+    "facts": [
+      "alberto_presto_casete"
+    ],
+    "claims": [
+      "gisela_cree_cancion_dedicada"
+    ],
+    "signals": [],
+    "relationship_fields": [
+      {
+        "id": "confianza",
+        "type": "integer",
+        "initial": 0
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "alberto",
+      "kind": "character",
+      "title": {
+        "text": "Alberto"
+      },
+      "sofia": {
+        "strength": 6,
+        "openness": 3,
+        "fortune": 4,
+        "intelligence": 7,
+        "awareness": 8
+      }
+    },
+    {
+      "id": "gisela",
+      "kind": "character",
+      "title": {
+        "text": "Gisela"
+      },
+      "sofia": {
+        "strength": 7,
+        "openness": 8,
+        "fortune": 5,
+        "intelligence": 7,
+        "awareness": 5
+      },
+      "properties": [
+        {
+          "id": "paciencia",
+          "type": "integer",
+          "initial": 2,
+          "min": 0,
+          "max": 10
+        }
+      ]
+    },
+    {
+      "id": "porteria",
+      "kind": "location",
+      "title": {
+        "text": "Portería"
+      }
+    },
+    {
+      "id": "casete",
+      "kind": "object",
+      "title": {
+        "text": "Casete"
+      },
+      "portable": true,
+      "properties": [
+        {
+          "id": "cuidado",
+          "type": "integer",
+          "initial": 1,
+          "min": 0,
+          "max": 8
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "id": "porteria_noche",
+      "title": {
+        "text": "Portería de noche"
+      },
+      "location": "porteria",
+      "actors": [
+        {
+          "character": "gisela",
+          "visible_if": {
+            "constant": true
+          }
+        }
+      ],
+      "elements": [
+        {
+          "id": "escritorio",
+          "label": {
+            "text": "Escritorio"
+          },
+          "actions": []
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Alberto llega a la portería con un casete de música."
+          }
+        },
+        {
+          "id": "fondo",
+          "op": "scene",
+          "scene": "porteria_noche"
+        },
+        {
+          "id": "saludo",
+          "op": "dialogue",
+          "speaker": "gisela",
+          "text": {
+            "text": "Hola, Alberto. ¿Trajiste el casete?"
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "options": [
+            {
+              "id": "prestar",
+              "label": {
+                "text": "Prestar el casete"
+              },
+              "enabled_if": {
+                "owns": {
+                  "owner": "alberto",
+                  "object": "casete_01"
+                }
+              },
+              "effects": [
+                {
+                  "op": "transfer",
+                  "object": "casete_01",
+                  "from": "alberto",
+                  "to": "gisela"
+                },
+                {
+                  "op": "record_fact",
+                  "fact": "alberto_presto_casete"
+                },
+                {
+                  "op": "set",
+                  "target": {
+                    "var": {
+                      "scope": "session",
+                      "key": "casete_prestado"
+                    }
+                  },
+                  "value": {
+                    "literal": true
+                  }
+                }
+              ],
+              "next": {
+                "step": "entrega"
+              }
+            },
+            {
+              "id": "guardar",
+              "label": {
+                "text": "Guardar el casete"
+              },
+              "next": {
+                "step": "despedida"
+              },
+              "enabled_if": {
+                "compare": {
+                  "left": {
+                    "property": {
+                      "entity": "gisela",
+                      "key": "paciencia"
+                    }
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 2
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "entrega",
+          "op": "narrate",
+          "text": {
+            "text": "Gisela recibe el casete."
+          }
+        },
+        {
+          "id": "ir_a_cierre",
+          "op": "transition",
+          "next": {
+            "step": "cierre"
+          }
+        },
+        {
+          "id": "despedida",
+          "op": "narrate",
+          "text": {
+            "text": "Alberto se guarda el casete."
+          }
+        },
+        {
+          "id": "cierre",
+          "op": "condition",
+          "test": {
+            "has_fact": "alberto_presto_casete"
+          },
+          "then": {
+            "node": "final_compartido"
+          },
+          "else": {
+            "node": "final_solitario"
+          }
+        }
+      ]
+    },
+    {
+      "id": "final_compartido",
+      "steps": [
+        {
+          "id": "terminar",
+          "op": "ending",
+          "ending": "compartido"
+        }
+      ]
+    },
+    {
+      "id": "final_solitario",
+      "steps": [
+        {
+          "id": "terminar",
+          "op": "ending",
+          "ending": "solo"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "reaccion_gisela",
+      "trigger": {
+        "on": "fact_recorded",
+        "fact": "alberto_presto_casete"
+      },
+      "when": {
+        "not": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "gisela_reacciono"
+              }
+            },
+            "op": "eq",
+            "right": {
+              "literal": true
+            }
+          }
+        }
+      },
+      "effects": [
+        {
+          "op": "set",
+          "target": {
+            "var": {
+              "scope": "session",
+              "key": "gisela_reacciono"
+            }
+          },
+          "value": {
+            "literal": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "confianza_2",
+      "trigger": {
+        "on": "fact_recorded",
+        "fact": "alberto_presto_casete"
+      },
+      "effects": [
+        {
+          "op": "add",
+          "target": {
+            "relationship": {
+              "from": "alberto",
+              "to": "gisela",
+              "key": "confianza"
+            }
+          },
+          "value": {
+            "literal": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "confianza_3",
+      "trigger": {
+        "on": "fact_recorded",
+        "fact": "alberto_presto_casete"
+      },
+      "effects": [
+        {
+          "op": "add",
+          "target": {
+            "relationship": {
+              "from": "alberto",
+              "to": "gisela",
+              "key": "confianza"
+            }
+          },
+          "value": {
+            "literal": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "cuidado_casete",
+      "trigger": {
+        "on": "fact_recorded",
+        "fact": "alberto_presto_casete"
+      },
+      "effects": [
+        {
+          "op": "add",
+          "target": {
+            "property": {
+              "entity": "casete_01",
+              "key": "cuidado"
+            }
+          },
+          "value": {
+            "literal": 2
+          }
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "compartido",
+      "title": {
+        "text": "Compartido"
+      }
+    },
+    {
+      "id": "solo",
+      "title": {
+        "text": "Solo"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "1998-08-13T19:00:00-04:00",
+    "locations": [
+      {
+        "id": "porteria",
+        "card": "porteria"
+      }
+    ],
+    "characters": [
+      {
+        "id": "alberto",
+        "card": "alberto",
+        "location": "porteria",
+        "status": {}
+      },
+      {
+        "id": "gisela",
+        "card": "gisela",
+        "location": "porteria",
+        "status": {}
+      }
+    ],
+    "objects": [
+      {
+        "id": "casete_01",
+        "card": "casete",
+        "owner": "alberto"
+      }
+    ],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {
+      "casete_prestado": false,
+      "gisela_reacciono": false
+    },
+    "current_scene": "porteria_noche"
+  }
+}

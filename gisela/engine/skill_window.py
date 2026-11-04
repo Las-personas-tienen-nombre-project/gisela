@@ -11,6 +11,7 @@ def plays(state: dict) -> int:
     cursor = state["cursor"]
     return sum(
         item["kind"] == "skill_played"
+        and item.get("detail", {}).get("origin") != "script"
         and item.get("detail", {}).get("execution_id") == cursor["execution_id"]
         and item.get("detail", {}).get("step_id") == cursor["step"]
         for item in state["history"]["trace"]
@@ -37,6 +38,11 @@ def allowed(state: dict, skill: dict, session) -> bool:
         raise WorldError(
             "INVALID_STATE", "La carta de una habilidad no es de tipo skill"
         )
+    if card.get("passive_traits"):
+        return False
+    # La interfaz actual no admite parámetros elegidos por el jugador.
+    if card["play"].get("parameters"):
+        return False
     return predicate(
         state, card["play"].get("requires", {"constant": True}), session._definitions
     )
@@ -59,6 +65,8 @@ def offered(session, language: str | None = None) -> list[dict]:
             raise WorldError(
                 "INVALID_STATE", "Instancia de habilidad con carta incorrecta"
             )
+        if card.get("passive_traits"):
+            continue
         actions.append(
             {
                 "kind": "play_skill",

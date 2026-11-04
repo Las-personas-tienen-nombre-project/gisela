@@ -36,6 +36,10 @@ SUPPORTED_OPS = {
     "end_effect",
     "assign_trait",
     "remove_trait",
+    "play_skill",
+    "play_first_skill",
+    "contest",
+    "emit_message",
 }
 SUPPORTED_CONDITIONS = {
     "constant",
@@ -62,15 +66,27 @@ SUPPORTED_TRIGGERS = {
 }
 
 
-def _explicit(ref, label: str) -> None:
+def _explicit(ref, label: str, allow_parameter: bool = False) -> None:
     """Prohíbe contextos que el ejecutor aún no sabe vincular."""
+    if allow_parameter and isinstance(ref, dict) and set(ref) == {"parameter"}:
+        return
     if not isinstance(ref, str) or ref.startswith("$"):
         raise EngineFailure("UNSUPPORTED_FORMAT", f"H3 requiere {label} explícito")
 
 
-def check_value(expression: dict) -> None:
+def check_value(expression: dict, allow_parameter: bool = False) -> None:
     """Solo acepta expresiones que el ejecutor puede resolver sin ligaduras."""
     key = next(iter(expression))
+    if key == "parameter" and allow_parameter:
+        return
+    if key == "math":
+        for side in ("left", "right"):
+            check_value(expression["math"][side], allow_parameter)
+        return
+    if key == "trait_total":
+        for item in expression["trait_total"]["participants"]:
+            _explicit(item["entity"], "participante TRAITS", allow_parameter)
+        return
     if key in ("literal", "clock", "turn"):
         return
     if key == "var":
@@ -78,42 +94,42 @@ def check_value(expression: dict) -> None:
             return
         raise EngineFailure("UNSUPPORTED_FORMAT", "Variable de instancia no disponible")
     if key == "stat":
-        _explicit(expression[key]["character"], "personaje S.O.F.I.A.")
+        _explicit(expression[key]["character"], "personaje S.O.F.I.A.", allow_parameter)
         return
     if key == "property":
-        _explicit(expression[key]["entity"], "entidad de propiedad")
+        _explicit(expression[key]["entity"], "entidad de propiedad", allow_parameter)
         return
     if key == "relationship":
-        _explicit(expression[key]["from"], "origen de relación")
-        _explicit(expression[key]["to"], "destino de relación")
+        _explicit(expression[key]["from"], "origen de relación", allow_parameter)
+        _explicit(expression[key]["to"], "destino de relación", allow_parameter)
         return
     raise EngineFailure("UNSUPPORTED_FORMAT", "Expresión de valor no disponible")
 
 
-def check_condition(cond: dict) -> None:
+def check_condition(cond: dict, allow_parameter: bool = False) -> None:
     """Rechaza condiciones no implementadas antes de iniciar una historia."""
     key = next(iter(cond))
     if key not in SUPPORTED_CONDITIONS:
         raise EngineFailure("UNSUPPORTED_FORMAT", f"Condición aún no disponible: {key}")
     if key in ("all", "any"):
         for item in cond[key]:
-            check_condition(item)
+            check_condition(item, allow_parameter)
     if key == "not":
-        check_condition(cond[key])
+        check_condition(cond[key], allow_parameter)
     if key == "has_trait":
-        _explicit(cond[key]["entity"], "entidad TRAITS")
+        _explicit(cond[key]["entity"], "entidad TRAITS", allow_parameter)
     if key == "has_effect":
-        _explicit(cond[key]["target"], "destino de efecto")
+        _explicit(cond[key]["target"], "destino de efecto", allow_parameter)
     if key in ("owns", "at_location", "knows", "believes", "has_skill"):
         for name, val in cond[key].items():
             if name in ("character", "location", "object", "owner"):
-                _explicit(val, name)
+                _explicit(val, name, allow_parameter)
     if key == "compare":
         for side in ("left", "right"):
-            check_value(cond[key][side])
+            check_value(cond[key][side], allow_parameter)
 
 
-def check_effect(effect: dict) -> None:
+def check_effect(effect: dict, allow_parameter: bool = False) -> None:
     """Comprueba una consecuencia ejecutable y sus referencias."""
     op = effect["op"]
     if op not in SUPPORTED_OPS:
@@ -130,11 +146,12 @@ def check_effect(effect: dict) -> None:
         "effect_instance",
     ):
         if name in effect and not (name == "to" and op == "move_skill"):
-            _explicit(effect[name], name)
+            _explicit(effect[name], name, allow_parameter)
+    _check_nested_effect(effect, allow_parameter)
     if op in ("assign_trait", "remove_trait"):
-        _explicit(effect["entity"], "entidad TRAITS")
+        _explicit(effect["entity"], "entidad TRAITS", allow_parameter)
     if op == "apply_effect":
-        _explicit(effect["target"], "destino de efecto")
+        _explicit(effect["target"], "destino de efecto", allow_parameter)
     if op == "roll":
         target = effect["store"]
         if "var" not in target or target["var"]["scope"] not in ("session", "world"):
@@ -146,8 +163,8 @@ def check_effect(effect: dict) -> None:
                 "UNSUPPORTED_FORMAT", "roll admite como máximo 2^53-1 caras"
             )
     if op in ("set", "add"):
-        check_value(effect["target"])
-        check_value(effect["value"])
+        check_value(effect["target"], allow_parameter)
+        check_value(effect["value"], allow_parameter)
 
 
 def _check_step(step: dict, version: str) -> None:
@@ -178,6 +195,7 @@ def check_supported(package: dict) -> None:
         raise EngineFailure("UNSUPPORTED_FORMAT", "Versión no ejecutable")
     if not any(k in package["manifest"]["entry"] for k in ("node", "scene")):
         raise EngineFailure("UNSUPPORTED_FORMAT", "Entrada inicial inválida")
+    _check_actuation_support(package)
     for node in package["nodes"]:
         for step in node["steps"]:
             _check_step(step, package["manifest"]["format_version"])
@@ -212,7 +230,7 @@ def _effect_cards(package: dict) -> None:
         for clause in card.get("expiration", {}).get("clauses", []):
             if "when" in clause:
                 check_condition(clause["when"])
-        for name in ("on_apply", "on_expire"):
+        for name in ("on_apply", "on_expire", "on_actor_turn_start"):
             for operation in card.get(name, []):
                 check_effect(operation)
 
@@ -288,3 +306,56 @@ def _check_evaluation(spec: dict, version: str) -> None:
     for branch in spec["branches"]:
         for effect in branch.get("effects", []):
             check_effect(effect)
+
+
+def _check_nested_effect(effect, allow_parameter):
+    op = effect["op"]
+    if op == "emit_message":
+        for item in effect["values"].values():
+            check_value(item, allow_parameter)
+    if op == "contest":
+        for side in ("left", "right"):
+            check_value(effect[side]["base"], allow_parameter)
+            for participant in effect[side].get("context", {}).get("participants", []):
+                _explicit(participant["entity"], "participante TRAITS", allow_parameter)
+        for branch in ("on_win", "on_lose"):
+            for nested in effect[branch]:
+                check_effect(nested, allow_parameter)
+    if op == "play_skill":
+        for argument in effect.get("arguments", {}).values():
+            check_value(argument)
+        _explicit(effect["skill_instance"], "instancia de habilidad", allow_parameter)
+    if op == "play_first_skill":
+        for candidate in effect["candidates"]:
+            for argument in candidate.get("arguments", {}).values():
+                check_value(argument)
+            _explicit(candidate["skill_instance"], "instancia de habilidad")
+            if "when" in candidate:
+                check_condition(candidate["when"], allow_parameter)
+        for nested in effect.get("otherwise", []):
+            check_effect(nested, allow_parameter)
+
+
+def _check_actuation_support(package):
+    for operation in package.get("actuation", {}).get("setup", []):
+        check_effect(operation)
+    events = package.get("actuation", {}).get("event_policies", [])
+    outcomes = package.get("actuation", {}).get("outcome_policies", [])
+    if len({p["id"] for p in events}) != len(events) or len(
+        {p["id"] for p in outcomes}
+    ) != len(outcomes):
+        raise EngineFailure(
+            "UNSUPPORTED_FORMAT", "Identificadores duplicados de acontecimientos"
+        )
+    for policy in package.get("actuation", {}).get("event_policies", []):
+        if policy["phase"] not in ("immediate", "after_action"):
+            raise EngineFailure("UNSUPPORTED_FORMAT", "Fase autoral desconocida")
+        check_condition(policy["when"])
+        for operation in policy["effects"]:
+            check_effect(operation)
+        for branch in policy.get("outcomes", []):
+            check_condition(branch["when"])
+            for operation in branch["effects"]:
+                check_effect(operation)
+    for policy in package.get("actuation", {}).get("outcome_policies", []):
+        check_condition(policy["when"])

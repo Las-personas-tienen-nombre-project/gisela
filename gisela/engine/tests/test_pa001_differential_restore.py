@@ -41,10 +41,28 @@ class DifferentialRestore(unittest.TestCase):
                 self.assertEqual(send(session, action)["status"], "ok")
             resumed = roundtrip(admitted, resumed)
             self.assert_equivalent(continuous, resumed)
+            if action == "choose_prestar":
+                self.assertEqual(continuous.export()["history"]["trace"], [])
+                self.assertEqual(continuous.export()["rng"]["counter"], 0)
         state = continuous.export()
         self.assertEqual(state["rng"]["counter"], 1)
         self.assertEqual(len(state["history"]["facts"]), 1)
-        self.assertEqual(len(state["history"]["trace"]), 2)
+        trace = state["history"]["trace"]
+        self.assertEqual(
+            [entry["kind"] for entry in trace],
+            ["dice_roll", "rule_fired", "rule_fired"],
+        )
+        self.assertEqual(
+            [entry["source"] for entry in trace],
+            ["decision", "aprendizaje_gisela", "reaccion_gisela"],
+        )
+        self.assertEqual(
+            trace[0]["detail"], {"sides": 6, "result": 4, "store": "session:dado"}
+        )
+        self.assertEqual(
+            sorted(entry["sequence"] for entry in [*trace, *state["history"]["facts"]]),
+            [1, 2, 3, 4],
+        )
         self.assertNotIn("pending_transaction", state)
 
     def test_cancel_then_retry_after_restore_matches_continuous(self):

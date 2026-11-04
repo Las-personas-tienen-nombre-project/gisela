@@ -159,6 +159,49 @@ class BanditPolicyTest(unittest.TestCase):
                 self.assertEqual(quality.check_bandit(), 1)
             self.assertIn("Bandit no analizó", output.getvalue())
 
+    def test_inventory_excludes_nested_environment_and_cache(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in (
+                "gisela/engine.py",
+                "gisela/engine/tests/test_new.py",
+                "gisela/.venv/lib/site-packages/pip.py",
+                "gisela/engine/__pycache__/cached.py",
+                "gisela/.git/hook.py",
+            ):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("x = 1\n")
+            with mock.patch.object(quality, "SOURCES", ("gisela",)):
+                self.assertEqual(
+                    quality.source_files(root),
+                    ("gisela/engine.py", "gisela/engine/tests/test_new.py"),
+                )
+
+    def test_scan_uses_inventory_and_normalizes_metric_paths(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "gisela").mkdir()
+            (root / "gisela/engine.py").write_text("x = 1\n")
+            (root / "baseline.json").write_text("[]")
+            report = {
+                "results": [],
+                "errors": [],
+                "metrics": {"_totals": {}, "./gisela/engine.py": {}},
+            }
+            with (
+                mock.patch.object(quality, "ROOT", root),
+                mock.patch.object(quality, "SOURCES", ("gisela",)),
+                mock.patch.object(quality, "BASELINE", root / "baseline.json"),
+                mock.patch.object(quality, "run_json", return_value=report) as run,
+                contextlib.redirect_stdout(io.StringIO()),
+            ):
+                self.assertEqual(quality.check_bandit(), 0)
+                self.assertEqual(
+                    run.call_args.args,
+                    ("bandit", ("gisela/engine.py", "-f", "json", "-q")),
+                )
+
     @staticmethod
     def _issue(path: Path, severity: str) -> dict:
         return {
@@ -191,6 +234,9 @@ class OrchestratorPolicyTest(unittest.TestCase):
                 self.assertEqual(check_gisela.main(), 0)
                 commands = runner.call_args.args[0]
                 self.assertEqual(len(commands), expected)
+                self.assertIn(
+                    "gisela/packages/tegularis_the_son_of_the_volcan", commands[0][1]
+                )
                 self.assertEqual(
                     sum(label.startswith("Ruff") for label, _ in commands), 2
                 )

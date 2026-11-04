@@ -4,27 +4,51 @@ from __future__ import annotations
 
 if __package__:
     from . import semantic_operation_paths
+    from .semantic_actuation import ActuationPackageMixin
     from .semantic_shared import *
 else:  # Compatibilidad de ejecución directa desde contracts/
     import semantic_operation_paths
+    from semantic_actuation import ActuationPackageMixin
     from semantic_shared import *
 
 evaluation_operations = semantic_operation_paths.evaluation_operations
 COLOR_ROLES = {"default", "red", "yellow", "green", "cyan", "blue", "magenta", "white"}
 
 
-class PackagesMixin:
+class PackagesMixin(ActuationPackageMixin):
     """Grupo de comprobaciones packages de un mismo validador."""
 
     def all_operations(self, pkg: dict):
         """Recorre consecuencias del paquete."""
-        yield from semantic_operation_paths.node_operations(pkg)
-        yield from semantic_operation_paths.scene_operations(pkg)
-        yield from semantic_operation_paths.rule_card_operations(pkg)
+        for source in (
+            semantic_operation_paths.node_operations(pkg),
+            semantic_operation_paths.scene_operations(pkg),
+            semantic_operation_paths.rule_card_operations(pkg),
+        ):
+            for operation, path in source:
+                yield operation, path
+                yield from self._nested_operations(operation, path)
+
+    def _nested_operations(self, operation: dict, path: str):
+        if operation["op"] == "contest":
+            for branch in ("on_win", "on_lose"):
+                for index, nested in enumerate(operation[branch]):
+                    nested_path = pointer(path, branch, index)
+                    yield nested, nested_path
+                    yield from self._nested_operations(nested, nested_path)
+            return
+        if operation["op"] != "play_first_skill":
+            return
+        for index, nested in enumerate(operation.get("otherwise", [])):
+            nested_path = pointer(path, "otherwise", index)
+            yield nested, nested_path
+            yield from self._nested_operations(nested, nested_path)
 
     def _check_card_and_nodes(self, pkg: dict) -> None:
         """Reparte las comprobaciones entre cartas, nodos, escenas y reglas."""
         self._check_cards(pkg)
+        self._check_actuation_plan(pkg)
+        self._check_author_presentation(pkg)
         self._check_disposition_display(pkg["manifest"])
         self._check_nodes(pkg)
         self._check_scenes(pkg)
@@ -32,6 +56,41 @@ class PackagesMixin:
         for operation, path in self.all_operations(pkg):
             self.operation(operation, path)
             self._check_color_assignment(operation, path)
+
+    def _check_author_presentation(self, pkg: dict) -> None:
+        """Reject unsafe bindings and invalid component topology at admission."""
+        if "presentation" not in pkg:
+            return
+        from .presentation_validation import errors
+
+        for message in errors(pkg["presentation"]):
+            self.report("PRESENTATION_INVALID", "/presentation", message)
+        skills = {entry["id"] for entry in pkg["initial_state"]["skills"]}
+        people = {
+            entry["character"]
+            for entry in pkg.get("actuation", {}).get("participants", [])
+        }
+        for target in pkg["presentation"].get("action_targets", []):
+            if target["skill"] not in skills or target["target"] not in people:
+                self.report(
+                    "PRESENTATION_INVALID",
+                    "/presentation/action_targets",
+                    "Destino no declarado",
+                )
+        variables = pkg["initial_state"].get("session_variables", {})
+        public = set(pkg.get("actuation", {}).get("public_trace_variables", []))
+        for item in pkg.get("actuation", {}).get("public_resources", []):
+            if item["entity"] not in people or any(
+                key not in variables
+                or key not in public
+                or type(variables.get(key)) not in (int, float)
+                for key in (item["current"], item.get("maximum", item["current"]))
+            ):
+                self.report(
+                    "PRESENTATION_INVALID",
+                    "/actuation/public_resources",
+                    "Recurso no autorizado",
+                )
 
     def _check_color_assignment(self, operation: dict, path: str) -> None:
         if operation.get("op") != "set":
@@ -73,6 +132,16 @@ class PackagesMixin:
                         )
             if card["kind"] == "skill":
                 self._check_skill_card(card, path)
+            if (
+                card["kind"] == "effect"
+                and card.get("on_reapply") == "refresh"
+                and card.get("stacking") != "unique_per_target"
+            ):
+                self.report(
+                    "INVALID_EFFECT",
+                    path + "/on_reapply",
+                    "refresh requiere unique_per_target",
+                )
             if card["kind"] == "effect" and "expiration" in card:
                 for i, expiry in enumerate(card["expiration"]["clauses"]):
                     point = pointer(path, "expiration", "clauses", i)
@@ -119,6 +188,28 @@ class PackagesMixin:
     def _check_skill_card(self, card: dict, path: str) -> None:
         """Comprueba requisitos, desenlaces y retornos de habilidades."""
         play = card["play"]
+        if card.get("passive_traits") and (
+            play.get("effects") or play.get("outcomes") or play.get("parameters")
+        ):
+            self.report(
+                "INVALID_PASSIVE",
+                path + "/passive_traits",
+                "Una habilidad pasiva no declara ejecución de juego",
+            )
+        self.unique(play.get("parameters", []), path + "/play/parameters")
+        for spec in play.get("parameters", []):
+            if "min" in spec and "max" in spec and spec["min"] > spec["max"]:
+                self.report(
+                    "PROPERTY_RANGE",
+                    path + "/play/parameters",
+                    "Mínimo de parámetro superior al máximo",
+                )
+            if spec["kind"] == "character" and ("min" in spec or "max" in spec):
+                self.report(
+                    "INVALID_PARAMETERS",
+                    path + "/play/parameters",
+                    "Los límites numéricos no corresponden a character",
+                )
         if "requires" in play:
             self.condition(play["requires"], path + "/play/requires")
         for index, outcome in enumerate(play.get("outcomes", [])):

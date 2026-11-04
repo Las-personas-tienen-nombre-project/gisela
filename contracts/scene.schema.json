@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.gisela.invalid/v1.2/scene.schema.json",
+  "title": "GISELA scene v1.2",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$", "maxLength": 96},
+    "title": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/localized_text"},
+    "location": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/entity_ref"},
+    "description": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/localized_text"},
+    "elements": {"type": "array", "items": {"$ref": "#/$defs/element"}},
+    "actors": {"type": "array", "items": {"$ref": "#/$defs/actor_display"}},
+    "actions": {"type": "array", "items": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/action"}},
+    "allow_skill_play": {"type": "boolean"},
+    "presentation": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/presentation"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "element": {
+      "type": "object",
+      "required": ["id", "label"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$", "maxLength": 96},
+        "label": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/localized_text"},
+        "description": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/localized_text"},
+        "entity": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/entity_ref"},
+        "visible_if": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/condition"},
+        "actions": {"type": "array", "items": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/action"}}
+      },
+      "additionalProperties": false
+    },
+    "actor_display": {
+      "type": "object",
+      "required": ["character"],
+      "properties": {
+        "character": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/entity_ref"},
+        "visible_if": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/condition"},
+        "presentation": {"$ref": "https://schemas.gisela.invalid/v1.2/common.schema.json#/$defs/presentation"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

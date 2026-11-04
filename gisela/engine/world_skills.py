@@ -36,8 +36,9 @@ def _available_zone(capacity: dict, skills: list[dict]) -> str | None:
     return None
 
 
-def grant_skill(state: dict, effect: dict, decisions=None) -> list[dict]:
+def grant_skill(state: dict, effect: dict, context) -> list[dict]:
     """Concede una habilidad o solicita el descarte en la transacción actual."""
+    decisions, definitions = context.decisions, context.definitions
     if decisions is None:
         raise WorldError(
             "INVALID_STATE", "Falta contexto de decisiones para grant_skill"
@@ -52,6 +53,10 @@ def grant_skill(state: dict, effect: dict, decisions=None) -> list[dict]:
     state["world"]["skills"].append(
         {"id": candidate, "card": effect["skill"], "character": character, "zone": zone}
     )
+    if definitions is not None:
+        from .world_traits import effective
+
+        effective(state, character, definitions)
     return []
 
 

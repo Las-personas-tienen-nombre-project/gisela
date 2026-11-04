@@ -72,6 +72,6 @@ def rule_card_operations(pkg: dict):
                         pointer("cards", ci, "play", "outcomes", oi, "effects", i),
                     )
         if card["kind"] == "effect":
-            for field in ("on_apply", "on_expire"):
+            for field in ("on_apply", "on_expire", "on_actor_turn_start"):
                 for i, op in enumerate(card.get(field, [])):
                     yield op, pointer("cards", ci, field, i)

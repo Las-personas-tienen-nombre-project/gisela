@@ -6,21 +6,74 @@ from .world_base import WorldError, find, var_access
 
 
 def value(state: dict, expression: dict, definitions=None):
-    """Lee literales, variables, turno o reloj sin mutar el mundo."""
-    if "literal" in expression:
-        return expression["literal"]
-    if "var" in expression:
-        owner, key = var_access(state, expression["var"])
-        return owner[key]
-    if "property" in expression or "relationship" in expression or "stat" in expression:
-        from .world_values import read
+    """Lee una expresión sin mutar el mundo ni exponer la profundidad interna."""
+    return _ValueEvaluator(definitions).evaluate(state, expression)
 
-        return read(state, expression, definitions)
-    if "turn" in expression:
-        return state["turn"]
-    if "clock" in expression:
-        return state["world_time"]
-    raise WorldError("UNSUPPORTED_FORMAT", "Expresión todavía no disponible")
+
+class _ValueEvaluator:
+    """Conserva definiciones durante una evaluación recursiva acotada."""
+
+    def __init__(self, definitions):
+        self.definitions = definitions
+
+    def evaluate(self, state, expression, depth=0):
+        """Lee literales, variables, turno o reloj sin mutar el mundo."""
+        if depth > 8:
+            raise WorldError(
+                "BUDGET_EXCEEDED", "Expresión aritmética demasiado profunda"
+            )
+        if "math" in expression:
+            return self.arithmetic(state, expression["math"], depth)
+        if "trait_total" in expression:
+            from .traits_dice_bridge import contribution_total
+
+            return contribution_total(
+                state, expression["trait_total"], self.definitions
+            )
+        if "literal" in expression:
+            return expression["literal"]
+        if "var" in expression:
+            owner, key = var_access(state, expression["var"])
+            return owner[key]
+        if (
+            "property" in expression
+            or "relationship" in expression
+            or "stat" in expression
+        ):
+            from .world_values import read
+
+            return read(state, expression, self.definitions)
+        if "turn" in expression:
+            return state["turn"]
+        if "clock" in expression:
+            return state["world_time"]
+        raise WorldError("UNSUPPORTED_FORMAT", "Expresión todavía no disponible")
+
+    def arithmetic(self, state, formula, depth):
+        a = self.evaluate(state, formula["left"], depth + 1)
+        b = self.evaluate(state, formula["right"], depth + 1)
+        if type(a) not in (int, float) or type(b) not in (int, float):
+            raise WorldError("TYPE_MISMATCH", "La aritmética requiere números")
+        op = formula["op"]
+        if op == "floor_divide":
+            if b == 0:
+                raise WorldError("PROPERTY_RANGE", "División por cero")
+            result = a // b
+        elif op == "min":
+            result = min(a, b)
+        elif op == "max":
+            result = max(a, b)
+        elif op == "add":
+            result = a + b
+        elif op == "subtract":
+            result = a - b
+        elif op == "multiply":
+            result = a * b
+        else:
+            raise WorldError("UNSUPPORTED_FORMAT", "Operación matemática desconocida")
+        if type(result) is float and not __import__("math").isfinite(result):
+            raise WorldError("PROPERTY_RANGE", "Resultado aritmético no finito")
+        return result
 
 
 def _knowledge(state: dict, condition: dict) -> bool:
@@ -70,7 +123,7 @@ def _leaf(state: dict, cond: dict, definitions=None) -> bool:
     if "has_trait" in cond:
         from .world_traits import query
 
-        return query(state, cond["has_trait"], definitions.traits)
+        return query(state, cond["has_trait"], definitions)
     if "has_fact" in cond:
         return any(
             item["fact"] == cond["has_fact"] for item in state["history"]["facts"]

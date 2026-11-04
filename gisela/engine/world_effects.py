@@ -19,11 +19,29 @@ def create(state: dict, effect: dict, definitions) -> dict:
     """Crea una instancia con identidad y fecha de comienzo transaccionales."""
     card = _definition(definitions, effect["effect"])
     find(state, "characters", effect["target"])
-    if card.get("stacking") == "unique_per_target" and any(
-        item["target"] == effect["target"] and item["card"] == card["id"]
-        for item in state["world"]["effects"]
-    ):
-        raise WorldError("EFFECT_ALREADY_ACTIVE", "El efecto único ya está activo")
+    existing = (
+        next(
+            (
+                item
+                for item in state["world"]["effects"]
+                if item["target"] == effect["target"] and item["card"] == card["id"]
+            ),
+            None,
+        )
+        if card.get("stacking") == "unique_per_target"
+        else None
+    )
+    if existing is not None:
+        if effect.get("instance_id", existing["id"]) != existing["id"]:
+            raise WorldError(
+                "EFFECT_ALREADY_ACTIVE", "La instancia única ya tiene otra identidad"
+            )
+        if card.get("on_reapply", "reject") != "refresh":
+            raise WorldError("EFFECT_ALREADY_ACTIVE", "El efecto único ya está activo")
+        # La identidad se conserva y on_apply no se repite.
+        existing["started_turn"] = state["turn"]
+        existing["started_at"] = state["world_time"]
+        return {**existing, "_refreshed": True}
     identifier = allocate_id(state, "effect", effect.get("instance_id"))
     instance = {
         "id": identifier,
@@ -33,6 +51,9 @@ def create(state: dict, effect: dict, definitions) -> dict:
         "started_at": state["world_time"],
     }
     state["world"]["effects"].append(instance)
+    from .world_traits import effective
+
+    effective(state, instance["target"], definitions)
     return instance
 
 

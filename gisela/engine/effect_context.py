@@ -12,3 +12,4 @@ class EffectContext:
     source: str
     decisions: object = None
     definitions: object = None
+    skill_depth: int = 0

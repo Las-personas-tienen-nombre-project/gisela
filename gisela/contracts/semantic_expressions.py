@@ -16,21 +16,17 @@ class ExpressionsMixin:
     ) -> None:
         """Resuelve el tipo de una referencia declarativa."""
         path, context = location.path, location.context
+        if isinstance(ref, dict) and "parameter" in ref:
+            spec = self._skill_parameter(path, ref["parameter"])
+            if spec is None or spec["kind"] != "character":
+                self.report(
+                    "INVALID_PARAMETER",
+                    path,
+                    "Se requiere un parámetro character declarado",
+                )
+            return
         if isinstance(ref, dict) and "query" in ref:
-            q = ref["query"]
-            if kind and q["kind"] not in ({kind} if isinstance(kind, str) else kind):
-                self.report(
-                    "WRONG_ENTITY_KIND",
-                    path,
-                    "Consulta de entidad con categoría incompatible",
-                )
-            if q["selection"] == "all" and context != "query":
-                self.report(
-                    "PLURAL_REFERENCE",
-                    path,
-                    "Una operación con referencia singular no acepta selection=all",
-                )
-            self.condition(q["where"], path + "/query/where", "query")
+            self._query_entity_ref(ref["query"], kind, location)
             return
         if isinstance(ref, str) and ref.startswith("$"):
             # Se conoce el vocabulario, pero sus ligaduras concretas son dinámicas.
@@ -66,8 +62,46 @@ class ExpressionsMixin:
                 "WRONG_ENTITY_KIND", path, f"Se esperaba {kind}; {ref} es {entry[0]}"
             )
 
+    def _skill_parameter(self, path: str, name: str) -> dict | None:
+        """Parámetros disponibles solo dentro de la carta que los declara."""
+        import re
+
+        match = re.match(r"^/cards/(\d+)/play/", path)
+        if match is None:
+            return None
+        card = self.pkg["cards"][int(match.group(1))]
+        if card.get("kind") != "skill":
+            return None
+        return next(
+            (p for p in card["play"].get("parameters", []) if p["id"] == name), None
+        )
+
     def value_type(self, value: dict, path: str, context: str = "") -> str | None:
         """Infiere el tipo de una expresión sin ejecutarla."""
+        if "parameter" in value:
+            spec = self._skill_parameter(path, value["parameter"])
+            if spec is None:
+                self.report(
+                    "UNBOUND_PARAMETER",
+                    path,
+                    "Parámetro no declarado en esta habilidad",
+                )
+                return None
+            return "integer" if spec["kind"] == "integer" else "string"
+        if "math" in value:
+            return self._arithmetic_type(value["math"], RefLocation(path, context))
+        if "trait_total" in value:
+            for index, participant in enumerate(value["trait_total"]["participants"]):
+                self.entity_ref(
+                    participant["entity"],
+                    {"character", "object", "location"},
+                    RefLocation(
+                        path + f"/trait_total/participants/{index}/entity", context
+                    ),
+                )
+            if "traits" not in self.pkg:
+                self.report("TRAITS_MISSING", path, "Se requiere un catálogo TRAITS")
+            return "integer"
         if "literal" in value:
             return data_type(value["literal"])
         if "var" in value:
@@ -297,6 +331,9 @@ class ExpressionsMixin:
     def operation(self, op: dict, path: str) -> None:
         """Valida tipos, referencias y vocabulario de las consecuencias."""
         name = op["op"]
+        if name == "emit_message":
+            for key, expression in op["values"].items():
+                self.value_type(expression, path + "/values/" + key)
         if name in ("set", "add", "roll"):
             self._operation_value(op, path)
         if name in (
@@ -433,6 +470,26 @@ class ExpressionsMixin:
                 self.entity_ref(
                     op["skill_instance"], "skill", RefLocation(path + "/skill_instance")
                 )
+        if name == "contest":
+            self._operation_contest(op, path)
+        if name == "play_skill":
+            self.entity_ref(
+                op["skill_instance"],
+                "skill",
+                RefLocation(path + "/skill_instance"),
+            )
+            self._validate_skill_arguments(op, path)
+        if name == "play_first_skill":
+            for index, candidate in enumerate(op["candidates"]):
+                point = f"{path}/candidates/{index}"
+                self.entity_ref(
+                    candidate["skill_instance"],
+                    "skill",
+                    RefLocation(point + "/skill_instance"),
+                )
+                if "when" in candidate:
+                    self.condition(candidate["when"], point + "/when")
+                self._validate_skill_arguments(candidate, point)
         if name == "apply_effect":
             effect = self.cards["effect"].get(op["effect"])
             if effect is None:
@@ -443,3 +500,93 @@ class ExpressionsMixin:
             self.entity_ref(
                 op["effect_instance"], "effect", RefLocation(path + "/effect_instance")
             )
+
+    def _validate_skill_arguments(self, invocation: dict, path: str) -> None:
+        """Comprueba firmas declarativas, sin ejecutar ni inferir decisiones de NPC."""
+        ident = invocation["skill_instance"]
+        entry = self.instances.get(ident)
+        if entry is None or entry[0] != "skill":
+            return  # El diagnóstico de instancia ya lo emitió entity_ref.
+        card = self.cards["skill"].get(entry[1]["card"])
+        if card is None:
+            return
+        specs = {p["id"]: p for p in card["play"].get("parameters", [])}
+        supplied = invocation.get("arguments", {})
+        if set(specs) != set(supplied):
+            self.report("INVALID_PARAMETERS", path, "Firma de argumentos incompatible")
+        for name, expression in supplied.items():
+            typ = self.value_type(expression, path + "/arguments/" + name)
+            spec = specs.get(name)
+            if spec is None:
+                continue
+            expected = "integer" if spec["kind"] == "integer" else "string"
+            if typ and typ != expected:
+                self.report(
+                    "TYPE_MISMATCH",
+                    path + "/arguments/" + name,
+                    "Tipo de argumento incorrecto",
+                )
+            if spec["kind"] == "character" and "literal" in expression:
+                self.entity_ref(
+                    expression["literal"],
+                    "character",
+                    RefLocation(path + "/arguments/" + name),
+                )
+            if spec["kind"] == "integer" and "literal" in expression:
+                val = expression["literal"]
+                if type(val) is int and (
+                    ("min" in spec and val < spec["min"])
+                    or ("max" in spec and val > spec["max"])
+                ):
+                    self.report(
+                        "PROPERTY_RANGE",
+                        path + "/arguments/" + name,
+                        "Argumento fuera de límites",
+                    )
+
+    def _query_entity_ref(self, q, kind, location):
+        path, context = location.path, location.context
+        if kind and q["kind"] not in ({kind} if isinstance(kind, str) else kind):
+            self.report(
+                "WRONG_ENTITY_KIND",
+                path,
+                "Consulta de entidad con categoría incompatible",
+            )
+        if q["selection"] == "all" and context != "query":
+            self.report(
+                "PLURAL_REFERENCE",
+                path,
+                "Una operación con referencia singular no acepta selection=all",
+            )
+        self.condition(q["where"], path + "/query/where", "query")
+
+    def _arithmetic_type(self, formula, location):
+        path, context = location.path, location.context
+        a = self.value_type(formula["left"], path + "/math/left", context)
+        b = self.value_type(formula["right"], path + "/math/right", context)
+        if a and a not in ("integer", "number") or b and b not in ("integer", "number"):
+            self.report("TYPE_MISMATCH", path, "La aritmética requiere números")
+        return "number" if "number" in (a, b) else "integer" if a and b else None
+
+    def _operation_contest(self, op, path):
+        if op["profile"] not in {p["id"] for p in self.pkg.get("dice_profiles", [])}:
+            self.report(
+                "UNKNOWN_DICE_PROFILE", path + "/profile", "Perfil DICE inexistente"
+            )
+        for side in ("left", "right"):
+            entry = op[side]
+            typ = self.value_type(entry["base"], path + "/" + side + "/base")
+            if typ and typ not in ("number", "integer"):
+                self.report(
+                    "TYPE_MISMATCH",
+                    path + "/" + side + "/base",
+                    "Base debe ser numérica",
+                )
+            for index, participant in enumerate(
+                entry.get("context", {}).get("participants", [])
+            ):
+                self.entity_ref(
+                    participant["entity"],
+                    {"character", "object", "location"},
+                    RefLocation(f"{path}/{side}/context/participants/{index}/entity"),
+                )

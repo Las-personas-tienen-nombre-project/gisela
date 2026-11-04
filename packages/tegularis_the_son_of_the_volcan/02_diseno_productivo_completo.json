@@ -1,0 +1,472 @@
+{
+  "kind": "tegularis.workshop.design.v1",
+  "warning": "Especificación de diseño del autor, no paquete GISELA ni contrato JSON Schema implementado.",
+  "participants": {
+    "parnecio": {
+      "name": "Parnecio Esparcales",
+      "sofia": {
+        "strength": 8,
+        "openness": 5,
+        "fortune": 6,
+        "intelligence": 4,
+        "awareness": 6
+      },
+      "main_actions_stat": "strength"
+    },
+    "gillius": {
+      "name": "Gillius Cabezadeencina",
+      "sofia": {
+        "strength": 10,
+        "openness": 4,
+        "fortune": 5,
+        "intelligence": 4,
+        "awareness": 5
+      },
+      "main_actions_stat": "strength"
+    },
+    "clarisa": {
+      "name": "Clarisa de la Hojarasca",
+      "sofia": {
+        "strength": 4,
+        "openness": 7,
+        "fortune": 9,
+        "intelligence": 7,
+        "awareness": 7
+      },
+      "main_actions_stat": "openness"
+    },
+    "iosepus": {
+      "name": "Iosepus Knechti",
+      "sofia": {
+        "strength": 4,
+        "openness": 5,
+        "fortune": 6,
+        "intelligence": 9,
+        "awareness": 8
+      },
+      "main_actions_stat": "intelligence"
+    },
+    "tegularis": {
+      "name": "Tegularis, el Hijo del Volcán",
+      "sofia": {
+        "strength": 15,
+        "openness": 7,
+        "fortune": 5,
+        "intelligence": 9,
+        "awareness": 7
+      },
+      "main_actions_stat": "strength"
+    }
+  },
+  "base_resources": {
+    "heroes": {
+      "hp": "150 + STR + 1d20",
+      "mp": "50 + INT + 1d10",
+      "tp_initial": 0,
+      "tp_max": 50
+    },
+    "tegularis": {
+      "hp": "500 + 3d20",
+      "mp": "80 + 1d20",
+      "tp_initial": 50,
+      "tp_max": 60
+    }
+  },
+  "initiative": {
+    "formula": "STR + AWA + FOR + 1d10",
+    "rolls": "once_at_start",
+    "ties": [
+      "AWA",
+      "STR",
+      "FOR",
+      "stable_id"
+    ]
+  },
+  "actions": {
+    "base": 1,
+    "main_stat_plus_traits_thresholds": {
+      "7": 2,
+      "10": 3
+    },
+    "calculate": "at_start_of_actor_turn"
+  },
+  "combat": {
+    "hit": "1d10 + attacker.AWA + modifiers",
+    "evade": "1d10 + floor((defender.STR + defender.AWA)/2) + modifiers",
+    "hit_if": "hit > evade",
+    "damage_default": "1d10 + 3 * skill.damage_stat + power + modifiers",
+    "damage_floor": 0,
+    "reduction": "after shielding, per impact",
+    "zero_hp_state": "caido"
+  },
+  "roles": {
+    "parnecio": "player",
+    "gillius": "berserker",
+    "clarisa": "protection_survival_healing",
+    "iosepus": "conserve_mana_then_debuff_protect_buff_attack",
+    "tegularis": "maximum_damage_then_recovery"
+  },
+  "phase": {
+    "onslaught": "inicio y cada nueva ofensiva del dragón",
+    "recovery": "tras Preponderancia de la leyenda, mientras no reanude ataques"
+  },
+  "pride": {
+    "trigger": "tegularis.hp <= 0.30 * tegularis.hpmax and hp > 0",
+    "once": true,
+    "persistent": true,
+    "stats": "+1 every SOFIA stat",
+    "damage_reduction": 1,
+    "attack_base_damage": 5
+  },
+  "death_burst": {
+    "skill_id": "ultima_llama",
+    "once": true,
+    "trigger": "tegularis.hp reaches 0",
+    "damage": "30 + tegularis.INT_effective + 1d10",
+    "targets": "all_heroes",
+    "skip_hit_roll": true,
+    "skip_evasion_roll": true,
+    "apply_protections": true,
+    "before_ending": true
+  },
+  "skills": [
+    {
+      "id": "slash",
+      "owner": "parnecio",
+      "title": "Slash",
+      "type": "active",
+      "cost": {},
+      "target": "tegularis",
+      "rule": "Hit AWA vs Evasion; daño 1d10+3*STR; al ejecutarse +10 TP."
+    },
+    {
+      "id": "double_slash",
+      "owner": "parnecio",
+      "title": "Double Slash",
+      "type": "active",
+      "cost": {
+        "tp": 10
+      },
+      "target": "tegularis",
+      "rule": "Dos impactos independientes; cada uno con Hit y Damage basados en STR."
+    },
+    {
+      "id": "blai",
+      "owner": "parnecio",
+      "title": "Blai",
+      "type": "active",
+      "cost": {
+        "tp": 30
+      },
+      "target": "tegularis",
+      "rule": "Salta y cae en estocada; daño 1d10+3*STR+8."
+    },
+    {
+      "id": "proteccion",
+      "owner": "parnecio",
+      "title": "Protección",
+      "type": "active",
+      "cost": {},
+      "target": "ally",
+      "rule": "Redirige a Parnecio daño dirigido al aliado elegido; hasta siguiente turno de Parnecio."
+    },
+    {
+      "id": "dodge_parnecio",
+      "owner": "parnecio",
+      "title": "Dodge",
+      "type": "passive",
+      "cost": {},
+      "target": null,
+      "rule": "TRAIT de +2 a Evasion Roll."
+    },
+    {
+      "id": "hachazo",
+      "owner": "gillius",
+      "title": "Hachazo",
+      "type": "active",
+      "cost": {},
+      "target": "tegularis",
+      "rule": "Ataque gratuito, genera 10 TP; daño 1d10+3*STR."
+    },
+    {
+      "id": "grito_de_guerra",
+      "owner": "gillius",
+      "title": "Grito de guerra",
+      "type": "active",
+      "cost": {
+        "tp": 10
+      },
+      "target": "party",
+      "rule": "Aumenta +3 daño físico; no acumula consigo mismo; 3 turnos del beneficiario."
+    },
+    {
+      "id": "eviscerate",
+      "owner": "gillius",
+      "title": "Eviscerate",
+      "type": "active",
+      "cost": {
+        "tp": 30
+      },
+      "target": "tegularis",
+      "rule": "Daño físico 1d10+3*STR+8."
+    },
+    {
+      "id": "dodge_gillius",
+      "owner": "gillius",
+      "title": "Dodge",
+      "type": "passive",
+      "cost": {},
+      "target": null,
+      "rule": "TRAIT de +2 a Evasion Roll."
+    },
+    {
+      "id": "stance_aggressive",
+      "owner": "gillius",
+      "title": "Stance Aggressive",
+      "type": "stance",
+      "cost": {},
+      "target": null,
+      "rule": "Activa postura: +2 al Hit Roll y -2 al Evasion Roll. Cambiar cuesta una acción."
+    },
+    {
+      "id": "bastonazo_clarisa",
+      "owner": "clarisa",
+      "title": "Bastonazo",
+      "type": "active",
+      "cost": {},
+      "target": "tegularis",
+      "rule": "Ataque básico con STR."
+    },
+    {
+      "id": "bless",
+      "owner": "clarisa",
+      "title": "Bless",
+      "type": "active",
+      "cost": {
+        "mana": "por_definir"
+      },
+      "target": "ally",
+      "rule": "Aumenta +2 atributo principal del aliado, duración 3 turnos; único por efecto, renueva al reaplicar."
+    },
+    {
+      "id": "curacion",
+      "owner": "clarisa",
+      "title": "Curación",
+      "type": "active",
+      "cost": {
+        "mana": 20
+      },
+      "target": "ally",
+      "rule": "Restaura 20+INT(lanzador)+1d10, sin revivir caídos."
+    },
+    {
+      "id": "regeneracion",
+      "owner": "clarisa",
+      "title": "Regeneración",
+      "type": "active",
+      "cost": {
+        "mana": 30
+      },
+      "target": "ally",
+      "rule": "3 turnos: restaura 5+INT(lanzador al aplicar)+1d10 por turno del beneficiario."
+    },
+    {
+      "id": "groupal_shield",
+      "owner": "clarisa",
+      "title": "Groupal Shield",
+      "type": "active",
+      "cost": {
+        "mana": 30
+      },
+      "target": "party",
+      "rule": "Bloquea el siguiente ataque dirigido al grupo completo."
+    },
+    {
+      "id": "fenix",
+      "owner": "clarisa",
+      "title": "Fénix",
+      "type": "active",
+      "cost": {
+        "mana": 50
+      },
+      "target": "fallen_ally",
+      "rule": "Revive aliado caído al 50% de HP máximo (redondeo hacia arriba)."
+    },
+    {
+      "id": "concentracion_clarisa",
+      "owner": "clarisa",
+      "title": "Concentración",
+      "type": "active",
+      "cost": {},
+      "target": null,
+      "rule": "Recupera 30 maná sin superar el máximo."
+    },
+    {
+      "id": "magic_redux_clarisa",
+      "owner": "clarisa",
+      "title": "Magic Redux",
+      "type": "passive",
+      "cost": {},
+      "target": null,
+      "rule": "TRAIT de reducción 3 al daño mágico."
+    },
+    {
+      "id": "bastonazo_iosepus",
+      "owner": "iosepus",
+      "title": "Bastonazo",
+      "type": "active",
+      "cost": {},
+      "target": "tegularis",
+      "rule": "Ataque básico con STR."
+    },
+    {
+      "id": "agarraguirre",
+      "owner": "iosepus",
+      "title": "Agarraguirre",
+      "type": "active",
+      "cost": {
+        "mana": 30
+      },
+      "target": "tegularis",
+      "rule": "Raíces: -2 a Awareness del dragón durante 2 turnos."
+    },
+    {
+      "id": "concentracion_iosepus",
+      "owner": "iosepus",
+      "title": "Concentración",
+      "type": "active",
+      "cost": {},
+      "target": null,
+      "rule": "Recupera 30 maná sin superar el máximo."
+    },
+    {
+      "id": "armadura_magica",
+      "owner": "iosepus",
+      "title": "Armadura mágica",
+      "type": "active",
+      "cost": {
+        "mana": 30
+      },
+      "target": "ally",
+      "rule": "TRAIT resistente: -3 daño recibido por 2 turnos."
+    },
+    {
+      "id": "firesteel",
+      "owner": "iosepus",
+      "title": "Firesteel",
+      "type": "active",
+      "cost": {
+        "mana": 30
+      },
+      "target": "ally",
+      "rule": "+3 daño infligido por 2 turnos."
+    },
+    {
+      "id": "magic_blast",
+      "owner": "iosepus",
+      "title": "Magic Blast",
+      "type": "active",
+      "cost": {
+        "mana": "1+x"
+      },
+      "target": "tegularis",
+      "rule": "Hit=1d10+AWA+floor(x/10); Damage=1d10+INT+x. x entero >=0."
+    },
+    {
+      "id": "magic_redux_iosepus",
+      "owner": "iosepus",
+      "title": "Magic Redux",
+      "type": "passive",
+      "cost": {},
+      "target": null,
+      "rule": "TRAIT de reducción 3 al daño mágico."
+    },
+    {
+      "id": "firebreath",
+      "owner": "tegularis",
+      "title": "Firebreath",
+      "type": "active",
+      "cost": {
+        "mana": 50
+      },
+      "target": "party",
+      "rule": "Área, daño de fuego 25+INT+1d10; Hit/Evasion individual; un daño común por ataque."
+    },
+    {
+      "id": "wingblast",
+      "owner": "tegularis",
+      "title": "Wingblast",
+      "type": "active",
+      "cost": {
+        "mana": 50
+      },
+      "target": "party",
+      "rule": "Área, daño de aire 10+STR+1d10; si impacta, Resistance Roll=STR+FOR+1d10 >=19 o Paralizado 1 turno."
+    },
+    {
+      "id": "coletazo",
+      "owner": "tegularis",
+      "title": "Coletazo",
+      "type": "active",
+      "cost": {
+        "tp": 20
+      },
+      "target": "party",
+      "rule": "Ataque físico de área: 1d10+3*STR por objetivo."
+    },
+    {
+      "id": "zarpa",
+      "owner": "tegularis",
+      "title": "Zarpa",
+      "type": "active",
+      "cost": {
+        "tp": 20
+      },
+      "target": "one_hero",
+      "rule": "Ataque individual: 1d10+3*STR+15; si inflige daño efectivo, 5% de dejar objetivo caído a 0HP."
+    },
+    {
+      "id": "dentellada",
+      "owner": "tegularis",
+      "title": "Dentellada",
+      "type": "active",
+      "cost": {
+        "tp": 30
+      },
+      "target": "one_hero",
+      "rule": "Ataque físico individual 1d10+3*STR+8."
+    },
+    {
+      "id": "preponderancia",
+      "owner": "tegularis",
+      "title": "Preponderancia de la leyenda",
+      "type": "active",
+      "cost": {},
+      "target": null,
+      "rule": "Sin costo. Recupera 8TP y 8 maná; concede TRAIT protegido (-5 cualquier daño) hasta comienzo del siguiente turno propio. Consume una acción."
+    },
+    {
+      "id": "ultima_llama",
+      "owner": "tegularis",
+      "title": "Si vas a perder asegurate de que no ganan por mucho",
+      "type": "triggered",
+      "cost": {},
+      "target": "party",
+      "rule": "Al llegar a 0 HP dispara automáticamente una vez: 30+INT+1d10 fuego mágico para todos. Omite Hit y Evasion; protecciones sí aplican."
+    }
+  ],
+  "unresolved": [
+    {
+      "issue": "Bless mana cost",
+      "status": "NO FIJADO por el autor; simulador anterior empleó 10 como supuesto"
+    },
+    {
+      "issue": "Efecto de protect/unprotected y priority 5 sacerdote",
+      "status": "reutilizar Groupal Shield provisionalmente"
+    },
+    {
+      "issue": "Zarpa y explosión de muerte en la misma transacción",
+      "status": "definir semántica exacta al extender GISELA"
+    }
+  ]
+}

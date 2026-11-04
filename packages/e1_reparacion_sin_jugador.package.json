@@ -1,0 +1,32 @@
+{
+  "manifest": {
+    "id": "e1_reparacion_sin_jugador", "format_version": "1.4",
+    "language": "es_cl", "languages": ["es_cl"],
+    "entry": {"node": "revision_maquina"},
+    "facts": ["maquina_reparada"]
+  },
+  "dice_profiles": [
+    {"schema_version": "dice.profile.v1", "id": "prueba_tecnica", "mode": "dice_sum",
+     "count": 2, "sides": 6,
+     "bands": [{"id": "fallo", "min": 0}, {"id": "logro", "min": 10}]}
+  ],
+  "nodes": [
+    {"id": "revision_maquina", "steps": [
+      {"id": "evaluar_reparacion", "op": "evaluate",
+       "evaluation": {
+         "id": "reparacion", "profile": "prueba_tecnica", "presentation": "acknowledged",
+         "inputs": {"base": {"literal": 3}, "difficulty": {"literal": 5}},
+         "branches": [
+           {"outcome": "fallo", "effects": []},
+           {"outcome": "logro", "effects": [{"op": "record_fact", "fact": "maquina_reparada"}]}
+         ]
+       }}
+    ]}
+  ],
+  "cards": [], "scenes": [], "rules": [], "endings": [],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [], "characters": [], "objects": [], "skills": [], "effects": [],
+    "capacities": [], "facts": [], "session_variables": {}
+  }
+}

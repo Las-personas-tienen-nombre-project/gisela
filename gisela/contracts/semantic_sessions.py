@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 if __package__:
+    from .semantic_actuation import ActuationSnapshotMixin
     from .semantic_shared import *
 else:  # Compatibilidad de ejecución directa desde contracts/
+    from semantic_actuation import ActuationSnapshotMixin
     from semantic_shared import *
 
 
-class SessionsMixin:
+class SessionsMixin(ActuationSnapshotMixin):
     """Grupo de comprobaciones sessions de un mismo validador."""
 
     def validate_session(
@@ -67,6 +69,7 @@ class SessionsMixin:
         if "ending" in snapshot and snapshot["ending"] not in self.endings:
             self.report("UNKNOWN_ENDING", "/ending", "Final inexistente")
         self._check_session_history(snapshot)
+        self._check_actuation_snapshot(snapshot, package)
         self._check_pending(snapshot)
         if version == "1.5":
             self._check_pending_evaluation(snapshot)

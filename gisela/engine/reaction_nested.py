@@ -8,6 +8,29 @@ from .world_base import WorldError
 
 def _children(state: dict, operation: dict, definitions) -> list[dict]:
     """Localiza las consecuencias anidadas sin ejecutar ninguna de ellas."""
+    if operation["op"] == "play_first_skill":
+        available_ids = {s["id"] for s in state["world"]["skills"]}
+        return [
+            *(
+                {"op": "play_skill", "skill_instance": c["skill_instance"]}
+                for c in operation["candidates"]
+                if c["skill_instance"] in available_ids
+            ),
+            *operation.get("otherwise", []),
+        ]
+    if operation["op"] == "play_skill":
+        from .world_base import find
+
+        skill = find(state, "skills", operation["skill_instance"])
+        card = definitions.cards[skill["card"]]
+        return [
+            *card["play"]["effects"],
+            *(
+                effect
+                for outcome in card["play"].get("outcomes", [])
+                for effect in outcome["effects"]
+            ),
+        ]
     if operation["op"] == "apply_effect":
         return definitions.cards[operation["effect"]].get("on_apply", [])
     if operation["op"] == "end_effect":

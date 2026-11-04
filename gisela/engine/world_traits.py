@@ -46,16 +46,17 @@ def materialize(state: dict, pkg: dict) -> None:
                 raise WorldError("INVALID_STATE", "Rasgos sin catálogo")
 
 
-def query(state: dict, request: dict, catalog: dict | None) -> bool:
+def query(state: dict, request: dict, definitions) -> bool:
     """Consulta identidad y rasgo sin conceder permiso de publicarlo."""
-    group, entity = instance(state, request["entity"])
+    catalog = definitions.traits
+    group, _entity = instance(state, request["entity"])
     if group not in ALLOWED or catalog is None:
         raise WorldError("INVALID_REFERENCE", "Entidad o catálogo TRAITS no disponible")
     try:
         validate_assignment(catalog, ALLOWED[group], request["trait"])
     except TraitsError as exc:
         raise WorldError("INVALID_REFERENCE", str(exc)) from exc
-    return request["trait"] in entity.get("traits", [])
+    return request["trait"] in effective(state, request["entity"], definitions)
 
 
 def change(state: dict, effect: dict, catalog: dict | None) -> list[dict]:
@@ -79,3 +80,32 @@ def change(state: dict, effect: dict, catalog: dict | None) -> list[dict]:
         return []
     entity["traits"] = updated
     return []
+
+
+def effective(state: dict, identifier: str, definitions) -> list[str]:
+    """Proyección sin escritura: rasgos propios + cartas pasivas + efectos activos.
+
+    El conjunto se valida íntegramente, conserva las restricciones de TRAITS
+    y desaparece con su fuente; no se persisten duplicados ni contadores.
+    """
+    group, entity = instance(state, identifier)
+    if group not in ALLOWED:
+        raise WorldError("INVALID_REFERENCE", "Entidad sin rasgos")
+    assigned = set(entity.get("traits", []))
+    if group == "characters":
+        for skill in state["world"]["skills"]:
+            if skill["character"] == identifier:
+                assigned.update(
+                    definitions.cards[skill["card"]].get("passive_traits", [])
+                )
+        for effect in state["world"]["effects"]:
+            if effect["target"] == identifier:
+                assigned.update(
+                    definitions.cards[effect["card"]].get("granted_traits", [])
+                )
+    catalog = definitions.traits
+    if catalog is None:
+        if assigned:
+            raise WorldError("INVALID_STATE", "Rasgos sin catálogo TRAITS")
+        return []
+    return _checked(catalog, ALLOWED[group], sorted(assigned))

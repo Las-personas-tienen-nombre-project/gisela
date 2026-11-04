@@ -16,21 +16,7 @@ class TraitsMixin:
         """Valida referencias autorales, capacidad y operaciones TRAITS."""
         catalog = self._traits_catalog(package)
         if catalog is None:
-            for index, card in enumerate(package["cards"]):
-                if card.get("traits"):
-                    self.report(
-                        "TRAITS_MISSING",
-                        f"/cards/{index}/traits",
-                        "Rasgos sin catálogo TRAITS",
-                    )
-            for group in ("characters", "objects", "locations"):
-                for i, item in enumerate(package["initial_state"][group]):
-                    if item.get("traits"):
-                        self.report(
-                            "TRAITS_MISSING",
-                            f"/initial_state/{group}/{i}/traits",
-                            "Rasgos sin catálogo TRAITS",
-                        )
+            self._check_missing_traits_catalog(package)
             return
         cards = {c["id"]: c for c in package["cards"]}
         for i, card in enumerate(package["cards"]):
@@ -39,6 +25,18 @@ class TraitsMixin:
                     catalog,
                     (card["kind"], card.get("traits", [])),
                     f"/cards/{i}/traits",
+                )
+            if card["kind"] == "skill" and "passive_traits" in card:
+                self._traits_validate(
+                    catalog,
+                    ("character", card["passive_traits"]),
+                    f"/cards/{i}/passive_traits",
+                )
+            if card["kind"] == "effect" and "granted_traits" in card:
+                self._traits_validate(
+                    catalog,
+                    ("character", card["granted_traits"]),
+                    f"/cards/{i}/granted_traits",
                 )
         for group, kind in (
             ("characters", "character"),
@@ -104,3 +102,21 @@ class TraitsMixin:
                             path,
                             "El conjunto persistido debe estar ordenado",
                         )
+
+    def _check_missing_traits_catalog(self, package):
+        for index, card in enumerate(package["cards"]):
+            for field in ("traits", "passive_traits", "granted_traits"):
+                if card.get(field):
+                    self.report(
+                        "TRAITS_MISSING",
+                        f"/cards/{index}/{field}",
+                        "Rasgos sin catálogo TRAITS",
+                    )
+        for group in ("characters", "objects", "locations"):
+            for i, item in enumerate(package["initial_state"][group]):
+                if item.get("traits"):
+                    self.report(
+                        "TRAITS_MISSING",
+                        f"/initial_state/{group}/{i}/traits",
+                        "Rasgos sin catálogo TRAITS",
+                    )

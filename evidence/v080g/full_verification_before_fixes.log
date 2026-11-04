@@ -1,0 +1,249 @@
+
+=== Pruebas del motor, contratos y bibliotecas ===
+.............................................................................................. [ 11%]
+........................................................................ [ 20%]
+............................FFFFFF.F..................... [ 28%]
+................................................................. [ 36%]
+.s...................................................................... [ 45%]
+........................................................................ [ 54%]
+.................................................................. [ 62%]
+............................................RESULTADO: Pruebas del motor, contratos y bibliotecas: exit=124, segundos=120.02
+
+=== Pruebas de herramientas ===
+.............F..F................. [ 52%]
+...............................                                          [100%]
+=================================== FAILURES ===================================
+________________ LocalDocumentationLinks.test_repository_links _________________
+
+self = <test_doc_links.LocalDocumentationLinks testMethod=test_repository_links>
+
+    def test_repository_links(self):
+>       self.assertEqual([], broken_links())
+E       AssertionError: Lists differ: [] != ['README.md:21: ../docs/architecture/NARRA[1063 chars]ns/']
+E       
+E       Second list contains 18 additional elements.
+E       First extra element 0:
+E       'README.md:21: ../docs/architecture/NARRATIVE_LANGUAGE.md'
+E       
+E       Diff is 1181 characters long. Set self.maxDiff to None to see it.
+
+tools/test_doc_links.py:10: AssertionError
+________________ RuffPolicyTest.test_lint_and_format_boundaries ________________
+
+self = <test_static_quality.RuffPolicyTest testMethod=test_lint_and_format_boundaries>
+
+    def test_lint_and_format_boundaries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sample.py"
+            config = quality.ROOT / "pyproject.toml"
+            path.write_text("value = 1\n")
+>           self.assertEqual(self._ruff("check", config, path), 0)
+E           AssertionError: 1 != 0
+
+tools/test_static_quality.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tools/test_doc_links.py::LocalDocumentationLinks::test_repository_links - AssertionError: Lists differ: [] != ['README.md:21: ../docs/architecture/NARRA[1063 chars]ns/']
+
+Second list contains 18 additional elements.
+First extra element 0:
+'README.md:21: ../docs/architecture/NARRATIVE_LANGUAGE.md'
+
+Diff is 1181 characters long. Set self.maxDiff to None to see it.
+FAILED tools/test_static_quality.py::RuffPolicyTest::test_lint_and_format_boundaries - AssertionError: 1 != 0
+2 failed, 63 passed, 38 subtests passed in 64.07s (0:01:04)
+RESULTADO: Pruebas de herramientas: exit=1, segundos=69.24
+
+=== Ruff — análisis estático ===
+/opt/pyvenv/bin/python: No module named ruff
+RESULTADO: Ruff — análisis estático: exit=1, segundos=1.59
+
+=== Ruff — formato ===
+/opt/pyvenv/bin/python: No module named ruff
+RESULTADO: Ruff — formato: exit=1, segundos=1.62
+
+=== Radon — complejidad y mantenibilidad ===
+ERROR: radon falló (exit=1): /opt/pyvenv/bin/python: No module named radon
+RESULTADO: Radon — complejidad y mantenibilidad: exit=1, segundos=5.43
+
+=== Bandit — seguridad ===
+ERROR: bandit no produjo JSON válido: /opt/pyvenv/bin/python: No module named bandit
+RESULTADO: Bandit — seguridad: exit=1, segundos=6.46
+
+=== Calidad estructural ===
+OK: máximo 700 líneas por archivo, 64 por función y 3 parámetros explícitos
+RESULTADO: Calidad estructural: exit=0, segundos=3.01
+
+=== Enlaces documentales ===
+README.md:21: ../docs/architecture/NARRATIVE_LANGUAGE.md
+README.md:27: ../docs/reference/NAMING.md
+README.md:51: ../docs/guides/QUICK_START.md
+README.md:51: ../docs/guides/GLAUQUIR.md
+README.md:136: ../docs/guides/VERIFICACION_GISELA.md
+README.md:144: ../docs/README.md
+README.md:144: ../docs/operatives/ROADMAP.md
+contracts/README.md:17: ../../docs/guides/CREAR_PAQUETE.md
+contracts/README.md:48: ../../docs/architecture/API_CLIENTES.md#glauquir-y-presentación-v15-vigente
+contracts/README.md:64: ../../docs/determinism/DIGEST_CANONICO.md
+contracts/README.md:64: ../../docs/determinism/RNG_SHA256_CONTADOR.md
+contracts/README.md:89: ../../docs/reference/NAMING.md
+engine/README.md:35: ../../docs/architecture/ALBERTO.md
+engine/README.md:75: ../../docs/guides/VERIFICACION_GISELA.md
+engine/README.md:83: ../../docs/architecture/GISELA_Arquitectura_Consolidada_v1_5.md
+engine/README.md:83: ../../docs/architecture/E2_EVALUACIONES_OCULTAS.md
+engine/README.md:83: ../../docs/architecture/E3_EVALUACIONES_VISIBLES.md
+engine/README.md:83: ../../docs/decisions/
+RESULTADO: Enlaces documentales: exit=1, segundos=1.74
+
+=== Invariantes E0 ===
+OK: invariantes E0, anclajes existentes y tests nuevos registrados
+RESULTADO: Invariantes E0: exit=0, segundos=2.42
+
+=== Invariantes E1 ===
+OK: invariantes E1 ancladas en pruebas reales
+RESULTADO: Invariantes E1: exit=0, segundos=1.83
+
+=== Invariantes E2 ===
+OK: invariantes E2 ancladas en pruebas existentes
+RESULTADO: Invariantes E2: exit=0, segundos=1.38
+
+=== Invariantes E3 ===
+OK: E3; invariantes y pruebas enlazadas
+RESULTADO: Invariantes E3: exit=0, segundos=1.52
+
+=== h46_walkthrough.py: completa ===
+{
+  "route": "completa",
+  "ending": "noche_cerrada",
+  "turns": 7,
+  "world_time": "2026-10-30T19:20:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "prisma_asegurado",
+    "afinacion_usada",
+    "fusibles_salvados",
+    "diagnostico_completo",
+    "reparacion_fallida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 26
+}
+RESULTADO: h46_walkthrough.py: completa: exit=0, segundos=10.43
+
+=== h46_walkthrough.py: parcial ===
+{
+  "route": "parcial",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:12:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 16
+}
+RESULTADO: h46_walkthrough.py: parcial: exit=0, segundos=12.76
+
+=== h46_walkthrough.py: sin_preparacion ===
+{
+  "route": "sin_preparacion",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:04:00-03:00",
+  "facts": [
+    "turno_iniciado",
+    "pronostico_confirmado",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 13
+}
+RESULTADO: h46_walkthrough.py: sin_preparacion: exit=0, segundos=6.55
+
+=== h46b_walkthrough.py: casete ===
+{
+  "route": "casete",
+  "ending": "casete_en_la_pieza",
+  "turn": 15,
+  "world_time": "1998-07-24T23:30:00-04:00",
+  "facts": [
+    "saludo_inicial",
+    "turno_iniciado",
+    "puesto_examinado",
+    "marcela_escuchada",
+    "futbol_marcela",
+    "amabilidad_observada",
+    "ayuda_ofrecida",
+    "ayuda_aceptada",
+    "comentario_trenza",
+    "musica_conversada",
+    "casete_entregado",
+    "araya_advirtio",
+    "radio_intervenida",
+    "senal_clara",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_pesado",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: casete: exit=0, segundos=41.14
+
+=== h46b_walkthrough.py: solo ===
+{
+  "route": "solo",
+  "ending": "escalera_azul",
+  "turn": 6,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_resistido",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: solo: exit=0, segundos=10.55
+
+=== h46b_walkthrough.py: radio ===
+{
+  "route": "radio",
+  "ending": "reporte_sin_novedad",
+  "turn": 4,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "base_avisada"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: radio: exit=0, segundos=6.80
+
+GISELA: 11/18 comprobaciones satisfactorias.
+FALLÓ: Pruebas del motor, contratos y bibliotecas
+FALLÓ: Pruebas de herramientas
+FALLÓ: Ruff — análisis estático
+FALLÓ: Ruff — formato
+FALLÓ: Radon — complejidad y mantenibilidad
+FALLÓ: Bandit — seguridad
+FALLÓ: Enlaces documentales

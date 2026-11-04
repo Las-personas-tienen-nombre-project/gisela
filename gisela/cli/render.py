@@ -118,7 +118,32 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
                 if offer is not None:
                     description = offer["label"] + ": " + description
             _line("  " + description, "information", styler)
-    _show_actions(view, styler)
+    if "actuation" in view and "presentation" not in view:
+        clock = view["actuation"]
+        print(
+            f"\nACTUACIÓN · ronda {clock['round']} · {clock['actor'] or 'final'} · acciones {clock['remaining']}"
+        )
+        if clock["round"] == 1 and clock["actor"] == clock["order"][0]:
+            print(
+                "  Iniciativa: "
+                + ", ".join(
+                    f"{x['actor']} {x['die']} → {x['score']}"
+                    for x in clock["initiative"]
+                )
+            )
+        if clock.get("causal"):
+            show_causal(clock["causal"][-10:])
+        else:
+            for roll in clock.get("rolls", [])[-3:]:
+                print(f"  Dado d{roll['sides']}: {roll['result']} ({roll['store']})")
+            for message in clock["messages"][-5:]:
+                print("  " + message)
+        for event in clock["events"][-3:]:
+            print("  " + event["kind"] + ": " + event["detail"])
+    if "presentation" in view:
+        show_presentation(view["presentation"])
+    else:
+        _show_actions(view, styler)
     if developer:
         print(
             styler.paint(
@@ -136,6 +161,33 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
                 "debug", "acciones bloqueadas — muestra identificadores y motivos"
             )
         )
+
+
+def show_causal(events: list[dict]) -> None:
+    """Presenta solo el historial confirmado provisto por Observe."""
+    for item in events:
+        detail = item["detail"]
+        kind = item["kind"]
+        if kind == "initiative":
+            result = "Iniciativa: " + detail["order"]
+        elif kind == "event_triggered":
+            result = "Acontecimiento: " + detail["event"]
+        elif kind == "encounter_completed":
+            result = "Desenlace: " + detail["outcome"]
+        elif kind == "dice_roll":
+            result = f"d{detail['sides']} = {detail['result']} ({detail['store']})"
+        elif kind == "contest_resolved":
+            result = (
+                f"{detail['profile']}: {detail['left_total']} vs "
+                f"{detail['right_total']} ({detail['winner']})"
+            )
+        elif kind == "variable_changed":
+            result = f"{detail['variable']}: {detail['before']} → {detail['after']}"
+        elif kind in ("skill_started", "skill_played"):
+            result = f"{detail['actor']} · {detail['card']}"
+        else:
+            result = detail.get("text", "")
+        print(f"  #{item['sequence']} {kind}: {result}")
 
 
 def evaluation(content: dict) -> None:
@@ -213,3 +265,73 @@ def confirmed(entries: list[dict]) -> None:
     for item in entries:
         if item["kind"] in ("action", "choice", "skill"):
             print("\nAcción confirmada: " + item["text"])
+
+
+def show_presentation(presentation: dict) -> None:
+    """Render generic regions; action offers retain original Observe IDs."""
+    for region in presentation["regions"]:
+        _show_region(region)
+
+
+def _show_region(region: dict, depth: int = 0) -> None:
+    if region.get("visible") is False:
+        return
+    indent = "  " * depth
+    label = region.get("label") or region["id"].replace("_", " ")
+    print("\n" + indent + label.upper())
+    for child in region.get("children", []):
+        _show_region(child, depth + 1)
+    if region["component"] == "choice_list":
+        offers(region.get("items", []))
+    elif "items" in region:
+        for item in region["items"]:
+            if region["component"] == "event_log" and isinstance(item, dict):
+                detail = item.get("detail", {})
+                print(
+                    indent
+                    + "  #"
+                    + str(item.get("sequence", "?"))
+                    + " "
+                    + str(item.get("kind", ""))
+                    + ": "
+                    + str(detail)[:240]
+                )
+            elif isinstance(item, dict):
+                if {"entity", "id", "value"} <= item.keys():
+                    value = str(item["value"])
+                    if "maximum" in item:
+                        value += "/" + str(item["maximum"])
+                    print(
+                        indent
+                        + "  "
+                        + item["entity"]
+                        + " · "
+                        + item["id"]
+                        + ": "
+                        + value
+                    )
+                elif {"id", "beneficiary", "remaining"} <= item.keys():
+                    print(
+                        indent
+                        + "  "
+                        + item["beneficiary"]
+                        + " · "
+                        + item["id"]
+                        + " ("
+                        + str(item["remaining"])
+                        + ")"
+                    )
+                else:
+                    print(
+                        indent
+                        + "  "
+                        + str(
+                            item.get("label", item.get("name", item.get("kind", item)))
+                        )
+                    )
+            else:
+                print(indent + "  " + str(item))
+    elif "value" in region:
+        print(indent + "  " + str(region["value"]))
+    elif "text" in region:
+        print(indent + "  " + region["text"])
