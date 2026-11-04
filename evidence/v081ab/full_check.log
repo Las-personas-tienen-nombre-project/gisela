@@ -1,0 +1,216 @@
+
+=== Pruebas del motor, contratos y bibliotecas ===
+.............................................................................................. [ 11%]
+........................................................................ [ 19%]
+........................................................... [ 26%]
+...................................................................... [ 34%]
+................................................s................ [ 42%]
+........................................................................ [ 50%]
+..................................................................... [ 58%]
+..................................................................... [ 67%]
+................................................................................................................. [ 80%]
+............................................................. [ 87%]
+........................................................................ [ 96%]
+..................................                               [100%]
+=========================== short test summary info ============================
+SKIPPED [1] gisela/engine/tests/test_glauquir_mud.py:96: El paquete productivo externo no está instalado
+849 passed, 1 skipped, 128 subtests passed in 166.76s (0:02:46)
+RESULTADO: Pruebas del motor, contratos y bibliotecas: exit=0, segundos=170.25
+
+=== Pruebas de herramientas ===
+................F................. [ 52%]
+...............................                                          [100%]
+=================================== FAILURES ===================================
+________________ RuffPolicyTest.test_lint_and_format_boundaries ________________
+
+self = <test_static_quality.RuffPolicyTest testMethod=test_lint_and_format_boundaries>
+
+    def test_lint_and_format_boundaries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sample.py"
+            config = quality.ROOT / "pyproject.toml"
+            path.write_text("value = 1\n")
+>           self.assertEqual(self._ruff("check", config, path), 0)
+E           AssertionError: 1 != 0
+
+tools/test_static_quality.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tools/test_static_quality.py::RuffPolicyTest::test_lint_and_format_boundaries - AssertionError: 1 != 0
+1 failed, 64 passed, 38 subtests passed in 26.15s
+RESULTADO: Pruebas de herramientas: exit=1, segundos=29.19
+
+=== Ruff — análisis estático ===
+/opt/pyvenv/bin/python: No module named ruff
+RESULTADO: Ruff — análisis estático: exit=1, segundos=0.98
+
+=== Ruff — formato ===
+/opt/pyvenv/bin/python: No module named ruff
+RESULTADO: Ruff — formato: exit=1, segundos=0.87
+
+=== Radon — complejidad y mantenibilidad ===
+ERROR: radon falló (exit=1): /opt/pyvenv/bin/python: No module named radon
+RESULTADO: Radon — complejidad y mantenibilidad: exit=1, segundos=1.47
+
+=== Bandit — seguridad ===
+ERROR: bandit no produjo JSON válido: /opt/pyvenv/bin/python: No module named bandit
+RESULTADO: Bandit — seguridad: exit=1, segundos=1.53
+
+=== Calidad estructural ===
+OK: máximo 700 líneas por archivo, 64 por función y 3 parámetros explícitos
+RESULTADO: Calidad estructural: exit=0, segundos=1.33
+
+=== Enlaces documentales ===
+OK: all local Markdown link destinations exist
+RESULTADO: Enlaces documentales: exit=0, segundos=0.77
+
+=== Invariantes E0 ===
+OK: invariantes E0, anclajes existentes y tests nuevos registrados
+RESULTADO: Invariantes E0: exit=0, segundos=0.87
+
+=== Invariantes E1 ===
+OK: invariantes E1 ancladas en pruebas reales
+RESULTADO: Invariantes E1: exit=0, segundos=0.92
+
+=== Invariantes E2 ===
+OK: invariantes E2 ancladas en pruebas existentes
+RESULTADO: Invariantes E2: exit=0, segundos=0.89
+
+=== Invariantes E3 ===
+OK: E3; invariantes y pruebas enlazadas
+RESULTADO: Invariantes E3: exit=0, segundos=0.87
+
+=== h46_walkthrough.py: completa ===
+{
+  "route": "completa",
+  "ending": "noche_cerrada",
+  "turns": 7,
+  "world_time": "2026-10-30T19:20:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "prisma_asegurado",
+    "afinacion_usada",
+    "fusibles_salvados",
+    "diagnostico_completo",
+    "reparacion_fallida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 26
+}
+RESULTADO: h46_walkthrough.py: completa: exit=0, segundos=3.88
+
+=== h46_walkthrough.py: parcial ===
+{
+  "route": "parcial",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:12:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 16
+}
+RESULTADO: h46_walkthrough.py: parcial: exit=0, segundos=3.08
+
+=== h46_walkthrough.py: sin_preparacion ===
+{
+  "route": "sin_preparacion",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:04:00-03:00",
+  "facts": [
+    "turno_iniciado",
+    "pronostico_confirmado",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 13
+}
+RESULTADO: h46_walkthrough.py: sin_preparacion: exit=0, segundos=2.87
+
+=== h46b_walkthrough.py: casete ===
+{
+  "route": "casete",
+  "ending": "casete_en_la_pieza",
+  "turn": 15,
+  "world_time": "1998-07-24T23:30:00-04:00",
+  "facts": [
+    "saludo_inicial",
+    "turno_iniciado",
+    "puesto_examinado",
+    "marcela_escuchada",
+    "futbol_marcela",
+    "amabilidad_observada",
+    "ayuda_ofrecida",
+    "ayuda_aceptada",
+    "comentario_trenza",
+    "musica_conversada",
+    "casete_entregado",
+    "araya_advirtio",
+    "radio_intervenida",
+    "senal_clara",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_pesado",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: casete: exit=0, segundos=4.38
+
+=== h46b_walkthrough.py: solo ===
+{
+  "route": "solo",
+  "ending": "escalera_azul",
+  "turn": 6,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_resistido",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: solo: exit=0, segundos=2.67
+
+=== h46b_walkthrough.py: radio ===
+{
+  "route": "radio",
+  "ending": "reporte_sin_novedad",
+  "turn": 4,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "base_avisada"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: radio: exit=0, segundos=2.47
+
+GISELA: 13/18 comprobaciones satisfactorias.
+FALLÓ: Pruebas de herramientas
+FALLÓ: Ruff — análisis estático
+FALLÓ: Ruff — formato
+FALLÓ: Radon — complejidad y mantenibilidad
+FALLÓ: Bandit — seguridad

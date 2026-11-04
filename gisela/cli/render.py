@@ -268,7 +268,7 @@ def confirmed(entries: list[dict]) -> None:
 
 
 def show_presentation(presentation: dict) -> None:
-    """Render generic regions; action offers retain original Observe IDs."""
+    """Render declarative regions without changing Observe or action order."""
     for region in presentation["regions"]:
         _show_region(region)
 
@@ -279,59 +279,154 @@ def _show_region(region: dict, depth: int = 0) -> None:
     indent = "  " * depth
     label = region.get("label") or region["id"].replace("_", " ")
     print("\n" + indent + label.upper())
+    if region.get("missing"):
+        missing = region.get("text", "No disponible")
+        print(indent + "  " + ("Pendiente de confirmación" if missing == "No disponible" else missing))
+        return
     for child in region.get("children", []):
         _show_region(child, depth + 1)
-    if region["component"] == "choice_list":
-        offers(region.get("items", []))
-    elif "items" in region:
+    kind = region["component"]
+    if kind == "choice_list":
+        items = region.get("items", [])
+        if items:
+            print(indent + "  Elija una letra o escriba: accion <id>")
+            offers(items)
+        else:
+            print(indent + "  No hay acciones disponibles.")
+    elif kind == "event_log":
+        items = region.get("items", [])
+        if items:
+            if len(items) > 10:
+                print(indent + f"  Últimos 10 de {len(items)} registros publicados")
+            show_causal(items[-10:], indent)
+        else:
+            print(indent + "  Todavía no hay acontecimientos confirmados.")
+    elif kind == "initiative_order":
+        for index, item in enumerate(region.get("items", []), 1):
+            print(f"{indent}  {index}. {_display_text(item)}")
+    elif kind == "entity_collection":
+        _show_collection(region.get("items", []), indent)
+    elif "items" in region and region["items"]:
         for item in region["items"]:
-            if region["component"] == "event_log" and isinstance(item, dict):
-                detail = item.get("detail", {})
-                print(
-                    indent
-                    + "  #"
-                    + str(item.get("sequence", "?"))
-                    + " "
-                    + str(item.get("kind", ""))
-                    + ": "
-                    + str(detail)[:240]
-                )
-            elif isinstance(item, dict):
-                if {"entity", "id", "value"} <= item.keys():
-                    value = str(item["value"])
-                    if "maximum" in item:
-                        value += "/" + str(item["maximum"])
-                    print(
-                        indent
-                        + "  "
-                        + item["entity"]
-                        + " · "
-                        + item["id"]
-                        + ": "
-                        + value
-                    )
-                elif {"id", "beneficiary", "remaining"} <= item.keys():
-                    print(
-                        indent
-                        + "  "
-                        + item["beneficiary"]
-                        + " · "
-                        + item["id"]
-                        + " ("
-                        + str(item["remaining"])
-                        + ")"
-                    )
-                else:
-                    print(
-                        indent
-                        + "  "
-                        + str(
-                            item.get("label", item.get("name", item.get("kind", item)))
-                        )
-                    )
-            else:
-                print(indent + "  " + str(item))
+            print(indent + "  " + _display_text(item))
     elif "value" in region:
-        print(indent + "  " + str(region["value"]))
+        value = _display_text(region["value"])
+        if value != "No disponible":
+            print(indent + "  " + value)
+        else:
+            print(indent + "  Pendiente de confirmación")
     elif "text" in region:
-        print(indent + "  " + region["text"])
+        text = region["text"]
+        print(indent + "  " + ("Pendiente de confirmación" if text == "No disponible" else text))
+
+
+def _display_text(value) -> str:
+    """Provide a readable fallback for generic public values."""
+    if isinstance(value, dict):
+        for field in ("label", "name", "actor", "id", "kind"):
+            if field in value:
+                return str(value[field])
+    return str(value)
+
+
+def _show_collection(items: list, indent: str) -> None:
+    """Group public resources; never interpret their domain semantics."""
+    if not items:
+        print(indent + "  Ningún elemento vigente.")
+        return
+    if all(
+        isinstance(item, dict) and {"entity", "id", "value"} <= item.keys()
+        for item in items
+    ):
+        grouped = {}
+        for item in items:
+            grouped.setdefault(item["entity"], []).append(item)
+        for entity, resources in grouped.items():
+            print(indent + "  " + str(entity).upper())
+            for item in resources:
+                measure = str(item["value"])
+                if "maximum" in item:
+                    measure += "/" + str(item["maximum"])
+                print(indent + "    " + str(item["id"]) + ": " + measure)
+        return
+    for item in items:
+        if isinstance(item, dict) and {"id", "beneficiary", "remaining"} <= item.keys():
+            print(
+                indent + "  " + str(item["beneficiary"]) + " · " + str(item["id"])
+                + " (" + str(item["remaining"]) + " restantes)"
+            )
+        elif isinstance(item, dict) and {"actor", "die", "score"} <= item.keys():
+            print(
+                indent + "  " + str(item["actor"]) + ": "
+                + str(item["die"]) + " → " + str(item["score"])
+            )
+        else:
+            print(indent + "  " + _display_text(item))
+
+
+def _causal_description(item: dict) -> str:
+    """Format only confirmed fields already projected into Observe."""
+    detail = item["detail"]
+    kind = item["kind"]
+    if kind == "initiative":
+        return "Orden de actuación: " + str(detail["order"])
+    if kind == "event_triggered":
+        return "Acontecimiento: " + str(detail["event"])
+    if kind == "encounter_completed":
+        return "Desenlace: " + str(detail["outcome"])
+    if kind == "dice_roll":
+        return f"Tirada d{detail['sides']}: {detail['result']} ({detail['store']})"
+    if kind == "contest_resolved":
+        return (
+            f"Concurso {detail['profile']}: {detail['left_total']} frente a "
+            f"{detail['right_total']} · {detail['winner']}"
+        )
+    if kind == "variable_changed":
+        return f"{detail['variable']}: {detail['before']} → {detail['after']}"
+    if kind in ("skill_started", "skill_played"):
+        return str(detail["actor"]) + " · " + str(detail["card"])
+    return str(detail.get("text", kind))
+
+
+def show_causal(events: list[dict], indent: str = "") -> None:
+    """Show a bounded window of confirmed causal records in original order."""
+    for item in events:
+        print(indent + f"  #{item['sequence']} " + _causal_description(item))
+
+
+def evaluation(content: dict) -> None:
+    """Present published evaluation values without recalculating dice."""
+    print("\nEvaluación de dados: " + str(content["evaluation_id"]))
+    rolls = ", ".join(str(value) for value in content["rolls"])
+    print("Tirada: " + (rolls or "(sin azar)"))
+    print("Resultado: " + content["outcome"])
+    if content.get("auxiliary_request"):
+        print(content["auxiliary_request"]["prompt"])
+
+
+def offers(
+    actions: list[dict],
+    styler: Styler | None = None,
+    start: int = 0,
+) -> None:
+    """Present authorized actions with exactly the current Observe identifiers."""
+    styler = styler or Styler()
+    for index, action in enumerate(available(actions), start):
+        label = action["label"]
+        if action.get("target") and " → " not in label:
+            label += " → " + str(action["target"])
+        _line(
+            f"  {option_letter(index)}) {label}  [accion {action['id']}]",
+            "exit" if action.get("role") == "exit" else "action",
+            styler,
+        )
+
+
+def blocked(actions: list[dict], styler: Styler | None = None) -> None:
+    """Report disabled offers without treating them as executable choices."""
+    styler = styler or Styler()
+    for action in actions:
+        if not action["enabled"]:
+            suffix = " — " + action["reason"] if action.get("reason") else ""
+            _line(f"  {action['id']} — {action['label']}{suffix}", "debug", styler)
+
