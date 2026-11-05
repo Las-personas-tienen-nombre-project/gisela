@@ -1,4 +1,11 @@
-# Tegularis — Workshop práctico de GISELA
+# Tegularis: Taller práctico de GISELA
+
+Este directorio conserva una secuencia de prácticas y ampliaciones. La
+práctica inicial del paquete 01 tiene un alcance reducido; el paquete
+`09_cierre_autoral_v077.package.json` ejecuta el combate completo mediante
+Observe/Act y GLAUQUIR. Comience por el [taller de cierre](WORKSHOP_CIERRE_V077.md)
+si quiere recorrer ese encuentro. Los límites de las guías iniciales se
+conservan como antecedentes de cada etapa.
 
 **Contenido y estado de ejecución:**
 
@@ -11,7 +18,7 @@
 | `04_contratos_pendientes.md` | Especificación de ampliaciones desacopladas al motor | Documentación técnica |
 | `test_practica_nativa.py` | Pruebas del paquete nativo: admisión, propiedad, costo, restauración, determinismo | Python + GISELA 0.1.21 |
 
-**Importante:** la carta *Protección* y las habilidades NPC están catalogadas pero no se ejecutan como combate real en la práctica nativa. Las pasivas permanecen en reserva para que no aparezcan como acciones voluntarias. Las extensiones generales del DSL son condición para ejecutar el encuentro completo de forma nativa.
+**Límite de la práctica inicial:** en el paquete 01, *Protección* y las habilidades de NPC están catalogadas, pero no forman un combate completo. Las pasivas permanecen en reserva para que no aparezcan como acciones voluntarias. Esta restricción de la práctica inicial no se aplica al paquete 09.
 
 ## Inicio rápido
 
@@ -25,4 +32,4 @@ python 03_simulador_escenario.py --play --seed 20261103
 
 Para ejecutar el test nativo, ejecute `python test_practica_nativa.py` en un entorno donde el paquete `gisela` esté en PYTHONPATH.
 
-El origen técnico de este workshop es el archivo del repositorio GISELA 0.1.21 proporcionado por el autor. No se han modificado sus fuentes.
+El origen técnico de este taller es el archivo del repositorio GISELA 0.1.21 proporcionado por el autor. No se han modificado sus fuentes.

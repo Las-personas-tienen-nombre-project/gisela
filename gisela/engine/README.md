@@ -62,6 +62,16 @@ Never treat a string supplied by a remote client as proof of a trusted principal
 
 This map lists entry points and responsibilities rather than every private helper. Read source and tests before extending behavior.
 
+## Declarative presentation
+
+The maintained engine projects optional author-defined regions and views from
+public Observe data. Tables, causal event groups, and restricted templates
+are pure projections: they do not modify logical state or draw random values.
+The causal window contains at most 40 entries. A visual role is an author
+label and does not prove that a resource change represents damage or healing.
+See the [presentation contract](../../docs/architecture/PRESENTACION_DECLARATIVA_V082.md)
+and [workshops](../../docs/guides/workshops/README.md).
+
 ## Implementation tests
 
 ```bash
@@ -80,4 +90,4 @@ Keep story definitions out of Python control flow. Reuse the authorized Act and 
 
 ## Technical references
 
-See [GISELA contracts](../contracts/README.md), [current v1.5 architecture](../../docs/architecture/GISELA_Arquitectura_Consolidada_v1_5.md), [E2 design](../../docs/architecture/E2_EVALUACIONES_OCULTAS.md), [E3 design](../../docs/architecture/E3_EVALUACIONES_VISIBLES.md), and [ADR records](../../docs/decisions/). Architecture and decision records were written during earlier stages and must be read together with current code.
+See [GISELA contracts](../contracts/README.md), [current v1.5 architecture](../../docs/architecture/GISELA_Arquitectura_Consolidada_v1_5.md), [E2 design](../../docs/architecture/E2_EVALUACIONES_OCULTAS.md), [E3 design](../../docs/architecture/E3_EVALUACIONES_VISIBLES.md), and [ADR records](../../docs/decisions). Architecture and decision records were written during earlier stages and must be read together with current code.

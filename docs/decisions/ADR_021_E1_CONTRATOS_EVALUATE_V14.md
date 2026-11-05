@@ -6,6 +6,12 @@
 **Fecha:** 30 de octubre de 2026. **Ámbito:** GISELA y sus contratos, no DICE ni TRAITS.
 **Relacionados:** ADR-007/008 (transacción y turno), ADR-019 (tirada fijada), ADR-020 (autoridad y acceso).
 
+Nota de mantenimiento: las referencias a `tools/check_project.py` corresponden
+al repositorio original. En este árbol se utiliza el
+[verificador independiente](../guides/VERIFICACION_GISELA.md).
+Las evaluaciones visibles posteriores se documentan en [ADR-023](ADR_023_E3_EVALUACIONES_VISIBLES_V15.md).
+Estas referencias no modifican las decisiones históricas de E1.
+
 ## Decisiones
 
 1. **Versionado explícito.** Los trece esquemas v1.4 viven en `gisela/contracts/v1_4/`. v1.2 y v1.3 conservan su sintaxis y ejecución. `Validator` puede admitir v1.4, pero `GiselaSession` **rechaza v1.4** con `UNSUPPORTED_FORMAT` hasta E2. Los snapshots v1.4 todavía no son restaurables. Los esquemas públicos de sesión/Act/Observe copiados en E1 son **reservas no ejecutables**, no una promesa de compatibilidad de runtime; E2 deberá congelar su contrato público efectivo. Si E3 necesita campos incompatibles para `pending_evaluation`, se usará otra versión (por ejemplo v1.5), no se reinterpretarán silenciosamente guardados v1.4 ya ejecutables.
@@ -20,7 +26,7 @@
 
 ## Restricciones de presupuesto E1
 
-Máximo 64 perfiles por paquete, 16 bandas por perfil, 16 ramas por evaluación, 8 participantes, 16 etiquetas, literales ±1.000.000. Rigen además los máximos internos del perfil DICE y la capacidad del catálogo TRAITS. Las sumas efectivas y su validación antes del RNG pertenecen a E2.
+Máximo 64 perfiles por paquete, 16 bandas por perfil, 16 ramas por evaluación, 8 participantes, 16 etiquetas, literales +/-1.000.000. Rigen además los máximos internos del perfil DICE y la capacidad del catálogo TRAITS. Las sumas efectivas y su validación antes del RNG pertenecen a E2.
 
 ## Garantías deliberadamente pendientes
 

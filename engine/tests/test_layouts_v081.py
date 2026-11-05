@@ -118,6 +118,6 @@ def test_public_events_are_readable_and_keep_causal_identity(capsys):
     show_causal(confirmed)
     shown = capsys.readouterr().out
     assert "#4 Tirada d20: 8" in shown
-    assert "#5 hp: 50 → 42" in shown
+    assert "#5 hp: 50 -> 42" in shown
     assert "#6 Desenlace: victoria" in shown
     assert shown.index("#4") < shown.index("#5") < shown.index("#6")

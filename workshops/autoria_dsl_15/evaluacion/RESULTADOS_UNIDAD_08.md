@@ -1,4 +1,4 @@
-# Evidencia — Unidad 8: presentación declarativa
+# Evidencia: Unidad 8: presentación declarativa
 
 **Base:** `14_presentacion_semantica_v082d.package.json` del repositorio incorporado a la Unidad 7. Se generan únicamente copias para trabajo autoral. No se modifica motor, contrato ni paquete canónico.
 
@@ -7,7 +7,7 @@
 - Siete variantes admisibles de `presentation`; cada una difiere del canon **solo** en el objeto `presentation`.
 - Siete solucionarios admitidos e idénticos al paquete canónico.
 - Un paquete con plantilla `{actor.password}` rechazado por contrato.
-- Comparación de equivalencia de estado lógico frente al canon para cada variante, en dos semillas (`0`×64 y `f`×64), tres pasos de Observe/Act y restauración de estado antes del segundo Act. Los estados comparados incluyen revisión, tiempo, mundo, narrativa, historial, RNG, actuación y cursor. Se verificó coincidencia de la información pública de actuación y de la solicitud de acción habilitada elegida.
+- Comparación de equivalencia de estado lógico frente al canon para cada variante, en dos semillas (`0`*64 y `f`*64), tres pasos de Observe/Act y restauración de estado antes del segundo Act. Los estados comparados incluyen revisión, tiempo, mundo, narrativa, historial, RNG, actuación y cursor. Se verificó coincidencia de la información pública de actuación y de la solicitud de acción habilitada elegida.
 - Registro textual: `LOG_UNIDAD_08.txt`.
 
 Comando desde la raíz:

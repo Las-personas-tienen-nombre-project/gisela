@@ -1,7 +1,7 @@
 """Evaluación de Unidad 7; código del instructor, no DSL autoral."""
 from pathlib import Path
 import json
-from gisela.contracts.admit_package import admit_package_file
+from gisela.contracts.admit_package import PackageRejected, admit_package_file
 ROOT = Path(__file__).resolve().parents[3]
 W = ROOT / 'workshops/autoria_dsl_15'
 CANON = ROOT / 'packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json'
@@ -26,7 +26,7 @@ for group in ('ejercicios','soluciones'):
         id=f.name.removesuffix('.package.json')
         if id=='07_error_efecto':
             try:admit_package_file(f)
-            except Exception: print('RECHAZO ESPERADO',id)
+            except PackageRejected: print('RECHAZO ESPERADO',id)
             else:raise AssertionError('Se admitió una habilidad inexistente')
             continue
         admit_package_file(f)

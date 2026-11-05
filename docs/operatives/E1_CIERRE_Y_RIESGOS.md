@@ -1,5 +1,9 @@
 > **Actualización posterior (E2, ADR-022):** las limitaciones de ejecución v1.4 descritas a continuación corresponden al cierre histórico E1. El runtime E2 ejecuta evaluaciones ocultas y admite guardados v1.4; las evaluaciones visibles y reconocidas siguen pendientes.
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 # E1: Cierre operativo: admisión y normalización de `evaluate`
 
 **Estado:** E1 implementada; E2-E5 pendientes. **Base:** ZIP (8) + parches TRAITS, TRAITS-ALBERTO/DICE y E0.

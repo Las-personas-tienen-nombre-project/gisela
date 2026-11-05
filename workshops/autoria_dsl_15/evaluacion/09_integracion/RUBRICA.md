@@ -1,4 +1,4 @@
-# Rúbrica de evaluación final — Unidad 9
+# Rúbrica de evaluación final: Unidad 9
 
 | Criterio | Peso | Evidencia mínima | Rechazo por insuficiencia |
 |---|---:|---|---|

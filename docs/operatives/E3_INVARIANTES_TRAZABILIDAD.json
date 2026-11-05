@@ -205,7 +205,7 @@
       "stage": "E3",
       "subsystem": "GISELA",
       "decision": "ADR-023 / ADR-007 / ADR-020 / ADR-022",
-      "statement": "La transición A→B sigue siendo atómica ante un fallo posterior",
+      "statement": "La transición A->B sigue siendo atómica ante un fallo posterior",
       "status": "enforced",
       "tests": [
         "gisela/engine/tests/test_e3_visible.py::E3Visible.test_19_transition_to_another_node_remains_atomic"

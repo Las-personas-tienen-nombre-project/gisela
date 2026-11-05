@@ -66,7 +66,7 @@ def test_public_table_and_ordered_events_are_pure():
     before = copy.deepcopy(observation)
     assert errors(definition) == []
     projected = project(definition, observation)["regions"]
-    assert projected[0]["rows"] == [["a", "23", "9"], ["b", "12", "—"]]
+    assert projected[0]["rows"] == [["a", "23", "9"], ["b", "12", "-"]]
     assert [entry["sequence"] for entry in projected[1]["items"]] == [3, 4]
     assert projected[1]["truncated"] is True
     assert observation == before

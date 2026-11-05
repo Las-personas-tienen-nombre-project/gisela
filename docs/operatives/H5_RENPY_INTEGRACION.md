@@ -1,5 +1,9 @@
 # H5: Integración de GISELA con Ren'Py (laboratorio)
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance
 
 Se incorpora un cliente de presentación Ren'Py para consumir los paquetes

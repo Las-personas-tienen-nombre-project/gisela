@@ -24,7 +24,7 @@ def _definition(**changes):
                 "kind": "variable_changed",
                 "variable": "gillius_hp",
                 "role": "damage",
-                "template": "{variable}: {before} → {after}",
+                "template": "{variable}: {before} -> {after}",
             }
         ],
     }
@@ -59,7 +59,7 @@ def test_author_format_is_deterministic_and_does_not_mutate_public_data():
     one = project_view(observation, _definition())
     assert one == project_view(observation, _definition())
     assert observation == snapshot
-    assert one["items"][0]["display_text"] == "gillius_hp: 110 → 92"
+    assert one["items"][0]["display_text"] == "gillius_hp: 110 -> 92"
     assert one["items"][0]["semantic_role"] == "damage"
     assert "semantic_role" not in one["items"][1]
 
@@ -111,7 +111,7 @@ def test_missing_fields_have_explicit_policy():
     )
     rule["missing"] = "placeholder"
     output = project_view(event, _definition(event_formats=[rule]))
-    assert output["items"][0]["display_text"] == "—: a"
+    assert output["items"][0]["display_text"] == "-: a"
 
 
 def test_semantic_color_and_plain_text_have_equal_meaning():
@@ -124,7 +124,7 @@ def test_semantic_color_and_plain_text_have_equal_meaning():
         with redirect_stdout(buffer):
             show_presentation(presentation, Styler(mode=mode))
         out.append(buffer.getvalue())
-    assert "Daño: gillius_hp: 110 → 92" in out[0]
+    assert "Daño: gillius_hp: 110 -> 92" in out[0]
     assert "\x1b[" not in out[0]
     assert "\x1b[" in out[1]
     import re

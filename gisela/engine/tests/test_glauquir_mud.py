@@ -11,8 +11,9 @@ from unittest.mock import patch
 
 from gisela.cli.color import Styler
 from gisela.cli.interactive import TextClient
-from gisela.cli.render import show
+from gisela.cli.render import offers, show
 from gisela.contracts.admit_package import admit_package, admit_package_file
+from gisela.engine.actuation_public import _label_targets
 from gisela.engine.runtime import new_session
 
 PRODUCT = (
@@ -22,6 +23,28 @@ PRODUCT = (
 
 
 class MudTest(unittest.TestCase):
+    def test_target_is_shown_once_for_public_and_unlabelled_offers(self):
+        actions = [
+            {"id": "golpe", "label": "Golpe", "enabled": True},
+            {"id": "cura", "label": "Curar", "target": "aliado", "enabled": True},
+        ]
+        session = SimpleNamespace(
+            _package={
+                "presentation": {
+                    "action_targets": [{"skill": "golpe", "target": "rival"}]
+                }
+            }
+        )
+        projected = _label_targets(session, actions)
+        output = StringIO()
+        with redirect_stdout(output):
+            offers(projected, Styler("never"))
+        self.assertIn("A) Golpe -> rival  [accion golpe]", output.getvalue())
+        self.assertIn("B) Curar -> aliado  [accion cura]", output.getvalue())
+        self.assertEqual(output.getvalue().count("rival"), 1)
+        self.assertEqual(output.getvalue().count("aliado"), 1)
+        self.assertEqual(projected[0]["target"], "rival")
+
     def test_letters_follow_display_order_and_skip_disabled_actions(self):
         actions = [
             {
@@ -155,8 +178,8 @@ class MudTest(unittest.TestCase):
         self.assertNotIn("accion locked", output.getvalue())
         with redirect_stdout(output):
             client._command(view, "acciones bloqueadas")
-        self.assertIn("locked — Cerrado — Falta llave", output.getvalue())
-        self.assertIn("silent — Oculto", output.getvalue())
+        self.assertIn("locked: Cerrado: Falta llave", output.getvalue())
+        self.assertIn("silent: Oculto", output.getvalue())
         with redirect_stdout(StringIO()):
             self.assertIs(client._command(view, "accion locked"), False)
         for mode, colored in (("never", False), ("always", True)):
@@ -165,7 +188,7 @@ class MudTest(unittest.TestCase):
                 show(view, styler=Styler(mode))
             self.assertEqual("\x1b[" in output.getvalue(), colored)
             self.assertIn(
-                "PORTERÍA — 18:45", re.sub(r"\x1b\[[0-9;]*m", "", output.getvalue())
+                "PORTERÍA: 18:45", re.sub(r"\x1b\[[0-9;]*m", "", output.getvalue())
             )
 
 

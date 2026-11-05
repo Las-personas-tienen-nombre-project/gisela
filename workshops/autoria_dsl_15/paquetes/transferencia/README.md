@@ -1,4 +1,4 @@
-# Construcción por transferencia (unidades 2–7)
+# Construcción por transferencia (unidades 2 a 7)
 
 Los archivos `*_inicio_incompleto` omiten **deliberadamente una declaración**. Los de las unidades 3, 4 y 5 son rechazados por admisión; los de las unidades 2, 6 y 7 pueden ser admitidos, pero representan una conducta incompleta. **Admisión no demuestra que el ejercicio esté resuelto.** No se entregan como soluciones ejecutables correctas. Las soluciones son una referencia para el instructor; el alumno debe construir sus propias declaraciones.
 

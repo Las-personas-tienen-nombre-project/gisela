@@ -1,0 +1,17 @@
+Admisión: {'admitted': 87, 'rejected': 10}
+comprobar_puentes_04_06 exit=0
+comprobar_unidad_04 exit=0
+comprobar_unidad_05 exit=0
+comprobar_unidad_06 exit=0
+comprobar_unidad_07 exit=0
+comprobar_unidad_08 exit=0
+00_base.package exit=0
+01_primera_decision.package exit=0
+02_otra_decision.package exit=0
+02_laboratorio.package exit=0
+03_laboratorio.package exit=0
+04_laboratorio.package exit=0
+05_laboratorio.package exit=0
+06_laboratorio.package exit=0
+07_laboratorio.package exit=0
+08_laboratorio.package exit=0

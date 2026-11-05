@@ -86,7 +86,7 @@ class FightTegularis(Fight):
         self.counts["ultima_llama"] += 1
         raw = 30 + self.stat("dragon", "int") + self.d(10)
         self.note(
-            f"Tegularis: «Si vas a perder asegúrate de que no ganan por mucho» ({raw} daño bruto)"
+            f'Tegularis: "Si vas a perder asegúrate de que no ganan por mucho" ({raw} daño bruto)'
         )
         if self.c("sacerdotisa").shield:
             self.c("sacerdotisa").shield = False

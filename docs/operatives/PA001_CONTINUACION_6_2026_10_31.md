@@ -1,5 +1,9 @@
 # PA-001: Continuación 6: alcance exclusivamente GISELA
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PARCIAL; auditoría abierta.** Se excluye expresamente de esta intervención descargar el SDK de Ren'Py o efectuar integración gráfica. No se ha declarado PT-08 aprobado.
 
 ## PT-02: Defecto H9 y transacción

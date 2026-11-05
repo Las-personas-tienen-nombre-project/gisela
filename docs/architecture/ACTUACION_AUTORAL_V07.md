@@ -1,4 +1,6 @@
-# GISELA — Integración incremental del reloj autoral v0.7
+# GISELA: Integración incremental del reloj autoral v0.7
+
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
 
 ## Estado de esta entrega
 

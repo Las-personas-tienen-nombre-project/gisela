@@ -1,5 +1,9 @@
 # PA-001: Continuación 4: H4.6b y versiones de restauración
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado:** PARCIAL. Fuente: `gisela_pa001_continuacion_3_20261031.zip`. No se alteró la lógica narrativa ni la semántica del ejecutor.
 
 ## Resultados verificados

@@ -1,4 +1,4 @@
-"""Adaptador ALBERTO–TRAITS; muta únicamente el borrador entregado."""
+"""Adaptador ALBERTO-TRAITS; muta únicamente el borrador entregado."""
 
 from __future__ import annotations
 

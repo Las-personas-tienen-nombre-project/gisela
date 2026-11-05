@@ -1,5 +1,9 @@
 # GISELA: Informe técnico de procedencia y admisión v0.2
 
+Registro histórico: este documento conserva el estado de su etapa original.
+Consulte el [índice del archivo](README.md) para distinguir sus antecedentes
+de las instrucciones vigentes.
+
 **Fecha:** 29 de octubre de 2026  
 **Origen:** schemas 1.1 + validador semántico v0.1  
 **Salida:** schemas 1.2 + validador estático v0.2, independiente del motor histórico.

@@ -126,7 +126,7 @@ def _label_targets(session, actions):
         target = mappings.get(action["id"])
         if target:
             action["target"] = target
-            action["label"] += " → " + target
+            action["label"] += " -> " + target
     return actions
 
 

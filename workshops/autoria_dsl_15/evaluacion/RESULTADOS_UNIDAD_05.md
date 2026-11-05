@@ -1,4 +1,4 @@
-# Resultados — Unidad 5 (habilidades)
+# Resultados: Unidad 5 (habilidades)
 
 Base productiva de solo lectura: `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`.
 

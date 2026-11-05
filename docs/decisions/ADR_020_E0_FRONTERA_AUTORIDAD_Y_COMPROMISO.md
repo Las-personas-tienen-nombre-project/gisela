@@ -2,6 +2,11 @@
 
 **Estado:** aplicada en la implementación Python E0; **no** autoriza por sí sola una red ni `evaluate`.
 
+Nota de mantenimiento: la referencia a `tools/check_project.py` corresponde
+al repositorio original. En este árbol, los mismos controles E0 a E3 se
+invocan mediante el [verificador independiente](../guides/VERIFICACION_GISELA.md).
+Esta aclaración no modifica las decisiones del ADR.
+
 ## Contexto
 
 `Act` era una petición local de un cliente confiable; ahora debe poder llegar desde cualquier software autenticado, incluida otra instancia de GISELA. Además, una tirada futura podría fijar RNG y resultado antes de consecuencias. La base anterior carecía de exclusión interna sobre una sesión, comprobantes de reintentos y validación de la proyección *antes* del commit. El modelo narrativo de ADR-007/008 y el RNG no necesitan cambiar.

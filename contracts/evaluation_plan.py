@@ -1,4 +1,4 @@
-"""E1: compilación pura de autoría `evaluation` al contrato interno TRAITS–DICE.
+"""E1: compilación pura de autoría `evaluation` al contrato interno TRAITS-DICE.
 
 No ejecuta DICE, consulta estado, consume RNG ni aplica consecuencias.
 Las referencias a entidades se resuelven semánticamente en admisión y en E2

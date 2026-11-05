@@ -1,14 +1,14 @@
-# Unidad 1 — Fundamentos del DSL
+# Unidad 1: Fundamentos del DSL
 
 **Objetivo.** Identificar cada parte de un paquete GISELA productivo sin confundir los datos declarados con el programa que los interpreta.
 
 **Prerrequisitos.** Uso básico de archivos de texto. No se requiere programación.
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 1](../paquetes/01_fundamentos/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 

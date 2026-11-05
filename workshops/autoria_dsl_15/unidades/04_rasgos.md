@@ -1,22 +1,22 @@
-# Unidad 4 — Construcción autoral de rasgos y contribuciones
+# Unidad 4: Construcción autoral de rasgos y contribuciones
 
-**Objetivo.** Definir un rasgo propio mediante el DSL 1.5, asignarlo a una entidad, predecir cuándo contribuye a una resolución y comprobar la predicción. Al terminar, el alumno distinguirá «tener un rasgo» de «obtener su contribución» y de «ganar una resolución».
+**Objetivo.** Definir un rasgo propio mediante el DSL 1.5, asignarlo a una entidad, predecir cuándo contribuye a una resolución y comprobar la predicción. Al terminar, el alumno distinguirá "tener un rasgo" de "obtener su contribución" y de "ganar una resolución".
 
-**Prerrequisitos:** unidades 1–3 (objetos/listas JSON, ficha e instancia, condiciones y referencias). **Conceptos nuevos:** catálogo de TRAITS, rol en la resolución, etiqueta contextual, contribución, ranura de acumulación, asignación, efecto que concede rasgos y evaluación dirigida.
+**Prerrequisitos:** unidades 1 a 3 (objetos/listas JSON, ficha e instancia, condiciones y referencias). **Conceptos nuevos:** catálogo de TRAITS, rol en la resolución, etiqueta contextual, contribución, ranura de acumulación, asignación, efecto que concede rasgos y evaluación dirigida.
 
 **Fuentes verificadas en este repositorio:** `traits/schemas/definitions.schema.json`, `traits/schemas/evaluation.schema.json`, `traits/README.md`, `traits/evaluator.py`, `gisela/engine/traits_dice_bridge.py`, `contracts/semantic_traits.py` y `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`. Los ejemplos son fragmentos reales de ese paquete o modificaciones válidas indicadas expresamente; los paquetes íntegros están en `ejercicios/04_rasgos/` y `soluciones/04_rasgos/`.
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 4](../paquetes/04_progresivo/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 
 ## 1. Primero, la intención autoral
 
-«Quiero que Parnecio sea más difícil de alcanzar cuando puede esquivar». Esta intención no describe una esquiva garantizada: pide una **bonificación al cálculo de evasión**. En GISELA, el autor define las propiedades en `traits.traits`, asigna el identificador del rasgo en una ficha (`cards`), y una resolución posterior aporta rol, etiquetas y ranuras. TRAITS determina si corresponde sumar una contribución; el motor compone esta información con los demás mecanismos de resolución y confirma el resultado. GLAUQUIR presenta lo que autorizan las interfaces públicas.
+"Quiero que Parnecio sea más difícil de alcanzar cuando puede esquivar". Esta intención no describe una esquiva garantizada: pide una **bonificación al cálculo de evasión**. En GISELA, el autor define las propiedades en `traits.traits`, asigna el identificador del rasgo en una ficha (`cards`), y una resolución posterior aporta rol, etiquetas y ranuras. TRAITS determina si corresponde sumar una contribución; el motor compone esta información con los demás mecanismos de resolución y confirma el resultado. GLAUQUIR presenta lo que autorizan las interfaces públicas.
 
 ### Definición productiva completa de `dodge`
 
@@ -58,13 +58,13 @@ No confunda la etiqueta de una resolución (`evasion`) con un nombre de habilida
 
 ## 3. Una penalización también es un rasgo
 
-**Intención:** «Quiero un personaje cuya torpeza reste 2 a su defensa evasiva». El ejercicio `02_penalizacion` agrega un rasgo nuevo llamado `paso_torpe`, con `when.role = defender`, `all_tags = ["evasion"]`, `add.slot = bonus` y `add.amount = -2`. Se asigna a Gillius, que ya posee `dodge` (+2). La contribución acumulada de esos dos rasgos en ese contexto es **0**: +2 − 2. El cálculo final de esquiva no queda necesariamente en cero porque podría haber otras fuentes de bonificación, dificultad, tiradas o atributos.
+**Intención:** "Quiero un personaje cuya torpeza reste 2 a su defensa evasiva". El ejercicio `02_penalizacion` agrega un rasgo nuevo llamado `paso_torpe`, con `when.role = defender`, `all_tags = ["evasion"]`, `add.slot = bonus` y `add.amount = -2`. Se asigna a Gillius, que ya posee `dodge` (+2). La contribución acumulada de esos dos rasgos en ese contexto es **0**: +2 - 2. El cálculo final de esquiva no queda necesariamente en cero porque podría haber otras fuentes de bonificación, dificultad, tiradas o atributos.
 
 **Importante:** el estado inicial de Gillius y las reglas originales del encuentro **no se modifican en el paquete productivo**. El ejercicio es una copia aislada que permite observar el caso. La solución restaura el comportamiento exigido por el enunciado sin borrar `dodge`.
 
 ## 4. Un rasgo para el atacante
 
-**Intención:** «Quiero una ventaja de +1 cuando Parnecio intenta acertar». `ojo_certero` usa `when.role = actor` y `all_tags = ["hit"]`, con `add.slot = bonus` y `add.amount = 1`. El ejercicio 03 entrega inicialmente una etiqueta equivocada; el alumno debe corregir el contexto, no cambiar el valor ni asignarlo a un defensor. Prediga: con `actor`+`hit`, +1; con `defender`+`hit`, 0. Así comprobará que la pertinencia depende de la combinación, no del texto de `label`.
+**Intención:** "Quiero una ventaja de +1 cuando Parnecio intenta acertar". `ojo_certero` usa `when.role = actor` y `all_tags = ["hit"]`, con `add.slot = bonus` y `add.amount = 1`. El ejercicio 03 entrega inicialmente una etiqueta equivocada; el alumno debe corregir el contexto, no cambiar el valor ni asignarlo a un defensor. Prediga: con `actor`+`hit`, +1; con `defender`+`hit`, 0. Así comprobará que la pertinencia depende de la combinación, no del texto de `label`.
 
 ## 5. Rasgos de reducción: etiquetas diferentes
 
@@ -85,7 +85,7 @@ El paquete de referencia incluye los siguientes rasgos:
 Los archivos de inicio contienen la **estructura ejecutable y válida** del encuentro, pero una parte de la contribución que el alumno debe construir está desactivada mediante un valor nulo o una etiqueta deliberadamente distinta. No son reproducción del balance: solo los archivos `soluciones/04_rasgos/` restauran el objetivo de cada ejercicio. Todas las soluciones 01, 04 y 05 igualan exactamente el paquete productivo de referencia para las propiedades trabajadas.
 
 1. **01_dodge:** busque `traits.traits[id=dodge]`, cambie `add.amount` de 0 a 2. Prediga los tres contextos de la tabla y compruebe cuáles activan el rasgo. No cambie el rol ni las etiquetas.
-2. **02_penalizacion:** edite el rasgo nuevo `paso_torpe`, que ya aparece asignado a Gillius en la copia; cambie su cantidad de 0 a **−2**. Prediga la suma con su `dodge` original. Explique por qué no corresponde quitar `dodge` para obtener la misma suma.
+2. **02_penalizacion:** edite el rasgo nuevo `paso_torpe`, que ya aparece asignado a Gillius en la copia; cambie su cantidad de 0 a **-2**. Prediga la suma con su `dodge` original. Explique por qué no corresponde quitar `dodge` para obtener la misma suma.
 3. **03_precision:** repare `ojo_certero` para que su contribución +1 se active únicamente cuando Parnecio sea `actor` y la resolución tenga `hit`, no `evasion`. Explique qué ocurriría si `role` fuera `defender`.
 4. **04_escamas:** restaure `escamas` de 0 a +5 para Tegularis. Demuestre por qué el contexto `magic_damage_reduction` no recibe ese +5 y revise `magic_redux` como contrapunto.
 5. **05_pride_redux:** restaure +1 en cada una de las tres contribuciones existentes de `pride_redux`, sin agregar etiquetas ni modificar el efecto que lo concede. Explique por qué el rasgo no tiene efecto al inicio del combate.
@@ -116,4 +116,4 @@ Sin mirar los solucionarios, escriba una especificación de `paso_torpe` que pen
 
 **Errores:** usar `label` como si fuese regla; confundir `cards[].traits` con `traits.traits`; usar `actor` donde corresponde `defender`; omitir `all_tags`; agregar `bonus` cuando la resolución no admite esa ranura; suponer que +2 equivale a éxito; asignar `pride_redux` desde el comienzo; duplicar un ID; superar capacidad de rasgos; confundir reducción física, mágica y general; creer que JSON válido equivale a un paquete admitido y ejecutado.
 
-**Aprobación:** el alumno explica `dodge` campo a campo; crea y asigna dos rasgos nuevos; predice activaciones positivas y negativas; explica la suma +2 − 2; comprueba contribuciones sin deducir automáticamente éxito o daño; distingue el caso de Pride y corrige una referencia inválida. Puede presentar las salidas y explicar su significado sin escribir código Python.
+**Aprobación:** el alumno explica `dodge` campo a campo; crea y asigna dos rasgos nuevos; predice activaciones positivas y negativas; explica la suma +2 - 2; comprueba contribuciones sin deducir automáticamente éxito o daño; distingue el caso de Pride y corrige una referencia inválida. Puede presentar las salidas y explicar su significado sin escribir código Python.

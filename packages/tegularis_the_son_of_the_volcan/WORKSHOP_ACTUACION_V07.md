@@ -1,4 +1,8 @@
-# Workshop de actuación v0.7 — laboratorio GISELA
+# Taller de actuación v0.7: laboratorio GISELA
+
+**Alcance histórico:** este documento registra una etapa incremental de
+Tegularis. Sus pendientes corresponden a esa etapa; consulte el
+[taller de cierre v0.7.7](WORKSHOP_CIERRE_V077.md) para el combate completo.
 
 **Propósito:** comprobar que un autor puede declarar un reloj de oportunidades dentro de GISELA, sin convertir el turno narrativo en un turno de combate.
 
@@ -9,4 +13,4 @@
 5. Guarde la sesión y retómela durante otra ronda con `--restore`. El orden inicial no se recalcula.
 6. Ejecute `pytest -q gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py`: deberá superar las comprobaciones de relojes, duración, paralización, restauración y rechazo.
 
-**Alcance:** este workshop valida el *planificador de actuación*. Firebreath, Fénix, Regeneración, Preponderancia y las demás cartas todavía tienen que conectarse con consecuencias completas del combate. Las pruebas de efectos del planificador emplean cartas de prueba aisladas, no se hacen pasar por las cartas definitivas del juego.
+**Alcance:** este taller valida el *planificador de actuación*. Firebreath, Fénix, Regeneración, Preponderancia y las demás cartas todavía tienen que conectarse con consecuencias completas del combate. Las pruebas de efectos del planificador emplean cartas de prueba aisladas, no se hacen pasar por las cartas definitivas del juego.

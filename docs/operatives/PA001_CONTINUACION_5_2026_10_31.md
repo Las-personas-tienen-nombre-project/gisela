@@ -1,5 +1,9 @@
 # PA-001: Continuación 5: matriz completa 1.2-1.5 y error de nodo agotado
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado:** parcial, basado en `gisela_pa001_continuacion_4_20261031.zip`. Se mantienen las decisiones de ADR-020, ADR-022, ADR-023 y GISELA_ADR_001_017. No se incorporaron dependencias, subsistemas ni schemas nuevos.
 
 ## Matriz de compatibilidad demostrada

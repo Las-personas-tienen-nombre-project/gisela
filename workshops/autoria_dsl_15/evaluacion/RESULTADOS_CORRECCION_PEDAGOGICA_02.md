@@ -1,8 +1,8 @@
-# Verificación — corrección pedagógica 02
+# Verificación: corrección pedagógica 02
 
 ## Alcance y material
 
-Se añadieron seis paquetes pequeños, completos y acumulativos para las unidades 2–7. Parten del paquete mínimo oficial de GISELA y reutilizan las declaraciones reales de personajes, traits, evaluación y habilidad. Los ejercicios productivos originales de Tegularis no se sustituyen.
+Se añadieron seis paquetes pequeños, completos y acumulativos para las unidades 2 a 7. Parten del paquete mínimo oficial de GISELA y reutilizan las declaraciones reales de personajes, traits, evaluación y habilidad. Los ejercicios productivos originales de Tegularis no se sustituyen.
 
 | Unidad | Paquete | Intención principal | Límite de esta comprobación |
 |---|---|---|---|
@@ -16,8 +16,8 @@ Se añadieron seis paquetes pequeños, completos y acumulativos para las unidade
 ## Resultados reproducidos
 
 - Admisión semántica: **6/6 ADMITTED** con `gisela/contracts/admit_package.py`.
-- Ejecución con GLAUQUIR: **12/12 rutas completas**, dos por paquete. Ruta de `abrir`/`seguir` en 2–4 y ejecución/omisión en 5–7.
-- Las rutas de habilidad de 5–7 terminan en `Dentro de la pieza`; al omitir la carta terminan en `Al final del pasillo`. Son títulos heredados del paquete mínimo, no desenlaces productivos de Tegularis.
+- Ejecución con GLAUQUIR: **12/12 rutas completas**, dos por paquete. Ruta de `abrir`/`seguir` en 2 a 4 y ejecución/omisión en 5 a 7.
+- Las rutas de habilidad de 5 a 7 terminan en `Dentro de la pieza`; al omitir la carta terminan en `Al final del pasillo`. Son títulos heredados del paquete mínimo, no desenlaces productivos de Tegularis.
 - `python tools/check_quality.py`: **OK**.
 - `python tools/check_doc_links.py`: **OK**.
 - Registros de ejecución: `evaluacion/logs_progresivos/`.

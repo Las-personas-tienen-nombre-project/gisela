@@ -1,0 +1,766 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python tools/check_gisela.py --full
+
+=== Pruebas del motor, contratos y bibliotecas ===
+.............................................................................................. [ 11%]
+........................................................................ [ 19%]
+......................................................... [ 26%]
+................................................................. [ 34%]
+........................................................................ [ 42%]
+........................................................................ [ 51%]
+.................................................................. [ 59%]
+........................................................................ [ 67%]
+...................................................................................................... [ 79%]
+........................................................................ [ 88%]
+..............................F......................................... [ 97%]
+.........................                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_seeded_transcripts_and_rng_unchanged ___________________
+
+    def test_seeded_transcripts_and_rng_unchanged():
+        records = []
+        for seed in range(10):
+            for revised in (False, True):
+                for shield in ("phase", "anticipate"):
+                    for knight in ("defensive", "aggressive"):
+                        rng = random.Random(seed)
+                        fight = Fight(rng, FightConfig(revised, shield, knight, True))
+                        records.append((fight.result(), rng.getstate()))
+            for burst in (False, True):
+                rng = random.Random(seed)
+                fight = FightTegularis(rng, ScenarioConfig(trace=True, death_burst=burst))
+                records.append((fight.result(), rng.getstate()))
+        encoded = json.dumps(records, ensure_ascii=False, sort_keys=True).encode()
+        # Fixture capturada antes del refactor: 100 recorridos, trazas completas y RNG final.
+>       assert (
+            hashlib.sha256(encoded).hexdigest()
+            == "d9dd325e07d57cbb9e6d75d0250f4b110401402e94128dc4672e69994b852380"
+        )
+E       AssertionError: assert '8b2f8396312c...feaeca156d0c6' == 'd9dd325e07d5...e69994b852380'
+E         
+E         - d9dd325e07d57cbb9e6d75d0250f4b110401402e94128dc4672e69994b852380
+E         + 8b2f8396312cf4b8c953db4ba946d12de705a1b77038e66359efeaeca156d0c6
+
+gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:58: AssertionError
+=========================== short test summary info ============================
+FAILED gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py::test_seeded_transcripts_and_rng_unchanged
+1 failed, 840 passed, 128 subtests passed in 179.92s (0:02:59)
+RESULTADO: Pruebas del motor, contratos y bibliotecas: exit=1, segundos=180.30
+
+=== Pruebas de herramientas ===
+............................................ [ 63%]
+.........................                                                [100%]
+69 passed, 100 subtests passed in 17.48s
+RESULTADO: Pruebas de herramientas: exit=0, segundos=17.71
+
+=== Ruff: análisis estático ===
+All checks passed!
+RESULTADO: Ruff: análisis estático: exit=0, segundos=0.06
+
+=== Ruff: formato ===
+222 files already formatted
+RESULTADO: Ruff: formato: exit=0, segundos=0.06
+
+=== Radon: complejidad y mantenibilidad ===
+Radon CC: 1773 bloques, promedio 3.62
+MI informativo: gisela/cli/interactive.py, C (7.71)
+MI informativo: gisela/cli/render.py, C (5.33)
+MI informativo: gisela/contracts/semantic_sessions.py, C (5.75)
+MI informativo: gisela/contracts/semantic_packages.py, C (0.00)
+MI informativo: gisela/contracts/semantic_expressions.py, C (0.00)
+MI informativo: gisela/engine/runtime.py, C (8.29)
+RESULTADO: Radon: complejidad y mantenibilidad: exit=0, segundos=1.42
+
+=== Bandit: seguridad ===
+INFO: dice/tests/test_dice_hardening.py:4: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: dice/tests/test_dice_hardening.py:87: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/contracts/test_contracts.py:406: B105 LOW: Possible hardcoded password: '1'
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:30: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:32: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:33: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:36: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:45: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:46: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:47: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_contest_trace_v076.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:23: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:36: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:37: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:38: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:39: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:40: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:49: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:50: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:52: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:61: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:87: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:88: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:89: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:90: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:97: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:98: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:106: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:107: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:108: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:110: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:111: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:120: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:121: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:128: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_public_v073.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:11: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:12: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:14: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:15: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:18: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:27: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:28: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:29: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:41: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_actuation_roll_trace_v075.py:43: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:29: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:30: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:33: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:40: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:71: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_author_presentation_v080.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:20: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:28: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:32: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:33: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:34: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:35: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:38: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:41: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:44: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:86: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:87: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:88: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:89: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:90: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:114: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:115: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:124: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:125: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:126: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:128: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:137: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:179: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:182: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:185: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:187: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:193: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:197: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:232: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_causal_execution_v082c.py:233: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_h45_cli.py:283: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: gisela/engine/tests/test_h45_cli.py:290: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_h45_cli.py:314: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: gisela/engine/tests/test_h45_cli.py:316: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_h45_cli.py:359: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: gisela/engine/tests/test_h45_cli.py:367: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_h4_exploration.py:5: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: gisela/engine/tests/test_h4_exploration.py:280: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_h4_exploration.py:303: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_h4_exploration.py:321: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:46: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:47: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:48: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:51: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:52: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:53: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:56: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:68: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:81: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:82: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:113: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:114: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:115: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:130: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:131: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:142: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:162: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_contests_v05.py:163: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:58: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:65: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:80: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:81: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:86: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:87: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:97: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:98: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:111: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:112: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:149: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:150: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:160: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:162: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:163: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_arguments_v04.py:181: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:46: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:53: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:54: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:55: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:56: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:58: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:59: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:60: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:61: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:62: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:71: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:89: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:90: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:106: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:107: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:108: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:109: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:130: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:147: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:148: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:149: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:159: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:160: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:175: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:190: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:198: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:200: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:201: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:224: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:225: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:226: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:237: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_skill_priorities.py:238: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:65: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:71: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:74: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:89: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:92: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:100: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:101: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:104: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:110: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:111: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:112: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:113: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:114: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:115: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:116: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:117: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:118: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:119: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:120: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:132: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:133: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:134: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:137: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:148: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:149: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:150: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:151: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:152: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:160: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:161: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:162: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:163: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:164: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:165: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:166: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:167: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:168: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:174: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:176: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:177: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:178: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:233: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:234: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:241: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:254: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:264: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:274: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_npc_traits_v06.py:275: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:60: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:61: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:62: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:86: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:90: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:93: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:94: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:108: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:114: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:127: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:128: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:132: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:151: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:152: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:168: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:186: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:187: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:188: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:190: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:191: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:195: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:196: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:227: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:231: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:250: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:251: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:261: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_semantics_v082d.py:262: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:71: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:80: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:100: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:125: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:140: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_presentation_views_v082.py:155: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:42: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:50: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:51: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:52: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:53: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:54: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:57: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:59: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:71: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_public_presentation_v080f.py:80: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_reference_dodge_contexts.py:21: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:56: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:57: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:60: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082e.py:77: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:65: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:70: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:84: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:85: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:106: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:107: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:109: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:115: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:116: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:117: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:118: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:179: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:182: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:183: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:185: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:186: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_release_v082f.py:190: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:43: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:65: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:68: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:77: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:78: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:79: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:80: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:94: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:95: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:96: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:106: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:107: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:108: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:120: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:121: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:122: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:130: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:132: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:133: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:152: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:153: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:174: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:175: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/engine/tests/test_scripted_npc_skills.py:176: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:38: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:44: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:51: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:53: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:65: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:68: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:69: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:89: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:90: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:103: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:104: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:109: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:127: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:131: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:132: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:136: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:137: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:138: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:155: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:156: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:163: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:164: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:177: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:179: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:180: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:186: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:189: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:190: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:191: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:198: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:199: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:200: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:213: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:215: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:216: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:262: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:265: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:268: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:271: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:284: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:285: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:292: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:300: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:302: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:304: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:305: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:335: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:336: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:342: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:347: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:352: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:362: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:366: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:375: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:383: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_actuacion_nativa_v07.py:389: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:5: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:27: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:34: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:37: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:38: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:41: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:42: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:55: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:62: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_build_packages.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:25: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:32: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:33: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:39: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:51: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:62: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:63: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:72: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:91: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:93: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:94: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:98: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:110: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:111: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:112: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:113: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:114: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:115: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:116: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:128: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:130: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:133: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:149: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:150: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:156: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cartas_v071.py:158: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:47: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:48: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:57: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:58: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:68: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:96: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:97: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:98: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:126: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:127: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:128: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:129: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:137: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:139: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:150: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:152: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:153: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:154: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:156: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:157: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:178: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:181: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:215: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:216: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:217: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:223: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:230: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:231: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_cierre_v077.py:232: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:53: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:54: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:57: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:66: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:67: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:75: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:77: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:81: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:82: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:85: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:96: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:97: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:98: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:109: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:110: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:119: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:120: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:136: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py:137: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:25: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:39: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:40: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:43: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:46: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:47: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:48: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:57: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:58: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:60: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:62: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:64: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:68: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:73: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:74: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:85: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:87: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:88: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_practica_nativa.py:99: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:21: B311 LOW: Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:22: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:23: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:26: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:31: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:32: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:33: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:35: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:36: B311 LOW: Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:37: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:49: B311 LOW: Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:53: B311 LOW: Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+INFO: gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py:58: B101 LOW: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+INFO: mary/tests/test_mary.py:5: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: mary/tests/test_mary.py:220: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: narrative_conditions/tests/test_independence.py:3: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: narrative_conditions/tests/test_independence.py:20: B603 LOW: subprocess call - check for execution of untrusted input.
+INFO: traits/tests/test_traits.py:5: B404 LOW: Consider possible security implications associated with the subprocess module.
+INFO: traits/tests/test_traits.py:102: B603 LOW: subprocess call - check for execution of untrusted input.
+Bandit: 535 Low conocidas en pruebas; 0 bloqueantes
+RESULTADO: Bandit: seguridad: exit=0, segundos=2.12
+
+=== Calidad estructural ===
+OK: máximo 700 líneas por archivo, 64 por función y 3 parámetros explícitos
+RESULTADO: Calidad estructural: exit=0, segundos=0.52
+
+=== Enlaces documentales ===
+OK: all local Markdown link destinations and heading anchors exist
+RESULTADO: Enlaces documentales: exit=0, segundos=0.11
+
+=== Invariantes E0 ===
+OK: invariantes E0, anclajes existentes y tests nuevos registrados
+RESULTADO: Invariantes E0: exit=0, segundos=0.11
+
+=== Invariantes E1 ===
+OK: invariantes E1 ancladas en pruebas reales
+RESULTADO: Invariantes E1: exit=0, segundos=0.11
+
+=== Invariantes E2 ===
+OK: invariantes E2 ancladas en pruebas existentes
+RESULTADO: Invariantes E2: exit=0, segundos=0.03
+
+=== Invariantes E3 ===
+OK: E3; invariantes y pruebas enlazadas
+RESULTADO: Invariantes E3: exit=0, segundos=0.03
+
+=== h46_walkthrough.py: completa ===
+{
+  "route": "completa",
+  "ending": "noche_cerrada",
+  "turns": 7,
+  "world_time": "2026-10-30T19:20:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "prisma_asegurado",
+    "afinacion_usada",
+    "fusibles_salvados",
+    "diagnostico_completo",
+    "reparacion_fallida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 26
+}
+RESULTADO: h46_walkthrough.py: completa: exit=0, segundos=2.02
+
+=== h46_walkthrough.py: parcial ===
+{
+  "route": "parcial",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:12:00-03:00",
+  "facts": [
+    "elio_escuchado",
+    "turno_iniciado",
+    "apoyo_mutuo",
+    "pronostico_confirmado",
+    "plano_leido",
+    "ruta_visible",
+    "ruta_aprendida",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 16
+}
+RESULTADO: h46_walkthrough.py: parcial: exit=0, segundos=1.27
+
+=== h46_walkthrough.py: sin_preparacion ===
+{
+  "route": "sin_preparacion",
+  "ending": "noche_cerrada",
+  "turns": 5,
+  "world_time": "2026-10-30T19:04:00-03:00",
+  "facts": [
+    "turno_iniciado",
+    "pronostico_confirmado",
+    "emision_fallida",
+    "pulso_estable"
+  ],
+  "steps": 13
+}
+RESULTADO: h46_walkthrough.py: sin_preparacion: exit=0, segundos=1.07
+
+=== h46b_walkthrough.py: casete ===
+{
+  "route": "casete",
+  "ending": "casete_en_la_pieza",
+  "turn": 15,
+  "world_time": "1998-07-24T23:30:00-04:00",
+  "facts": [
+    "saludo_inicial",
+    "turno_iniciado",
+    "puesto_examinado",
+    "marcela_escuchada",
+    "futbol_marcela",
+    "amabilidad_observada",
+    "ayuda_ofrecida",
+    "ayuda_aceptada",
+    "comentario_trenza",
+    "musica_conversada",
+    "casete_entregado",
+    "araya_advirtio",
+    "radio_intervenida",
+    "senal_clara",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_pesado",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: casete: exit=0, segundos=2.32
+
+=== h46b_walkthrough.py: solo ===
+{
+  "route": "solo",
+  "ending": "escalera_azul",
+  "turn": 6,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "mirada_sostenida",
+    "miedo_resistido",
+    "horror_cerrado",
+    "relato_concluido"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: solo: exit=0, segundos=0.87
+
+=== h46b_walkthrough.py: radio ===
+{
+  "route": "radio",
+  "ending": "reporte_sin_novedad",
+  "turn": 4,
+  "world_time": "1998-07-24T23:00:00-04:00",
+  "facts": [
+    "turno_iniciado",
+    "puesto_examinado",
+    "noche_comenzo",
+    "huea_observada",
+    "base_avisada"
+  ]
+}
+RESULTADO: h46b_walkthrough.py: radio: exit=0, segundos=0.72
+
+GISELA: 17/18 comprobaciones satisfactorias.
+FALLÓ: Pruebas del motor, contratos y bibliotecas

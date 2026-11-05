@@ -48,7 +48,10 @@ def instructions() -> None:
     )
     print("Para ejecutar una oferta específica: accion ID (consulte acciones).")
     print("También puede elegir la letra de una oferta: A, B, ..., Z, AA...")
-    print("En un terminal: ↑ recupera comandos; ← y → mueven el cursor.")
+    print(
+        "En un terminal: la flecha hacia arriba recupera comandos; "
+        "las flechas hacia la izquierda y la derecha mueven el cursor."
+    )
     print("Con --developer: acciones bloqueadas, acciones todas, hechos,")
     print("relacion ORIGEN DESTINO CAMPO, propiedad ENTIDAD CAMPO.")
     print(

@@ -2,7 +2,7 @@
 
 ## Alcance del contrato
 
-Ambas funciones son **opcionales**, están disponibles en los paquetes v1.5 y no modifican las reglas narrativas, ALBERTO, TRAITS, DICE, el RNG ni el calendario. Los paquetes v1.2–v1.5 existentes con literales `{"text":"..."}` continúan funcionando. Las nuevas anotaciones se declaran exclusivamente en v1.5.
+Ambas funciones son **opcionales**, están disponibles en los paquetes v1.5 y no modifican las reglas narrativas, ALBERTO, TRAITS, DICE, el RNG ni el calendario. Los paquetes v1.2 a v1.5 existentes con literales `{"text":"..."}` continúan funcionando. Las nuevas anotaciones se declaran exclusivamente en v1.5.
 
 ## Localización durante la autoría
 

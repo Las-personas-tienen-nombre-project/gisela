@@ -1,5 +1,9 @@
 # Laboratorio H4.6: El faro de niebla
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Naturaleza del contenido
 
 **Ficción original de diagnóstico, no canónica**, creada para GISELA y jugable desde GLAUQUIR. No adapta *Blue Forever*, no utiliza sus personajes y no impone reglas narrativas nuevas al motor. El proyecto Ren'Py continúa siendo un trabajo separado.

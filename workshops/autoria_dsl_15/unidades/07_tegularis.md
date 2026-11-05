@@ -1,42 +1,32 @@
-# Unidad 7 — Construcción del encuentro completo de Tegularis
+# Unidad 7: Construcción del encuentro completo de Tegularis
 
 **Objetivo:** integrar habilidades, rasgos, estados, políticas de acontecimientos y desenlaces en un único paquete productivo, explicando sus dependencias causales y comprobando el comportamiento sin modificar el motor.
 
-**Prerrequisitos:** unidades 1–6. **Conceptos nuevos:** alcance de los ataques de área, efectos temporales y sus disparadores, umbral de Pride, fases de política, captura de estado previo, explosión posterior a la muerte, evaluación de desenlaces.
+**Prerrequisitos:** unidades 1 a 6. **Conceptos nuevos:** alcance de los ataques de área, efectos temporales y sus disparadores, umbral de Pride, fases de política, captura de estado previo, explosión posterior a la muerte, evaluación de desenlaces.
 
 **Referencia canónica del taller:** `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`. Su presentación no debe confundirse con las reglas de combate; para comparar balance, consulte también `10_balance_v078.package.json` y `BALANCE_V078.md`.
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 7](../paquetes/07_progresivo/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 
 ## 1. Mapa de dependencias
 
-```text
-Definiciones de personaje (cards) + instancias (initial_state)
-     ↓
-Rasgos y recursos (traits, HP/MP/TP, variables)
-     ↓
-Cartas de habilidad (play.effects) ──→ estados (cards kind=effect)
-     ↓                                 ↓
-Actuación (participants/candidates)  on_apply / on_actor_turn_start / on_expire
-     ↓                                 ↓
-Resoluciones + cambios confirmados de estado
-     ↓
-Políticas event_policies: immediate / after_action
-     ├─ Pride: umbral y efecto ef_pride_volcan
-     └─ Última llama: captura de escudo + tirada + ramas de daño
-     ↓
-Políticas outcome_policies: victoria / derrota / destruccion_mutua
-     ↓
-Observe público → presentación GLAUQUIR
-```
+Las dependencias principales del encuentro son las siguientes:
 
-La flecha indica dependencia de interpretación, **no** el orden exacto de cada instrucción interna del motor. Para conocer los momentos de ejecución, consulte las fases y las pruebas originales.
+1. Las fichas de personaje (`cards`) y sus instancias (`initial_state`) definen a los participantes.
+2. Los rasgos y las variables declaran sus contribuciones y recursos, incluidos HP, MP y TP.
+3. Las habilidades (`play.effects`) producen consecuencias y pueden aplicar estados (`cards` con `kind: "effect"`).
+4. La actuación selecciona participantes y candidatos. Los estados responden a `on_apply`, `on_actor_turn_start` y `on_expire`.
+5. Las resoluciones y los cambios confirmados pueden activar `event_policies` en las fases `immediate` o `after_action`. Pride comprueba su umbral y aplica `ef_pride_volcan`; Última llama captura el escudo, realiza una tirada y elige una rama de daño.
+6. Las políticas `outcome_policies` determinan `victoria`, `derrota` o `destruccion_mutua`.
+7. Observe publica la información que GLAUQUIR presenta al jugador.
+
+Esta lista explica dependencias; para conocer el orden exacto de ejecución, consulte las fases y las pruebas originales.
 
 ## 2. Ataque de área: Firebreath y Wingblast
 
@@ -97,7 +87,7 @@ Los archivos de `ejercicios/07_tegularis/` son paquetes completos **admitidos, p
 | `05_ultima_llama` | explosión tira `1d8` | `1d10` | cambia el dominio del azar |
 | `06_desenlaces` | orden de las políticas invertido | orden canónico | investigar precedencia efectiva |
 
-**Procedimiento para cada práctica:** (1) localice el cambio y exprese la intención; (2) encuentre las declaraciones a las que afecta; (3) haga una predicción comprobable; (4) restablezca el valor/orden canónico; (5) valide el paquete entero; (6) ejecute un escenario que alcance la rama; (7) observe el estado y la traza; (8) compare el resultado con la predicción. La validación del JSON no sustituye los pasos 6–8.
+**Procedimiento para cada práctica:** (1) localice el cambio y exprese la intención; (2) encuentre las declaraciones a las que afecta; (3) haga una predicción comprobable; (4) restablezca el valor/orden canónico; (5) valide el paquete entero; (6) ejecute un escenario que alcance la rama; (7) observe el estado y la traza; (8) compare el resultado con la predicción. La validación del JSON no sustituye los pasos 6 a 8.
 
 **Error deliberado:** `07_error_efecto.package.json` declara `habilidad_inexistente` como candidato NPC de Tegularis. Debe rechazarse en admisión semántica. Corrija la referencia usando `firebreath_01`. Este caso enseña la diferencia entre un identificador bien formado y una referencia existente.
 
@@ -120,4 +110,4 @@ El segundo comando es una herramienta de evaluación del repositorio, no un requ
 
 **Errores frecuentes:** confundir efecto con habilidad; asumir que un objetivo de área recibe daño sin resolución; leer `actuation_turns` como tiempo real; omitir el requisito de HP positivo de Pride; dar por terminada la batalla antes de Última llama; tratar la presentación como fuente de verdad; mezclar variantes de balance.
 
-**Criterio de aprobación:** reconstruir sin consultar la solución las seis reglas, explicar al menos una cadena causal completa (acción → estado → política → acontecimiento → desenlace), superar la admisión y acreditar al menos una observación real de las ramas estudiadas. Si aún no hay ejecución dirigida, marque esa evidencia como pendiente, no como aprobada.
+**Criterio de aprobación:** reconstruir sin consultar la solución las seis reglas, explicar al menos una cadena causal completa (acción, cambio de estado, activación de una política, acontecimiento y desenlace), superar la admisión y acreditar al menos una observación real de las ramas estudiadas. Si aún no hay ejecución dirigida, marque esa evidencia como pendiente, no como aprobada.

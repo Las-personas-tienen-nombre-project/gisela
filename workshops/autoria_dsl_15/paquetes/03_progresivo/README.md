@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 3 — Variables y restricciones
+# Laboratorio acumulativo 3: Variables y restricciones
 
 ## Archivo de trabajo obligatorio
 

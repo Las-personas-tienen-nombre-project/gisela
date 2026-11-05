@@ -1,5 +1,9 @@
 # PA-001: Intervención 16: validación de solicitudes malformadas durante pendientes
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance y fuente
 
 Continuación acumulativa de la intervención 15. Se examinó la frontera pública `GiselaSession.act` durante una transacción auxiliar pendiente, tanto sin restaurar como después de restaurar un snapshot. No se descargó ni ejecutó Ren'Py.

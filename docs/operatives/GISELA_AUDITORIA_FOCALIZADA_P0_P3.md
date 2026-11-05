@@ -1,4 +1,8 @@
-# GISELA — Auditoría focalizada P0–P3 y Addendum A
+# GISELA: Auditoría focalizada P0 a P3 y Addendum A
+
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
 
 Fecha de ejecución: 2026-10-31. Revisión de entrada: `264640220c6b651a045d7b5aaf94882ed3e93a5e` (`added guide to create a package`). Entorno observado: Python 3.13.5. El ZIP de entrada contenía modificaciones documentales no confirmadas en Git; se conservaron y no se atribuyen a esta intervención.
 
@@ -10,7 +14,7 @@ P1 confirmó un punto de diagnóstico defectuoso en `action_handler`: `KeyError`
 
 P2 reproduce el crecimiento informado y lo clasifica como contractual, no accidental. En Faro de Niebla el historial representa 85,70 % del snapshot final; en Central Clasificadora, 91,97 %. El recorrido sintético de 120 movimientos muestra crecimiento aproximadamente lineal del tamaño (6.387 B de historial a 10 acciones; 50.944 B a 120). `history.reading` es explícitamente un registro autoritativo y persistente según la documentación vigente; no se compactó ni se separó sin una decisión de contrato. La mediana por acción aumenta de 35,747 ms a 82,610 ms entre los primeros y últimos bloques medidos porque la validación de sesión recorre estructuras históricas crecientes. Se documenta como costo residual, no se introduce un índice serializado ni un límite arbitrario.
 
-P3 confirma soporte efectivo y pruebas representativas para 1.2–1.5. Los ADR vigentes obligan a conservar la semántica de 1.2–1.4, por lo que no se retiró soporte. La recomendación es tratar 1.5 como versión vigente para nuevas capacidades y 1.2–1.4 como compatibilidad heredada sin extenderlas salvo obligación contractual. Retirar cualquiera de ellas sigue **PENDIENTE DE APROBACIÓN**.
+P3 confirma soporte efectivo y pruebas representativas para 1.2 a 1.5. Los ADR vigentes obligan a conservar la semántica de 1.2 a 1.4, por lo que no se retiró soporte. La recomendación es tratar 1.5 como versión vigente para nuevas capacidades y 1.2 a 1.4 como compatibilidad heredada sin extenderlas salvo obligación contractual. Retirar cualquiera de ellas sigue **PENDIENTE DE APROBACIÓN**.
 
 A1 confirmó alto acoplamiento interno deliberado alrededor de `GiselaSession`, pero no una duplicación de autoridad que justifique capas nuevas. `action_handler` es el único de los cinco módulos estudiados que confirma `_state`; `authorized_gateway` solo restaura `_state` al snapshot anterior cuando falla la persistencia antes de quedar incierta. `scene_actions`, `projection` y `public_view` son lectores/proyectores. No se introdujeron getters, protocolos ni servicios cosméticos.
 
@@ -25,13 +29,13 @@ A3 estaba confirmado en dos niveles. `dice.evaluate()` recompilaba siempre el pe
 | P0-01 | Alta rendimiento | `validate_session` ejecutaba schema `package` y `session` en cada `_validate_state` | Una misma rutina servía frontera no confiable y transacción interna | `_validate_admitted_session` omite solo schema de paquete; conserva schema/semántica/digest de sesión | Corregido |
 | P1-01 | Media diagnóstico | `action_handler.act` capturaba errores estructurales y publicaba su texto como `INVALID_STATE` | Falta de canal interno de diagnóstico | logging con traceback + mensaje público genérico; rollback se mantiene | Corregido dentro del contrato vigente |
 | P2-01 | Media costo | Faro 85,70 %, Central 91,97 % del snapshot en historial | Historial autoritativo persistente, especialmente `reading` | No se cambia contrato; costo medido y documentado | Conservado |
-| P2-02 | Media rendimiento | Acción sintética: 35,747 → 82,610 ms al crecer 20 → 120 acciones | Validación de sesión recorre historial creciente | Sin optimización especulativa; queda riesgo residual | Conservado |
-| P3-01 | Baja mantenimiento | 52 schemas JSON: 13 por cada versión 1.2–1.5 | Compatibilidad explícita y evolución versionada | Mantener; 1.5 vigente, anteriores heredadas | Conservado |
+| P2-02 | Media rendimiento | Acción sintética: de 35,747 a 82,610 ms al pasar de 20 a 120 acciones | Validación de sesión recorre historial creciente | Sin optimización especulativa; queda riesgo residual | Conservado |
+| P3-01 | Baja mantenimiento | 52 schemas JSON: 13 por cada versión 1.2 a 1.5 | Compatibilidad explícita y evolución versionada | Mantener; 1.5 vigente, anteriores heredadas | Conservado |
 | A1-01 | Media mantenibilidad | Módulos de orquestación leen atributos privados de sesión | Son colaboradores internos de una única autoridad | No añadir fachada artificial; documentar fronteras | Conservado |
 | A2-01 | Media verificación | Solo MARY tenía importación aislada explícita | Cobertura desigual del contrato de independencia | Tests aislados para DICE, TRAITS y condiciones | Corregido |
 | A3-01 | Media rendimiento | `evaluate` y bridge recompilaban perfil ya compilado | No existía señal verificable de compilación | mapping compilado con huella; bridge reutiliza plan compilado | Corregido |
 
-## P0 — admisión frente a transacción
+## P0: admisión frente a transacción
 
 `AdmittedPackage` guarda `_payload_json` y `materialize()` reconstruye un objeto nuevo. Las pruebas existentes `test_admitted_copy_not_affected_by_caller_mutation` y `test_mutating_materialized_package_does_not_change_session` ya protegen referencias compartidas. La sesión conserva su propia materialización y no expone un booleano de confianza.
 
@@ -46,7 +50,7 @@ Medición registrada en `docs/operatives/evidence/focal_metrics.json`:
 
 Instrumentación de creación + una acción: `session, observe, act, session, observe`; no aparece `package`.
 
-## P1 — clasificación de capturas
+## P1: clasificación de capturas
 
 - `action_handler`: datos de `Act` ya pasaron schema y autorización antes de ejecutar. Un error estructural inesperado puede ser defecto interno. Se conserva `INVALID_STATE` por compatibilidad de schema, pero se registra el traceback y se evita filtrar el detalle al consumidor.
 - `runtime.restore_session`, `_validate_replay` y `evaluation_pending.validate_replay`: la operación reconstruye un snapshot suministrado por el host. `RESTORE_MISMATCH` es apropiado; la excepción original permanece en `__cause__`.
@@ -55,7 +59,7 @@ Instrumentación de creación + una acción: `session, observe, act, session, ob
 
 No se añadió una nueva jerarquía de excepciones ni un código público no previsto por schemas.
 
-## P2 — historial
+## P2: historial
 
 Consumidores identificados:
 
@@ -82,7 +86,7 @@ Recorrido sintético de movimientos repetidos en Central:
 
 La forma observada es lineal en almacenamiento. No se encontró duplicación accidental independiente de la semántica: cada movimiento conserva la acción y la nueva presentación en `reading`, tal como exige el registro de lectura. Compactarlo cambiaría la experiencia de historial restaurado. P2 se cierra como **Conservado**.
 
-## P3 — matriz de compatibilidad
+## P3: matriz de compatibilidad
 
 | Capacidad | 1.2 | 1.3 | 1.4 | 1.5 |
 |---|---|---|---|---|
@@ -96,9 +100,9 @@ La forma observada es lineal en almacenamiento. No se encontró duplicación acc
 
 Consumidores del repositorio: nueve paquetes 1.2, ningún archivo de paquete 1.3 pero fixtures de prueba TRAITS, un paquete 1.4 y tres paquetes 1.5. Los trece schemas de cada versión permanecen presentes (52 JSON). `test_pa001_version_restore.py` verifica roundtrip representativo de las cuatro versiones y las 12 restauraciones cruzadas incompatibles.
 
-Recomendación: **B — 1.5 vigente; 1.2–1.4 compatibilidad heredada**. No extender capacidades nuevas sobre formatos antiguos salvo necesidad contractual. El retiro de soporte contradice ADR-020/022/023 y queda **PENDIENTE DE APROBACIÓN**.
+Recomendación: **B: 1.5 vigente; 1.2 a 1.4 compatibilidad heredada**. No extender capacidades nuevas sobre formatos antiguos salvo necesidad contractual. El retiro de soporte contradice ADR-020/022/023 y queda **PENDIENTE DE APROBACIÓN**.
 
-## A1 — mapa de dependencias internas
+## A1: mapa de dependencias internas
 
 | Módulo | Acceso privado | Lectura/escritura | Responsabilidad | Riesgo |
 |---|---|---|---|---|
@@ -112,7 +116,7 @@ No se encontró ciclo problemático de importación en arranque. Hay colaboraci�
 
 Decisión A1: **Conservar** la frontera interna. La escritura de `action_handler` y el rollback del gateway son los puntos que deben seguir cubiertos por pruebas transaccionales; no se justifica un rediseño.
 
-## A2 — independencia verificable
+## A2: independencia verificable
 
 Pruebas por proceso nuevo:
 
@@ -123,7 +127,7 @@ Pruebas por proceso nuevo:
 
 Resultado: MARY 21 tests; DICE 18; TRAITS 26; `narrative_conditions` 1; todos PASS.
 
-## A3 — perfiles DICE compilados
+## A3: perfiles DICE compilados
 
 `compile_package_evaluations()` ya compilaba `dice_profiles` y guardaba el resultado dentro del plan. Sin embargo, `traits_dice_bridge.resolve()` lo recompilaba antes de llamar `dice.evaluate()`, que lo compilaba otra vez. La corrección conserva la validación de perfiles crudos en el API independiente de DICE y evita repetirla cuando el objeto proviene de `compile_profile()` y no fue modificado.
 
@@ -173,7 +177,7 @@ Los cambios documentales que ya venían modificados en el ZIP se conservaron sin
 - Central ruta casete con `--verify-restores`: PASS y final terminal.
 - `python tools/check_quality.py`: PASS, límites 500/30/3.
 - `python tools/check_doc_links.py`: PASS.
-- distribución: `pip install . --no-deps --no-build-isolation --target ...` seguido de importación desde `/tmp`: PASS. El intento con aislamiento de build falló únicamente porque el entorno no tiene acceso de red para descargar `setuptools>=80`; no se atribuye al paquete.
+- distribución: `pip install . --no-deps --no-build-isolation --target ...` e importación posterior desde `/tmp`: PASS. El intento con aislamiento de build falló únicamente porque el entorno no tiene acceso de red para descargar `setuptools>=80`; no se atribuye al paquete.
 
 El `pytest` raíz fue intentado dos veces. Antes del cambio P0 alcanzó 64 % sin fallos antes del límite de 180 s de la herramienta; después alcanzó 76 % sin fallos antes del límite de 240 s. No se aumentaron timeouts ni se presenta el root run como aprobado. La extracción tampoco contiene `tools/check_project.py`, aunque documentos del repositorio todavía lo mencionan; por eso no fue posible ejecutar ese agregador histórico.
 

@@ -366,7 +366,7 @@ class TextClient:
         if candidates:
             print("Hay varias acciones posibles:")
             for item in candidates:
-                print("  accion " + item["id"] + " — " + item["label"])
+                print("  accion " + item["id"] + ": " + item["label"])
             print("Escriba uno de los comandos indicados.")
         else:
             print("Acción no disponible. Escriba acciones para ver las opciones.")

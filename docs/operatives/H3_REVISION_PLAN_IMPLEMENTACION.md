@@ -1,5 +1,9 @@
 # H3. Revisión, hallazgos y plan de ALBERTO
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado:** EN CURSO. Primera etapa implementada y comprobada.
 
 **Base:** H2 terminado, contratos JSON 1.2 y decisiones arquitectónicas consolidadas. Este documento describe el código ejecutable y las comprobaciones disponibles; no confunde la admisión estática de un paquete con el soporte dinámico de todas sus operaciones.

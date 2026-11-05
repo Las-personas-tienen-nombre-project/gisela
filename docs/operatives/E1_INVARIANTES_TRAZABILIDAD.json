@@ -23,7 +23,7 @@
     {
       "id": "E1-03",
       "stage": "E1",
-      "statement": "La normalización produce exactamente la solicitud para el puente TRAITS–DICE",
+      "statement": "La normalización produce exactamente la solicitud para el puente TRAITS-DICE",
       "status": "enforced",
       "tests": [
         "gisela/contracts/test_e1_evaluations_v14.py::E1Contracts.test_e1_03_normalized_request_is_exact_bridge_input"

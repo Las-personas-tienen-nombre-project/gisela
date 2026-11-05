@@ -38,7 +38,7 @@ def _show_exploring(view: dict, styler: Styler) -> None:
     title = view.get("scene_title", view["scene"])
     when = view.get("world_time")
     if when:
-        title += " — " + datetime.fromisoformat(when).strftime("%H:%M")
+        title += ": " + datetime.fromisoformat(when).strftime("%H:%M")
     _line("\n" + title.upper(), "scene_title", styler)
     if view.get("scene_description"):
         _line("\n" + view["scene_description"], "description", styler)
@@ -122,13 +122,13 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
     if "actuation" in view and "presentation" not in view:
         clock = view["actuation"]
         print(
-            f"\nACTUACIÓN · ronda {clock['round']} · {clock['actor'] or 'final'} · acciones {clock['remaining']}"
+            f"\nACTUACIÓN: ronda {clock['round']}; {clock['actor'] or 'final'}; acciones {clock['remaining']}"
         )
         if clock["round"] == 1 and clock["actor"] == clock["order"][0]:
             print(
                 "  Iniciativa: "
                 + ", ".join(
-                    f"{x['actor']} {x['die']} → {x['score']}"
+                    f"{x['actor']} {x['die']} -> {x['score']}"
                     for x in clock["initiative"]
                 )
             )
@@ -159,7 +159,7 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
         )
         print(
             styler.paint(
-                "debug", "acciones bloqueadas — muestra identificadores y motivos"
+                "debug", "acciones bloqueadas: muestra identificadores y motivos"
             )
         )
 
@@ -205,12 +205,12 @@ def _causal_description(item: dict) -> str:
     if kind == "contest_resolved":
         return (
             f"Concurso {detail.get('profile', '?')}: {detail.get('left_total', '?')} frente a "
-            f"{detail.get('right_total', '?')} · {detail.get('winner', '?')}"
+            f"{detail.get('right_total', '?')}; {detail.get('winner', '?')}"
         )
     if kind == "variable_changed":
-        return f"{detail.get('variable', '?')}: {detail.get('before', '?')} → {detail.get('after', '?')}"
+        return f"{detail.get('variable', '?')}: {detail.get('before', '?')} -> {detail.get('after', '?')}"
     if kind in ("skill_started", "skill_played"):
-        return str(detail.get("actor", "?")) + " · " + str(detail.get("card", "?"))
+        return str(detail.get("actor", "?")) + "; " + str(detail.get("card", "?"))
     return str(detail.get("text", kind))
 
 
@@ -233,8 +233,8 @@ def offers(
     styler = styler or Styler()
     for index, action in enumerate(available(actions), start):
         label = action["label"]
-        if action.get("target") and " → " not in label:
-            label += " → " + str(action["target"])
+        if action.get("target") and " -> " not in label:
+            label += " -> " + str(action["target"])
         _line(
             f"  {option_letter(index)}) {label}  [accion {action['id']}]",
             "exit" if action.get("role") == "exit" else "action",
@@ -246,8 +246,8 @@ def blocked(actions: list[dict], styler: Styler | None = None) -> None:
     styler = styler or Styler()
     for action in actions:
         if not action["enabled"]:
-            suffix = " — " + action["reason"] if action.get("reason") else ""
-            _line(f"  {action['id']} — {action['label']}{suffix}", "debug", styler)
+            suffix = ": " + action["reason"] if action.get("reason") else ""
+            _line(f"  {action['id']}: {action['label']}{suffix}", "debug", styler)
 
 
 def catalogue(items: list[dict], title: str) -> None:
@@ -417,7 +417,7 @@ def _show_resources(items, indent):
 
 def _collection_text(item):
     if isinstance(item, dict) and {"id", "beneficiary", "remaining"} <= item.keys():
-        return f"{item['beneficiary']} · {item['id']} ({item['remaining']} restantes)"
+        return f"{item['beneficiary']}; {item['id']} ({item['remaining']} restantes)"
     if isinstance(item, dict) and {"actor", "die", "score"} <= item.keys():
-        return f"{item['actor']}: {item['die']} → {item['score']}"
+        return f"{item['actor']}: {item['die']} -> {item['score']}"
     return _display_text(item)

@@ -18,6 +18,14 @@ GLAUQUIR now filters unavailable actions in normal play, groups declared scene r
 
 The current CLI also labels available actions with letters and accepts them as shortcuts. Interactive terminals with Python `readline` support command recall and cursor movement; this input history is separate from the engine's narrative history.
 
+DSL 1.5 also supports author-defined presentation regions and named views: public
+tables, causal grouping, restricted templates, and visual roles. These additions
+project public data without changing logical state or random outcomes. See the
+[presentation workshops](../guides/workshops/README.md). The
+[authoring workshop](../../workshops/autoria_dsl_15/README.md) has nine documented
+units and reduced laboratories for units 1 through 8. Pedagogical acceptance with
+real students remains outstanding.
+
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
 These describe capabilities implemented across the engine and its original demo; Ren'Py files are not included here. For the exact list of verified tests run on a particular release, use its test logs and the tests executed in this repository.

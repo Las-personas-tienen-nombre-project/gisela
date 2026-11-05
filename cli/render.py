@@ -37,7 +37,7 @@ def _show_exploring(view: dict, styler: Styler) -> None:
     title = view.get("scene_title", view["scene"])
     when = view.get("world_time")
     if when:
-        title += " — " + datetime.fromisoformat(when).strftime("%H:%M")
+        title += ": " + datetime.fromisoformat(when).strftime("%H:%M")
     _line("\n" + title.upper(), "scene_title", styler)
     if view.get("scene_description"):
         _line("\n" + view["scene_description"], "description", styler)
@@ -121,13 +121,13 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
     if "actuation" in view and "presentation" not in view:
         clock = view["actuation"]
         print(
-            f"\nACTUACIÓN · ronda {clock['round']} · {clock['actor'] or 'final'} · acciones {clock['remaining']}"
+            f"\nACTUACIÓN: ronda {clock['round']}; {clock['actor'] or 'final'}; acciones {clock['remaining']}"
         )
         if clock["round"] == 1 and clock["actor"] == clock["order"][0]:
             print(
                 "  Iniciativa: "
                 + ", ".join(
-                    f"{x['actor']} {x['die']} → {x['score']}"
+                    f"{x['actor']} {x['die']} -> {x['score']}"
                     for x in clock["initiative"]
                 )
             )
@@ -158,7 +158,7 @@ def show(view: dict, developer: bool = False, styler: Styler | None = None) -> N
         )
         print(
             styler.paint(
-                "debug", "acciones bloqueadas — muestra identificadores y motivos"
+                "debug", "acciones bloqueadas: muestra identificadores y motivos"
             )
         )
 
@@ -182,9 +182,9 @@ def show_causal(events: list[dict]) -> None:
                 f"{detail['right_total']} ({detail['winner']})"
             )
         elif kind == "variable_changed":
-            result = f"{detail['variable']}: {detail['before']} → {detail['after']}"
+            result = f"{detail['variable']}: {detail['before']} -> {detail['after']}"
         elif kind in ("skill_started", "skill_played"):
-            result = f"{detail['actor']} · {detail['card']}"
+            result = f"{detail['actor']}; {detail['card']}"
         else:
             result = detail.get("text", "")
         print(f"  #{item['sequence']} {kind}: {result}")
@@ -219,8 +219,8 @@ def blocked(actions: list[dict], styler: Styler | None = None) -> None:
     styler = styler or Styler()
     for action in actions:
         if not action["enabled"]:
-            suffix = " — " + action["reason"] if action.get("reason") else ""
-            _line(f"  {action['id']} — {action['label']}{suffix}", "debug", styler)
+            suffix = ": " + action["reason"] if action.get("reason") else ""
+            _line(f"  {action['id']}: {action['label']}{suffix}", "debug", styler)
 
 
 def catalogue(items: list[dict], title: str) -> None:
@@ -294,9 +294,9 @@ def _show_region(region: dict, depth: int = 0) -> None:
                     value = str(item["value"])
                     if "maximum" in item:
                         value += "/" + str(item["maximum"])
-                    print(indent + "  " + item["entity"] + " · " + item["id"] + ": " + value)
+                    print(indent + "  " + item["entity"] + "; " + item["id"] + ": " + value)
                 elif {"id", "beneficiary", "remaining"} <= item.keys():
-                    print(indent + "  " + item["beneficiary"] + " · " + item["id"] + " (" + str(item["remaining"]) + ")")
+                    print(indent + "  " + item["beneficiary"] + "; " + item["id"] + " (" + str(item["remaining"]) + ")")
                 else:
                     print(indent + "  " + str(item.get("label", item.get("name", item.get("kind", item)))))
             else:

@@ -1,5 +1,9 @@
 # Roadmap operativo. Las personas tienen nombre y GISELA
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **H4.6.0: MARY v1, implementado y verificado por baterías independientes.** Condiciones comunes, misiones opcionales, objetivos persistentes/reversibles y yields transaccionales. Evidencia: [cierre MARY](MARY_REVISION_Y_CIERRE.md). La adaptación narrativa H4.6 y la integración Ren'Py siguen pendientes.
 
 **Actualización inicial:** 29 de octubre de 2026.

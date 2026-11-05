@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 4 — Rasgos y contribuciones
+# Laboratorio acumulativo 4: Rasgos y contribuciones
 
 ## Archivo de trabajo obligatorio
 

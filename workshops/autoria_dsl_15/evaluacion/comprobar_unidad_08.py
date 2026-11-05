@@ -1,7 +1,7 @@
 """Verificación de admisión y equivalencia lógica, para instructor; no es DSL."""
 import copy, json
 from pathlib import Path
-from gisela.contracts.admit_package import admit_package_file
+from gisela.contracts.admit_package import PackageRejected, admit_package_file
 from gisela.engine.runtime import new_session, restore_session
 ROOT=Path(__file__).resolve().parents[3]
 W=ROOT/'workshops/autoria_dsl_15'
@@ -27,7 +27,7 @@ for f in valid:
  admit_package_file(solution)
  print('ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA:',f.name)
 try:admit_package_file(filenames[-1])
-except Exception:print('RECHAZO ESPERADO:',filenames[-1].name)
+except PackageRejected:print('RECHAZO ESPERADO:',filenames[-1].name)
 else:raise AssertionError('Plantilla con campo privado admitida')
 packages=[admit_package_file(CANON)]+[admit_package_file(f) for f in valid]
 for seed in ('0'*64,'f'*64):

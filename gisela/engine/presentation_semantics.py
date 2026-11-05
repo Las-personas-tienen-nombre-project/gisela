@@ -52,5 +52,5 @@ def _decorate(event: dict, rule: dict) -> None:
         and rule.get("missing", "omit") == "omit"
     ):
         return
-    values = {name: clean(detail.get(name, "—"))[:160] for name in names}
+    values = {name: clean(detail.get(name, "-"))[:160] for name in names}
     event["display_text"] = clean(rule["template"].format_map(values))[:1000]

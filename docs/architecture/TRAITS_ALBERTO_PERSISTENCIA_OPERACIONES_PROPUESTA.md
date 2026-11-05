@@ -77,7 +77,7 @@ Si un juego necesita saber **cuándo, por qué o cuántas veces** cambió un ras
 
 **Idempotencia propuesta:** repetir `assign_trait` sobre un rasgo ya presente y `remove_trait` sobre uno ya ausente son operaciones válidas sin cambio efectivo, sin liberar/consumir capacidad adicional y sin disparar nuevos eventos de cambio. Aunque sea idempotente, una referencia a un rasgo o entidad **inexistentes** sigue siendo un error, no una operación silenciosamente aceptada. `has_trait` exige una entidad y un rasgo conocidos, aun cuando el resultado sea falso.
 
-**Orden de validación:** referencias → clase de entidad → definición y exclusiones → capacidad → mutación del borrador → sucesos de cambio efectivo. La validación previa al cambio impide escribir un estado transitoriamente inválido para "arreglarlo después".
+**Orden de validación:** referencias, clase de entidad, definición y exclusiones, capacidad, modificación del borrador y sucesos de cambio efectivo. La validación previa al cambio impide escribir un estado transitoriamente inválido para "arreglarlo después".
 
 **Límite:** `max_traits_per_entity`, predeterminado en **5** en el manifiesto o perfil de TRAITS del juego. Contar *todos* los rasgos asignados, sean pertinentes o no. Los rasgos circunstanciales que no son asignaciones no ocupan cupo. Valor 0 podría deshabilitar asignaciones si el contrato final lo admite; el techo numérico de seguridad queda por acordar.
 
@@ -85,7 +85,7 @@ Si un juego necesita saber **cuándo, por qué o cuántas veces** cambió un ras
 
 ### 4.1. Cambiar rasgos con capacidad completa
 
-Si una entidad tiene sus cinco espacios ocupados y el autor desea sustituir un rasgo, la secuencia explícita `remove_trait(A)` → `assign_trait(B)` **dentro de una misma transacción** resulta válida si cada operación satisface sus precondiciones; si la segunda falla, se revierte también el retiro. No introducir una operación implícita "reemplazar el peor rasgo".
+Si una entidad tiene sus cinco espacios ocupados y el autor desea sustituir un rasgo, la secuencia explícita `remove_trait(A)` y luego `assign_trait(B)` **dentro de una misma transacción** resulta válida si cada operación satisface sus precondiciones; si la segunda falla, se revierte también el retiro. No introducir una operación implícita "reemplazar el peor rasgo".
 
 ### 4.2. Sucesos y reacciones
 

@@ -1,4 +1,4 @@
-# Hitos reproducibles — Unidad 9
+# Hitos reproducibles: Unidad 9
 
 **Objeto:** evaluación de autoría, no mera prueba de regresión. El alumno usa `mi_trabajo/`; el instructor comprueba **la ruta entregada**, nunca el JSON de ejemplo distribuido.
 
@@ -34,7 +34,7 @@ Fallo o limitación sin encubrir:
 
 ## Verificación de rutas de entrega
 
-Desde la raíz del repositorio, para cada archivo `h01`…`h08`:
+Desde la raíz del repositorio, para cada archivo `h01`...`h08`:
 
 ```bash
 PYTHONPATH=. python -m gisela.contracts.admit_package mi_trabajo/h01.package.json

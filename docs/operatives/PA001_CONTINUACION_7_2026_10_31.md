@@ -1,5 +1,9 @@
 # PA-001: Continuación 7: auditoría offline de GISELA
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PARCIAL.** Esta intervención se limita a GISELA. No se descargó ni ejecutó el SDK Ren'Py; PT-08 conserva aceptación gráfica pendiente.
 
 ## Protocolo y base

@@ -1,4 +1,4 @@
-# Laboratorio mínimo — Unidad 1
+# Laboratorio mínimo: Unidad 1
 
 Se usa el paquete completo oficial `gisela/packages/ejemplo_minimo.package.json` (copia local `00_base`) para aprender declaración y referencia antes de abrir un paquete productivo grande. **No recrea la batalla de Tegularis**, sino que introduce la estructura que el alumno necesitará después.
 

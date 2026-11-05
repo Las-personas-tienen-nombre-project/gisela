@@ -1,4 +1,4 @@
-# Presentación autoral v0.8.0 — arquitectura y alcance comprobado
+# Presentación autoral v0.8.0: arquitectura y alcance comprobado
 
 ## Contrato
 
@@ -21,10 +21,10 @@ estable y una colección ordenada de `regions`. Cada región especifica `id`,
 
 | Componente | Contrato | Comportamiento sin dato |
 |---|---|---|
-| `text` | `text` literal o `source` | «No disponible» |
-| `stat` | `source` de escalar | «No disponible» |
-| `meter` | `source` y `maximum` numéricos | «Magnitud no disponible» |
-| `entity_status` | `source` objeto público | «Tipo incompatible» |
+| `text` | `text` literal o `source` | "No disponible" |
+| `stat` | `source` de escalar | "No disponible" |
+| `meter` | `source` y `maximum` numéricos | "Magnitud no disponible" |
+| `entity_status` | `source` objeto público | "Tipo incompatible" |
 | `entity_collection` | `source` lista pública | Lista vacía / mensaje |
 | `choice_list` | `source` lista de ofertas | Solo elementos `enabled` |
 | `event_log` | `source` lista pública | Lista vacía / mensaje |
@@ -50,18 +50,16 @@ proyección causal existente; incluye secuencias, fuentes y datos autorizados.
 No se vuelven a tirar dados ni se infieren daños desde el texto. La visualización
 no guarda estado y puede reconstruirse tras restauración.
 
-## Compatibilidad y límites pendientes
+## Compatibilidad y evolución
 
-La capacidad se incorporó únicamente al esquema público **1.5**. Otros DSL
-siguen funcionando sin ella. El ejemplo Tegularis presenta iniciativa, turno,
-acciones y causalidad pública existente, pero la observación actual aún no
-publica una lista enriquecida de todos los recursos y efectos de los cinco
-participantes, ni ofertas de habilidad con parámetros/selección de destinatario
-para todos los casos. **No se certifica** la interfaz de encuentro completa ni
-una partida natural jugada mediante el cliente final. No se alteraron reglas,
-cartas ni balance para suplir esas carencias.
+La capacidad se incorporó al esquema público **1.5**. Las versiones anteriores
+siguen funcionando sin ella. El incremento v0.8.0f añadió recursos públicos,
+efectos y destinatarios declarados, descritos a continuación. La
+[presentación v0.8.2](PRESENTACION_DECLARATIVA_V082.md) amplía ese contrato con
+vistas, tablas, agrupación causal y plantillas. Las restricciones de cada entrega
+se conservan en sus informes; no deben confundirse con carencias actuales.
 
-## Incremento v0.8.0f — proyección pública y destinatarios
+## Incremento v0.8.0f: proyección pública y destinatarios
 
 El paquete DSL 1.5 permite opcionalmente `actuation.public_resources`, una lista
 acotada de `{entity,id,current,maximum?}`. Cada `entity` debe ser un participante
@@ -78,7 +76,7 @@ turnos restantes), manteniendo el orden autoral.
 El autor puede declarar `presentation.action_targets`, una lista acotada de
 `{skill,target}` para instancias de habilidad ya existentes. La admisión
 comprueba que ambos identificadores existan y que no se repita una habilidad.
-Una oferta válida se muestra como `Habilidad → destinatario`, conservando
+Una oferta válida se muestra como `Habilidad -> destinatario`, conservando
 `action_id`, `revision` y toda la autorización original. El cliente no inventa
 un comando con objetivo ni resuelve reglas de selección: cada alternativa
 corresponde a una instancia de habilidad dirigida por el guion productivo.

@@ -1,0 +1,12 @@
+Comando: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python tools/check_doc_links.py
+OK: all local Markdown link destinations and heading anchors exist
+exit=0
+Comando: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python tools/check_quality.py
+OK: máximo 700 líneas por archivo, 64 por función y 3 parámetros explícitos
+exit=0
+Comando: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python -m pytest -q tools/test_doc_links.py
+.........                                         [100%]
+9 passed, 95 subtests passed in 0.11s
+exit=0
+Comando: rtk proxy git diff --check
+exit=0

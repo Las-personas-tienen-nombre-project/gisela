@@ -1,4 +1,6 @@
-# v0.8.2e — Criterios de integración pendientes de certificación
+# v0.8.2e: Criterios de integración pendientes de certificación
+
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../operatives/REVISION_DOCUMENTAL_2026_11_04.md).
 
 La validación no debe cambiar la fuente de verdad Observe ni la autorización Act.
 La comparación de presentaciones mide estado lógico, traza causal y RNG, sin
@@ -15,4 +17,4 @@ comprobar desenlaces con estrategia y semilla reproducibles, verificar
 compatibilidad con un paquete anterior sin `presentation`, y revisar la
 clasificación semántica sin atribuir semántica causal inexistente.
 
-Los detalles y resultados observados están en `RESULTADOS_V082.md`.
+Los detalles y resultados observados están en `docs/operatives/RESULTADOS_V082.md`.

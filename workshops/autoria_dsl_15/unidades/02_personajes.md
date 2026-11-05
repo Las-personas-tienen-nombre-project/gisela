@@ -1,4 +1,4 @@
-# Unidad 2 — Personajes, S.O.F.I.A. y estado inicial
+# Unidad 2: Personajes, S.O.F.I.A. y estado inicial
 
 **Objetivo.** Construir y comprobar las fichas de los cinco participantes sin confundir lo que el autor **define** con lo que el motor **instancia** y modifica. El alumno no necesita programar.
 
@@ -6,11 +6,11 @@
 
 **Conceptos nuevos:** carta de personaje, S.O.F.I.A., referencia `card`, instancia, ubicación, `status`, rasgos asignados, recursos iniciales y valores calculados.
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 2](../paquetes/02_progresivo/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 
@@ -60,11 +60,11 @@ En este paquete, `initial_state.characters` reúne las cinco instancias en `volc
 
 **No confundir:** una capacidad de mano no es HP; el `status` vacío no significa que todos los recursos sean cero; una propiedad inicial no es el valor final tras ejecutar acciones. El motor determina el estado autoritativo al ejecutar; las variantes posteriores de actuación inicializan recursos mediante reglas de `actuation.setup`. No invente `hp` o `mp` dentro de la carta para corregir una salida observada: consulte primero el contrato y la declaración productiva.
 
-## 4. Taller guiado: intención → predicción → comprobación
+## 4. Taller guiado: intención, predicción y comprobación
 
 Todos los archivos del ejercicio son **paquetes íntegros de práctica**; sus datos ajenos al ejercicio se conservan para satisfacer las referencias originales. Trabaje **únicamente** en las copias de `ejercicios/02_personajes/`, nunca sobre `packages/tegularis_the_son_of_the_volcan/`.
 
-1. **Identidad pública:** abra `01_identidad.package.json`. La carta `parnecio` tiene el título provisional «Caballero sin nombre». Cambie **solo** `title.text` por `Parnecio Esparcales`. **Prediga:** la identidad interna sigue siendo `parnecio`; no se modifican las referencias ni los resultados lógicos. Compare con `soluciones/02_personajes/01_identidad.package.json`.
+1. **Identidad pública:** abra `01_identidad.package.json`. La carta `parnecio` tiene el título provisional "Caballero sin nombre". Cambie **solo** `title.text` por `Parnecio Esparcales`. **Prediga:** la identidad interna sigue siendo `parnecio`; no se modifican las referencias ni los resultados lógicos. Compare con `soluciones/02_personajes/01_identidad.package.json`.
 2. **Atributo de ficha:** abra `02_sofia.package.json`. En la carta `gillius`, cambie `sofia.awareness` de 4 a **5**. **Prediga:** se modifica un valor de la ficha que una futura resolución podría consultar; no se garantiza por ello un resultado determinado de una tirada. Compruebe la admisión y la coincidencia con el original de práctica.
 3. **Asignación de rasgo:** abra `03_rasgo.package.json`. En la carta `parnecio`, agregue `"dodge"` a la lista vacía `traits`. **Prediga:** la ficha vuelve a portar el rasgo; su bonificación no se aplica automáticamente a cualquier operación, sino solamente bajo los contextos declarados en el rasgo.
 4. **Error controlado:** `04_referencia_invalida.package.json` contiene una instancia de Parnecio cuya propiedad `card` menciona `caballero_inexistente`. Intente admitirla; anote el mensaje del validador. Después corrija la referencia a `parnecio` y vuelva a admitir. No interprete el rechazo como fallo de formato JSON.
@@ -88,6 +88,6 @@ Repita para los otros archivos tras completarlos; para el cuarto, el rechazo ini
 
 ## 6. Recorrido autónomo
 
-Sin consultar los solucionarios, use el paquete `01_cartas_gisela_v15` y esta especificación: la instancia del personaje controlado debe llamarse `parnecio`, usar la carta de Parnecio, comenzar en `volcan`, mostrar «Parnecio Esparcales», portar `dodge` y tener S.O.F.I.A. 8/5/6/4/6; Gillius debe mostrar 10/4/5/4/5 y portar `dodge`; Clarisa e Iosepus deben portar `magic_redux`; Tegularis debe portar `enorme` y `escamas`. Compruebe referencias y admisión. Justifique por qué el texto visible puede variar sin romper el identificador de carta, y por qué el efecto de los rasgos no puede deducirse exclusivamente de esta tabla.
+Sin consultar los solucionarios, use el paquete `01_cartas_gisela_v15` y esta especificación: la instancia del personaje controlado debe llamarse `parnecio`, usar la carta de Parnecio, comenzar en `volcan`, mostrar "Parnecio Esparcales", portar `dodge` y tener S.O.F.I.A. 8/5/6/4/6; Gillius debe mostrar 10/4/5/4/5 y portar `dodge`; Clarisa e Iosepus deben portar `magic_redux`; Tegularis debe portar `enorme` y `escamas`. Compruebe referencias y admisión. Justifique por qué el texto visible puede variar sin romper el identificador de carta, y por qué el efecto de los rasgos no puede deducirse exclusivamente de esta tabla.
 
 **Cierre:** entregue los JSON corregidos, un registro de predicciones y el resultado de cada admisión; no basta con copiar una solución.

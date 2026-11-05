@@ -23,11 +23,11 @@ glauquir --package gisela/packages/h46b_central_clasificadora.package.json
 
 Dentro de la sesión, use `mirar`, `acciones` y `accion ID`; las acciones bloqueadas se reservan al diagnóstico. La [guía de GLAUQUIR](GLAUQUIR.md) reúne los comandos, el modo `--developer` y las opciones de color.
 
-También puede elegir una acción con la letra que aparece junto a ella (`A`, `B`, …, `AA`); las letras cambian con las opciones visibles. Si la entrada y la salida son terminales y Python dispone de `readline`, `↑` recorre los comandos de esta ejecución y recupera el comando completo (`accion ID`) cuando se eligió una letra; `←` y `→` permiten editarlo. El comando `history` muestra la historia narrativa, no este historial de entrada.
+También puede elegir una acción con la letra que aparece junto a ella (`A`, `B`, ..., `AA`); las letras cambian con las opciones visibles. Si la entrada y la salida son terminales y Python dispone de `readline`, la flecha hacia arriba recorre los comandos de esta ejecución y recupera el comando completo (`accion ID`) cuando se eligió una letra; la flecha hacia la izquierda y la flecha hacia la derecha permiten editarlo. El comando `history` muestra la historia narrativa, no este historial de entrada.
 
-Para crear un relato propio con una elección y dos finales, sigue [Crea tu primer paquete](CREAR_PAQUETE.md).
+Para crear un relato propio con una elección y dos finales, siga [Crea tu primer paquete](CREAR_PAQUETE.md).
 
-Desde cualquier directorio, `glauquir` inicia el paquete de ejemplo incorporado si se omite `--package`. Para comprobar un paquete propio antes de jugar, ejecuta `gisela validate historia.package.json`; `--json` entrega diagnósticos estructurados.
+Desde cualquier directorio, `glauquir` inicia el paquete de ejemplo incorporado si se omite `--package`. Para comprobar un paquete propio antes de jugar, ejecute `gisela validate historia.package.json`; `--json` entrega diagnósticos estructurados.
 
 Admisión de un paquete:
 

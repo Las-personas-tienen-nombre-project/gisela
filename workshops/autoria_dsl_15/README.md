@@ -1,12 +1,12 @@
-# Workshop de autoría GISELA DSL 1.5 — Tegularis
+# Workshop de autoría GISELA DSL 1.5: Tegularis
 
-**Estado:** nueve unidades documentadas y laboratorios reducidos 1–8 disponibles. La certificación integral y la prueba con alumnos reales siguen pendientes; no se debe confundir cobertura documental con aceptación final.
+**Estado:** nueve unidades documentadas y laboratorios reducidos 1 a 8 disponibles. La certificación integral y la prueba con alumnos reales siguen pendientes; no se debe confundir cobertura documental con aceptación final.
 
 ## Comenzar
 
 1. [Guía del alumno](GUIA_DEL_ALUMNO.md): cómo preparar una copia de trabajo y comprobar resultados.
 2. [Cómo comprobar un ejercicio](COMO_COMPROBAR.md): qué salida registrar y cómo diagnosticar errores.
-3. Recorra las unidades en orden; cada una empieza **obligatoriamente** con un laboratorio pequeño y deja los paquetes productivos de Tegularis para integración.
+3. Recorra las unidades en orden. Las unidades 1 a 8 empiezan con un laboratorio pequeño y dejan los paquetes productivos de Tegularis para integración; la Unidad 9 reúne la evaluación final.
 4. [Guía del instructor](GUIA_DEL_INSTRUCTOR.md) y [evaluación final](evaluacion/09_integracion/RUBRICA.md).
 
 | Unidad | Laboratorio reducido | Capacidad nueva | Integración |

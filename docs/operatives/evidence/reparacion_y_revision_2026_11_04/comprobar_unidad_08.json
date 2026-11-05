@@ -1,0 +1,9 @@
+{
+  "command": [
+    "/mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python",
+    "workshops/autoria_dsl_15/evaluacion/comprobar_unidad_08.py"
+  ],
+  "exit": 0,
+  "seconds": 36.81,
+  "completed_utc": "2026-11-05T02:21:38.895986+00:00"
+}

@@ -1,5 +1,9 @@
 # H4.6b: Central Clasificadora: jornada de adaptación jugable
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PROTOTIPO JUGABLE, pendiente de aprobación editorial.**
 
 Se trata de una **adaptación condensada de prueba** inspirada en *Blue Forever / Las personas tienen nombre*. No constituye una nueva cronología canónica. Se ejecuta exclusivamente como contenido declarativo de GISELA v1.5 en GLAUQUIR. No se modificó la lógica narrativa del motor, DICE, ALBERTO, S.O.F.I.A., TRAITS ni MARY.

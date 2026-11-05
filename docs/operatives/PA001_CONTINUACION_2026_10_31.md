@@ -1,5 +1,9 @@
 # PA-001: Continuación de la auditoría, 31 de octubre de 2026
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado:** PARCIAL. Complementa `PA001_AUDITORIA_2026_10_31.md`.
 **Origen:** ZIP parcial del hito anterior, no una revisión Git. No se modificó lógica narrativa.
 

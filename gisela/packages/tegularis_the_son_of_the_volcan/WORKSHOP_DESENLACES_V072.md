@@ -1,4 +1,8 @@
-# Workshop — Tegularis: Pride, explosión y desenlaces (v0.7.2)
+# Taller: Tegularis: Pride, explosión y desenlaces (v0.7.2)
+
+**Alcance histórico:** este documento registra una etapa incremental de
+Tegularis. Sus pendientes corresponden a esa etapa; consulte el
+[taller de cierre v0.7.7](WORKSHOP_CIERRE_V077.md) para el combate completo.
 
 Desde la raíz de GISELA:
 
@@ -10,7 +14,7 @@ PYTHONPATH=. pytest -q gisela/packages/tegularis_the_son_of_the_volcan/test_dese
 Paquete: `08_desenlaces_v072.package.json`.
 
 1. Abra `actuation.event_policies` en el JSON. Identifique la fase `immediate` de Pride y la fase `after_action` de Última llama.
-2. Compruebe que Pride exige HP positivo y ≤ 30 % del HP inicial. El efecto `ef_pride_volcan` otorga los cinco modificadores de S.O.F.I.A. y la reducción consultada por TRAITS.
+2. Compruebe que Pride exige HP positivo y <= 30 % del HP inicial. El efecto `ef_pride_volcan` otorga los cinco modificadores de S.O.F.I.A. y la reducción consultada por TRAITS.
 3. Compruebe que la explosión usa la misma corriente de dados de GISELA, produce un aviso numérico y aplica las reducciones sin Hit/Evasion.
 4. Active Groupal Shield; compruebe que se consume una vez y evita la explosión completa.
 5. Fuerce por medio de las pruebas los tres desenlaces: victoria, derrota y destrucción mutua. Observe que el cierre ocurre **después** del daño final.

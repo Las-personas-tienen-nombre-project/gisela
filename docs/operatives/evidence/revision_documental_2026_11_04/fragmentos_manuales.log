@@ -1,0 +1,9 @@
+Fragmentos estructurales comprobados: 7
+docs/manuals/es/GISLEA_primera_aventura_sistemas.md: https://schemas.mary.invalid/v1/definitions.schema.json#/$defs/objective
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/package.schema.json#/$defs/manifest
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/node.schema.json#/$defs/step
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/node.schema.json#/$defs/step
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/common.schema.json#/$defs/operation
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/common.schema.json#/$defs/operation
+docs/manuals/es/GISLEA_primera_aventura_paquete.md: https://schemas.gisela.invalid/v1.5/common.schema.json#/$defs/operation
+No comprueba referencias semánticas ni ejecución de paquetes completos.

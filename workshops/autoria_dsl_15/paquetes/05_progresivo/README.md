@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 5 — Habilidad y resultado confirmado
+# Laboratorio acumulativo 5: Habilidad y resultado confirmado
 
 ## Archivo de trabajo obligatorio
 

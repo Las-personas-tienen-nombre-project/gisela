@@ -1,0 +1,9 @@
+{
+  "command": [
+    "/mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python",
+    "tools/verify_cli_wheel.py"
+  ],
+  "exit": 1,
+  "seconds": 11.19,
+  "completed_utc": "2026-11-05T02:24:01.066953+00:00"
+}

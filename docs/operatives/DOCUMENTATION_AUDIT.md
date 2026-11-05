@@ -1,5 +1,7 @@
 # Documentation audit and reorganization record
 
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](REVISION_DOCUMENTAL_2026_11_04.md).
+
 ## Scope
 
 This review used the repository source tree available at the time. It examined the main README, component README files, authoring guides, implementation modules, versioned contracts, architecture records, ADRs, the roadmap, and milestone reports through H5.

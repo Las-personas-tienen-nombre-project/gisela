@@ -1,5 +1,9 @@
 # PA-001: Intervención 11: pruebas comportamentales de brechas de invariantes
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PARCIAL.** Continuación de la matriz de la intervención 10. No se descargó ni utilizó SDK Ren'Py; no hay aceptación gráfica.
 
 ## Alcance y cambios

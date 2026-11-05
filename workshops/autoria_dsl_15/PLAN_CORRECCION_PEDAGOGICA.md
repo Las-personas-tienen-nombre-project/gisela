@@ -1,4 +1,4 @@
-# Plan de corrección pedagógica — estado verificable
+# Plan de corrección pedagógica: estado verificable
 
 ## Decisión documental
 
@@ -9,13 +9,13 @@ No se crearán `REFERENCIA_DSL.md` ni `GLOSARIO.md` dentro del workshop. La docu
 | Etapa | Estado | Evidencia |
 |---|---|---|
 | Auditar ubicación de fuentes | Hecho | `docs/README.md`, `gisela/contracts/README.md`, manuales y guías examinados |
-| Guía del alumno | Primera versión | `GUIA_DEL_ALUMNO.md` |
-| Guía del instructor | Primera versión | `GUIA_DEL_INSTRUCTOR.md` |
+| Guía del alumno | Disponible | `GUIA_DEL_ALUMNO.md` |
+| Guía del instructor | Disponible | `GUIA_DEL_INSTRUCTOR.md` |
 | Primer paquete reducido acumulativo | Hecho | `paquetes/01_fundamentos/` y sus pruebas |
-| Paquetes mínimos de unidades 2–8 | Pendiente | Ejercicios existentes conservados como integración |
-| Unidad 9 | Pendiente | Sin certificación final |
-| Regresión integral | Pendiente | No atribuir como verde sin ejecutarla |
+| Paquetes mínimos de unidades 2 a 8 | Disponibles | `paquetes/02_progresivo/` a `paquetes/08_progresivo/`; los ejercicios productivos se conservan para integración |
+| Unidad 9 | Documentación y rúbrica disponibles | `unidades/09_integracion.md`; aceptación pedagógica pendiente |
+| Regresión integral | Consultar la evidencia actual | [Revisión documental](../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md); los informes anteriores conservan sus resultados históricos |
 
 ## Próxima prioridad
 
-Crear un **encuentro reducido pero fiel al DSL real** para la Unidad 2, que incorpore dos personajes y una referencia válida; extenderlo gradualmente en unidades 3–7. No introducir un DSL didáctico alternativo. Mantener el paquete productivo de Tegularis inalterado y conservar pruebas de admisión, ejecución y rechazo correspondientes a cada incremento.
+Completar la evaluación pedagógica con alumnos y reunir las evidencias de las ramas exigidas por la Unidad 9. Los laboratorios acumulativos ya están disponibles y emplean el DSL real. Mantener el balance productivo de Tegularis y distinguir los controles de referencia de la evaluación del trabajo propio del alumno.

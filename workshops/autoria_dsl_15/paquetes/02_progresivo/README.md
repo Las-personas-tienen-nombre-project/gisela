@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 2 — Personajes e instancias
+# Laboratorio acumulativo 2: Personajes e instancias
 
 ## Archivo de trabajo obligatorio
 
@@ -11,7 +11,7 @@ cp workshops/autoria_dsl_15/paquetes/02_progresivo/02_laboratorio.package.json m
 
 Antes de empezar, abra `mi_trabajo/u02.package.json` y cambie una etiqueta visible; compruebe luego que el archivo original conserva su texto. Para una prueba negativa, altere solamente la copia y guarde el diagnóstico. No copie el archivo original sobre su solución al terminar.
 
-**Prerrequisito:** laboratorio 1 (Unidad 1 — fundamentos). **Objetivo:** Crear dos fichas reales, una ubicación y dos instancias iniciales.
+**Prerrequisito:** laboratorio 1 (Unidad 1: fundamentos). **Objetivo:** Crear dos fichas reales, una ubicación y dos instancias iniciales.
 
 ## Intención y mecanismo
 

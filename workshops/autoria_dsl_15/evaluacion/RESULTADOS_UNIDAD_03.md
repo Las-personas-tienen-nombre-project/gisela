@@ -1,6 +1,6 @@
-# Resultados — Unidad 3
+# Resultados: Unidad 3
 
-Referencia: `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json` y `contracts/v1_5/common.schema.json`.
+Referencia: `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json` y `gisela/contracts/v1_5/common.schema.json`.
 
 ## Admisión pública
 

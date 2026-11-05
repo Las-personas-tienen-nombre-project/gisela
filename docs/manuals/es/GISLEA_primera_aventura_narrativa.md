@@ -1,11 +1,11 @@
 Manual de Gisela
 ================
 
-**By El Programador Pobre**
+**Por El Programador Pobre**
 
 
 
-GISELA — Mi primera historia interactiva
+GISELA: Mi primera historia interactiva
 ========================================
 
 *Guía práctica para construir historias interactivas sin conocimientos previos de programación.*
@@ -70,12 +70,14 @@ El propósito no es escribir una obra extensa ni utilizar todas las capacidades 
 
 No necesita saber programar para comenzar. En las páginas siguientes conocerá las herramientas indispensables, aprenderá lo necesario para trabajar con archivos JSON y construirá su primera historia paso a paso.
 
+**Estado del material:** este manual desarrolla el diseño de *El paraguas olvidado*, pero sus paquetes por etapas aún no se incluyen en el repositorio. Los comandos de las etapas presuponen archivos construidos y validados por el lector. Para comenzar con un paquete completo disponible, consulte [Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+
 2. Componentes y herramientas de GISELA
 =======================================
 
 Para construir una historia interactiva con GISELA necesitamos tres cosas: un guion que describa la historia y sus reglas, un motor que pueda interpretarlas y una herramienta que nos permita recorrerla. GISELA proporciona el motor y el cliente GLAUQUIR; el autor se encarga de preparar el guion utilizando su lenguaje declarativo.
 
-En esta sección conoceremos las piezas fundamentales del sistema y prepararemos las herramientas que utilizaremos durante el workshop.
+En esta sección conoceremos las piezas fundamentales del sistema y prepararemos las herramientas que utilizaremos durante el taller.
 
 # 2.1. El guion productivo
 
@@ -85,7 +87,7 @@ En GISELA, esas declaraciones forman un *paquete narrativo*. El paquete contiene
 
 El autor utiliza un lenguaje declarativo de dominio específico, o DSL, cuya representación actual está basada en JSON. No necesita escribir funciones de Python para definir el comportamiento de cada escena.
 
-Los **schemas** y contratos de GISELA establecen qué declaraciones son válidas. Antes de ejecutar una historia, el motor comprueba tanto su estructura como las relaciones entre sus componentes. Este proceso se denomina *admisión*.
+Los **esquemas** y contratos de GISELA establecen qué declaraciones son válidas. Antes de ejecutar una historia, el motor comprueba tanto su estructura como las relaciones entre sus componentes. Este proceso se denomina *admisión*.
 
 Un archivo puede estar correctamente escrito en JSON y, aun así, no constituir un paquete válido de GISELA. Por ejemplo, podría mencionar una escena que no existe o utilizar una operación que el motor no admite.
 
@@ -105,7 +107,7 @@ Estos componentes se complementan, pero no deben confundirse.
 
 Por ejemplo, que Tomás tenga buena capacidad de observación es una característica de su personaje; que conozca un detalle sobre el paraguas es información adquirida; y que consiga recordarlo durante una conversación puede depender de una evaluación probabilística. Son tres asuntos diferentes, que conviene representar por separado.
 
-Durante el workshop utilizaremos cada componente solamente cuando aparezca una necesidad narrativa que justifique su intervención.
+Durante el taller utilizaremos cada componente solamente cuando aparezca una necesidad narrativa que justifique su intervención.
 
 # 2.3. GLAUQUIR: recorrer y comprobar la historia
 
@@ -119,98 +121,9 @@ Esto será importante cuando necesitemos distinguir entre lo que escribimos en e
 
 GLAUQUIR no es GISELA en su totalidad. Es uno de los clientes que pueden utilizar su motor, del mismo modo que una integración con Ren'Py puede presentar una historia mediante una interfaz de novela visual.
 
-# 2.4. Preparar las herramientas
-
-Para realizar los ejercicios necesitaremos una instalación compatible de Python, GISELA, un editor de texto y una terminal.
-
-Python es el lenguaje en que está implementado el motor. No tendremos que aprender a programar en Python, pero necesitamos que esté instalado para utilizar la distribución de GISELA empleada en este manual.
-
-La versión examinada requiere Python 3.10 o posterior.
-
-Una vez obtenida la distribución del proyecto, abriremos una terminal en su carpeta principal. En Windows, Linux y macOS, los pasos para abrirla pueden variar, pero los comandos de GISELA serán los mismos una vez que esté instalado y activado el entorno correspondiente.
-
-La instalación desde los archivos del proyecto utiliza:
-
-```bash  
-python -m pip install -e .  
-```
-
-Este comando instala GISELA desde la carpeta actual. En algunos sistemas, Python se ejecuta mediante `python3` o `py`, por lo que debe utilizarse el nombre disponible en el equipo.
-
-Para evitar conflictos con otras aplicaciones de Python, se recomienda trabajar dentro de un entorno virtual. Las instrucciones específicas de creación y activación para cada sistema se incluyen en la guía de instalación que acompaña a la distribución didáctica.
-
-Después de instalar, podemos comprobar el funcionamiento mediante una historia incluida con GISELA:
-
-```bash  
-glauquir  
-```
-
-GLAUQUIR abrirá su historia predeterminada. Para salir, podemos utilizar el comando de salida documentado por el cliente o cerrar la sesión desde la terminal.
-
-# 2.5. JSON en pocas palabras
-
-JSON es una forma de escribir información estructurada mediante texto. No es un lenguaje de programación: permite declarar datos que otros programas pueden leer.
-
-Observe este ejemplo:
-
-```json  
-{  
-  "nombre": "Tomás",  
-  "atencion": 5,  
-  "lleva_paraguas": false,  
-  "objetos": ["bolso", "billete"]  
-}  
-```
-
-Las llaves `{ }` delimitan un objeto y los corchetes `[ ]` contienen una lista. Cada dato tiene un nombre, llamado *clave*, y un valor. Los textos se escriben entre comillas dobles, los números sin comillas y los valores lógicos se representan mediante `true` o `false`.
-
-Los datos se separan mediante comas, excepto el último elemento de cada objeto o lista.
-
-Este ejemplo sirve únicamente para comprender la escritura de JSON; **no es una declaración válida de personaje GISELA**. En el workshop utilizaremos las claves y estructuras que establecen los contratos reales del motor.
-
-No necesita memorizar todas las reglas de JSON antes de comenzar. Aprenderemos las estructuras que vayamos utilizando y emplearemos la validación de GISELA para detectar posibles errores.
-
-# 2.6. Validar y ejecutar un paquete
-
-GISELA proporciona una herramienta para comprobar los paquetes narrativos antes de utilizarlos.
-
-Si nuestro archivo se llama `mi_historia.package.json`, podemos validarlo mediante:
-
-```bash  
-gisela validate mi_historia.package.json  
-```
-
-La herramienta informa si el paquete puede admitirse o si contiene problemas que debemos corregir.
-
-Una vez validado, podemos ejecutarlo en GLAUQUIR:
-
-```bash  
-glauquir --package mi_historia.package.json  
-```
-
-El nombre del archivo debe coincidir con el que realmente hayamos creado. Si se encuentra en otra carpeta, tendremos que indicar su ruta.
-
-Durante la ejecución, GLAUQUIR mostrará las acciones disponibles. El autor podrá recorrer la historia y verificar si los acontecimientos ocurren bajo las condiciones esperadas.
-
-La validación comprueba que el paquete cumple los contratos correspondientes, pero no garantiza que la historia tenga sentido o que todos sus caminos lleguen a un desenlace. Eso requiere probar las decisiones, revisar el estado y comprobar los resultados.
-
-# 2.7. Qué necesitamos comprender antes de continuar
-
-Hasta aquí basta con distinguir cuatro responsabilidades:
-
-**El autor** escribe la historia y declara sus posibilidades.
-
-**El DSL y sus contratos** establecen cómo expresar esas declaraciones y cuáles son válidas.
-
-**El motor GISELA** ejecuta las reglas y conserva el estado narrativo.
-
-**GLAUQUIR** presenta la historia y permite recorrerla y examinar sus resultados.
-
-En la siguiente sección comenzaremos el workshop de *El paraguas olvidado*. Primero identificaremos sus personajes, acontecimientos y decisiones en lenguaje natural; después convertiremos esa información en declaraciones del DSL y construiremos un paquete que pueda ejecutarse en GLAUQUIR.
-
 # 2.4. Instalación de GISELA
 
-Para realizar el workshop necesita Python, los archivos de GISELA y un editor de texto. No es necesario instalar Ren'Py.
+Para realizar el taller necesita Python, los archivos de GISELA y un editor de texto. No es necesario instalar Ren'Py.
 
 GISELA requiere Python 3.10 o posterior.
 
@@ -238,7 +151,7 @@ Descomprima la distribución de GISELA en una carpeta de trabajo, por ejemplo `D
 
 Abra una terminal dentro de esa carpeta. Debe encontrarse en el directorio que contiene el archivo `pyproject.toml`.
 
-Trabajaremos con los archivos de la distribución fuente de GISELA. Si dispone de una instalación preparada especialmente para el workshop, utilice las instrucciones que la acompañan.
+Trabajaremos con los archivos de la distribución fuente de GISELA. Si dispone de una instalación preparada especialmente para el taller, utilice las instrucciones que la acompañan.
 
 * * *
 
@@ -258,7 +171,7 @@ python3 -m venv .venv
 ./.venv/bin/python -m pip install -e .  
 ```
 
-El comando `pip install -e .` instala GISELA desde la carpeta actual. No necesita instalar las dependencias de pruebas del desarrollador para completar el workshop.
+El comando `pip install -e .` instala GISELA desde la carpeta actual. No necesita instalar las dependencias de pruebas del desarrollador para completar el taller.
 
 * * *
 
@@ -309,7 +222,7 @@ JSON permite escribir datos estructurados mediante texto. Las llaves contienen o
 
 Los textos se escriben entre comillas dobles; los números y los valores `true` y `false`, sin comillas. Los elementos se separan mediante comas, excepto el último.
 
-Este ejemplo enseña cómo se escribe JSON, pero no constituye una declaración válida de personaje GISELA. En el workshop utilizaremos las claves reales del DSL.
+Este ejemplo enseña cómo se escribe JSON, pero no constituye una declaración válida de personaje GISELA. En el taller utilizaremos las claves reales del DSL.
 
 Puede editar los archivos con cualquier editor que permita guardar texto plano. Conviene utilizar uno que destaque la sintaxis JSON para identificar con facilidad comillas, comas y llaves.
 
@@ -349,7 +262,21 @@ Sustituya `mi_historia.package.json` por el nombre real de su archivo.
 
 La validación confirma que el paquete cumple los contratos, pero no garantiza que todos sus caminos narrativos funcionen. Eso lo comprobaremos jugando e inspeccionando los resultados en GLAUQUIR.
 
-3. Workshop: construir una historia con GISELA
+# 2.7. Qué necesitamos comprender antes de continuar
+
+Hasta aquí basta con distinguir cuatro responsabilidades:
+
+**El autor** escribe la historia y declara sus posibilidades.
+
+**El DSL y sus contratos** establecen cómo expresar esas declaraciones y cuáles son válidas.
+
+**El motor GISELA** ejecuta las reglas y conserva el estado narrativo.
+
+**GLAUQUIR** presenta la historia y permite recorrerla y examinar sus resultados.
+
+En la siguiente sección comenzaremos el taller de *El paraguas olvidado*. Primero identificaremos sus personajes, acontecimientos y decisiones en lenguaje natural; después convertiremos esa información en declaraciones del DSL y construiremos un paquete que pueda ejecutarse en GLAUQUIR.
+
+3. Taller: construir una historia con GISELA
 ==============================================
 
 En este taller construiremos *El paraguas olvidado*, una historia breve que irá adquiriendo capacidades a medida que las necesitemos. Comenzaremos con personajes, una situación y dos desenlaces; luego incorporaremos acciones, hechos, conocimientos, relaciones, atributos, rasgos, azar y objetivos.

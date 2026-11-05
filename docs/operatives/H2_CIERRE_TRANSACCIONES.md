@@ -1,5 +1,9 @@
 # Cierre del núcleo transaccional de H2
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Propósito y estado
 
 H2 verifica el contrato de suspensión y reconstrucción aprobado en ADR-001 a ADR-005 para las operaciones que ejecuta el MVP. No declara terminado el motor general ni afirma que todos los orígenes futuros de decisiones auxiliares estén implementados. Las acciones de exploración, el uso de habilidades, las consultas especializadas y el anfitrión Ren'Py pertenecen a hitos posteriores.

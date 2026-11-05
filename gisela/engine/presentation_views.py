@@ -29,9 +29,9 @@ def _tabular(view: dict, definition: dict) -> dict:
 
 def _cell(value, definition):
     if value is None:
-        return definition.get("missing", "—")
+        return definition.get("missing", "-")
     if type(value) not in (str, int, float, bool):
-        return definition.get("missing", "—")
+        return definition.get("missing", "-")
     return str(value)[:160]
 
 

@@ -1,0 +1,97 @@
+{"package": "ejercicios/02_personajes/01_identidad.package.json", "result": "admitted"}
+{"package": "ejercicios/02_personajes/02_sofia.package.json", "result": "admitted"}
+{"package": "ejercicios/02_personajes/03_rasgo.package.json", "result": "admitted"}
+{"package": "ejercicios/02_personajes/04_referencia_invalida.package.json", "result": "rejected", "diagnostics": [{"code": "UNKNOWN_CARD", "path": "/initial_state/characters/0card"}, {"code": "MISSING_SOFIA", "path": "/nodes/0/steps/1/evaluation/inputs/base/stat/character"}, {"code": "MISSING_SOFIA", "path": "/cards/6/play/effects/2/value"}, {"code": "MISSING_SOFIA", "path": "/cards/6/play/effects/6/value"}, {"code": "MISSING_SOFIA", "path": "/cards/6/play/effects/7/value"}, {"code": "MISSING_SOFIA", "path": "/cards/6/play/effects/8/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/2/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/6/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/7/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/8/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/11/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/15/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/16/value"}, {"code": "MISSING_SOFIA", "path": "/cards/7/play/effects/17/value"}, {"code": "MISSING_SOFIA", "path": "/cards/8/play/effects/2/value"}, {"code": "MISSING_SOFIA", "path": "/cards/8/play/effects/6/value"}, {"code": "MISSING_SOFIA", "path": "/cards/8/play/effects/7/value"}, {"code": "MISSING_SOFIA", "path": "/cards/8/play/effects/8/value"}]}
+{"package": "ejercicios/03_condiciones/01_condicion_simple.package.json", "result": "admitted"}
+{"package": "ejercicios/03_condiciones/02_condicion_compuesta.package.json", "result": "admitted"}
+{"package": "ejercicios/03_condiciones/03_umbral_pride.package.json", "result": "admitted"}
+{"package": "ejercicios/03_condiciones/04_referencia_invalida.package.json", "result": "rejected", "diagnostics": [{"code": "UNKNOWN_VARIABLE", "path": "/cards/6/play/requires/compare/left"}]}
+{"package": "ejercicios/04_rasgos/01_dodge.package.json", "result": "admitted"}
+{"package": "ejercicios/04_rasgos/02_penalizacion.package.json", "result": "admitted"}
+{"package": "ejercicios/04_rasgos/03_precision.package.json", "result": "admitted"}
+{"package": "ejercicios/04_rasgos/04_escamas.package.json", "result": "admitted"}
+{"package": "ejercicios/04_rasgos/05_pride_redux.package.json", "result": "admitted"}
+{"package": "ejercicios/04_rasgos/06_rasgo_inexistente.package.json", "result": "rejected", "diagnostics": [{"code": "TRAITS_INVALID", "path": "/cards/0/traits"}, {"code": "TRAITS_INVALID", "path": "/initial_state/characters/0/traits"}]}
+{"package": "ejercicios/05_habilidades/01_slash_tp.package.json", "result": "admitted"}
+{"package": "ejercicios/05_habilidades/02_double_slash_costo.package.json", "result": "admitted"}
+{"package": "ejercicios/05_habilidades/03_blai_requisito.package.json", "result": "admitted"}
+{"package": "ejercicios/05_habilidades/04_slash_acierto.package.json", "result": "admitted"}
+{"package": "ejercicios/05_habilidades/05_blai_potencia.package.json", "result": "admitted"}
+{"package": "ejercicios/05_habilidades/06_referencia_invalida.package.json", "result": "rejected", "diagnostics": [{"code": "UNKNOWN_VARIABLE", "path": "/cards/8/play/requires/all/2/compare/left"}]}
+{"package": "ejercicios/06_actuacion/01_iniciativa.package.json", "result": "admitted"}
+{"package": "ejercicios/06_actuacion/02_umbrales.package.json", "result": "admitted"}
+{"package": "ejercicios/06_actuacion/03_atributo.package.json", "result": "admitted"}
+{"package": "ejercicios/06_actuacion/04_candidatos.package.json", "result": "admitted"}
+{"package": "ejercicios/06_actuacion/05_guarda.package.json", "result": "admitted"}
+{"package": "ejercicios/06_actuacion/06_referencia_invalida.package.json", "result": "rejected", "diagnostics": [{"code": "ACTUATION_SKILL_OWNER", "path": "/actuation/participants/4/candidates/0"}]}
+{"package": "ejercicios/07_tegularis/01_firebreath_area.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/02_paralisis.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/03_regeneracion.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/04_pride.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/05_ultima_llama.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/06_desenlaces.package.json", "result": "admitted"}
+{"package": "ejercicios/07_tegularis/07_error_efecto.package.json", "result": "rejected", "diagnostics": [{"code": "ACTUATION_SKILL_OWNER", "path": "/actuation/participants/4/candidates/0"}]}
+{"package": "ejercicios/08_presentacion/01_regiones.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/02_columnas.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/03_acontecimientos.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/04_causalidad.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/05_plantillas.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/06_semantica.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/07_otra_vista.package.json", "result": "admitted"}
+{"package": "ejercicios/08_presentacion/08_error_plantilla.package.json", "result": "rejected", "diagnostics": [{"code": "PRESENTATION_INVALID", "path": "/presentation"}]}
+{"package": "paquetes/01_fundamentos/00_base.package.json", "result": "admitted"}
+{"package": "paquetes/01_fundamentos/01_primera_decision.package.json", "result": "admitted"}
+{"package": "paquetes/01_fundamentos/02_otra_decision.package.json", "result": "admitted"}
+{"package": "paquetes/02_progresivo/02_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/03_progresivo/03_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/04_progresivo/04_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/05_progresivo/05_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/06_progresivo/06_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/07_progresivo/07_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/08_progresivo/08_laboratorio.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u02_inicio_incompleto.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u02_solucion_referencia.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u03_inicio_incompleto.package.json", "result": "rejected", "diagnostics": [{"code": "UNKNOWN_VARIABLE", "path": "/initial_state/session_variables/permiso_entrada"}, {"code": "UNKNOWN_VARIABLE", "path": "/nodes/0/steps/1/options/1/enabled_if/compare/left"}, {"code": "UNKNOWN_VARIABLE", "path": "/nodes/0/steps/1/options/0/effects/0/target"}]}
+{"package": "paquetes/transferencia/u03_solucion_referencia.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u04_inicio_incompleto.package.json", "result": "rejected", "diagnostics": [{"code": "TRAITS_INVALID", "path": "/cards/0/traits"}, {"code": "TRAITS_INVALID", "path": "/initial_state/characters/0/traits"}]}
+{"package": "paquetes/transferencia/u04_solucion_referencia.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u05_inicio_incompleto.package.json", "result": "rejected", "diagnostics": [{"code": "UNKNOWN_CARD", "path": "/initial_state/skills/0card"}]}
+{"package": "paquetes/transferencia/u05_solucion_referencia.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u06_inicio_incompleto.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u06_solucion_referencia.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u07_inicio_incompleto.package.json", "result": "admitted"}
+{"package": "paquetes/transferencia/u07_solucion_referencia.package.json", "result": "admitted"}
+{"package": "soluciones/02_personajes/01_identidad.package.json", "result": "admitted"}
+{"package": "soluciones/02_personajes/02_sofia.package.json", "result": "admitted"}
+{"package": "soluciones/02_personajes/03_rasgo.package.json", "result": "admitted"}
+{"package": "soluciones/03_condiciones/01_condicion_simple.package.json", "result": "admitted"}
+{"package": "soluciones/03_condiciones/02_condicion_compuesta.package.json", "result": "admitted"}
+{"package": "soluciones/03_condiciones/03_umbral_pride.package.json", "result": "admitted"}
+{"package": "soluciones/04_rasgos/01_dodge.package.json", "result": "admitted"}
+{"package": "soluciones/04_rasgos/02_penalizacion.package.json", "result": "admitted"}
+{"package": "soluciones/04_rasgos/03_precision.package.json", "result": "admitted"}
+{"package": "soluciones/04_rasgos/04_escamas.package.json", "result": "admitted"}
+{"package": "soluciones/04_rasgos/05_pride_redux.package.json", "result": "admitted"}
+{"package": "soluciones/05_habilidades/01_slash_tp.package.json", "result": "admitted"}
+{"package": "soluciones/05_habilidades/02_double_slash_costo.package.json", "result": "admitted"}
+{"package": "soluciones/05_habilidades/03_blai_requisito.package.json", "result": "admitted"}
+{"package": "soluciones/05_habilidades/04_slash_acierto.package.json", "result": "admitted"}
+{"package": "soluciones/05_habilidades/05_blai_potencia.package.json", "result": "admitted"}
+{"package": "soluciones/06_actuacion/01_iniciativa.package.json", "result": "admitted"}
+{"package": "soluciones/06_actuacion/02_umbrales.package.json", "result": "admitted"}
+{"package": "soluciones/06_actuacion/03_atributo.package.json", "result": "admitted"}
+{"package": "soluciones/06_actuacion/04_candidatos.package.json", "result": "admitted"}
+{"package": "soluciones/06_actuacion/05_guarda.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/01_firebreath_area.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/02_paralisis.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/03_regeneracion.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/04_pride.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/05_ultima_llama.package.json", "result": "admitted"}
+{"package": "soluciones/07_tegularis/06_desenlaces.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/01_regiones.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/02_columnas.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/03_acontecimientos.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/04_causalidad.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/05_plantillas.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/06_semantica.package.json", "result": "admitted"}
+{"package": "soluciones/08_presentacion/07_otra_vista.package.json", "result": "admitted"}

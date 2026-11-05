@@ -1,5 +1,9 @@
 # Guía de documentación técnica en español de Chile
 
+Registro histórico: este documento conserva el estado de su etapa original.
+Consulte el [índice del archivo](README.md) para distinguir sus antecedentes
+de las instrucciones vigentes.
+
 ## Alcance
 
 Este proyecto utiliza español de Chile para los documentos de diseño, revisión, operaciones y pruebas. La prosa debe ser precisa, natural y formal, sin intentar reproducir por escrito modismos coloquiales que no correspondan al público de un manual técnico. Los identificadores, comandos, campos y valores de JSON conservan su grafía inglesa por decisión arquitectónica.

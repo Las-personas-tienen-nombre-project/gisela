@@ -25,7 +25,7 @@
 
 ### 3.1. Tirada oculta: una transacción
 
-`Act` autoriza la evaluación → DICE evalúa en el borrador → GISELA aplica las consecuencias y reacciones → commit único de estado/RNG o rollback íntegro.
+`Act` autoriza la evaluación; DICE evalúa en el borrador y GISELA aplica las consecuencias y reacciones. El estado y el RNG se confirman juntos o se revierte la transacción íntegra.
 
 Se conserva la semántica transaccional de `roll` actual mientras no se introduzca un contrato de evaluación pública.
 

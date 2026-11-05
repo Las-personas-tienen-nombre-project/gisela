@@ -20,7 +20,15 @@ FOLDERS = (
     "dice",
 )
 EXTENSIONS = {".py", ".rpy", ".md", ".json", ".toml", ".txt"}
-EXCLUDED = {"docs/narrative/reference/Blue_Forever.md"}
+EXCLUDED = {
+    "docs/narrative/reference/Blue_Forever.md",
+    # Snapshots históricos: conservar bytes y hashes, sin reformatear evidencia.
+    "docs/operatives/evidence/v077/sesion_tegularis_v077.json",
+    "docs/operatives/evidence/v080f/tegularis_victoria_snapshot.json",
+    "docs/operatives/evidence/v081c/cronica.json",
+    "docs/operatives/evidence/v081c/decisiones.json",
+    "docs/operatives/evidence/v081c/participantes.json",
+}
 MAX_FILE_LINES = 700
 MAX_FUNCTION_LINES = 64
 MAX_PARAMETERS = 3

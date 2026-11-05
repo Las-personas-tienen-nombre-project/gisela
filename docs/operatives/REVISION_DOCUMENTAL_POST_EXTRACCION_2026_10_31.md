@@ -29,4 +29,4 @@ No se ejecutó en esta intervención la suite completa del motor ni los recorrid
 
 ## Límites
 
-El detector de enlaces comprueba rutas locales Markdown, no enlaces HTTP ni referencias de texto plano dentro de registros históricos. La guía con secciones §4, §7, §8, §10 y §11 mencionada en la revisión no aparece como documento vigente identificable en este ZIP; las correcciones se aplicaron a los documentos de entrada realmente presentes, sin fabricar esa guía. La aceptación gráfica con Ren'Py queda fuera del alcance de este repositorio independiente.
+El detector de enlaces comprueba rutas locales Markdown, no enlaces HTTP ni referencias de texto plano dentro de registros históricos. La guía con secciones sección 4, sección 7, sección 8, sección 10 y sección 11 mencionada en la revisión no aparece como documento vigente identificable en este ZIP; las correcciones se aplicaron a los documentos de entrada realmente presentes, sin fabricar esa guía. La aceptación gráfica con Ren'Py queda fuera del alcance de este repositorio independiente.

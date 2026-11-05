@@ -1,4 +1,8 @@
-# Workshop — Cartas del encuentro v0.7.1
+# Taller: Cartas del encuentro v0.7.1
+
+**Alcance histórico:** este documento registra una etapa incremental de
+Tegularis. Sus pendientes corresponden a esa etapa; consulte el
+[taller de cierre v0.7.7](WORKSHOP_CIERRE_V077.md) para el combate completo.
 
 **Alcance comprobable:** paquete `07_cartas_v071.package.json`, DSL 1.5, sobre la base más reciente suministrada de GISELA. El guion de combate se compila con `build_v071.py`; el motor desconoce nombres, daño, HP, MP y estrategias del dragón.
 

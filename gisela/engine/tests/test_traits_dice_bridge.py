@@ -1,4 +1,4 @@
-"""Pruebas de la frontera neutral TRAITS–DICE con RNG transaccional."""
+"""Pruebas de la frontera neutral TRAITS-DICE con RNG transaccional."""
 
 from __future__ import annotations
 

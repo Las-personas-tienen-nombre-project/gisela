@@ -1,5 +1,9 @@
 # PA-001: Intervención 15: respuestas inválidas en estados pendientes
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance
 
 Continuación sobre el ZIP acumulativo de la intervención 14, sin descarga ni ejecución del SDK de Ren'Py. Se investigó la conservación del estado y la recuperación tras acciones inválidas durante evaluaciones visibles y transacciones pendientes. Se compararon ejecuciones continuas con ejecuciones restauradas desde el snapshot exportado.

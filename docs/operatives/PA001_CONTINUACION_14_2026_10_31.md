@@ -1,5 +1,9 @@
 # PA-001: Intervención 14: recuperación tras fallos causales anidados
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance
 
 Se continuó PT-02R sobre la intervención 13, sin SDK de Ren'Py. Se verificó si un error en la ejecución de efectos con consecuencia anidada o un conflicto de escrituras reactivas deja la sesión intacta, conserva la equivalencia después de restaurar y permite elegir otra acción válida.

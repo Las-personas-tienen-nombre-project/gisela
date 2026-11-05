@@ -1,5 +1,9 @@
 # PA-001: Intervención 12: PT-02R
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance
 
 Comparación diferencial entre ejecución continua y ejecución restaurada, incluyendo reacciones causales, operaciones pendientes, consumo reproducible de RNG y rollback. Sin descarga, instalación ni ejecución de Ren'Py.

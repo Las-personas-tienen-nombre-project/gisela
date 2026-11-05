@@ -1,4 +1,4 @@
-# Workshop práctico — Tegularis v0.7.7
+# Taller práctico: Tegularis v0.7.7
 
 ## Preparación
 

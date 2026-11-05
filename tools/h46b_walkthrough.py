@@ -77,7 +77,7 @@ def play(route="casete", seed=SEED, verify=False):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="H4.6b — jornada de Central Clasificadora"
+        description="H4.6b: jornada de Central Clasificadora"
     )
     parser.add_argument(
         "--route", choices=("casete", "solo", "radio"), default="casete"

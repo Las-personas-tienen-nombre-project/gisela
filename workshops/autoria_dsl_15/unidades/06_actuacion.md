@@ -1,16 +1,16 @@
-# Unidad 6 — Turnos, actuación y políticas NPC
+# Unidad 6: Turnos, actuación y políticas NPC
 
 **Objetivo.** Interpretar y modificar las reglas declarativas del turno de Tegularis; explicar cómo se pasa de una observación pública a una acción autorizada y cómo los candidatos NPC se relacionan con las habilidades. La actividad se realiza sin programar en Python.
 
-**Prerrequisitos:** unidades 1–5. **Conceptos nuevos:** iniciativa, atributo principal, umbral de acciones, participante, candidato NPC, guarda `when`, selección de acciones, Observe/Act, revisión de sesión, política de acontecimiento, condición de desenlace y rechazo de acciones no autorizadas.
+**Prerrequisitos:** unidades 1 a 5. **Conceptos nuevos:** iniciativa, atributo principal, umbral de acciones, participante, candidato NPC, guarda `when`, selección de acciones, Observe/Act, revisión de sesión, política de acontecimiento, condición de desenlace y rechazo de acciones no autorizadas.
 
 **Referencia ejecutable:** `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`. Los ejercicios son copias completas y no modifican el canon. Los campos mostrados son fragmentos reales, no paquetes independientes.
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 6](../paquetes/06_progresivo/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 
@@ -77,20 +77,20 @@ Un candidato puede incluir una condición `when`, utilizando el mismo DSL de con
 
 En un ejercicio, este ejemplo añade una guarda siempre falsa a una copia de Tegularis. No se pretende equilibrar el combate: se busca aprender por qué un candidato declarado puede no estar disponible. Retire la guarda añadida para restaurar el comportamiento original. Una guarda falsa no borra ni invalida la habilidad en su definición; solamente impide seleccionar ese candidato por esa vía.
 
-No reduzca las políticas NPC al orden de una lista. La admisibilidad de una acción depende asimismo del estado, sus requisitos, las instancias disponibles y la autorización del motor. Para practicar una **prioridad condicional explícita** con alternativas y `otherwise`, examine el contrato real `play_first_skill` del paquete `packages/tegularis_npc_prioridades_v03.package.json` y la prueba `engine/tests/test_npc_skill_priorities.py`. Este ejemplo utiliza un guion con nodos y no debe confundirse con el bloque `actuation.participants` del encuentro completo.
+No reduzca las políticas NPC al orden de una lista. La admisibilidad de una acción depende asimismo del estado, sus requisitos, las instancias disponibles y la autorización del motor. Para practicar una **prioridad condicional explícita** con alternativas y `otherwise`, examine el contrato real `play_first_skill` del paquete `packages/tegularis_npc_prioridades_v03.package.json` y la prueba `gisela/engine/tests/test_npc_skill_priorities.py`. Este ejemplo utiliza un guion con nodos y no debe confundirse con el bloque `actuation.participants` del encuentro completo.
 
 ## 5. Acontecimientos y desenlaces: políticas diferentes
 
 El paquete tiene `actuation.event_policies`, con `id`, `phase`, `when` y `effects`, y `actuation.outcome_policies`, con condiciones de término. `pride_of_the_volcan_son` tiene fase `immediate`: su condición puede conceder el efecto `ef_pride_volcan`. `ultima_llama` utiliza `after_action`, con acciones y desenlaces propios. Las condiciones de victoria, derrota y destrucción mutua son políticas de desenlace. **No son listas de habilidades a elegir por un NPC**: son reglas del ciclo de vida que reaccionan a un estado confirmado.
 
-## 6. Observe → Act: quién decide y quién confirma
+## 6. Observe y Act: quién decide y quién confirma
 
 1. **Observe:** el cliente pide la vista pública de sesión. Allí encuentra `session_id`, `revision`, `actions` y `actuation` (entre otros datos). Observe no altera el estado.
 2. **Elección:** el cliente selecciona un `action_id` que haya sido ofrecido y esté habilitado. No está autorizado a escribir arbitrariamente un ataque o manipular HP.
 3. **Act:** envía `session_id`, `revision` y `action_id` de esa vista. GISELA confirma la acción y aumenta la revisión cuando corresponde.
 4. **Nueva observación:** el cliente vuelve a consultar el estado y los acontecimientos confirmados. Si una acción se rechazó, no debe presentarse como ejecutada.
 
-**Ejemplo conceptual, no sintaxis JSON de paquete:** «si aparece Slash entre las acciones habilitadas, transmitir su `action_id` con la revisión actual». El formato preciso de la solicitud se estudia en el esquema público `contracts/v1_5/act.schema.json` y en `engine/tests/test_actuation_public_v073.py`. Un identificador inventado o una revisión caducada se rechazan sin mutar el estado; esta garantía se comprueba en las pruebas del repositorio.
+**Ejemplo conceptual, no sintaxis JSON de paquete:** "si aparece Slash entre las acciones habilitadas, transmitir su `action_id` con la revisión actual". El formato preciso de la solicitud se estudia en el esquema público `gisela/contracts/v1_5/act.schema.json` y en `gisela/engine/tests/test_actuation_public_v073.py`. Un identificador inventado o una revisión caducada se rechazan sin mutar el estado; esta garantía se comprueba en las pruebas del repositorio.
 
 ## 7. Ejercicios guiados y predicciones
 
@@ -107,7 +107,7 @@ Los cinco primeros archivos `ejercicios/06_actuacion/*.package.json` son **paque
 
 ## 8. Recorrido autónomo
 
-Sin abrir los solucionarios, reciba esta especificación: «El dado de iniciativa tiene diez caras; un resultado efectivo de 7 habilita dos acciones y uno de 10, tres. Clarisa usa Openness, Gillius da preferencia a Stance Aggressive antes de Grito de guerra y Tegularis puede considerar Firebreath. Ninguna acción NPC puede referenciar una instancia inexistente». Reconstruya los cinco valores canónicos, repare el error de referencia y entregue una tabla de intención → campo → predicción → admisión → resultado observado. Añada una explicación de por qué `Act` no acepta un `action_id` inventado.
+Sin abrir los solucionarios, reciba esta especificación: "El dado de iniciativa tiene diez caras; un resultado efectivo de 7 habilita dos acciones y uno de 10, tres. Clarisa usa Openness, Gillius da preferencia a Stance Aggressive antes de Grito de guerra y Tegularis puede considerar Firebreath. Ninguna acción NPC puede referenciar una instancia inexistente". Reconstruya los cinco valores canónicos, repare el error de referencia y entregue una tabla de intención, campo, predicción, admisión y resultado observado. Añada una explicación de por qué `Act` no acepta un `action_id` inventado.
 
 ## 9. Comprobación y errores frecuentes
 
@@ -123,7 +123,7 @@ Ejecute una ronda por la interfaz de GLAUQUIR:
 python -m gisela.cli.glauquir --auto --actuation --rounds 1 --package workshops/autoria_dsl_15/ejercicios/06_actuacion/01_iniciativa.package.json
 ```
 
-La comprobación de instructor, **no requerida al alumno**, es `PYTHONPATH=. python workshops/autoria_dsl_15/evaluacion/comprobar_unidad_06.py`. Para observar el rechazo de acciones indebidas y la restauración de sesión hay pruebas específicas en `engine/tests/test_actuation_public_v073.py`.
+La comprobación de instructor, **no requerida al alumno**, es `PYTHONPATH=. python workshops/autoria_dsl_15/evaluacion/comprobar_unidad_06.py`. Para observar el rechazo de acciones indebidas y la restauración de sesión hay pruebas específicas en `gisela/engine/tests/test_actuation_public_v073.py`.
 
 **Errores frecuentes:** inferir que `candidates` ejecuta todos los ataques; creer que el primer candidato siempre se puede usar; confundir `initiative_die` con un modificador de ataque; alterar una ficha cuando el cambio corresponde a `main_stat`; confundir `event_policies` con la política NPC; inventar nombres de instancias; tomar mensajes de interfaz por cambios confirmados; intentar ejecutar `Act` con revisiones caducadas.
 

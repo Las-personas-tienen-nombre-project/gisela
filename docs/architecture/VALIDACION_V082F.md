@@ -1,4 +1,6 @@
-# GISELA v0.8.2f — Determinismo, restauración y distribución
+# GISELA v0.8.2f: Determinismo, restauración y distribución
+
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../operatives/REVISION_DOCUMENTAL_2026_11_04.md).
 
 ## Fuente de verdad
 

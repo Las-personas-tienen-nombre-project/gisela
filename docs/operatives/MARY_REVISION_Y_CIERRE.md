@@ -1,5 +1,9 @@
 # MARY v1. Auditoría, etapas y cierre
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Punto de partida
 
 El código inspeccionado ya ejecutaba hechos, reglas reactivas, condiciones y transacciones en `gisela/engine`. La dependencia directa de `conditions.py` respecto de las estructuras de sesión impedía reutilizar su lenguaje lógico. `reactions.py` tiene una autoridad de confirmación y un límite causal que MARY no debe duplicar.

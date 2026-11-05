@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 7 — Integración causal mínima
+# Laboratorio acumulativo 7: Integración causal mínima
 
 ## Archivo de trabajo obligatorio
 

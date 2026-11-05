@@ -1,4 +1,4 @@
-"""Comprobaciones docentes de TRAITS y selección NPC; no son DSL del alumno."""
+"""Comprobación docente de TRAITS sobre la referencia de Unidad 4; no evalúa NPC ni entregas."""
 from __future__ import annotations
 import json
 from pathlib import Path

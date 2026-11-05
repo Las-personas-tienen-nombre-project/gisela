@@ -1,4 +1,6 @@
-# GISELA — cierre integrado del taller de Tegularis (v0.7.7)
+# GISELA: cierre integrado del taller de Tegularis (v0.7.7)
+
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
 
 Estado: **integración comprobada; certificación de desenlaces naturales incompleta**.
 

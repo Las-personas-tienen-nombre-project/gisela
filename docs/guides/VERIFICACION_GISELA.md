@@ -1,8 +1,22 @@
 # Verificación independiente de GISELA
 
-Para preparar y publicar una nueva versión, siga el procedimiento de
-[versionado y publicaciones](../../README.md#versioning-and-releases). Incluye
-la comprobación de la wheel y de los comandos instalados fuera del repositorio.
+Esta guía describe las comprobaciones del repositorio y de la distribución.
+No establece un procedimiento de publicación de versiones.
+
+## Distribución y comandos instalados
+
+Con las dependencias de desarrollo instaladas, ejecute desde la raíz:
+
+```bash
+python tools/verify_cli_wheel.py
+```
+
+El verificador construye una wheel en un directorio temporal, la instala con sus
+dependencias en un entorno virtual nuevo y ejecuta ambas CLI fuera del repositorio.
+Comprueba la ayuda, una historia incorporada, un paquete externo y los diagnósticos
+de validación. La instalación requiere acceso a las dependencias o una caché
+disponible. Un fallo de descarga no demuestra una instalación correcta; usar
+dependencias del entorno anfitrión tampoco sustituye esta comprobación aislada.
 
 ## Alcance y comandos
 
@@ -77,15 +91,22 @@ comando aplica la política efectiva; el informe completo conserva los detalles.
 ## Criterios de coherencia documental
 
 - Las instrucciones vigentes deben nombrar herramientas presentes en el árbol.
-- Los ADR registran decisiones aprobadas y no se reescriben. Los controles E0–E3
+- Los ADR conservan las decisiones y sus estados de aprobación. La corrección
+  editorial no cambia esas decisiones. Los controles E0 a E3
   los implementan los cuatro scripts `verify_e*_invariants.py`.
 - Informes de hitos y registros previos pueden conservar comandos históricos:
   no constituyen instrucciones actuales de ejecución.
-- `check_doc_links.py` valida destinos Markdown locales, **no** afirmaciones
-  arquitectónicas, esquemas, comandos históricos ni enlaces de Internet.
+- `check_doc_links.py` valida destinos Markdown locales y anclas de encabezados
+  ATX o anclas HTML explícitas. No comprueba afirmaciones arquitectónicas, esquemas,
+  comandos históricos ni enlaces de Internet. Omite distribuciones y metadatos generados.
 - `test_doc_links.py` verifica que las páginas operativas de entrada no
   recomienden orquestadores retirados y que los scripts citados en el conjunto
-  de páginas actuales exista físicamente.
+  de páginas actuales existan físicamente.
+
+Los cinco snapshots históricos trasladados a `docs/operatives/evidence/` figuran
+explícitamente en las exclusiones de tamaño de `check_quality.py`: se conservan
+sin reformatear para no alterar sus bytes. Los hashes y las rutas se comprueban
+en las pruebas documentales. Los demás límites estructurales se mantienen.
 
 ## Alcance de la evidencia
 

@@ -1,0 +1,2 @@
+Command: .venv/bin/python tools/verify_cli_wheel.py
+Wheel CLI: PASS

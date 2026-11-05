@@ -1,4 +1,7 @@
-# Evidencia v0.8.0f — Observe, Act y presentación de Tegularis
+# Evidencia v0.8.0f: Observe, Act y presentación de Tegularis
+
+Registro histórico. La [copia mantenida del informe](../docs/operatives/RESULTADOS_V080F.md)
+enlaza las comprobaciones actuales sin alterar los resultados de esta entrega.
 
 ## Base y alcance
 
@@ -10,15 +13,15 @@ No se cambiaron cartas, probabilidades, políticas NPC ni resultados de reglas.
 
 ## Pruebas que finalizaron
 
-- Basal: `python tools/check_quality.py` — OK; y `python -m pytest -q tools/test_quality.py` — 11 aprobadas.
-- Tras el incremento: `python tools/check_quality.py` — OK (700/64/3).
-- `engine/tests/test_author_presentation_v080.py` — 8 aprobadas.
-- `engine/tests/test_actuation_public_v073.py` — 7 aprobadas.
-- `engine/tests/test_public_presentation_v080f.py` — 6 aprobadas, incluidas
-  cinco participantes, quince recursos, objetivos publicables, restauración,
+- Comprobación inicial: `python tools/check_quality.py`, resultado OK; `python -m pytest -q tools/test_quality.py`, 11 pruebas aprobadas.
+- Tras el incremento: `python tools/check_quality.py`: OK (700/64/3).
+- `engine/tests/test_author_presentation_v080.py`: 8 aprobadas.
+- `engine/tests/test_actuation_public_v073.py`: 7 aprobadas.
+- `engine/tests/test_public_presentation_v080f.py`: 6 aprobadas, incluidas
+  los cinco participantes, quince recursos, objetivos publicables, restauración,
   rechazo de recursos privados, rechazo de destino inexistente, autorización,
   revisión vencida y ausencia de mutación ante el rechazo.
-- `tools/test_quality.py` — 11 aprobadas.
+- `tools/test_quality.py`: 11 aprobadas.
 
 ## Partida real por interfaz pública
 

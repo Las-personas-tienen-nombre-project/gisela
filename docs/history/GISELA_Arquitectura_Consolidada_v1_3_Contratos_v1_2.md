@@ -1,5 +1,9 @@
 # GISELA: Arquitectura consolidada y contratos del motor narrativo
 
+Registro histórico: este documento conserva el estado de su etapa original.
+Consulte el [índice del archivo](README.md) para distinguir sus antecedentes
+de las instrucciones vigentes.
+
 **Versión documental:** 1.3, sincronización con los contratos JSON 1.2 y la admisión semántica del 29 de octubre de 2026
 **Proyecto de referencia:** *Central Clasificadora. Demo Ren'Py*; primer caso de uso: *Las personas tienen nombre*  
 **Alcance:** arquitectura del motor general GISELA, subsistema ALBERTO y sistema opcional S.O.F.I.A.; auditoría y preparación de schemas.  
@@ -33,23 +37,23 @@
 
 ```text
                      Paquete narrativo validado
-         manifest · nodes · cards · scenes · rules · initial_state
-                                   │
-                                   ▼
+         manifest; nodes; cards; scenes; rules; initial_state
+                                   |
+                                   v
                                 GISELA
                 sesión / máquina narrativa / ejecutor
                 condiciones / reacciones / transacciones
                 historial / RNG / validación / Observe-Act
-                                   │
+                                   |
                                  ALBERTO
                    instancias / ubicaciones / inventario
                    relaciones / memorias / tiempo / efectos
-                                   │
+                                   |
                              S.O.F.I.A. (opcional)
                          atributos y modificadores
-                                   │
+                                   |
                      proyecciones y acciones tipadas
-                              ╱             ╲
+                              /             \
                             CLI            Ren'Py
 ```
 
@@ -136,7 +140,7 @@ Si una cadena de pasos automáticos salta indefinidamente sin llegar a una esper
 - **Conocimiento:** proposiciones/hechos que una instancia de personaje conoce, modificados mediante `learn_fact`; no se distribuyen automáticamente a terceros.
 - **Creencia:** valor afirmado o negado de una proposición individual, modificado mediante `set_belief`; puede diferir del hecho histórico y de las creencias de otro personaje.
 
-**Autoridad del historial:** un registro persistente de ocurrencias es la verdad de hechos narrativos. `has_fact`, recuentos y accesos por clave se resuelven mediante índices reconstruidos en memoria. No se guardarán simultáneamente `narrative.facts` y `history.facts` como fuentes de verdad independientes. La traza y las ejecuciones de nodo deben tener responsabilidades no superpuestas; ver §9.
+**Autoridad del historial:** un registro persistente de ocurrencias es la verdad de hechos narrativos. `has_fact`, recuentos y accesos por clave se resuelven mediante índices reconstruidos en memoria. No se guardarán simultáneamente `narrative.facts` y `history.facts` como fuentes de verdad independientes. La traza y las ejecuciones de nodo deben tener responsabilidades no superpuestas; ver sección 9.
 
 ### 5.1. Tiempo ficticio
 
@@ -202,7 +206,7 @@ Una operación puede descubrir una elección auxiliar (por ejemplo, descartar un
 
 ### 9.1. Fuentes de verdad
 
-El estado confirmado incluye identificadores de paquete/sesión y digest, formato de sesión, estado y cursor narrativo, escena, turno/identidad de ejecución, reloj ficticio, instancias ALBERTO, valores persistentes, capacidades, relaciones, conocimientos, creencias, hechos y ejecuciones confirmadas, RNG, asignador de IDs y revisiones. Opcionalmente se serializa **una** operación pendiente según §8.3.
+El estado confirmado incluye identificadores de paquete/sesión y digest, formato de sesión, estado y cursor narrativo, escena, turno/identidad de ejecución, reloj ficticio, instancias ALBERTO, valores persistentes, capacidades, relaciones, conocimientos, creencias, hechos y ejecuciones confirmadas, RNG, asignador de IDs y revisiones. Opcionalmente se serializa **una** operación pendiente según sección 8.3.
 
 - **Hechos:** historial autoritativo de ocurrencias. `has_fact` y sus índices son derivados.
 - **Ejecuciones:** cada entrada a nodo tiene identidad y turno; el historial de ejecuciones no se reconstruye suponiendo que cada nodo ocurrió una sola vez.
@@ -250,7 +254,7 @@ No se han ejecutado pruebas de comportamiento del motor nuevo ni de restauració
 | Semántica de cambios netos por ronda | Disparos repetidos o perdidos en escrituras consecutivas | **PENDIENTE TÉCNICO**: preferir evento de cambio neto por campo y ronda. |
 | Cadena automática de nodos sin espera | Bucle infinito o ejecución muy larga | **DERIVADO DE ADR-008**: presupuesto y error tipado, distinto de ciclos interactivos. |
 | Repetición de evaluación de operación pendiente | Concesiones dobles, RNG/IDs consumidos, exposición de borradores | **CUBIERTO CONCEPTUALMENTE POR ADR-001-005**: re-ejecutar desde estado confirmado y commit exact-once; faltan tests. |
-| Posible discrepancia entre validación estructural y proyección | Paquete válido que no puede mostrarse | **PENDIENTE**: fixtures de ida y vuelta autoría → Observe/Act. |
+| Posible discrepancia entre validación estructural y proyección | Paquete válido que no puede mostrarse | **PENDIENTE**: fixtures de ida y vuelta entre la autoría y Observe/Act. |
 | Colisiones o ciclos de referencias contextuales | Cambios al objetivo equivocado | **ADR-009**: resolución tipada y ámbitos vinculados. |
 | Expiraciones por `all` y recurrencias | Estado adicional y reglas difíciles de reconstruir | **DIFERIDO**: no complejizar v1 sin caso de uso. |
 | Cambios de definiciones entre guardado/restauración | Sesión irreproducible | **ADR-013**: digest estricto, sin migraciones silenciosas. |
@@ -370,12 +374,12 @@ La nueva `session` separa `history.facts` / `history.executions` / `history.trac
 
 ## 17. Enmienda contractual: schemas 1.2 y puerta de admisión (29-10-2026)
 
-**Artefacto vigente de contratos:** `GISELA_Schemas_v1_2_Admisor_Semantico_v0_2.zip`. Esta enmienda sustituye a la sección 16 **para determinar cuál es el paquete actual**; aquella conserva valor histórico de la transición 1.0→1.1. Los 13 JSON Schema llevan identificadores `/v1.2/`, `manifest.format_version` y `session.schema_version` son `1.2`. No existe migración automática.
+**Artefacto vigente de contratos:** `GISELA_Schemas_v1_2_Admisor_Semantico_v0_2.zip`. Esta enmienda sustituye a la sección 16 **para determinar cuál es el paquete actual**; aquella conserva valor histórico de la transición de 1.0 a 1.1. Los 13 JSON Schema llevan identificadores `/v1.2/`, `manifest.format_version` y `session.schema_version` son `1.2`. No existe migración automática.
 
 **Historial de opciones:** cada `history.executions[].selected_options` conserva pares `{step_id, option_id}`, cuya interpretación se realiza dentro del nodo al que corresponde la ejecución. No se exige unicidad de ese par en toda una ejecución, pues un ciclo autoral puede volver a ofrecer un paso. `history.trace` registra diagnóstico causal, no sustituye la procedencia normalizada de elecciones. Los registros 1.1 con un solo `option_id` no son restaurables por inferencia cuando existen opciones homónimas.
 
 **Acciones de escena y elemento:** `pending_transaction.source` con `kind: scene_action` lleva siempre `scene` y `action`; añade `element` cuando la acción está declarada en `scene.elements[].actions`. La omisión de `element` identifica exclusivamente una acción en `scene.actions`. Los IDs de acciones son únicos por propietario y pueden repetirse en otros elementos de la misma escena. GISELA conserva la responsabilidad de construir fuentes precisas; el frontend solo envía `action_id` opacos autorizados.
 
-**Admisión:** el anfitrión que cargue paquetes para GISELA debe pasar por una única puerta de validación antes de iniciar una sesión: JSON estricto (incluido rechazo de claves duplicadas y constantes no JSON) → JSON Schema → comprobación semántica estática → paquete admitido. Los errores bloquean; las advertencias se publican y, por defecto, no bloquean. El módulo `admit_package.py` implementa ya esa puerta **offline**. El ejecutor aún no existe y, por tanto, no se afirma que la integración runtime esté implementada. Esta puerta no añade una autoridad sobre las transacciones: GISELA conserva la única autoridad de ejecución.
+**Admisión:** el anfitrión que cargue paquetes para GISELA debe pasar por una única puerta de validación antes de iniciar una sesión: lectura JSON estricta (con rechazo de claves duplicadas y constantes no JSON), validación mediante JSON Schema y comprobación semántica estática. Si supera estos controles, el paquete queda admitido. Los errores bloquean; las advertencias se publican y, por defecto, no bloquean. El módulo `admit_package.py` implementa ya esa puerta **offline**. El ejecutor aún no existe y, por tanto, no se afirma que la integración runtime esté implementada. Esta puerta no añade una autoridad sobre las transacciones: GISELA conserva la única autoridad de ejecución.
 
 **Pruebas y límites:** regresiones de formatos antiguos, opciones ambiguas, acciones por elemento, error de referencia, claves duplicadas y formatos JSON inválidos. Validar un paquete no demuestra reproducibilidad de RNG, atomicidad, secreto de las proyecciones, reanudación de pendientes ni digest canónico; siguen siendo obligaciones independientes para el futuro ejecutor. ADR-015 permanece sin aprobación expresa.

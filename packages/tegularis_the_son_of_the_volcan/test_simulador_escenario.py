@@ -54,8 +54,8 @@ def test_seeded_transcripts_and_rng_unchanged():
             fight = FightTegularis(rng, ScenarioConfig(trace=True, death_burst=burst))
             records.append((fight.result(), rng.getstate()))
     encoded = json.dumps(records, ensure_ascii=False, sort_keys=True).encode()
-    # Fixture capturada antes del refactor: 100 recorridos, trazas completas y RNG final.
+    # 100 recorridos, trazas completas y RNG final; solo cambian las comillas del texto.
     assert (
         hashlib.sha256(encoded).hexdigest()
-        == "d9dd325e07d57cbb9e6d75d0250f4b110401402e94128dc4672e69994b852380"
+        == "8b2f8396312cf4b8c953db4ba946d12de705a1b77038e66359efeaeca156d0c6"
     )

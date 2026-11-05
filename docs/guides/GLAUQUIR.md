@@ -12,27 +12,39 @@ glauquir --package gisela/packages/h46b_central_clasificadora.package.json --see
 
 Las partidas nuevas generan una semilla aleatoria segura automáticamente. `--seed` acepta 64 caracteres hexadecimales en minúsculas para reproducir una partida; no se combina con `--restore`, que conserva el RNG del snapshot.
 
-`mirar` muestra la escena, las personas y elementos visibles, las salidas declaradas y las acciones habilitadas. `acciones` enumera solo ofertas habilitadas; `acciones ELEMENTO` hace lo mismo para un elemento visible. Las categorías vacías se omiten. Los elementos sin rol declarado figuran como «ELEMENTOS»; GLAUQUIR no deduce portabilidad ni cantidades a partir del nombre o de los verbos.
+`mirar` muestra la escena, las personas y elementos visibles, las salidas declaradas y las acciones habilitadas. `acciones` enumera solo ofertas habilitadas; `acciones ELEMENTO` hace lo mismo para un elemento visible. Las categorías vacías se omiten. Los elementos sin rol declarado figuran como "ELEMENTOS"; GLAUQUIR no deduce portabilidad ni cantidades a partir del nombre o de los verbos.
 
 | Comando | Uso |
 | --- | --- |
 | `mirar`, `mirar ELEMENTO` | Leer escena o inspeccionar un elemento público. |
 | `acciones`, `acciones ELEMENTO` | Consultar ofertas ejecutables. |
 | `accion ID` | Ejecutar una oferta habilitada por su ID público. |
-| `A`, `B`, …, `Z`, `AA`, … | Ejecutar la oferta que muestra esa letra en la observación actual. |
+| `A`, `B`, ..., `Z`, `AA`, ... | Ejecutar la oferta que muestra esa letra en la observación actual. |
 | `hablar`, `ir`, `examinar`, `tomar`, `dejar`, `dar`, `usar` | Buscar una oferta habilitada por verbo y objeto. |
 | `inventario`, `estado`, `ficha`, `misiones`, `history`, `ayuda` | Leer información pública; `history` muestra pasajes narrativos confirmados. |
 | `guardar RUTA`, `cargar RUTA`, `salir` | Gestionar la sesión. |
 
 Las letras y los números siguen el orden mostrado: primero las salidas y luego las demás acciones habilitadas. Las letras se reasignan al cambiar las opciones; `acciones ELEMENTO` conserva la letra de cada oferta en la lista completa. La pantalla también presenta el comando `accion ID` de cada oferta. Una acción bloqueada no puede ejecutarse por ID, verbo, letra ni número. `--auto` se detiene si no hay acciones habilitadas; no garantiza llegar a un final.
 
-Cuando tanto la entrada como la salida son terminales y Python dispone de `readline`, `↑` recorre los comandos escritos durante esta ejecución y `←` y `→` mueven el cursor para editarlos. Si se eligió una letra, `↑` recupera el comando completo `accion ID`. Este historial de entrada no se guarda en la partida y es distinto de `history`, el registro narrativo confirmado. La entrada redirigida o por tubería sigue aceptando los mismos comandos, sin edición interactiva de línea.
+Cuando tanto la entrada como la salida son terminales y Python dispone de `readline`, la flecha hacia arriba recorre los comandos escritos durante esta ejecución; las flechas hacia la izquierda y la derecha mueven el cursor para editarlos. Si se eligió una letra, la flecha hacia arriba recupera el comando completo `accion ID`. Este historial de entrada no se guarda en la partida y es distinto de `history`, el registro narrativo confirmado. La entrada redirigida o por tubería sigue aceptando los mismos comandos, sin edición interactiva de línea.
+
+## Convenciones de texto y guardados
+
+La interfaz separa títulos, horas y diagnósticos con dos puntos. Las ofertas con
+destinatario y los cambios de valores usan `->`; las tablas y plantillas muestran
+`-` cuando corresponde indicar un dato ausente. Los textos narrativos de los
+paquetes de ejemplo usan comillas dobles rectas para los diálogos.
+
+La simplificación conserva tildes, signos de apertura y formas del español de
+Chile. Los textos y las plantillas forman parte del digest del paquete: un
+guardado anterior a su modificación requiere el paquete original. No hay
+migración automática de guardados entre digests distintos.
 
 ## Diagnóstico
 
 Inicie con `--developer` para consultar datos privados en una sesión local confiable. `mirar` añade los recuentos, sin imprimir la lista de acciones bloqueadas. `acciones bloqueadas` muestra ID, etiqueta y `reason` si GISELA lo publica; `acciones todas` separa las dos listas. Ambas órdenes se rechazan en modo normal. El modo desarrollador conserva exactamente la misma validación de `Act`.
 
-`hechos`, `relacion ORIGEN DESTINO CAMPO`, `propiedad ENTIDAD CAMPO` y `disposicion PERSONA` son consultas diagnósticas. Siguen disponibles `consultar` y `depurar` con sus subcomandos. `disposicion` acepta la referencia pública de una persona visible y muestra la relación dirigida NPC → protagonista, su valor efectivo, escala, valor normalizado, categoría y fuente de color. La CLI nunca solicita este diagnóstico en modo normal. Para clientes externos, el gateway exige `debug_private`; `--developer` por sí solo no concede esa capacidad.
+`hechos`, `relacion ORIGEN DESTINO CAMPO`, `propiedad ENTIDAD CAMPO` y `disposicion PERSONA` son consultas diagnósticas. Siguen disponibles `consultar` y `depurar` con sus subcomandos. `disposicion` acepta la referencia pública de una persona visible y muestra la relación dirigida del NPC hacia el protagonista, su valor efectivo, escala, valor normalizado, categoría y fuente de color. La CLI nunca solicita este diagnóstico en modo normal. Para clientes externos, el gateway exige `debug_private`; `--developer` por sí solo no concede esa capacidad.
 
 ## Color
 

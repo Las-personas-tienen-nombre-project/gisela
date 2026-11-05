@@ -1,5 +1,9 @@
 # H4.5. Revisión y cierre de la CLI textual
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Fecha:** 30 de octubre de 2026.
 
 **Alcance:** cliente textual de un jugador, integrado a la API de GISELA, sin Ren'Py y sin lógica narrativa en Python de autor. Esta etapa se implementó después de H4 y antes de la integración gráfica.

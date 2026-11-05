@@ -59,7 +59,7 @@ La evaluación autónoma como paso observable permite resolver pruebas obligator
 
 Esto impide ejecutar efectos antes de mostrar una tirada visible y evita que una sesión quede con hechos narrativos confirmados a medias.
 
-En v1 no se admiten evaluaciones visibles en `node_completed`, `turn_ended` o `turn_started` durante una transición A→B; tampoco en `on_apply`/`on_expire`, efectos automáticos o el cuerpo de una reacción. Los resultados ocultos podrán seguir resolviéndose en una única transacción, sujetos al contrato de su mecanismo. Más adelante se puede estudiar el uso de evaluaciones por habilidades sin cambiar la interfaz neutral de DICE.
+En v1 no se admiten evaluaciones visibles en `node_completed`, `turn_ended` o `turn_started` durante una transición de A a B; tampoco en `on_apply`/`on_expire`, efectos automáticos o el cuerpo de una reacción. Los resultados ocultos podrán seguir resolviéndose en una única transacción, sujetos al contrato de su mecanismo. Más adelante se puede estudiar el uso de evaluaciones por habilidades sin cambiar la interfaz neutral de DICE.
 
 ## 4. Resultado y ramificación
 
@@ -142,7 +142,7 @@ Una ficha S.O.F.I.A. podría sustituir `{"literal": 3}` por una referencia de `v
 | E09 | Perfil visible y restauración | Mismos dados y misma rama; sin volver a ejecutar DICE. |
 | E10 | S.O.F.I.A./TRAITS ausentes, entradas literales | Evaluación válida y reutilizable en otros juegos. |
 | E11 | Atributos o rasgos privados de NPC | Se utilizan internamente sin filtrarse en `Observe`. |
-| E12 | Evaluación visible en `turn_ended` | Paquete rechazado; se conserva transición A→B atómica. |
+| E12 | Evaluación visible en `turn_ended` | Paquete rechazado; se conserva transición de A a B atómica. |
 | E13 | Aplicación duplicada | Se registra y ejecuta una sola vez. |
 | E14 | Falla al ejecutar una rama | Rollback de efectos, pendiente fijado disponible para reintento técnico. |
 

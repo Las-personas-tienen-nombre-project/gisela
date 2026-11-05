@@ -1,0 +1,11 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python -m pip wheel --no-deps --no-index --no-build-isolation --wheel-dir /tmp/gisela-wheel-content-1j3lgd0a/wheels /tmp/gisela-wheel-content-1j3lgd0a/source
+WARNING: The directory '/home/jacobopus/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Processing ./source
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: gisela-narrative-engine
+  Building wheel for gisela-narrative-engine (pyproject.toml): started
+  Building wheel for gisela-narrative-engine (pyproject.toml): finished with status 'done'
+  Created wheel for gisela-narrative-engine: filename=gisela_narrative_engine-0.1.21-py3-none-any.whl size=309406 sha256=328235d031d0f07c63e612f4b2e0132786a66681d957217b58f21c9c3f56cb24
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ducd57k5/wheels/52/5d/46/6b0446fa32f1c24ddb0b3e4780c2109de120959d4f45cb81d7
+Successfully built gisela-narrative-engine

@@ -1,5 +1,9 @@
 # PA-001: Intervención 13: PT-02R (evaluaciones visibles y causalidad anidada)
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance
 
 Comparación diferencial de exportación y observación entre una sesión continua y otra restaurada después de cada suspensión de evaluaciones visibles, decisiones con evaluación y una reacción que aplica un efecto con consecuencia causal propia. No se descargó ni ejecutó Ren'Py.

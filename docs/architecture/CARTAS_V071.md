@@ -1,4 +1,6 @@
-# Integración v0.7.1 — Contratos genéricos, no motor de combate
+# Integración v0.7.1: Contratos genéricos, no motor de combate
+
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
 
 ## Cambios a la base
 

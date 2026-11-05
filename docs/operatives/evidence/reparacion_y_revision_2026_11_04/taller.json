@@ -1,0 +1,33 @@
+{
+  "packages": 97,
+  "results": {
+    "admitted": 87,
+    "rejected": 10
+  },
+  "checks": [
+    {
+      "script": "comprobar_puentes_04_06.py",
+      "exit": 0
+    },
+    {
+      "script": "comprobar_unidad_04.py",
+      "exit": 0
+    },
+    {
+      "script": "comprobar_unidad_05.py",
+      "exit": 0
+    },
+    {
+      "script": "comprobar_unidad_06.py",
+      "exit": 0
+    },
+    {
+      "script": "comprobar_unidad_07.py",
+      "exit": 0
+    },
+    {
+      "script": "comprobar_unidad_08.py",
+      "exit": 0
+    }
+  ]
+}

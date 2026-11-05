@@ -1,0 +1,7 @@
+{
+  "command": [".venv/bin/python", "tools/verify_cli_wheel.py"],
+  "exit": 0,
+  "result": "Wheel CLI: PASS",
+  "environment": "Fuera del sandbox, con descarga de dependencias; entorno virtual nuevo, sin dependencias prestadas del anfitrión.",
+  "previous_attempt": "wheel_cli.log"
+}

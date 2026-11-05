@@ -1,5 +1,9 @@
 # H4. Revisión, implementación y cierre de la exploración
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 Fecha de revisión: 30 de octubre de 2026.
 
 ## Alcance

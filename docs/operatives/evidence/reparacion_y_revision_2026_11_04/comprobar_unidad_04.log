@@ -1,0 +1,26 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python workshops/autoria_dsl_15/evaluacion/comprobar_unidad_04.py
+OK admisión ejercicios 01_dodge.package.json
+OK admisión ejercicios 02_penalizacion.package.json
+OK admisión ejercicios 03_precision.package.json
+OK admisión ejercicios 04_escamas.package.json
+OK admisión ejercicios 05_pride_redux.package.json
+OK rechazo deliberado 06_rasgo_inexistente.package.json
+OK admisión soluciones 01_dodge.package.json
+OK admisión soluciones 02_penalizacion.package.json
+OK admisión soluciones 03_precision.package.json
+OK admisión soluciones 04_escamas.package.json
+OK admisión soluciones 05_pride_redux.package.json
+OK 01_dodge parnecio defender ['evasion'] total 2
+OK 01_dodge parnecio actor ['evasion'] total 0
+OK 01_dodge parnecio defender ['hit'] total 0
+OK 02_penalizacion gillius defender ['evasion'] total 0
+OK 02_penalizacion gillius defender ['hit'] total 0
+OK 03_precision parnecio actor ['hit'] total 1
+OK 03_precision parnecio defender ['hit'] total 0
+OK 04_escamas tegularis defender ['physical_damage_reduction'] total 5
+OK 04_escamas tegularis defender ['magic_damage_reduction'] total 0
+OK pride_redux definido para damage_reduction
+OK pride_redux definido para physical_damage_reduction
+OK pride_redux definido para magic_damage_reduction
+OK 05_pride_redux tegularis defender ['damage_reduction'] total 0
+UNIDAD 4: comprobaciones terminadas

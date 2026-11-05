@@ -1,4 +1,4 @@
-"""E1: versión aislada, admisión estática y normalización neutra TRAITS–DICE."""
+"""E1: versión aislada, admisión estática y normalización neutra TRAITS-DICE."""
 
 import copy
 import json

@@ -1,4 +1,4 @@
-# Evidencia — Unidad 7 (integración de Tegularis)
+# Evidencia: Unidad 7 (integración de Tegularis)
 
 ## Base inspeccionada
 

@@ -1,24 +1,24 @@
-# Unidad 8 — Presentación declarativa: mostrar sin decidir
+# Unidad 8: Presentación declarativa: mostrar sin decidir
 
 **Objetivo:** construir dos o más presentaciones de una misma batalla de Tegularis, interpretar sus tablas y acontecimientos y demostrar que ninguna modifica las reglas, el azar ni el estado lógico.
 
-**Prerrequisitos:** unidades 1–7, lectura de objetos y listas JSON, habilidades y estados, Observe/Act, acontecimientos confirmados.
+**Prerrequisitos:** unidades 1 a 7, lectura de objetos y listas JSON, habilidades y estados, Observe/Act, acontecimientos confirmados.
 
 **Conceptos nuevos:** región, vista, fuente pública, tabla, columna, transformación, selector de acontecimientos, límite de historial, agrupación causal, plantilla restringida, rol semántico, equivalencia de ejecución.
 
-**Referencia verificada:** `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`. Contratos: `contracts/v1_5/package.schema.json`, `gisela/contracts/presentation_views_validation.py`, `gisela/contracts/presentation_templates_validation.py`. Consulte `WORKSHOP_PRESENTACION_V082.md` y `docs/architecture/PRESENTACION_DECLARATIVA_V082.md`.
+**Referencia verificada:** `packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json`. Contratos: `gisela/contracts/v1_5/package.schema.json`, `gisela/contracts/presentation_views_validation.py`, `gisela/contracts/presentation_templates_validation.py`. Consulte el [taller de presentación](../../../docs/guides/workshops/WORKSHOP_PRESENTACION_V082.md) y la [arquitectura actual](../../../docs/architecture/PRESENTACION_DECLARATIVA_V082.md).
 
-## Primer paso obligatorio — laboratorio reducido
+## Primer paso obligatorio: laboratorio reducido
 
 **Empiece por el [laboratorio de la Unidad 8](../paquetes/08_progresivo/README.md)**. Cree su copia en `mi_trabajo/`, prediga el resultado, modifíquela y ejecute esa copia. Solo después continúe con los fragmentos y ejercicios productivos de esta unidad. **Necesita dominar ahora:** la declaración que está modificando y su consecuencia; el resto de las estructuras de Tegularis solo debe reconocerlas hasta llegar a la integración. Consulte [cómo comprobar resultados](../COMO_COMPROBAR.md).
 
-## Segundo paso — traslado a Tegularis
+## Segundo paso: traslado a Tegularis
 
 El material que sigue introduce gradualmente las declaraciones productivas. No se requiere comprender todos los campos del paquete antes de completar el laboratorio pequeño.
 
 ## 1. La responsabilidad de cada pieza
 
-El **autor** declara qué datos públicos desea mostrar y cómo nombrarlos; **GISELA** conserva y ejecuta el estado autoritativo y publica acontecimientos; **GLAUQUIR** representa las regiones y ofrece únicamente las acciones autorizadas en Observe, remitiendo las decisiones mediante Act. Un rótulo como «Daño recibido» no demuestra daño: la clasificación tiene que estar respaldada por la semántica de todos los acontecimientos seleccionados.
+El **autor** declara qué datos públicos desea mostrar y cómo nombrarlos; **GISELA** conserva y ejecuta el estado autoritativo y publica acontecimientos; **GLAUQUIR** representa las regiones y ofrece únicamente las acciones autorizadas en Observe, remitiendo las decisiones mediante Act. Un rótulo como "Daño recibido" no demuestra daño: la clasificación tiene que estar respaldada por la semántica de todos los acontecimientos seleccionados.
 
 Una presentación no es una habilidad ni un efecto. Cambiar `presentation` no debe modificar `manifest`, `cards`, `traits`, `initial_state`, `actuation`, el orden de turnos ni el RNG. Observe puede exponer proyecciones visuales distintas; para comprobar equivalencia hay que comparar el estado lógico y las mismas acciones, no esperar igualdad textual de pantallas.
 
@@ -93,7 +93,7 @@ Cada archivo en `ejercicios/08_presentacion/` es un paquete **completo y admisib
 | `07_otra_vista` | Agrega tabla de estados activos | muestra `actuation.effects` sin alterar efectos |
 | `08_error_plantilla` | Intenta usar `{actor.password}` | rechazo del contrato público |
 
-Para cada ejercicio: **(1)** enuncie qué quiere comunicar el autor, **(2)** localice la vista o región, **(3)** identifique y explique el campo cambiado, **(4)** prediga qué aparecerá en pantalla, **(5)** compruebe admisión y sesión, **(6)** compare estado y decisiones autorizadas, **(7)** proponga otra modificación válida. No acepte como explicación «cambié el JSON».
+Para cada ejercicio: **(1)** enuncie qué quiere comunicar el autor, **(2)** localice la vista o región, **(3)** identifique y explique el campo cambiado, **(4)** prediga qué aparecerá en pantalla, **(5)** compruebe admisión y sesión, **(6)** compare estado y decisiones autorizadas, **(7)** proponga otra modificación válida. No acepte como explicación "cambié el JSON".
 
 Comprobación individual, desde la raíz del repositorio:
 

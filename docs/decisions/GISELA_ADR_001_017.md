@@ -44,7 +44,7 @@ Un turno corresponde a una ejecución efectiva de nodo; los pasos internos y acc
 
 - Distinguir **turno** (ejecución de nodo), **transacción causal** (unidad de confirmación), **ronda reactiva** (iteración interna) y **punto de estabilidad** (estado confirmado publicable).
 - Las fases preparación, inicio, desarrollo, resolución y cierre son conceptuales; no introducen un quinto estado público. El contador `turn` aumenta una sola vez al ingresar efectivamente a un nodo; no aumenta por pasos, consultas ni rondas.
-- En una transición A→B, estabilizar `node_completed` y `turn_ended` de A antes de emitir `turn_started` de B, dentro del mismo borrador causal. Si falla la entrada de B o una reacción de su inicio, se revierte **toda la transacción del salto**, incluido el cierre provisional de A, sin revertir transacciones previas ya confirmadas durante A.
+- En una transición de A a B, estabilizar `node_completed` y `turn_ended` de A antes de emitir `turn_started` de B, dentro del mismo borrador causal. Si falla la entrada de B o una reacción de su inicio, se revierte **toda la transacción del salto**, incluido el cierre provisional de A, sin revertir transacciones previas ya confirmadas durante A.
 - La frontera del salto es un solo commit: no existe un estado observable ni un guardado intermedio entre cerrar A e iniciar B.
 - Durante una transacción suspendida por una decisión auxiliar, el turno y el mundo confirmados no cambian; las solicitudes no publican el borrador.
 

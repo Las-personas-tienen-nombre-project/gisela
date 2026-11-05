@@ -87,7 +87,7 @@ class TestVersionedRestore(unittest.TestCase):
                         restore_session(admitted, modified)
 
     def test_snapshots_cannot_cross_supported_versions(self):
-        """PT-05: no se admite restauración cruzada entre 1.2–1.5."""
+        """PT-05: no se admite restauración cruzada entre 1.2 a 1.5."""
         admitted = [
             admit_package_file(ROOT / CASES[0][1]),
             admit_package(traits_v13()),
@@ -105,7 +105,7 @@ class TestVersionedRestore(unittest.TestCase):
                     self.assertEqual(raised.exception.code, "RESTORE_MISMATCH")
 
     def test_v14_exhausted_node_without_scene_has_engine_error(self):
-        """ADR-001–017: fin sin escena debe fallar con error técnico tipado."""
+        """ADR-001 a 017: fin sin escena debe fallar con error técnico tipado."""
         admitted = admit_package(hidden_v14(mode="deterministic"))
         with self.assertRaises(EngineFailure) as raised:
             new_session(admitted)

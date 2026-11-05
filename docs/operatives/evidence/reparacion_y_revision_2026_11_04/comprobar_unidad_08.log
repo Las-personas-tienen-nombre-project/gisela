@@ -1,0 +1,12 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python workshops/autoria_dsl_15/evaluacion/comprobar_unidad_08.py
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 01_regiones.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 02_columnas.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 03_acontecimientos.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 04_causalidad.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 05_plantillas.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 06_semantica.package.json
+ADMISIÓN + LÓGICA INTACTA + SOLUCIÓN CANÓNICA: 07_otra_vista.package.json
+RECHAZO ESPERADO: 08_error_plantilla.package.json
+REPLAY / RESTAURACIÓN / ESTADO LÓGICO IDÉNTICO: 0000000000000000000000000000000000000000000000000000000000000000 pasos: 3
+REPLAY / RESTAURACIÓN / ESTADO LÓGICO IDÉNTICO: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff pasos: 3
+UNIDAD 8: verificaciones completadas; no certifica todas las ramas del combate

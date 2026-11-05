@@ -1,5 +1,7 @@
 # GLAUQUIR v0.7.3 y verificación v0.7.4
 
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
+
 ## Base y alcance
 
 Construido encima del paquete `08_desenlaces_v072.package.json` de GISELA v0.7.2. Se preserva el DSL 1.5 y su modelo de actuación autoral, separado del turno narrativo.

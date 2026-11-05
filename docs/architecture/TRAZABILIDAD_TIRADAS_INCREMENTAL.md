@@ -1,4 +1,6 @@
-# Seguimiento incremental — trazabilidad de tiradas confirmadas
+# Seguimiento incremental: trazabilidad de tiradas confirmadas
+
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
 
 Base: paquete GISELA v0.7.3/v0.7.4 entregado.
 

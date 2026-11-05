@@ -1,5 +1,9 @@
 # E2: Informe de implementación por subetapas
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Base exacta:** ZIP adjunto `las-personas-tienen-nombre(10).zip`, árbol Git `158990d` (E1). Las diferencias del trabajo están únicamente en el parche incremental adjunto.
 
 ## E2.1: Contrato de sesión

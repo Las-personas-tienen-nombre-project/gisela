@@ -46,6 +46,7 @@ Install the development requirements from the repository root.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+python -m pip install -e .
 python -m pip install -r requirements-dev.txt
 ```
 
@@ -120,6 +121,20 @@ The default public view of a pending evaluation exposes the result category and 
 Some effects need an additional choice before the enclosing transaction can finish. GISELA preserves the causal request and reconstructs it on continuation using the recorded answers. A rejected branch does not commit a partial world change. A restore validates the pending operation against the same package.
 
 Only one top level causal operation can be pending at a time. The pending evaluation and pending transaction mechanisms do not create independent session authorities.
+
+## Author-defined presentation
+
+Packages using DSL 1.5 can declare ordered presentation regions and named views.
+Tables display public resources, participants, effects, or actors. Event views
+can filter the public causal trace, group records by their published execution
+identity, and apply restricted text templates and author-defined visual roles.
+These projections do not change the logical state or consume random numbers.
+The public causal window contains at most 40 entries; a visual role alone does
+not establish that a resource change represents damage or healing.
+
+See the [presentation workshops](docs/guides/workshops/README.md) for examples and
+the [nine-unit authoring workshop](workshops/autoria_dsl_15/README.md) for the learning path.
+Workshop documentation and automated checks do not certify learning with real students.
 
 ## World state and progression
 

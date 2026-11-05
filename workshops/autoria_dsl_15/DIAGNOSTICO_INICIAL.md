@@ -1,10 +1,15 @@
 # Diagnóstico inicial del workshop de autoría GISELA DSL 1.5
 
+Registro histórico: los pendientes y digests de este diagnóstico corresponden
+al material examinado al comenzar el taller. Para el estado actual, consulte el
+[índice del taller](README.md) y la
+[revisión documental](../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+
 ## Alcance verificado
 
 Repositorio de entrada: `gisela.tar.gz` (fuente del proyecto), versión `0.1.21` según `pyproject.toml`; DSL declarado `1.5` en los paquetes y contratos. El análisis distingue el paquete inicial, el cierre autoral v0.7.7, el balance v0.7.8 y el paquete de presentación semántica v0.8.2d.
 
-**Canon de reglas para reproducción:** `packages/tegularis_the_son_of_the_volcan/10_balance_v078.package.json`. **Ejemplo más completo de presentación declarativa:** `14_presentacion_semantica_v082d.package.json`. Las variantes 11–14 contienen vistas y proyecciones; no deben suponerse versiones de balance nuevas.
+**Canon de reglas para reproducción:** `packages/tegularis_the_son_of_the_volcan/10_balance_v078.package.json`. **Ejemplo más completo de presentación declarativa:** `14_presentacion_semantica_v082d.package.json`. Las variantes 11 a 14 contienen vistas y proyecciones; no deben suponerse versiones de balance nuevas.
 
 ## Inventario de mecanismos observados
 
@@ -32,18 +37,18 @@ El paquete de presentación v0.8.2d contiene **cinco personajes**, **ocho rasgos
 
 ## Rasgos comprobados
 
-- `dodge` — Evasión pasiva +2; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": 2}}]`.
-- `magic_redux` — Reducción de daño mágico 3; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["magic_damage_reduction"]}, "add": {"slot": "bonus", "amount": 3}}]`.
-- `enorme` — Penalización de evasión -5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -5}}]`.
-- `escamas` — Reducción del daño físico 5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["physical_damage_reduction"]}, "add": {"slot": "bonus", "amount": 5}}]`.
-- `stance_aggressive` — Golpe más certero +2; contribuciones: `[{"id": "contribucion", "when": {"role": "actor", "all_tags": ["hit"]}, "add": {"slot": "bonus", "amount": 2}}, {"id": "evasion_penalty", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -2}}]`.
-- `stance_aggressive_evasion` — Evasión -2 en postura agresiva; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -2}}]`.
-- `protegido` — Reducción general del daño 5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["damage_reduction"]}, "add": {"slot": "bonus", "amount": 5}}]`.
-- `pride_redux` — Reducción general del daño 1; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}, {"id": "contrib_physical_damage_reduction", "when": {"role": "defender", "all_tags": ["physical_damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}, {"id": "contrib_magic_damage_reduction", "when": {"role": "defender", "all_tags": ["magic_damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}]`.
+- `dodge`: Evasión pasiva +2; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": 2}}]`.
+- `magic_redux`: Reducción de daño mágico 3; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["magic_damage_reduction"]}, "add": {"slot": "bonus", "amount": 3}}]`.
+- `enorme`: Penalización de evasión -5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -5}}]`.
+- `escamas`: Reducción del daño físico 5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["physical_damage_reduction"]}, "add": {"slot": "bonus", "amount": 5}}]`.
+- `stance_aggressive`: Golpe más certero +2; contribuciones: `[{"id": "contribucion", "when": {"role": "actor", "all_tags": ["hit"]}, "add": {"slot": "bonus", "amount": 2}}, {"id": "evasion_penalty", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -2}}]`.
+- `stance_aggressive_evasion`: Evasión -2 en postura agresiva; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["evasion"]}, "add": {"slot": "bonus", "amount": -2}}]`.
+- `protegido`: Reducción general del daño 5; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["damage_reduction"]}, "add": {"slot": "bonus", "amount": 5}}]`.
+- `pride_redux`: Reducción general del daño 1; contribuciones: `[{"id": "contribucion", "when": {"role": "defender", "all_tags": ["damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}, {"id": "contrib_physical_damage_reduction", "when": {"role": "defender", "all_tags": ["physical_damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}, {"id": "contrib_magic_damage_reduction", "when": {"role": "defender", "all_tags": ["magic_damage_reduction"]}, "add": {"slot": "bonus", "amount": 1}}]`.
 
 ## Dependencias pedagógicas
 
-JSON válido → manifiesto e identificadores → cartas de personajes → instancias/estado → variables y condiciones → rasgos y contribuciones → habilidades, costos y consecuencias → dados/concursos → turnos y NPC → encounter completo → Observe/Act → presentación → semillas y restauración.
+El recorrido comienza con JSON válido, manifiesto e identificadores; continúa con fichas e instancias, variables y condiciones, rasgos, habilidades y resoluciones; luego integra turnos, políticas NPC y el encuentro completo. Finalmente aborda Observe/Act, presentación, semillas y restauración.
 
 La unidad de rasgos debe preceder a los ejercicios de combate cuya resolución dependa de `dodge`, `escamas`, `magic_redux` y `pride_redux`; esto corrige el riesgo de enseñar resultados numéricos como si fueran atributos intrínsecos de la carta.
 

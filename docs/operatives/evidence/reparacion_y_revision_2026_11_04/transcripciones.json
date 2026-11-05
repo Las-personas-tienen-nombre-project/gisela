@@ -1,0 +1,7 @@
+{
+  "runs": 100,
+  "original_sha256": "d9dd325e07d57cbb9e6d75d0250f4b110401402e94128dc4672e69994b852380",
+  "updated_sha256": "8b2f8396312cf4b8c953db4ba946d12de705a1b77038e66359efeaeca156d0c6",
+  "same_results_traces_and_rng_except_quotes": true,
+  "method": "Comparación de 100 trayectorias con el código anterior y actual; solo se normalizan las comillas de las cadenas para comparar."
+}

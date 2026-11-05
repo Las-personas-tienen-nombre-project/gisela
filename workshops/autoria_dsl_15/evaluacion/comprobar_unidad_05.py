@@ -1,7 +1,7 @@
 """Prueba dirigida para el material de habilidades; no forma parte de la autoría."""
 from pathlib import Path
 import json
-from gisela.contracts.admit_package import admit_package_file
+from gisela.contracts.admit_package import PackageRejected, admit_package_file
 ROOT=Path(__file__).resolve().parents[3]
 W=ROOT/'workshops/autoria_dsl_15'
 CANON=ROOT/'packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json'
@@ -30,7 +30,7 @@ for group in ('ejercicios','soluciones'):
  for p in sorted((W/group/'05_habilidades').glob('*.package.json')):
     if p.name.startswith('06_referencia_invalida'):
         try:admit_package_file(p)
-        except Exception:print('RECHAZO PREVISTO',p.name)
+        except PackageRejected:print('RECHAZO PREVISTO',p.name)
         else:raise AssertionError('No se rechazó referencia inexistente')
         continue
     admit_package_file(p)

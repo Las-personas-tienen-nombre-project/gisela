@@ -1,5 +1,9 @@
 # H3.4d. Cierre de ejecución de habilidades
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 ## Alcance implementado
 
 Se incorpora la ejecución de cartas de habilidad durante `skill_window`, con requisitos declarativos, consecuencias, condiciones de resultados, límite opcional de usos, retorno a mano o reserva y descarte. GISELA administra la acción voluntaria, la transacción y su reconstrucción; ALBERTO administra las zonas, capacidades y la identidad de las instancias.

@@ -1,5 +1,9 @@
 # PA-001: Continuación 9: aislamiento de suites offline
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PARCIAL.** No se descargó ni ejecutó Ren'Py.
 
 ## Alcance

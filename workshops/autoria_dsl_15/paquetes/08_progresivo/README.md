@@ -1,6 +1,6 @@
-# Laboratorio mínimo — Unidad 8: presentación sin alterar reglas
+# Laboratorio mínimo: Unidad 8: presentación sin alterar reglas
 
-**Prerrequisito:** haber completado las unidades 1–7. Este paquete de unos pocos kilobytes extiende el encuentro reducido de la Unidad 7. No contiene el sistema completo de presentación productiva de Tegularis.
+**Prerrequisito:** haber completado las unidades 1 a 7. Este paquete de unos pocos kilobytes extiende el encuentro reducido de la Unidad 7. No contiene el sistema completo de presentación productiva de Tegularis.
 
 ## Propósito
 

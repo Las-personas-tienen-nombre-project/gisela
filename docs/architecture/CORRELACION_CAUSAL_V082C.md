@@ -1,4 +1,4 @@
-# GISELA v0.8.2c — Identidad de ejecución causal
+# GISELA v0.8.2c: Identidad de ejecución causal
 
 ## Decisión y alcance
 
@@ -49,8 +49,9 @@ no publica nuevos IDs. La restauración acepta trazas anteriores sin esta
 propiedad y rechaza valores malformados. Se conservan los límites de profundidad,
 archivo y longitud anteriores.
 
-## Límites de esta fase
+## Límites y capacidades posteriores
 
-No hay paginación histórica, garantía de reconstruir una acción completa si
-Observe recorta su inicio, ni semántica de daño/curación, plantillas o colores.
-Esta capacidad de correlación no constituye todavía certificación v0.8.2.
+No hay paginación histórica ni garantía de reconstruir una acción completa si
+Observe recorta su inicio. La correlación no demuestra por sí sola daño o curación.
+Las plantillas y los roles visuales se incorporaron después y se describen en la
+[arquitectura de presentación actual](PRESENTACION_DECLARATIVA_V082.md).

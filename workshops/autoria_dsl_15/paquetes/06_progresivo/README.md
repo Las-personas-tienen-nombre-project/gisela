@@ -1,4 +1,4 @@
-# Laboratorio acumulativo 6 — Acción guionizada frente a política NPC
+# Laboratorio acumulativo 6: Acción guionizada frente a política NPC
 
 ## Archivo de trabajo obligatorio
 

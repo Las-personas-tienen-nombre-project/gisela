@@ -1,5 +1,9 @@
 # Contratos generales pendientes para ejecutar el combate completo en GISELA
 
+**Alcance histórico:** este documento registra una etapa incremental de
+Tegularis. Sus pendientes corresponden a esa etapa; consulte el
+[taller de cierre v0.7.7](WORKSHOP_CIERRE_V077.md) para el combate completo.
+
 **Referencia:** GISELA 0.1.21; DSL 1.5. **No se ha aplicado ningún cambio al motor.**
 
 Este documento es una lista de aceptación para ampliar el DSL sin incorporar las reglas de combate como primitivas del motor.
@@ -30,7 +34,7 @@ Requisitos: la carta debe pertenecer al actor, estar disponible y satisfacer `re
 
 Aritmética pura y tipada (`+`, `-`, `*`, `floor`, `min/max`, porcentaje y comparación) sobre valores de S.O.F.I.A., variables y resultados DICE, sin ejecución de código de autor. No debe ser posible abrir una ventana de código Python/Rust desde el paquete.
 
-**Pruebas:** iniciativa STR+AWA+FOR+1d10; evasión floor((STR+AWA)/2); costo MP 1+x; HP máximo 150+STR+1d20; Fénix ceil(HPmax/2); condición de Pride HP≤0.30×HPmax.
+**Pruebas:** iniciativa STR+AWA+FOR+1d10; evasión floor((STR+AWA)/2); costo MP 1+x; HP máximo 150+STR+1d20; Fénix ceil(HPmax/2); condición de Pride HP<=0.30*HPmax.
 
 ## D. Acontecimientos declarados por el autor
 
@@ -52,7 +56,7 @@ La cantidad de acciones del actor la define el autor (base 1; más acciones seg�
 
 ## G. Efectos disparados antes del desenlace
 
-Al caer Tegularis a cero, la carta «Si vas a perder asegurate de que no ganan por mucho» se resuelve **antes del final**; omite Hit y Evasion Roll por decisión del autor, aplica reducciones, y solo después se decide victoria, derrota o destrucción mutua. Pride se activa al llegar vivo a 30 % o menos, antes de resolver un segundo impacto de Double Slash.
+Al caer Tegularis a cero, la carta "Si vas a perder asegurate de que no ganan por mucho" se resuelve **antes del final**; omite Hit y Evasion Roll por decisión del autor, aplica reducciones, y solo después se decide victoria, derrota o destrucción mutua. Pride se activa al llegar vivo a 30 % o menos, antes de resolver un segundo impacto de Double Slash.
 
 **Pruebas:** evento de muerte repetido no duplica explosión; si Groupal Shield está activo, la bloquea una sola vez; destrucción mutua cuando todos caen; el final no se confirma anticipadamente; guardado y restauración mantienen la misma traza.
 

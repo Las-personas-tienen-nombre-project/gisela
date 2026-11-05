@@ -1,4 +1,6 @@
-# GISELA v0.7.2 — Acontecimientos declarativos y desenlaces
+# GISELA v0.7.2: Acontecimientos declarativos y desenlaces
+
+Registro del incremento indicado en el título. Sus pendientes describen esa etapa; consulte el [roadmap](../operatives/ROADMAP.md) y la [presentación actual](PRESENTACION_DECLARATIVA_V082.md) para las capacidades posteriores.
 
 ## Alcance comprobado
 
@@ -10,7 +12,7 @@ La relación `clock.fired` contiene los IDs de políticas ya ejecutadas y es par
 
 ## Reglas del paquete Tegularis v0.7.2
 
-- Pride: vida positiva y `10 × HP ≤ 3 × HPmax`; activa efecto persistente con +1 en STR/OPN/FOR/INT/AWA y +1 de reducción física y mágica consultada por TRAITS.
+- Pride: vida positiva y `10 * HP <= 3 * HPmax`; activa efecto persistente con +1 en STR/OPN/FOR/INT/AWA y +1 de reducción física y mágica consultada por TRAITS.
 - Última llama: al caer Tegularis a 0 HP, tirada reproducible de 1d10, daño bruto `30 + INT efectivo + dado` sin Hit ni Evasion; aplica reducción mágica y defensa de cada héroe individualmente.
 - Groupal Shield: una instantánea del estado antes de las ramas garantiza que el mismo escudo no permita simultáneamente la rama de impacto. Se consume una carga.
 - Desenlaces: con Tegularis caído y algún héroe vivo, victoria; ambos bandos caídos, destrucción mutua; héroes caídos y Tegularis vivo, derrota.
@@ -23,10 +25,10 @@ No se certifica todavía el equilibrio de muchas semillas, todas las políticas 
 
 ## Criterios de aceptación ejecutados
 
-`PYTHONPATH=. pytest -q gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py` — siete tests aprobados.
+`PYTHONPATH=. pytest -q gisela/packages/tegularis_the_son_of_the_volcan/test_desenlaces_v072.py`: siete tests aprobados.
 
-Admisión, recursos y costos v0.7.1 (selección) — cuatro tests aprobados.
+Admisión, recursos y costos v0.7.1 (selección): cuatro tests aprobados.
 
-Recorrido real de 30 oportunidades hasta ronda 3, con 46 mensajes y restauración en oportunidad 15 — comprobado.
+Recorrido real de 30 oportunidades hasta ronda 3, con 46 mensajes y restauración en oportunidad 15: comprobado.
 
-Regresión combinada amplia — **no certificada**: excedió el tiempo disponible.
+Regresión combinada amplia: **no certificada**: excedió el tiempo disponible.

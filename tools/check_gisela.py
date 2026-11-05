@@ -18,18 +18,18 @@ CORE = (
 STATIC_SOURCES = ("gisela", "mary", "dice", "traits", "narrative_conditions", "tools")
 STATIC_CHECKS = (
     (
-        "Ruff — análisis estático",
+        "Ruff: análisis estático",
         (sys.executable, "-m", "ruff", "check", *STATIC_SOURCES),
     ),
     (
-        "Ruff — formato",
+        "Ruff: formato",
         (sys.executable, "-m", "ruff", "format", "--check", *STATIC_SOURCES),
     ),
     (
-        "Radon — complejidad y mantenibilidad",
+        "Radon: complejidad y mantenibilidad",
         (sys.executable, "tools/check_static_quality.py", "radon"),
     ),
-    ("Bandit — seguridad", (sys.executable, "tools/check_static_quality.py", "bandit")),
+    ("Bandit: seguridad", (sys.executable, "tools/check_static_quality.py", "bandit")),
 )
 CHECKS = (
     ("Calidad estructural", ("tools/check_quality.py",)),

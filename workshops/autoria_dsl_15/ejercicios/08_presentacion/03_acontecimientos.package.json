@@ -23531,7 +23531,7 @@
           {
             "kind": "variable_changed",
             "role": "neutral",
-            "template": "{variable}: {before} → {after}"
+            "template": "{variable}: {before} -> {after}"
           },
           {
             "kind": "skill_played",

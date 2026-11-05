@@ -1,0 +1,13 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python workshops/autoria_dsl_15/evaluacion/comprobar_unidad_06.py
+ADMISIÓN ejercicios 01_iniciativa
+ADMISIÓN ejercicios 02_umbrales
+ADMISIÓN ejercicios 03_atributo
+ADMISIÓN ejercicios 04_candidatos
+ADMISIÓN ejercicios 05_guarda
+RECHAZO ESPERADO 06_referencia_invalida
+ADMISIÓN soluciones 01_iniciativa
+ADMISIÓN soluciones 02_umbrales
+ADMISIÓN soluciones 03_atributo
+ADMISIÓN soluciones 04_candidatos
+ADMISIÓN soluciones 05_guarda
+UNIDAD 6: admisión y propiedades verificadas

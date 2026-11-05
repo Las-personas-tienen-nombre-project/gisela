@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python",
+    "tools/check_gisela.py",
+    "--full"
+  ],
+  "exit": 0,
+  "seconds": 212.89,
+  "completed_utc": "2026-11-05T02:53:27.736706+00:00"
+}

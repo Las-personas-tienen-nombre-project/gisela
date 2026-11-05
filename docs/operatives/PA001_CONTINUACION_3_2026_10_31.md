@@ -1,5 +1,9 @@
 # PA-001: Continuación 3: H6, H7 y compatibilidad
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado:** PARCIAL. Fuente: `gisela_pa001_continuacion_2_20261031.zip`. No se alteró la lógica del motor.
 
 ## Hallazgos y evidencia

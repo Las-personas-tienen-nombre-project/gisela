@@ -1,0 +1,574 @@
+{
+  "historical_evidence_unchanged": 72,
+  "glyph_findings": [],
+  "changed_existing_files": [
+    "cli/commands.py",
+    "cli/interactive.py",
+    "cli/render.py",
+    "contracts/evaluation_plan.py",
+    "contracts/test_e1_evaluations_v14.py",
+    "docs/README.md",
+    "docs/architecture/ACONTECIMIENTOS_V072.md",
+    "docs/architecture/API_CLIENTES.md",
+    "docs/architecture/DICE_CONTRATO_API_SESION_PROPUESTA.md",
+    "docs/architecture/E2_EVALUACIONES_OCULTAS.md",
+    "docs/architecture/PRESENTACION_AUTORAL_V080.md",
+    "docs/architecture/PRESENTACION_DECLARATIVA_V082.md",
+    "docs/decisions/ADR_020_E0_FRONTERA_AUTORIDAD_Y_COMPROMISO.md",
+    "docs/decisions/ADR_021_E1_CONTRATOS_EVALUATE_V14.md",
+    "docs/decisions/ADR_022_E2_EVALUACIONES_OCULTAS.md",
+    "docs/guides/GLAUQUIR.md",
+    "docs/guides/QUICK_START.md",
+    "docs/guides/VERIFICACION_GISELA.md",
+    "docs/guides/workshops/WORKSHOP_PRESENTACION_V082.md",
+    "docs/history/GISELA_Arquitectura_Consolidada_v1_3_Contratos_v1_2.md",
+    "docs/history/GUIA_DOCUMENTACION_ES_CL_original.md",
+    "docs/history/Informe_Procedencia_y_Admision.md",
+    "docs/history/Informe_Validador_Semantico.md",
+    "docs/manuals/es/GISLEA_primera_aventura_narrativa.md",
+    "docs/manuals/es/GISLEA_primera_aventura_sistemas.md",
+    "docs/operatives/E0_CIERRE_Y_RIESGOS.md",
+    "docs/operatives/E1_CIERRE_Y_RIESGOS.md",
+    "docs/operatives/E1_INVARIANTES_TRAZABILIDAD.json",
+    "docs/operatives/E2_IMPLEMENTACION.md",
+    "docs/operatives/E3_INVARIANTES_TRAZABILIDAD.json",
+    "docs/operatives/GISELA_AUDITORIA_FOCALIZADA_P0_P3.md",
+    "docs/operatives/H2_CIERRE_TRANSACCIONES.md",
+    "docs/operatives/H3_4D_CIERRE.md",
+    "docs/operatives/H3_REVISION_PLAN_IMPLEMENTACION.md",
+    "docs/operatives/H46B_CENTRAL_CLASIFICADORA.md",
+    "docs/operatives/H46_FARO_DE_NIEBLA.md",
+    "docs/operatives/H4_5F_REVISION_Y_CIERRE.md",
+    "docs/operatives/H4_5_REVISION_Y_CIERRE.md",
+    "docs/operatives/H4_REVISION_Y_CIERRE.md",
+    "docs/operatives/H5_RENPY_INTEGRACION.md",
+    "docs/operatives/MARY_REVISION_Y_CIERRE.md",
+    "docs/operatives/PA001_AUDITORIA_2026_10_31.md",
+    "docs/operatives/PA001_CIERRE_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_11_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_12_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_13_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_14_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_15_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_16_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_3_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_4_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_5_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_6_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_7_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_8_2026_10_31.md",
+    "docs/operatives/PA001_CONTINUACION_9_2026_10_31.md",
+    "docs/operatives/PA001_HITO_2026_10_31_CONTINUACION_2.md",
+    "docs/operatives/PA001_TRAZABILIDAD_INVARIANTES_2026_10_31.md",
+    "docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md",
+    "docs/operatives/ROADMAP_BEFORE_DOC_REVIEW.md",
+    "docs/reference/dsl_1_5/VERIFICATION.md",
+    "engine/actuation_public.py",
+    "engine/tests/test_glauquir_mud.py",
+    "engine/tests/test_layouts_v081.py",
+    "engine/tests/test_pa001_version_restore.py",
+    "engine/tests/test_traits_dice_bridge.py",
+    "engine/world_traits.py",
+    "gisela/cli/commands.py",
+    "gisela/cli/interactive.py",
+    "gisela/cli/render.py",
+    "gisela/contracts/evaluation_plan.py",
+    "gisela/contracts/test_e1_evaluations_v14.py",
+    "gisela/engine/actuation_public.py",
+    "gisela/engine/presentation_semantics.py",
+    "gisela/engine/presentation_views.py",
+    "gisela/engine/tests/test_glauquir_mud.py",
+    "gisela/engine/tests/test_pa001_version_restore.py",
+    "gisela/engine/tests/test_presentation_semantics_v082d.py",
+    "gisela/engine/tests/test_presentation_views_v082.py",
+    "gisela/engine/tests/test_reference_dodge_contexts.py",
+    "gisela/engine/tests/test_traits_dice_bridge.py",
+    "gisela/engine/world_traits.py",
+    "gisela/packages/h46_faro_de_niebla.package.json",
+    "gisela/packages/h46b_central_clasificadora.package.json",
+    "gisela/packages/tegularis_the_son_of_the_volcan/03_simulador_escenario.py",
+    "gisela/packages/tegularis_the_son_of_the_volcan/04_contratos_pendientes.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/README.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/WORKSHOP_ACTUACION_V07.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/WORKSHOP_CARTAS_V071.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/WORKSHOP_CIERRE_V077.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/WORKSHOP_DESENLACES_V072.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/WORKSHOP_TEGULARIS.md",
+    "gisela/packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py",
+    "packages/h46_faro_de_niebla.package.json",
+    "packages/h46b_central_clasificadora.package.json",
+    "packages/tegularis_the_son_of_the_volcan/03_simulador_escenario.py",
+    "packages/tegularis_the_son_of_the_volcan/04_contratos_pendientes.md",
+    "packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json",
+    "packages/tegularis_the_son_of_the_volcan/BALANCE_V078.md",
+    "packages/tegularis_the_son_of_the_volcan/README.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_ACTUACION_V07.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_CARTAS_V071.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_CIERRE_V077.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_DESENLACES_V072.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_TEGULARIS.md",
+    "packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py",
+    "tools/bandit_low_baseline.json",
+    "tools/check_gisela.py",
+    "tools/h46b_walkthrough.py",
+    "workshops/autoria_dsl_15/DIAGNOSTICO_INICIAL.md",
+    "workshops/autoria_dsl_15/ejercicios/03_condiciones/01_condicion_simple.package.json",
+    "workshops/autoria_dsl_15/ejercicios/03_condiciones/02_condicion_compuesta.package.json",
+    "workshops/autoria_dsl_15/ejercicios/03_condiciones/03_umbral_pride.package.json",
+    "workshops/autoria_dsl_15/ejercicios/03_condiciones/04_referencia_invalida.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/01_dodge.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/02_penalizacion.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/03_precision.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/04_escamas.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/05_pride_redux.package.json",
+    "workshops/autoria_dsl_15/ejercicios/04_rasgos/06_rasgo_inexistente.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/01_slash_tp.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/02_double_slash_costo.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/03_blai_requisito.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/04_slash_acierto.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/05_blai_potencia.package.json",
+    "workshops/autoria_dsl_15/ejercicios/05_habilidades/06_referencia_invalida.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/01_iniciativa.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/02_umbrales.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/03_atributo.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/04_candidatos.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/05_guarda.package.json",
+    "workshops/autoria_dsl_15/ejercicios/06_actuacion/06_referencia_invalida.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/01_firebreath_area.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/02_paralisis.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/03_regeneracion.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/04_pride.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/05_ultima_llama.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/06_desenlaces.package.json",
+    "workshops/autoria_dsl_15/ejercicios/07_tegularis/07_error_efecto.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/01_regiones.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/02_columnas.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/03_acontecimientos.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/04_causalidad.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/05_plantillas.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/07_otra_vista.package.json",
+    "workshops/autoria_dsl_15/ejercicios/08_presentacion/08_error_plantilla.package.json",
+    "workshops/autoria_dsl_15/evaluacion/RESULTADOS_UNIDAD_04.md",
+    "workshops/autoria_dsl_15/evaluacion/RESULTADOS_UNIDAD_08.md",
+    "workshops/autoria_dsl_15/soluciones/03_condiciones/01_condicion_simple.package.json",
+    "workshops/autoria_dsl_15/soluciones/03_condiciones/02_condicion_compuesta.package.json",
+    "workshops/autoria_dsl_15/soluciones/03_condiciones/03_umbral_pride.package.json",
+    "workshops/autoria_dsl_15/soluciones/04_rasgos/01_dodge.package.json",
+    "workshops/autoria_dsl_15/soluciones/04_rasgos/02_penalizacion.package.json",
+    "workshops/autoria_dsl_15/soluciones/04_rasgos/03_precision.package.json",
+    "workshops/autoria_dsl_15/soluciones/04_rasgos/04_escamas.package.json",
+    "workshops/autoria_dsl_15/soluciones/04_rasgos/05_pride_redux.package.json",
+    "workshops/autoria_dsl_15/soluciones/05_habilidades/01_slash_tp.package.json",
+    "workshops/autoria_dsl_15/soluciones/05_habilidades/02_double_slash_costo.package.json",
+    "workshops/autoria_dsl_15/soluciones/05_habilidades/03_blai_requisito.package.json",
+    "workshops/autoria_dsl_15/soluciones/05_habilidades/04_slash_acierto.package.json",
+    "workshops/autoria_dsl_15/soluciones/05_habilidades/05_blai_potencia.package.json",
+    "workshops/autoria_dsl_15/soluciones/06_actuacion/01_iniciativa.package.json",
+    "workshops/autoria_dsl_15/soluciones/06_actuacion/02_umbrales.package.json",
+    "workshops/autoria_dsl_15/soluciones/06_actuacion/03_atributo.package.json",
+    "workshops/autoria_dsl_15/soluciones/06_actuacion/04_candidatos.package.json",
+    "workshops/autoria_dsl_15/soluciones/06_actuacion/05_guarda.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/01_firebreath_area.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/02_paralisis.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/03_regeneracion.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/04_pride.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/05_ultima_llama.package.json",
+    "workshops/autoria_dsl_15/soluciones/07_tegularis/06_desenlaces.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/01_regiones.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/02_columnas.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/03_acontecimientos.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/04_causalidad.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/05_plantillas.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/06_semantica.package.json",
+    "workshops/autoria_dsl_15/soluciones/08_presentacion/07_otra_vista.package.json",
+    "workshops/autoria_dsl_15/unidades/04_rasgos.md",
+    "workshops/autoria_dsl_15/unidades/05_habilidades.md"
+  ],
+  "mirror_pairs_checked": [
+    "cli/commands.py",
+    "cli/interactive.py",
+    "contracts/evaluation_plan.py",
+    "contracts/test_e1_evaluations_v14.py",
+    "engine/tests/test_glauquir_mud.py",
+    "engine/tests/test_pa001_version_restore.py",
+    "engine/tests/test_traits_dice_bridge.py",
+    "engine/world_traits.py",
+    "packages/h46_faro_de_niebla.package.json",
+    "packages/h46b_central_clasificadora.package.json",
+    "packages/tegularis_the_son_of_the_volcan/03_simulador_escenario.py",
+    "packages/tegularis_the_son_of_the_volcan/04_contratos_pendientes.md",
+    "packages/tegularis_the_son_of_the_volcan/README.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_ACTUACION_V07.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_CARTAS_V071.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_CIERRE_V077.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_DESENLACES_V072.md",
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_TEGULARIS.md",
+    "packages/tegularis_the_son_of_the_volcan/test_simulador_escenario.py"
+  ],
+  "changed_packages": [
+    {
+      "path": "gisela/packages/h46_faro_de_niebla.package.json",
+      "before": "8a95bc5170dd0501fe2564ac42b0b269ca798aa7f47fc7062d2a4fd6d015d7e4",
+      "after": "03b5492d233741fce858de576845f1559ab4de6f90c61ef091f39877f49a1864"
+    },
+    {
+      "path": "gisela/packages/h46b_central_clasificadora.package.json",
+      "before": "3e4227e813ad7aae68e3d8ffd229f58f55a1b435b0602dea6875eeb11e07b6ad",
+      "after": "399f480763acb3b41b60a67047952dfbf009a89e7ea4b4e0b471445357d404a9"
+    },
+    {
+      "path": "packages/h46_faro_de_niebla.package.json",
+      "before": "8a95bc5170dd0501fe2564ac42b0b269ca798aa7f47fc7062d2a4fd6d015d7e4",
+      "after": "03b5492d233741fce858de576845f1559ab4de6f90c61ef091f39877f49a1864"
+    },
+    {
+      "path": "packages/h46b_central_clasificadora.package.json",
+      "before": "3e4227e813ad7aae68e3d8ffd229f58f55a1b435b0602dea6875eeb11e07b6ad",
+      "after": "399f480763acb3b41b60a67047952dfbf009a89e7ea4b4e0b471445357d404a9"
+    },
+    {
+      "path": "packages/tegularis_the_son_of_the_volcan/14_presentacion_semantica_v082d.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/03_condiciones/01_condicion_simple.package.json",
+      "before": "18a3487ad013fcb1fbc5d3a9e8d9293829382e554c53c94a48d20e538d832265",
+      "after": "a3e16e7bcc2a5b10ab15943d1619ea66e5ef42a214456fc1aea3d24ece8e420f"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/03_condiciones/02_condicion_compuesta.package.json",
+      "before": "a087babc164bd02a5689ff771e49d1381aff31d3a96e2e089cd8fadf0ad19920",
+      "after": "2604815af088c2a16cd170b88bc885fd361d6d991e88a1c9f83d434f04646304"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/03_condiciones/03_umbral_pride.package.json",
+      "before": "325c67ad5ad7d79db1d4c41bf5122350d385d2ab272eadecae4a2c28c8cd2379",
+      "after": "78a491c0895993090a31123d8fb4bf0f2540d669cb86f3e543920bc4196b5e5d"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/03_condiciones/04_referencia_invalida.package.json",
+      "before": "a6b47e10efc7161e224cc508ec865c05abc2c549963cef4dcb58af6cbd2b2494",
+      "after": "0890cba7dae929cd2da309c8d12e952c4cf4d4db7925bf7a1ea8c9e9b0e6b52f"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/01_dodge.package.json",
+      "before": "5492ff9d17200ed0255e893787bc0ac11cacf9f290ec17fc2053c63e64d908ba",
+      "after": "8e68308b67bc618f418b1de4e7d6b3caa6864ca171ded44a941f621a90a0bbf8"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/02_penalizacion.package.json",
+      "before": "65011bb6dccdd440a9a4be0b961cc8f056bd3df44dc94025cecd56a4d8479567",
+      "after": "e63f20ccc0c1a7c27922eadda4328bffc4d616e6cbcc8b363fa5631730535881"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/03_precision.package.json",
+      "before": "50eea88192ccb99476afc6b8284f53bc5433d633b4419d756467c1bec1de701d",
+      "after": "6097e723342a9be6cd2c788e2c04aa0e452c2d748617a2bdfe5b0c5b928ecf7a"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/04_escamas.package.json",
+      "before": "0577ca102705b408b6ae505607a4c312237b997776e8d19401bad536343f23cd",
+      "after": "4c4a2524c81f854b8e96f0dc4c1c65045cd36e2879d522c43df3ca8e5f7ca999"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/05_pride_redux.package.json",
+      "before": "4f423b54a469d3504998336e91e67eae883a7396a39783f9b7fa31e4b3b31036",
+      "after": "6062c7527cb48dfbee96d2589899c63abb25a4d04ddef01f46acd947a7fc7b61"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/04_rasgos/06_rasgo_inexistente.package.json",
+      "before": "2411bd66f67020f09e159a3bbc0da66ddc1715344d4f3563eb75a69ad5f838e2",
+      "after": "8a08cb0926efbcf8a7b9e08b2a7552d735e1050e1a2179fbb1088d5b74e09256"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/01_slash_tp.package.json",
+      "before": "fd42792fb95ef03831b047e922a8b27d92f19fd9de298970523c9fee7b75eb07",
+      "after": "e6924001b83ce1e0b59dcac77ef4d502bd73572589f7347f97f4171befc0af44"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/02_double_slash_costo.package.json",
+      "before": "513f3d039928feca798b382b6b9961c14f8a3c599b165730c3fa291928a07f9d",
+      "after": "5656fa8811f42bf3d93f62170b8759a13be14ad47a6d0cb2b0241f0e3bab26cd"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/03_blai_requisito.package.json",
+      "before": "594c69fa277c93bbd4d6953a43d15a1565e8f77da620aff0219a42d0157aa453",
+      "after": "2e659688f1dc44013c20c41e5b5b710d41463582ef7cfaf0a9ce9f85c21691ad"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/04_slash_acierto.package.json",
+      "before": "38e62145082b7204d7e0e76578f2d30a16d1cf15ee57463ddc480822d9d28b5c",
+      "after": "a3cc8741caca044de6c590c6c02cf1e6758bdf65e4bd7bc2a22a7289628c4660"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/05_blai_potencia.package.json",
+      "before": "a07acd2a92d0c5b92a2bbebd7b41b6230b5de20b732684b96e8e84933fccc1da",
+      "after": "e67cd76049dc74b89fbc75e669c60905f103a8834f0113337aafec9f3812890e"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/05_habilidades/06_referencia_invalida.package.json",
+      "before": "12e9751e9bc6ce1cf33ac34ef1dddeb209c36f5bba0efeac4b4ef5b91d1bce01",
+      "after": "d0355f0188c9dc38307ff1301dddff248be27f68474e29da0ca97db2770a0d2e"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/01_iniciativa.package.json",
+      "before": "9cf1e634c8b3ccb6afe393442725e2680c620901fa296f993cd442428b0cde63",
+      "after": "c96f3f4e376d2a37fa5d557d309aa5b9c81af77bc3de8a043a5cd8f10e6f5149"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/02_umbrales.package.json",
+      "before": "d6779fb19eb3e7356d8990d45003e0640a176edbd253f12350f056bb81e73ff8",
+      "after": "1036fe8d3921899e54c822e65949de67132abac00e26a225a006a5c00fae0fcc"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/03_atributo.package.json",
+      "before": "c819082753a4535b2c46dc5cf6f2f02cc3fbb01d45d9f263a9407b3b79112ac0",
+      "after": "f5fc1b2bbe46b89992aa9a40ecf89162051cf879af9f08dde2bec1308cfa5ebb"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/04_candidatos.package.json",
+      "before": "f7c76aaea85050862064d71fed757124246db268f66990bdf0c90abd9601b381",
+      "after": "f4ad785159ee5edeb35883d9ae385e6b31146a2e8ebc33944120544589c1fda0"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/05_guarda.package.json",
+      "before": "012c264fc7c802884a8e1d14a5741986c4e7311512ce137427027d48d7c11b2d",
+      "after": "61b07d2bbc63552f27d2dcdb84b502085a23da9df4a35413bf22f6ef1b0ed68b"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/06_actuacion/06_referencia_invalida.package.json",
+      "before": "fd037d206ef137e6ea8aa096962bc497c25a9c77b8cf5229e40d39bf8084fe38",
+      "after": "161989e00b103deeb6537e06b94ce5a5ee833d2a788412d1a496d6ee4c8cceb8"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/01_firebreath_area.package.json",
+      "before": "9953af754dfca9eb2033607dde18dfaabd6dc961313848c1aaeec5b865893473",
+      "after": "76602b573d3df0f53b56d1eeb07bf90c6f750d39b368528df413c7e5d1efa1d1"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/02_paralisis.package.json",
+      "before": "b7ca9c7bbd41cbae618c08e6f385443d85ab240d36cbbb9df22f303eb2c9f189",
+      "after": "d0cf14c632bf589c6275196cc06bba056712cb09db8937e3df320239dae4c6dd"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/03_regeneracion.package.json",
+      "before": "abb7bcfcc010f71f70224785e7207217d2e0155f5f53a92f61f2e6d5b4d70f5f",
+      "after": "1f1a479b4f6af16b0ba7e63c2bace1d29f702d5df9520af9d105c6e858ff1c30"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/04_pride.package.json",
+      "before": "94a61f3a1e710a99c2b78a007ffedfa37d354371620c1357062f277565721dc4",
+      "after": "7f6c84e920705119fc0ce623e922ed9f5258f900b74ebd6519c3527b23f3ee2b"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/05_ultima_llama.package.json",
+      "before": "f8e73f02ccaff386c100c52584e4bec0603125c6e24f24f57ebf08c517fedffd",
+      "after": "5cff045da378136f1793eaef249b6f67b27f1cf9f86d11a1e7bcd79575c493a7"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/06_desenlaces.package.json",
+      "before": "8e8ff88175ea266ddc2a331996c4ba353fc5388817d35d8f46931e1758ec8842",
+      "after": "e6f95cb59141d3a6f8f5edfc3170f5d2411bd00436c068ed156752ea3c379436"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/07_tegularis/07_error_efecto.package.json",
+      "before": "fd037d206ef137e6ea8aa096962bc497c25a9c77b8cf5229e40d39bf8084fe38",
+      "after": "161989e00b103deeb6537e06b94ce5a5ee833d2a788412d1a496d6ee4c8cceb8"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/01_regiones.package.json",
+      "before": "4ce64933ed294c1e859debbf0b883084a03878fc3c9a31f47c92665cc74ffb84",
+      "after": "89196a0c1c65e58c0abc559be3ec46cb2b4210af9862f93e1d8565adbc6e7e74"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/02_columnas.package.json",
+      "before": "415ec4d6b260b5cfb945e817321bf2ce3eb1eaa7bf2f814baccba6c470c042a9",
+      "after": "1452fe98568fcbd08a413464d38222e854f5be763028cebc39f09dc5c0f4598a"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/03_acontecimientos.package.json",
+      "before": "a3ee23584dbfa734379b278cafb35395e38e8a3e675cb83b85cec0ea4c8fef98",
+      "after": "6aed8645a11f5fc89e19182cd7d948ccd0c6f442cab008135aaa8a33ceed6572"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/04_causalidad.package.json",
+      "before": "ef9abf267df87513dcda95468570a6cdc5b5078c0210cff2eb1fbb290fd4205c",
+      "after": "20b8b126250761b5077fe15f0c62b36160efd3221b4c0291d5fdf4b3e66e87c9"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/05_plantillas.package.json",
+      "before": "630254a29048fd5e643e73a48d6d147bbe6aeb287621bc0f0b03632ede812fe1",
+      "after": "d9511562bdacfeebea8dcc3f86501e37bde158544b89df5ca18726806bd0fde7"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/07_otra_vista.package.json",
+      "before": "2a1d0b86c5be140f0612d25e42e1b9a8f5698432a94131a1f267fb6e57062c49",
+      "after": "43cb03992c4062b0e74b3ec10419d7d0e1879c8350c3a2131a9a8bd9dd0b5f66"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/ejercicios/08_presentacion/08_error_plantilla.package.json",
+      "before": "9b997278cd683fad071bd9880e93abb77d291f8bf02aca8befcb537d3af9082f",
+      "after": "568e949d25d95a7fcb228d9eb5d9b914ef0bf4a5e7dc66a637f350bcf92ddb40"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/03_condiciones/01_condicion_simple.package.json",
+      "before": "7f4c6170d47d40762c77b2e2032267d39b784e46cf677e2c8ec25df5c67f8b68",
+      "after": "eb3dfe50c5b0d55fe32875186300c15beb1d3558df6b436b5170d8b4d2abf03c"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/03_condiciones/02_condicion_compuesta.package.json",
+      "before": "9fef4f7be4142615314358591a0d0f982cd89b9b6baaa624f355e4a9e1dad8e1",
+      "after": "007ccd95e8a761f6b86a34a371550ef7a6423feea2e6b3e2b213058755914de4"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/03_condiciones/03_umbral_pride.package.json",
+      "before": "61180433d0881c85723f1b0b6eeffc7dca7ca6455f7225e315f21dc73b48013c",
+      "after": "3ddc0cac74590f0c2e1386b4ea3ac8b9d84036a91efa3f3e502666351666814e"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/04_rasgos/01_dodge.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/04_rasgos/02_penalizacion.package.json",
+      "before": "abf7e6ec865112c99019e2fb0821ff2d60705c42e4962323c2812818b68574e4",
+      "after": "61126c67ad31224813e946eb6bcb07033139fe0a8e81ef5c5f72f6942d7be2d0"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/04_rasgos/03_precision.package.json",
+      "before": "018153410890e43027bc580ee189c4012066c6efd322bd829e750e5b95e28e6f",
+      "after": "44a3df09bcfa2f4fc3c18ed7ded687fd723e5456b5316ddc82621d0d5ce43ba1"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/04_rasgos/04_escamas.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/04_rasgos/05_pride_redux.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/05_habilidades/01_slash_tp.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/05_habilidades/02_double_slash_costo.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/05_habilidades/03_blai_requisito.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/05_habilidades/04_slash_acierto.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/05_habilidades/05_blai_potencia.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/06_actuacion/01_iniciativa.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/06_actuacion/02_umbrales.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/06_actuacion/03_atributo.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/06_actuacion/04_candidatos.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/06_actuacion/05_guarda.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/01_firebreath_area.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/02_paralisis.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/03_regeneracion.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/04_pride.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/05_ultima_llama.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/07_tegularis/06_desenlaces.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/01_regiones.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/02_columnas.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/03_acontecimientos.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/04_causalidad.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/05_plantillas.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/06_semantica.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    },
+    {
+      "path": "workshops/autoria_dsl_15/soluciones/08_presentacion/07_otra_vista.package.json",
+      "before": "6f334a54c0f2eef9ad0d88efcf7c27496637bc39786d4b1081395c719d330d56",
+      "after": "f7e1f6af343f65ba8147f7873b9fc1825d6454c6c49578138fe0528871df8dbf"
+    }
+  ],
+  "mirror_relative_link_adjustments": [
+    "packages/tegularis_the_son_of_the_volcan/WORKSHOP_TEGULARIS.md"
+  ]
+}

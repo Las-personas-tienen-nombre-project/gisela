@@ -1,0 +1,18 @@
+Command: /mnt/nve1/projects/Las-personas-tienen-nombre/gisela/.venv/bin/python tools/verify_cli_wheel.py
+Traceback (most recent call last):
+  File "/mnt/nve1/projects/Las-personas-tienen-nombre/gisela/tools/verify_cli_wheel.py", line 101, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/mnt/nve1/projects/Las-personas-tienen-nombre/gisela/tools/verify_cli_wheel.py", line 77, in main
+    raise RuntimeError(installed.stdout + installed.stderr)
+RuntimeError: Processing ./wheels/gisela_narrative_engine-0.1.21-py3-none-any.whl
+INFO: pip is looking at multiple versions of gisela-narrative-engine to determine which version is compatible with other requirements. This could take a while.
+WARNING: The directory '/home/jacobopus/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f02e820a660>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/jsonschema/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f02e8109810>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/jsonschema/
+WARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f02e8109950>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/jsonschema/
+WARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f02e8109a90>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/jsonschema/
+WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f02e8109bd0>: Failed to establish a new connection: [Errno -2] Name or service not known')': /simple/jsonschema/
+ERROR: Could not find a version that satisfies the requirement jsonschema<5,>=4.20 (from gisela-narrative-engine) (from versions: none)
+ERROR: No matching distribution found for jsonschema<5,>=4.20
+

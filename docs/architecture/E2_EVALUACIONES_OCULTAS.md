@@ -24,7 +24,7 @@ La evaluación no añade turno ni expone su resultado en `Observe`. Un paso ocul
 
 - `session.schema.json` v1.4 se vuelve ejecutable, sin añadir propiedades de E3; snapshots v1.4 se comprueban contra digest y restauran con el validador de versión correspondiente.
 - `initial_state` materializa TRAITS en v1.4 igual que en v1.3; el catálogo es opcional.
-- Las sumas numéricas efectivas respetan ±1.000.000 en cada componente neutral. Los resultados y RNG se confirman solo con el mundo y sus reacciones.
+- Las sumas numéricas efectivas respetan +/-1.000.000 en cada componente neutral. Los resultados y RNG se confirman solo con el mundo y sus reacciones.
 - `pending_transaction` existente modela decisiones auxiliares; se reconstruye el borrador sin fijar una tirada visible.
 - `visible` y `acknowledged` permanecen **fuera del runtime E2**. E3 debe versionar cualquier nueva forma incompatible de guardado.
 

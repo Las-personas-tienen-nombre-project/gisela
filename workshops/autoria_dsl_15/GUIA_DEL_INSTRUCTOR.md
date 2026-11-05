@@ -1,8 +1,8 @@
-# Guía del instructor — Workshop de autoría GISELA DSL 1.5
+# Guía del instructor: Workshop de autoría GISELA DSL 1.5
 
 ## Principio de evaluación
 
-Se califica la **comprensión causal** y no la copia de una solución. El alumno debe explicar intención → declaración → admisión → ejecución → evidencia → variación. No se exige escribir Python ni tocar el motor.
+Se califica la **comprensión causal** y no la copia de una solución. El alumno debe explicar qué quiere expresar, cómo lo declara, cómo admite y ejecuta el paquete, qué observa y qué cambia al introducir una variación. No se exige escribir Python ni tocar el motor.
 
 ## Criterios aplicables a cada unidad
 
@@ -26,16 +26,18 @@ Los verificadores `evaluacion/comprobar_unidad_*.py` son herramientas del instru
 
 ## Riesgos didácticos identificados
 
-Las unidades 2–8 utilizan, en numerosos ejercicios, paquetes productivos grandes. Son válidos como **integración**, pero deben complementarse con descubrimiento y construcción en paquetes reducidos. La Unidad 1 ya tiene un laboratorio mínimo verificado; el resto del itinerario mínimo y la Unidad 9 siguen pendientes.
+Las unidades 1 a 8 disponen de laboratorios reducidos. Cada unidad comienza con ese laboratorio y continúa con los paquetes productivos como ejercicio de **integración**. La Unidad 9 reúne la reconstrucción autónoma y su rúbrica. Estos materiales están disponibles; la certificación pedagógica y las pruebas con alumnos reales siguen pendientes.
 
 ## Fuentes de autoridad externas al workshop
 
 La descripción de campos y restricciones pertenece a [contratos v1.5](../../gisela/contracts/README.md), [documentación oficial](../../docs/README.md), [TRAITS](../../traits/README.md) y [DICE](../../dice/README.md). No mantener un glosario ni una referencia DSL paralela aquí.
 
-## Secuencia de laboratorios reducidos (2–7)
+## Secuencia de laboratorios reducidos (1 a 8)
 
-Compruebe primero que el alumno puede explicar las referencias entre declaraciones. En 4, solicite el contexto exacto de la contribución, no solo una tirada afortunada. En 5, compare jugar y omitir una carta. En 6, exija distinguir el efecto guionizado de una verdadera política NPC. En 7, compruebe la conjunción de hechos. Los casos productivos siguen siendo el paso de integración y no deben reequilibrarse.
+Compruebe primero que el alumno puede explicar las referencias entre declaraciones. En la Unidad 4, solicite el contexto exacto de la contribución, no solo una tirada afortunada. En la 5, compare jugar y omitir una carta. En la 6, exija distinguir la respuesta guionizada de una política NPC autónoma. En la 7, compruebe la conjunción de hechos. En la 8, compare la presentación con el estado lógico y las decisiones autorizadas. Los casos productivos siguen siendo el paso de integración y no deben cambiar de balance.
 
 ## Evaluación integradora
 
 Use la [rúbrica de Unidad 9](evaluacion/09_integracion/RUBRICA.md); no dé por aprobado un ejercicio que solo supera admisión. Para las pruebas dirigidas de los puentes 04 y 06, consulte [evidencias reproducibles](evaluacion/RESULTADOS_PUENTES_04_06_Y_UNIDAD_09.md). No atribuya a la respuesta guionizada del laboratorio 6 las capacidades de selección de `play_first_skill` o `actuation.participants`.
+
+El script `comprobar_puentes_04_06.py` comprueba las contribuciones del paquete de referencia de la Unidad 4; no ejecuta pruebas NPC ni evalúa una entrega del alumno. Además de las interfaces públicas de sesión, consulta las definiciones internas de la sesión para llamar a `contribution_total`. Las pruebas NPC se ejecutan por separado con `python -m pytest -q gisela/engine/tests/test_npc_skill_priorities.py`.

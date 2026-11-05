@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from traits import compile_catalog, evaluate
-from gisela.contracts.admit_package import admit_package_file
+from gisela.contracts.admit_package import PackageRejected, admit_package_file
 
 ROOT=Path(__file__).resolve().parents[3]
 W=ROOT/'workshops/autoria_dsl_15'
@@ -30,7 +30,7 @@ for group in ('ejercicios','soluciones'):
     for p in sorted((W/group/'04_rasgos').glob('*.json')):
         if p.name.startswith('06_rasgo_inexistente'):
             try: admit_package_file(p)
-            except Exception: print('OK rechazo deliberado',p.name)
+            except PackageRejected: print('OK rechazo deliberado',p.name)
             else: raise AssertionError('Se admitió un rasgo inexistente')
         else:
             admit_package_file(p)

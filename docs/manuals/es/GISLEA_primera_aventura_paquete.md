@@ -1,5 +1,11 @@
 [Volver al inicio del tutorial](GISLEA_primera_aventura_narrativa.md).
 
+**Estado del material:** este manual desarrolla el diseño de *El paraguas olvidado*.
+Los archivos `paraguas_olvidado_etapa_*.package.json` mencionados no se incluyen
+en este repositorio. Los fragmentos requieren integración y validación; no forman
+por sí solos un paquete ejecutable. Para comenzar con un archivo completo disponible,
+consulte [Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+
 # 3.1. Del relato al guion productivo
 
 Nuestra historia comienza una tarde lluviosa, en una estación de tren. Elena encuentra un paraguas azul cerca de una banca y Tomás, otro pasajero, asegura haber visto a una compañera de trabajo dejarlo allí. Sin embargo, Elena puede descubrir una etiqueta cuyas iniciales no coinciden con las de esa persona.
@@ -114,7 +120,10 @@ Los identificadores `examina`, `entrega` y `inicio` son nombres que hemos elegid
 
 * * *
 
-El archivo completo de esta etapa acompaña al manual. Ábralo en su editor y busque las secciones `manifest`, `nodes` y `endings`; podrá reconocer las declaraciones que acabamos de estudiar.
+El archivo completo de esta etapa está pendiente de incorporarse al repositorio.
+Si construye su propia versión, complete las secciones `manifest`, `nodes`,
+`endings`, `initial_state`, `cards`, `scenes` y `rules` según el contrato v1.5.
+Los comandos siguientes se aplican a esa versión propia una vez guardada.
 
 Para comprobarlo, abra una terminal en la carpeta que contiene el archivo y ejecute, con los comandos de GISELA instalados:
 
@@ -175,7 +184,7 @@ Supongamos que queremos ofrecer la opción de examinar el paraguas solamente mie
 
 La condición correspondiente debe comprobar la ausencia del hecho `paraguas_examinado`. Una vez que la acción lo registre, la misma opción dejará de estar disponible.
 
-No necesitamos escribir una segunda escena que diga «el paraguas ya fue examinado». Podemos utilizar el estado existente para determinar qué acciones corresponden.
+No necesitamos escribir una segunda escena que diga "el paraguas ya fue examinado". Podemos utilizar el estado existente para determinar qué acciones corresponden.
 
 Este es uno de los beneficios principales del guion declarativo: **las condiciones consultan lo ocurrido, mientras que los efectos registran sus consecuencias**.
 
@@ -301,7 +310,7 @@ Podemos representar ese cambio mediante `set_belief`:
 {  
   "op": "set_belief",  
   "character": "tomas",  
-  "key": "paraguas_es_de_companera",  
+  "claim": "paraguas_es_de_companera",
   "value": false  
 }  
 ```
@@ -318,7 +327,7 @@ En nuestro ejemplo, Tomás aprecia que Elena le muestre el indicio y le permita 
 
 La relación tiene una dirección:
 
-**Tomás → Elena: confianza +1**
+**Confianza de Tomás hacia Elena: +1**
 
 Esto no implica que Elena confíe más en Tomás. Para modificar la relación inversa, el autor tendría que declarar otra consecuencia.
 

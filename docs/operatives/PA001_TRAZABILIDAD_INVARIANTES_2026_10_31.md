@@ -1,5 +1,9 @@
 # PA-001: Matriz consolidada de trazabilidad de invariantes (intervención 10)
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Estado: PARCIAL; inventario exhaustivo de las 16 invariantes explícitas del protocolo, no demostración exhaustiva de todos sus caminos.**
 
 Fuente del inventario: apartado 4 de las instrucciones de PA-001. Cada fila incluye decisión/documento, punto de código y prueba candidata. Los anclajes son rutas inspeccionables, no certificados de suficiencia.

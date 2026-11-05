@@ -1,5 +1,12 @@
 [Volver al inicio del tutorial](GISLEA_primera_aventura_narrativa.md).
 
+**Estado del material:** las etapas de *El paraguas olvidado* descritas aquí
+son un recorrido de diseño. Sus archivos completos no se incluyen en el repositorio;
+los comandos presuponen que el lector los ha construido y validado. Los resultados
+indicados son criterios que debe comprobar, no evidencias de ejecución de esta revisión.
+Para un primer ejemplo completo disponible, consulte
+[Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+
 # 3.6. La ficha de personaje: atributos, rasgos y azar
 
 Quienes hayan jugado alguna vez un juego de rol de mesa probablemente recordarán las fichas de personaje, donde se anotan características como fuerza, inteligencia, habilidades y rasgos especiales. GISELA utiliza una idea parecida: una carta describe al personaje y sus características, mientras que el motor puede consultar sus valores y utilizarlos al resolver acontecimientos.
@@ -8,9 +15,9 @@ Vamos a utilizar la ficha de Tomás para comprobar si consigue recordar un detal
 
 Esta es una representación legible de los datos que hemos declarado para el personaje:
 
-**FICHA DE PERSONAJE — TOMÁS**
+**FICHA DE PERSONAJE: TOMÁS**
 
-| S.O.F.I.A. — Atributos | Valor |  
+| S.O.F.I.A.: atributos | Valor |
 |---|---:|  
 | Fuerza (`strength`) | 4 |  
 | Apertura (`openness`) | 5 |  
@@ -18,7 +25,7 @@ Esta es una representación legible de los datos que hemos declarado para el per
 | Inteligencia (`intelligence`) | 6 |  
 | Percepción (`awareness`) | 5 |
 
-**TRAITS — Rasgos**
+**TRAITS: Rasgos**
 
 *Atento a los detalles:* aporta +2 a las evaluaciones declaradas con el contexto `recuerdo`, cuando Tomás participa como actor.
 
@@ -56,14 +63,14 @@ Elena le pregunta a Tomás si recuerda alguna característica que permita distin
 
 Utilizaremos una tirada de un dado de seis caras, representado como `1d6`. El motor combina los valores mediante esta fórmula declarada para la evaluación:
 
-**Resultado = Inteligencia + Rasgo + Dado − Dificultad**
+**Resultado = Inteligencia + Rasgo + Dado - Dificultad**
 
 | Elemento | Valor |  
 |---|---:|  
 | Inteligencia efectiva | 6 |  
 | Rasgo aplicable | +2 |  
 | Dado | 1d6 |  
-| Dificultad | −6 |  
+| Dificultad | -6 |
 | **Umbral para recordar** | **7** |
 
 Si el dado arroja 4, el resultado será 6 y Tomás no conseguirá recordar. Si arroja 5, el resultado será 7 y recordará el detalle.
@@ -179,7 +186,7 @@ Con esto hemos terminado la construcción de *El paraguas olvidado*. El paquete 
 
 **Compruebe su historia:** ejecute los dos desenlaces y verifique que la misión termina completada en ambos. Observe también que permanece pendiente mientras Elena investiga.
 
-En el último apartado del workshop aprenderemos a comprobar la historia completa, identificar errores y reproducir los resultados de DICE.
+En el último apartado del taller aprenderemos a comprobar la historia completa, identificar errores y reproducir los resultados de DICE.
 
 # 3.8. Comprobar y depurar nuestra historia
 
@@ -256,7 +263,7 @@ Una propiedad importante de GISELA es que sus evaluaciones probabilísticas son 
 
 Podemos comprobarlo sin conocer el funcionamiento interno de DICE.
 
-Antes de seleccionar «Pedir más detalles», guarde la partida:
+Antes de seleccionar "Pedir más detalles", guarde la partida:
 
 ```text  
 guardar antes_del_recuerdo.json  

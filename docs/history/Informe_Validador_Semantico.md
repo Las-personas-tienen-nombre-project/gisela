@@ -1,5 +1,9 @@
 # GISELA: Informe de implementación del validador semántico estático v0.1
 
+Registro histórico: este documento conserva el estado de su etapa original.
+Consulte el [índice del archivo](README.md) para distinguir sus antecedentes
+de las instrucciones vigentes.
+
 **Fecha:** 29 de octubre de 2026  
 **Contratos:** JSON Schema v1.1, arquitectura consolidada v1.2, ADR-001-014.
 

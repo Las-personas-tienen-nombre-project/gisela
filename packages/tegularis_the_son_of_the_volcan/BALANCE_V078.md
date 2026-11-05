@@ -1,4 +1,4 @@
-# Tegularis — ajuste de balance v0.7.8
+# Tegularis: ajuste de balance v0.7.8
 
 ## Origen y límites
 
@@ -31,10 +31,10 @@ Las decisiones de objetivo están expresadas como `requires` declarativos y orde
 Desde la raíz del repositorio:
 
 ```bash
-python gisela/packages/tegularis_the_son_of_the_volcan/build_v078.py
+python packages/tegularis_the_son_of_the_volcan/build_v078.py
 python tools/check_quality.py
-python -m pytest -q gisela/packages/tegularis_the_son_of_the_volcan/test_balance_v078.py
-python tools/play_mvp.py --package gisela/packages/tegularis_the_son_of_the_volcan/10_balance_v078.package.json --seed aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --save sesion_balance_v078.json
+python -m pytest -q packages/tegularis_the_son_of_the_volcan/test_balance_v078.py
+python tools/play_mvp.py --package packages/tegularis_the_son_of_the_volcan/10_balance_v078.package.json --seed aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --save sesion_balance_v078.json
 ```
 
 `tools/tegularis_campaign_v077.py` sigue apuntando al paquete anterior por diseño; para probar masivamente v0.7.8 sin alterar las herramientas existentes puede importar `SeedRun` y pasar `admit_package_file` sobre el nuevo archivo.

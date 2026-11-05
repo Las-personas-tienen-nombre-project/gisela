@@ -1,5 +1,7 @@
 # GISELA package and session contracts
 
+The installed package and official verification kit use the [maintained tree](../gisela/contracts/README.md) under `gisela/`. This top-level compatibility copy can lag behind; use the maintained schemas and modules when authoring current packages.
+
 This directory defines JSON schemas, package admission, semantic validation, canonical encoding, and deterministic random utilities. It is the contract boundary between authored story data and the GISELA executor.
 
 ## Contract versions
@@ -50,6 +52,16 @@ In v1.5, `presentation.color` accepts `default`, `red`, `yellow`, `green`, `cyan
 `manifest.disposition_display` is optional and separate from `relationship_fields`: it names a numeric relationship field and declares `minimum`, `neutral`, and `maximum`, plus four optional normalized `thresholds`. It is validated at admission. The directed effective value and its category are available only through a privileged `debug_query`, never through `Observe`. A package without this configuration remains playable and its diagnostic disposition is `unknown`.
 
 Scene actors may declare `unknown_name`, `known_if`, and a stable public `public_id`; elements may declare `public_id` and `public_entity`; scene actions may declare `public_id`. These are optional author supplied aliases, so authors must review any remaining IDs and labels that could reveal information the player has not learned. The action execution token remains `action_id` from the current observation.
+
+## Presentation views in v1.5
+
+The maintained schemas under `gisela/contracts/v1_5/` admit optional
+`presentation.regions`, `action_targets`, and up to 32 named `views`. Table
+views select public sources and allowed columns. Event views select public
+causal records, optionally group them by `causal_execution_id`, and apply
+restricted templates and visual roles. Semantic validation rejects unknown
+views, incompatible sources, private fields, and executable template syntax.
+See the [current presentation contract](../docs/architecture/PRESENTACION_DECLARATIVA_V082.md).
 
 ## Evaluate declarations
 

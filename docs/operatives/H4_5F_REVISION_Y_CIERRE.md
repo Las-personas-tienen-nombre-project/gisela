@@ -1,5 +1,9 @@
 # H4.5f. Revisión y cierre técnico
 
+Registro histórico: las herramientas, cifras y pendientes que siguen
+corresponden a la etapa examinada. Para ejecutar los controles actuales,
+consulte la [guía de verificación independiente](../guides/VERIFICACION_GISELA.md).
+
 **Fecha:** 30 de octubre de 2026.
 
 **Objetivo:** endurecer escenas y proyecciones antes de la autoría de la primera jornada canónica. GISELA mantiene la autoridad de ejecución y ALBERTO administra lugares y entidades. El cliente textual oficial se llama **GLAUQUIR: GISELA's Lightweight Access Utility for Queries, User Interaction, and Rendering**.

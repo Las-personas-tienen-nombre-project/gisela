@@ -18,7 +18,7 @@
 ## 2. Comprobación sobre el código del ZIP (6)
 
 - `GiselaSession.observe()` proyecta estado confirmado; `GiselaSession.act()` autoriza por `session_id`, `revision` y una `action_id` efectivamente ofrecida.
-- La sesión pública v1.2 tiene `status ∈ {preparing,node,exploring,ended}`, `revision`, `world_revision`, `turn` y `rng` con `sha256_counter_v1`.
+- La sesión pública v1.2 tiene `status pertenece a {preparing,node,exploring,ended}`, `revision`, `world_revision`, `turn` y `rng` con `sha256_counter_v1`.
 - `pending_transaction` almacena **intención y respuestas** para reproducir un borrador. No almacena tiradas confirmadas y no debe reinterpretarse como resultado de DICE.
 - El `roll` existente en `gisela/engine/consequences.py` **escribe en una variable del borrador** y cambia su RNG provisional. No permite publicar dados antes de que se confirmen las consecuencias de la misma operación.
 - El validador de sesión y la proyección pública rechazan estructuras no declaradas. La propuesta exige una evolución versionada de los contratos y nuevas pruebas de restauración; **no puede implementarse agregando una clave sin actualizar los validadores**.
@@ -31,7 +31,7 @@ Esta regla evita una trampa del diseño: no basta con interceptar el `roll` actu
 
 Una vez fijada, GISELA guarda la procedencia y el resultado, sin serializar el borrador completo. Durante la aplicación, recupera las ramas declaradas y comprueba que el origen sigue siendo válido; usa el resultado ya fijado y no vuelve a consumir RNG por esa evaluación.
 
-No se admite encadenar silenciosamente otra evaluación **visible** dentro de la transacción de aplicación: debe existir una nueva frontera explícita. **Tampoco se admite una evaluación visible dentro de las reacciones de `node_completed`, `turn_ended` o `turn_started` que forman una transición A→B**: dividiría el cierre y el inicio que ADR-007 exige confirmar conjuntamente. En v1, esos lugares solo podrán contener tiradas ocultas y atómicas; los dados visibles deben solicitarse desde un paso o acción estable anterior o posterior a la transición. Las tiradas ocultas mantienen su semántica atómica actual.
+No se admite encadenar silenciosamente otra evaluación **visible** dentro de la transacción de aplicación: debe existir una nueva frontera explícita. **Tampoco se admite una evaluación visible dentro de las reacciones de `node_completed`, `turn_ended` o `turn_started` que forman una transición de A a B**: dividiría el cierre y el inicio que ADR-007 exige confirmar conjuntamente. En v1, esos lugares solo podrán contener tiradas ocultas y atómicas; los dados visibles deben solicitarse desde un paso o acción estable anterior o posterior a la transición. Las tiradas ocultas mantienen su semántica atómica actual.
 
 ## 4. Evolución propuesta del snapshot
 
@@ -144,7 +144,7 @@ Se omiten aquí deliberadamente otros campos obligatorios de `Observe` para conc
 | A09 | `visible` frente a `acknowledged` | Acciones ofrecidas según modo; misma tirada. |
 | A10 | Evaluación sin S.O.F.I.A., TRAITS o MARY | Funciona mediante contrato neutral. |
 | A11 | Acción con efectos *antes* de evaluación visible | Rechazo en validación del paquete v1; sin efectos parciales. |
-| A12 | Evaluación visible declarada en una reacción de cierre/inicio A→B | Paquete rechazado; no divide el cierre/inicio atómico de ADR-007. |
+| A12 | Evaluación visible declarada en una reacción de cierre/inicio de A a B | Paquete rechazado; no divide el cierre/inicio atómico de ADR-007. |
 | A13 | Dos tipos de dados con consumo variable por rechazo | Se conserva contador RNG real y orden de resultados. |
 | A14 | Ficha NPC con modificadores secretos | `Observe` no filtra datos ocultos. |
 

@@ -1,5 +1,7 @@
 # Corrección integral de los siete hallazgos de auditoría pedagógica
 
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+
 ## Alcance
 
 Se actualizó el workshop dentro de `workshops/autoria_dsl_15/`, sin modificar el motor, contratos ni paquetes canónicos de Tegularis. La referencia oficial del DSL y el glosario permanecen fuera del workshop.
@@ -7,10 +9,10 @@ Se actualizó el workshop dentro de `workshops/autoria_dsl_15/`, sin modificar e
 | Hallazgo | Corrección aplicada | Evidencia |
 |---|---|---|
 | Comandos que ejecutaban originales | Ruta única `mi_trabajo/u01..u08.package.json`; comandos sobre la copia; invocación por módulo del validador | `VALIDACION_COPIAS_ALUMNO.json`: 8/8 admitidos |
-| Integración antes del laboratorio | Unidades 1–8 comienzan con enlace y secuencia mínima; integración productiva después | encabezados de `unidades/` |
+| Integración antes del laboratorio | Unidades 1 a 8 comienzan con enlace y secuencia mínima; integración productiva después | encabezados de `unidades/` |
 | Guía desactualizada | Actualizados `README.md` y `GUIA_DEL_ALUMNO.md` con índice y estado real | revisión de los enlaces |
 | Falta de laboratorio U8 | Paquete reducido `paquetes/08_progresivo/08_laboratorio.package.json` y README para crear regiones | paquete admitido y ejecutado; región adicional admitida; vista inexistente rechazada |
-| Modificar sin crear | Seis ejercicios de transferencia con declaración omitida y solución de referencia; región propia en U8 | soluciones 2–7 admitidas: 6/6 |
+| Modificar sin crear | Seis ejercicios de transferencia con declaración omitida y solución de referencia; región propia en U8 | soluciones 2 a 7 admitidas: 6/6 |
 | Trazas poco enseñadas | `COMO_COMPROBAR.md` con comandos, resultados, diagnóstico y ficha | guía vinculada desde unidades y guía del alumno |
 | U9 sin hitos evidenciables | `evaluacion/09_integracion/HITOS.md` con archivos, predicciones, pruebas negativas y registros por hito | rúbrica y Unidad 9 enlazadas |
 
@@ -24,7 +26,7 @@ Se actualizó el workshop dentro de `workshops/autoria_dsl_15/`, sin modificar e
 - La construcción de una región adicional se admite; una región que apunta a `vista_que_no_existe` se rechaza con `PRESENTATION_INVALID`.
 - Archivos incompletos de transferencia: unidades 3, 4 y 5 son rechazadas; unidades 2, 6 y 7 se admiten porque el validador no exige toda la intención pedagógica. La documentación distingue expresamente ambos casos.
 
-## Segundo examen en frío — debilidades y ajustes
+## Segundo examen en frío: debilidades y ajustes
 
 1. El comando directo `python gisela/contracts/admit_package.py` falla en este entorno con paquetes con presentación, por imports relativos. Se sustituyó en la documentación del workshop por `python -m gisela.contracts.admit_package` (sin modificar código de GISELA).
 2. Las soluciones incompletas no siempre producen error de admisión: el enunciado ya no promete un rechazo en todos los casos.
