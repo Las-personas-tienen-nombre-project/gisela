@@ -1,0 +1,50 @@
+[
+  {
+    "unit": 1,
+    "path": "mi_trabajo/u01.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 9fa4c5db2b445017b32a33a371984be3f2bcc960af2fbe98f446c49f70aeb53d"
+  },
+  {
+    "unit": 2,
+    "path": "mi_trabajo/u02.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 99a50aacea5dea3ae9ce1600e5bc5977dcdcfab768232e1efc081f18b19011aa"
+  },
+  {
+    "unit": 3,
+    "path": "mi_trabajo/u03.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 6ef5781704034bd4645b591f9414ac1a269447ccbad9f5fef0ec376b6773c98c"
+  },
+  {
+    "unit": 4,
+    "path": "mi_trabajo/u04.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 43a3c000f496045c5f3b92b6b05c8d98443f4375944c0a4db2666bd1dbd103b0"
+  },
+  {
+    "unit": 5,
+    "path": "mi_trabajo/u05.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 4e41f41798f9d2de9a9a0dd53e26d49908076e811781185142ef100d9c23da2c"
+  },
+  {
+    "unit": 6,
+    "path": "mi_trabajo/u06.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 9aa4ac04b78567238bf89f3af91b7626119249832b337ba4fa64383247c75203"
+  },
+  {
+    "unit": 7,
+    "path": "mi_trabajo/u07.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED 97cd6828f042cee7a48b13fa051e985a74c9ba2fdc1a42b08e527a4f272e1685"
+  },
+  {
+    "unit": 8,
+    "path": "mi_trabajo/u08.package.json",
+    "admission_exit_code": 0,
+    "result": "ADMITTED dba5b83940405b88ea42dc8868116331db62bb2e31eb4d866d4f7e06c06d0fc1"
+  }
+]

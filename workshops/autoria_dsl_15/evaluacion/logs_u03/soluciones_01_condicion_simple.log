@@ -1,0 +1,3997 @@
+
+Ronda 1: tegularis (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 163 | 64 |  0
+  gillius      | 180 | 58 |  0
+  clarisa      | 168 | 67 |  0
+  iosepus      | 174 | 60 |  0
+  tegularis    | 522 | 85 | 50
+
+ACONTECIMIENTOS SELECCIONADOS
+  12 de 12 registros seleccionados
+  #1 Acontecimiento: Dado d20: 5
+  #2 Acontecimiento: Dado d10: 10
+  #3 Acontecimiento: Dado d20: 20
+  #4 Acontecimiento: Dado d10: 4
+  #5 Acontecimiento: Dado d20: 14
+  #6 Acontecimiento: Dado d10: 10
+  #7 Acontecimiento: Dado d20: 20
+  #8 Acontecimiento: Dado d10: 1
+  #9 Acontecimiento: Dado d20: 3
+  #10 Acontecimiento: Dado d20: 2
+  #11 Acontecimiento: Dado d20: 17
+  #12 Acontecimiento: Dado d20: 5
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó FIREBREATH.
+
+Acción confirmada: gillius esquivó FIREBREATH.
+
+Acción confirmada: FIREBREATH hizo 34 puntos a clarisa.
+
+Acción confirmada: FIREBREATH hizo 34 puntos a iosepus.
+
+Ronda 1: tegularis (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 163 | 64 |  0
+  gillius      | 180 | 58 |  0
+  clarisa      | 134 | 67 |  0
+  iosepus      | 140 | 60 |  0
+  tegularis    | 522 | 35 | 50
+
+ACONTECIMIENTOS SELECCIONADOS
+  31 de 31 registros seleccionados
+  #1 Acontecimiento: Dado d20: 5
+  #2 Acontecimiento: Dado d10: 10
+  #3 Acontecimiento: Dado d20: 20
+  #4 Acontecimiento: Dado d10: 4
+  #5 Acontecimiento: Dado d20: 14
+  #6 Acontecimiento: Dado d10: 10
+  #7 Acontecimiento: Dado d20: 20
+  #8 Acontecimiento: Dado d10: 1
+  #9 Acontecimiento: Dado d20: 3
+  #10 Acontecimiento: Dado d20: 2
+  #11 Acontecimiento: Dado d20: 17
+  #12 Acontecimiento: Dado d20: 5
+  Acción confirmada:
+  #14 Acontecimiento: tegularis ejecuta firebreath
+    Resultados y registros correlacionados:
+      #15 Acontecimiento: mp_tegularis: 85 → 35
+      #16 Acontecimiento: Dado d10: 3
+      #17 Acontecimiento: fire_common: 3 → 37
+      #18 Acontecimiento: Dado d10: 8
+      #20 Acontecimiento: Dado d10: 7
+      #22 Acontecimiento: Dado d10: 9
+      #24 Acontecimiento: Dado d10: 9
+      #26 Acontecimiento: Dado d10: 1
+      #28 Acontecimiento: Dado d10: 1
+      #30 Acontecimiento: Dado d10: 9
+      #32 Acontecimiento: Dado d10: 1
+      #34 Acontecimiento: parnecio esquivó FIREBREATH.
+      #35 Acontecimiento: gillius esquivó FIREBREATH.
+      #36 Acontecimiento: hp_clarisa: 168 → 134
+      #37 Acontecimiento: FIREBREATH hizo 34 puntos a clarisa.
+      #38 Acontecimiento: hp_iosepus: 174 → 140
+      #39 Acontecimiento: FIREBREATH hizo 34 puntos a iosepus.
+      #40 Acontecimiento: Termina firebreath de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: COLETAZO hizo 52 puntos a parnecio.
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: COLETAZO hizo 48 puntos a clarisa.
+
+Acción confirmada: COLETAZO hizo 52 puntos a iosepus.
+
+Ronda 1: tegularis (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 180 | 58 |  0
+  clarisa      |  86 | 67 |  0
+  iosepus      |  88 | 60 |  0
+  tegularis    | 522 | 35 | 30
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #35 Acontecimiento: gillius esquivó FIREBREATH.
+  #36 Acontecimiento: hp_clarisa: 168 → 134
+  #37 Acontecimiento: FIREBREATH hizo 34 puntos a clarisa.
+  #38 Acontecimiento: hp_iosepus: 174 → 140
+  #39 Acontecimiento: FIREBREATH hizo 34 puntos a iosepus.
+  #40 Acontecimiento: Termina firebreath de tegularis
+  Acción confirmada:
+  #41 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #42 Acontecimiento: tp_tegularis: 50 → 30
+      #43 Acontecimiento: Dado d10: 6
+      #44 Acontecimiento: tail_hit_parnecio: 6 → 13
+      #45 Acontecimiento: Dado d10: 1
+      #46 Acontecimiento: tail_eva_parnecio: 1 → 10
+      #47 Acontecimiento: Dado d10: 7
+      #48 Acontecimiento: tail_dmg_parnecio: 7 → 52
+      #49 Acontecimiento: Dado d10: 1
+      #50 Acontecimiento: tail_hit_gillius: 1 → 8
+      #51 Acontecimiento: Dado d10: 9
+      #52 Acontecimiento: tail_eva_gillius: 9 → 19
+      #53 Acontecimiento: Dado d10: 3
+      #54 Acontecimiento: tail_dmg_gillius: 3 → 48
+      #55 Acontecimiento: Dado d10: 1
+      #56 Acontecimiento: tail_hit_clarisa: 1 → 8
+      #57 Acontecimiento: Dado d10: 1
+      #58 Acontecimiento: tail_eva_clarisa: 1 → 6
+      #59 Acontecimiento: Dado d10: 3
+      #60 Acontecimiento: tail_dmg_clarisa: 3 → 48
+      #61 Acontecimiento: Dado d10: 9
+      #62 Acontecimiento: tail_hit_iosepus: 9 → 16
+      #63 Acontecimiento: Dado d10: 7
+      #64 Acontecimiento: tail_eva_iosepus: 7 → 13
+      #65 Acontecimiento: Dado d10: 7
+      #66 Acontecimiento: tail_dmg_iosepus: 7 → 52
+      #67 Acontecimiento: hp_parnecio: 163 → 111
+      #68 Acontecimiento: COLETAZO hizo 52 puntos a parnecio.
+      #69 Acontecimiento: gillius esquivó COLETAZO.
+      #70 Acontecimiento: hp_clarisa: 134 → 86
+      #71 Acontecimiento: COLETAZO hizo 48 puntos a clarisa.
+      #72 Acontecimiento: hp_iosepus: 140 → 88
+      #73 Acontecimiento: COLETAZO hizo 52 puntos a iosepus.
+      #74 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó COLETAZO.
+
+Acción confirmada: COLETAZO hizo 47 puntos a gillius.
+
+Acción confirmada: COLETAZO hizo 55 puntos a clarisa.
+
+Acción confirmada: COLETAZO hizo 48 puntos a iosepus.
+
+Ronda 1: clarisa (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  31 | 67 |  0
+  iosepus      |  40 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #69 Acontecimiento: gillius esquivó COLETAZO.
+  #70 Acontecimiento: hp_clarisa: 134 → 86
+  #71 Acontecimiento: COLETAZO hizo 48 puntos a clarisa.
+  #72 Acontecimiento: hp_iosepus: 140 → 88
+  #73 Acontecimiento: COLETAZO hizo 52 puntos a iosepus.
+  #74 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #75 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #76 Acontecimiento: tp_tegularis: 30 → 10
+      #77 Acontecimiento: Dado d10: 5
+      #78 Acontecimiento: tail_hit_parnecio: 5 → 12
+      #79 Acontecimiento: Dado d10: 8
+      #80 Acontecimiento: tail_eva_parnecio: 8 → 17
+      #81 Acontecimiento: Dado d10: 4
+      #82 Acontecimiento: tail_dmg_parnecio: 4 → 49
+      #83 Acontecimiento: Dado d10: 6
+      #84 Acontecimiento: tail_hit_gillius: 6 → 13
+      #85 Acontecimiento: Dado d10: 2
+      #86 Acontecimiento: tail_eva_gillius: 2 → 12
+      #87 Acontecimiento: Dado d10: 2
+      #88 Acontecimiento: tail_dmg_gillius: 2 → 47
+      #89 Acontecimiento: Dado d10: 7
+      #90 Acontecimiento: tail_hit_clarisa: 7 → 14
+      #91 Acontecimiento: Dado d10: 3
+      #92 Acontecimiento: tail_eva_clarisa: 3 → 8
+      #93 Acontecimiento: Dado d10: 10
+      #94 Acontecimiento: tail_dmg_clarisa: 10 → 55
+      #95 Acontecimiento: Dado d10: 6
+      #96 Acontecimiento: tail_hit_iosepus: 6 → 13
+      #97 Acontecimiento: Dado d10: 6
+      #98 Acontecimiento: tail_eva_iosepus: 6 → 12
+      #99 Acontecimiento: Dado d10: 3
+      #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+      #101 Acontecimiento: parnecio esquivó COLETAZO.
+      #102 Acontecimiento: hp_gillius: 180 → 133
+      #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+      #104 Acontecimiento: hp_clarisa: 86 → 31
+      #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+      #106 Acontecimiento: hp_iosepus: 88 → 40
+      #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+      #108 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+
+Ronda 1: clarisa (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 47 |  0
+  iosepus      |  40 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #76 Acontecimiento: tp_tegularis: 30 → 10
+  #77 Acontecimiento: Dado d10: 5
+  #78 Acontecimiento: tail_hit_parnecio: 5 → 12
+  #79 Acontecimiento: Dado d10: 8
+  #80 Acontecimiento: tail_eva_parnecio: 8 → 17
+  #81 Acontecimiento: Dado d10: 4
+  #82 Acontecimiento: tail_dmg_parnecio: 4 → 49
+  #83 Acontecimiento: Dado d10: 6
+  #84 Acontecimiento: tail_hit_gillius: 6 → 13
+  #85 Acontecimiento: Dado d10: 2
+  #86 Acontecimiento: tail_eva_gillius: 2 → 12
+  #87 Acontecimiento: Dado d10: 2
+  #88 Acontecimiento: tail_dmg_gillius: 2 → 47
+  #89 Acontecimiento: Dado d10: 7
+  #90 Acontecimiento: tail_hit_clarisa: 7 → 14
+  #91 Acontecimiento: Dado d10: 3
+  #92 Acontecimiento: tail_eva_clarisa: 3 → 8
+  #93 Acontecimiento: Dado d10: 10
+  #94 Acontecimiento: tail_dmg_clarisa: 10 → 55
+  #95 Acontecimiento: Dado d10: 6
+  #96 Acontecimiento: tail_hit_iosepus: 6 → 13
+  #97 Acontecimiento: Dado d10: 6
+  #98 Acontecimiento: tail_eva_iosepus: 6 → 12
+  #99 Acontecimiento: Dado d10: 3
+  #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+  #101 Acontecimiento: parnecio esquivó COLETAZO.
+  #102 Acontecimiento: hp_gillius: 180 → 133
+  #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+  #104 Acontecimiento: hp_clarisa: 86 → 31
+  #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+  #106 Acontecimiento: hp_iosepus: 88 → 40
+  #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+  #108 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #109 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #110 Acontecimiento: mp_clarisa: 67 → 47
+      #111 Acontecimiento: Dado d10: 8
+      #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+      #113 Acontecimiento: hp_clarisa: 31 → 66
+      #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+      #115 Acontecimiento: Termina curacion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+
+Ronda 1: gillius (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #83 Acontecimiento: Dado d10: 6
+  #84 Acontecimiento: tail_hit_gillius: 6 → 13
+  #85 Acontecimiento: Dado d10: 2
+  #86 Acontecimiento: tail_eva_gillius: 2 → 12
+  #87 Acontecimiento: Dado d10: 2
+  #88 Acontecimiento: tail_dmg_gillius: 2 → 47
+  #89 Acontecimiento: Dado d10: 7
+  #90 Acontecimiento: tail_hit_clarisa: 7 → 14
+  #91 Acontecimiento: Dado d10: 3
+  #92 Acontecimiento: tail_eva_clarisa: 3 → 8
+  #93 Acontecimiento: Dado d10: 10
+  #94 Acontecimiento: tail_dmg_clarisa: 10 → 55
+  #95 Acontecimiento: Dado d10: 6
+  #96 Acontecimiento: tail_hit_iosepus: 6 → 13
+  #97 Acontecimiento: Dado d10: 6
+  #98 Acontecimiento: tail_eva_iosepus: 6 → 12
+  #99 Acontecimiento: Dado d10: 3
+  #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+  #101 Acontecimiento: parnecio esquivó COLETAZO.
+  #102 Acontecimiento: hp_gillius: 180 → 133
+  #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+  #104 Acontecimiento: hp_clarisa: 86 → 31
+  #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+  #106 Acontecimiento: hp_iosepus: 88 → 40
+  #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+  #108 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #109 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #110 Acontecimiento: mp_clarisa: 67 → 47
+      #111 Acontecimiento: Dado d10: 8
+      #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+      #113 Acontecimiento: hp_clarisa: 31 → 66
+      #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+      #115 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #116 Acontecimiento: clarisa ejecuta curacion_iosepus
+    Resultados y registros correlacionados:
+      #117 Acontecimiento: mp_clarisa: 47 → 27
+      #118 Acontecimiento: Dado d10: 4
+      #119 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #120 Acontecimiento: hp_iosepus: 40 → 71
+      #121 Acontecimiento: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+      #122 Acontecimiento: Termina curacion_iosepus de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+
+Ronda 1: gillius (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #86 Acontecimiento: tail_eva_gillius: 2 → 12
+  #87 Acontecimiento: Dado d10: 2
+  #88 Acontecimiento: tail_dmg_gillius: 2 → 47
+  #89 Acontecimiento: Dado d10: 7
+  #90 Acontecimiento: tail_hit_clarisa: 7 → 14
+  #91 Acontecimiento: Dado d10: 3
+  #92 Acontecimiento: tail_eva_clarisa: 3 → 8
+  #93 Acontecimiento: Dado d10: 10
+  #94 Acontecimiento: tail_dmg_clarisa: 10 → 55
+  #95 Acontecimiento: Dado d10: 6
+  #96 Acontecimiento: tail_hit_iosepus: 6 → 13
+  #97 Acontecimiento: Dado d10: 6
+  #98 Acontecimiento: tail_eva_iosepus: 6 → 12
+  #99 Acontecimiento: Dado d10: 3
+  #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+  #101 Acontecimiento: parnecio esquivó COLETAZO.
+  #102 Acontecimiento: hp_gillius: 180 → 133
+  #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+  #104 Acontecimiento: hp_clarisa: 86 → 31
+  #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+  #106 Acontecimiento: hp_iosepus: 88 → 40
+  #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+  #108 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #109 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #110 Acontecimiento: mp_clarisa: 67 → 47
+      #111 Acontecimiento: Dado d10: 8
+      #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+      #113 Acontecimiento: hp_clarisa: 31 → 66
+      #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+      #115 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #116 Acontecimiento: clarisa ejecuta curacion_iosepus
+    Resultados y registros correlacionados:
+      #117 Acontecimiento: mp_clarisa: 47 → 27
+      #118 Acontecimiento: Dado d10: 4
+      #119 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #120 Acontecimiento: hp_iosepus: 40 → 71
+      #121 Acontecimiento: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+      #122 Acontecimiento: Termina curacion_iosepus de clarisa
+  Acción confirmada:
+  #123 Acontecimiento: gillius ejecuta stance_aggressive
+    Resultados y registros correlacionados:
+      #124 Acontecimiento: Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+      #125 Acontecimiento: Termina stance_aggressive de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: tegularis esquivó HACHAZO.
+
+Ronda 1: gillius (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 | 10
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #96 Acontecimiento: tail_hit_iosepus: 6 → 13
+  #97 Acontecimiento: Dado d10: 6
+  #98 Acontecimiento: tail_eva_iosepus: 6 → 12
+  #99 Acontecimiento: Dado d10: 3
+  #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+  #101 Acontecimiento: parnecio esquivó COLETAZO.
+  #102 Acontecimiento: hp_gillius: 180 → 133
+  #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+  #104 Acontecimiento: hp_clarisa: 86 → 31
+  #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+  #106 Acontecimiento: hp_iosepus: 88 → 40
+  #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+  #108 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #109 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #110 Acontecimiento: mp_clarisa: 67 → 47
+      #111 Acontecimiento: Dado d10: 8
+      #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+      #113 Acontecimiento: hp_clarisa: 31 → 66
+      #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+      #115 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #116 Acontecimiento: clarisa ejecuta curacion_iosepus
+    Resultados y registros correlacionados:
+      #117 Acontecimiento: mp_clarisa: 47 → 27
+      #118 Acontecimiento: Dado d10: 4
+      #119 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #120 Acontecimiento: hp_iosepus: 40 → 71
+      #121 Acontecimiento: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+      #122 Acontecimiento: Termina curacion_iosepus de clarisa
+  Acción confirmada:
+  #123 Acontecimiento: gillius ejecuta stance_aggressive
+    Resultados y registros correlacionados:
+      #124 Acontecimiento: Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+      #125 Acontecimiento: Termina stance_aggressive de gillius
+  Acción confirmada:
+  #126 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #127 Acontecimiento: tp_gillius: 0 → 10
+      #128 Acontecimiento: Dado d10: 6
+      #129 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #130 Acontecimiento: Dado d10: 9
+      #131 Acontecimiento: scratch_eva_gillius: 9 → 15
+      #132 Acontecimiento: Dado d10: 7
+      #133 Acontecimiento: scratch_damage_gillius: 7 → 37
+      #134 Acontecimiento: tegularis esquivó HACHAZO.
+      #135 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: GRITO DE GUERRA aumentó el daño físico del grupo.
+
+Ronda 1: parnecio (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 522 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #100 Acontecimiento: tail_dmg_iosepus: 3 → 48
+  #101 Acontecimiento: parnecio esquivó COLETAZO.
+  #102 Acontecimiento: hp_gillius: 180 → 133
+  #103 Acontecimiento: COLETAZO hizo 47 puntos a gillius.
+  #104 Acontecimiento: hp_clarisa: 86 → 31
+  #105 Acontecimiento: COLETAZO hizo 55 puntos a clarisa.
+  #106 Acontecimiento: hp_iosepus: 88 → 40
+  #107 Acontecimiento: COLETAZO hizo 48 puntos a iosepus.
+  #108 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #109 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #110 Acontecimiento: mp_clarisa: 67 → 47
+      #111 Acontecimiento: Dado d10: 8
+      #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+      #113 Acontecimiento: hp_clarisa: 31 → 66
+      #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+      #115 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #116 Acontecimiento: clarisa ejecuta curacion_iosepus
+    Resultados y registros correlacionados:
+      #117 Acontecimiento: mp_clarisa: 47 → 27
+      #118 Acontecimiento: Dado d10: 4
+      #119 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #120 Acontecimiento: hp_iosepus: 40 → 71
+      #121 Acontecimiento: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+      #122 Acontecimiento: Termina curacion_iosepus de clarisa
+  Acción confirmada:
+  #123 Acontecimiento: gillius ejecuta stance_aggressive
+    Resultados y registros correlacionados:
+      #124 Acontecimiento: Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+      #125 Acontecimiento: Termina stance_aggressive de gillius
+  Acción confirmada:
+  #126 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #127 Acontecimiento: tp_gillius: 0 → 10
+      #128 Acontecimiento: Dado d10: 6
+      #129 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #130 Acontecimiento: Dado d10: 9
+      #131 Acontecimiento: scratch_eva_gillius: 9 → 15
+      #132 Acontecimiento: Dado d10: 7
+      #133 Acontecimiento: scratch_damage_gillius: 7 → 37
+      #134 Acontecimiento: tegularis esquivó HACHAZO.
+      #135 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #136 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #137 Acontecimiento: tp_gillius: 10 → 0
+      #142 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #143 Acontecimiento: Termina grito_de_guerra de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Slash  [accion slash_01]
+  B) Protección → gillius  [accion proteccion_gillius_01]
+  C) Protección → clarisa  [accion proteccion_clarisa_01]
+  D) Protección → iosepus  [accion proteccion_iosepus_01]
+  E) Pasar  [accion pasar]
+
+Acción confirmada: SLASH hizo 24 puntos de daño a tegularis.
+
+Ronda 1: parnecio (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 | 10
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 498 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #111 Acontecimiento: Dado d10: 8
+  #112 Acontecimiento: scratch_damage_clarisa: 8 → 35
+  #113 Acontecimiento: hp_clarisa: 31 → 66
+  #114 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 66.
+  #115 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #116 Acontecimiento: clarisa ejecuta curacion_iosepus
+    Resultados y registros correlacionados:
+      #117 Acontecimiento: mp_clarisa: 47 → 27
+      #118 Acontecimiento: Dado d10: 4
+      #119 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #120 Acontecimiento: hp_iosepus: 40 → 71
+      #121 Acontecimiento: CURACIÓN restauró salud a Iosepus; HP actual: 71.
+      #122 Acontecimiento: Termina curacion_iosepus de clarisa
+  Acción confirmada:
+  #123 Acontecimiento: gillius ejecuta stance_aggressive
+    Resultados y registros correlacionados:
+      #124 Acontecimiento: Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+      #125 Acontecimiento: Termina stance_aggressive de gillius
+  Acción confirmada:
+  #126 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #127 Acontecimiento: tp_gillius: 0 → 10
+      #128 Acontecimiento: Dado d10: 6
+      #129 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #130 Acontecimiento: Dado d10: 9
+      #131 Acontecimiento: scratch_eva_gillius: 9 → 15
+      #132 Acontecimiento: Dado d10: 7
+      #133 Acontecimiento: scratch_damage_gillius: 7 → 37
+      #134 Acontecimiento: tegularis esquivó HACHAZO.
+      #135 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #136 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #137 Acontecimiento: tp_gillius: 10 → 0
+      #142 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #143 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #144 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #145 Acontecimiento: tp_parnecio: 0 → 10
+      #146 Acontecimiento: Dado d10: 8
+      #147 Acontecimiento: scratch_hit_parnecio: 8 → 14
+      #148 Acontecimiento: Dado d10: 2
+      #149 Acontecimiento: scratch_eva_parnecio: 2 → 8
+      #150 Acontecimiento: Dado d10: 2
+      #151 Acontecimiento: scratch_damage_parnecio: 2 → 29
+      #152 Acontecimiento: hp_tegularis: 522 → 498
+      #153 Acontecimiento: SLASH hizo 24 puntos de daño a tegularis.
+      #154 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Double Slash  [accion double_slash_01]
+  B) Protección → gillius  [accion proteccion_gillius_01]
+  C) Protección → clarisa  [accion proteccion_clarisa_01]
+  D) Protección → iosepus  [accion proteccion_iosepus_01]
+  E) Slash  [accion slash_01]
+  F) Pasar  [accion pasar]
+
+Acción confirmada: Tegularis esquivó DOUBLE SLASH impacto 1.
+
+Acción confirmada: DOUBLE SLASH impacto 2: 29 puntos.
+
+Ronda 1: iosepus (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 60 |  0
+  tegularis    | 469 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #129 Acontecimiento: scratch_hit_gillius: 6 → 14
+  #130 Acontecimiento: Dado d10: 9
+  #131 Acontecimiento: scratch_eva_gillius: 9 → 15
+  #132 Acontecimiento: Dado d10: 7
+  #133 Acontecimiento: scratch_damage_gillius: 7 → 37
+  #134 Acontecimiento: tegularis esquivó HACHAZO.
+  #135 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #136 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #137 Acontecimiento: tp_gillius: 10 → 0
+      #142 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #143 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #144 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #145 Acontecimiento: tp_parnecio: 0 → 10
+      #146 Acontecimiento: Dado d10: 8
+      #147 Acontecimiento: scratch_hit_parnecio: 8 → 14
+      #148 Acontecimiento: Dado d10: 2
+      #149 Acontecimiento: scratch_eva_parnecio: 2 → 8
+      #150 Acontecimiento: Dado d10: 2
+      #151 Acontecimiento: scratch_damage_parnecio: 2 → 29
+      #152 Acontecimiento: hp_tegularis: 522 → 498
+      #153 Acontecimiento: SLASH hizo 24 puntos de daño a tegularis.
+      #154 Acontecimiento: Termina slash de parnecio
+  Acción confirmada:
+  #155 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #156 Acontecimiento: tp_parnecio: 10 → 0
+      #157 Acontecimiento: Dado d10: 2
+      #158 Acontecimiento: double_hit_1: 2 → 8
+      #159 Acontecimiento: Dado d10: 9
+      #160 Acontecimiento: double_eva_1: 9 → 15
+      #161 Acontecimiento: Dado d10: 2
+      #162 Acontecimiento: double_dmg_1: 2 → 26
+      #163 Acontecimiento: Dado d10: 10
+      #164 Acontecimiento: double_hit_2: 10 → 16
+      #165 Acontecimiento: Dado d10: 1
+      #166 Acontecimiento: double_eva_2: 1 → 7
+      #167 Acontecimiento: Dado d10: 10
+      #168 Acontecimiento: double_dmg_2: 10 → 34
+      #169 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 1.
+      #170 Acontecimiento: hp_tegularis: 498 → 469
+      #171 Acontecimiento: DOUBLE SLASH impacto 2: 29 puntos.
+      #172 Acontecimiento: Termina double_slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Acción confirmada: AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+
+Ronda 1: iosepus (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 | 30 |  0
+  tegularis    | 469 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #133 Acontecimiento: scratch_damage_gillius: 7 → 37
+  #134 Acontecimiento: tegularis esquivó HACHAZO.
+  #135 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #136 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #137 Acontecimiento: tp_gillius: 10 → 0
+      #142 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #143 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #144 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #145 Acontecimiento: tp_parnecio: 0 → 10
+      #146 Acontecimiento: Dado d10: 8
+      #147 Acontecimiento: scratch_hit_parnecio: 8 → 14
+      #148 Acontecimiento: Dado d10: 2
+      #149 Acontecimiento: scratch_eva_parnecio: 2 → 8
+      #150 Acontecimiento: Dado d10: 2
+      #151 Acontecimiento: scratch_damage_parnecio: 2 → 29
+      #152 Acontecimiento: hp_tegularis: 522 → 498
+      #153 Acontecimiento: SLASH hizo 24 puntos de daño a tegularis.
+      #154 Acontecimiento: Termina slash de parnecio
+  Acción confirmada:
+  #155 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #156 Acontecimiento: tp_parnecio: 10 → 0
+      #157 Acontecimiento: Dado d10: 2
+      #158 Acontecimiento: double_hit_1: 2 → 8
+      #159 Acontecimiento: Dado d10: 9
+      #160 Acontecimiento: double_eva_1: 9 → 15
+      #161 Acontecimiento: Dado d10: 2
+      #162 Acontecimiento: double_dmg_1: 2 → 26
+      #163 Acontecimiento: Dado d10: 10
+      #164 Acontecimiento: double_hit_2: 10 → 16
+      #165 Acontecimiento: Dado d10: 1
+      #166 Acontecimiento: double_eva_2: 1 → 7
+      #167 Acontecimiento: Dado d10: 10
+      #168 Acontecimiento: double_dmg_2: 10 → 34
+      #169 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 1.
+      #170 Acontecimiento: hp_tegularis: 498 → 469
+      #171 Acontecimiento: DOUBLE SLASH impacto 2: 29 puntos.
+      #172 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #173 Acontecimiento: iosepus ejecuta agarraguirre
+    Resultados y registros correlacionados:
+      #174 Acontecimiento: mp_iosepus: 60 → 30
+      #175 Acontecimiento: AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+      #176 Acontecimiento: Termina agarraguirre de iosepus
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Acción confirmada: ARMADURA_MAGICA se aplicó a Gillius.
+
+Ronda 2: tegularis (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 |  0 |  0
+  tegularis    | 469 | 35 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #142 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+  #143 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #144 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #145 Acontecimiento: tp_parnecio: 0 → 10
+      #146 Acontecimiento: Dado d10: 8
+      #147 Acontecimiento: scratch_hit_parnecio: 8 → 14
+      #148 Acontecimiento: Dado d10: 2
+      #149 Acontecimiento: scratch_eva_parnecio: 2 → 8
+      #150 Acontecimiento: Dado d10: 2
+      #151 Acontecimiento: scratch_damage_parnecio: 2 → 29
+      #152 Acontecimiento: hp_tegularis: 522 → 498
+      #153 Acontecimiento: SLASH hizo 24 puntos de daño a tegularis.
+      #154 Acontecimiento: Termina slash de parnecio
+  Acción confirmada:
+  #155 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #156 Acontecimiento: tp_parnecio: 10 → 0
+      #157 Acontecimiento: Dado d10: 2
+      #158 Acontecimiento: double_hit_1: 2 → 8
+      #159 Acontecimiento: Dado d10: 9
+      #160 Acontecimiento: double_eva_1: 9 → 15
+      #161 Acontecimiento: Dado d10: 2
+      #162 Acontecimiento: double_dmg_1: 2 → 26
+      #163 Acontecimiento: Dado d10: 10
+      #164 Acontecimiento: double_hit_2: 10 → 16
+      #165 Acontecimiento: Dado d10: 1
+      #166 Acontecimiento: double_eva_2: 1 → 7
+      #167 Acontecimiento: Dado d10: 10
+      #168 Acontecimiento: double_dmg_2: 10 → 34
+      #169 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 1.
+      #170 Acontecimiento: hp_tegularis: 498 → 469
+      #171 Acontecimiento: DOUBLE SLASH impacto 2: 29 puntos.
+      #172 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #173 Acontecimiento: iosepus ejecuta agarraguirre
+    Resultados y registros correlacionados:
+      #174 Acontecimiento: mp_iosepus: 60 → 30
+      #175 Acontecimiento: AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+      #176 Acontecimiento: Termina agarraguirre de iosepus
+  Acción confirmada:
+  #177 Acontecimiento: iosepus ejecuta armadura_magica_gillius
+    Resultados y registros correlacionados:
+      #178 Acontecimiento: mp_iosepus: 30 → 0
+      #179 Acontecimiento: defense_gillius: 0 → 3
+      #180 Acontecimiento: ARMADURA_MAGICA se aplicó a Gillius.
+      #181 Acontecimiento: Termina armadura_magica_gillius de iosepus
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+
+Ronda 2: tegularis (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  71 |  0 |  0
+  tegularis    | 469 | 50 | 35
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #148 Acontecimiento: Dado d10: 2
+  #149 Acontecimiento: scratch_eva_parnecio: 2 → 8
+  #150 Acontecimiento: Dado d10: 2
+  #151 Acontecimiento: scratch_damage_parnecio: 2 → 29
+  #152 Acontecimiento: hp_tegularis: 522 → 498
+  #153 Acontecimiento: SLASH hizo 24 puntos de daño a tegularis.
+  #154 Acontecimiento: Termina slash de parnecio
+  Acción confirmada:
+  #155 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #156 Acontecimiento: tp_parnecio: 10 → 0
+      #157 Acontecimiento: Dado d10: 2
+      #158 Acontecimiento: double_hit_1: 2 → 8
+      #159 Acontecimiento: Dado d10: 9
+      #160 Acontecimiento: double_eva_1: 9 → 15
+      #161 Acontecimiento: Dado d10: 2
+      #162 Acontecimiento: double_dmg_1: 2 → 26
+      #163 Acontecimiento: Dado d10: 10
+      #164 Acontecimiento: double_hit_2: 10 → 16
+      #165 Acontecimiento: Dado d10: 1
+      #166 Acontecimiento: double_eva_2: 1 → 7
+      #167 Acontecimiento: Dado d10: 10
+      #168 Acontecimiento: double_dmg_2: 10 → 34
+      #169 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 1.
+      #170 Acontecimiento: hp_tegularis: 498 → 469
+      #171 Acontecimiento: DOUBLE SLASH impacto 2: 29 puntos.
+      #172 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #173 Acontecimiento: iosepus ejecuta agarraguirre
+    Resultados y registros correlacionados:
+      #174 Acontecimiento: mp_iosepus: 60 → 30
+      #175 Acontecimiento: AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+      #176 Acontecimiento: Termina agarraguirre de iosepus
+  Acción confirmada:
+  #177 Acontecimiento: iosepus ejecuta armadura_magica_gillius
+    Resultados y registros correlacionados:
+      #178 Acontecimiento: mp_iosepus: 30 → 0
+      #179 Acontecimiento: defense_gillius: 0 → 3
+      #180 Acontecimiento: ARMADURA_MAGICA se aplicó a Gillius.
+      #181 Acontecimiento: Termina armadura_magica_gillius de iosepus
+  Acción confirmada:
+  #182 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #183 Acontecimiento: tp_tegularis: 10 → 35
+      #184 Acontecimiento: mp_tegularis: 35 → 50
+      #185 Acontecimiento: defense_tegularis: 0 → 5
+      #186 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #187 Acontecimiento: Termina preponderancia de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó FIREBREATH.
+
+Acción confirmada: gillius esquivó FIREBREATH.
+
+Acción confirmada: clarisa esquivó FIREBREATH.
+
+Acción confirmada: FIREBREATH hizo 33 puntos a iosepus.
+
+Ronda 2: tegularis (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     | 111 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |  38 |  0 |  0
+  tegularis    | 469 |  0 | 35
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #166 Acontecimiento: double_eva_2: 1 → 7
+  #167 Acontecimiento: Dado d10: 10
+  #168 Acontecimiento: double_dmg_2: 10 → 34
+  #169 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 1.
+  #170 Acontecimiento: hp_tegularis: 498 → 469
+  #171 Acontecimiento: DOUBLE SLASH impacto 2: 29 puntos.
+  #172 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #173 Acontecimiento: iosepus ejecuta agarraguirre
+    Resultados y registros correlacionados:
+      #174 Acontecimiento: mp_iosepus: 60 → 30
+      #175 Acontecimiento: AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+      #176 Acontecimiento: Termina agarraguirre de iosepus
+  Acción confirmada:
+  #177 Acontecimiento: iosepus ejecuta armadura_magica_gillius
+    Resultados y registros correlacionados:
+      #178 Acontecimiento: mp_iosepus: 30 → 0
+      #179 Acontecimiento: defense_gillius: 0 → 3
+      #180 Acontecimiento: ARMADURA_MAGICA se aplicó a Gillius.
+      #181 Acontecimiento: Termina armadura_magica_gillius de iosepus
+  Acción confirmada:
+  #182 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #183 Acontecimiento: tp_tegularis: 10 → 35
+      #184 Acontecimiento: mp_tegularis: 35 → 50
+      #185 Acontecimiento: defense_tegularis: 0 → 5
+      #186 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #187 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #188 Acontecimiento: tegularis ejecuta firebreath
+    Resultados y registros correlacionados:
+      #189 Acontecimiento: mp_tegularis: 50 → 0
+      #190 Acontecimiento: Dado d10: 2
+      #191 Acontecimiento: fire_common: 2 → 36
+      #192 Acontecimiento: Dado d10: 7
+      #194 Acontecimiento: Dado d10: 9
+      #196 Acontecimiento: Dado d10: 7
+      #198 Acontecimiento: Dado d10: 5
+      #200 Acontecimiento: Dado d10: 2
+      #202 Acontecimiento: Dado d10: 7
+      #204 Acontecimiento: Dado d10: 9
+      #206 Acontecimiento: Dado d10: 3
+      #208 Acontecimiento: parnecio esquivó FIREBREATH.
+      #209 Acontecimiento: gillius esquivó FIREBREATH.
+      #210 Acontecimiento: clarisa esquivó FIREBREATH.
+      #211 Acontecimiento: hp_iosepus: 71 → 38
+      #212 Acontecimiento: FIREBREATH hizo 33 puntos a iosepus.
+      #213 Acontecimiento: Termina firebreath de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: COLETAZO hizo 55 puntos a parnecio.
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: clarisa esquivó COLETAZO.
+
+Acción confirmada: COLETAZO hizo 54 puntos a iosepus.
+
+Ronda 2: clarisa (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  56 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 27 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 469 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #206 Acontecimiento: Dado d10: 3
+  #208 Acontecimiento: parnecio esquivó FIREBREATH.
+  #209 Acontecimiento: gillius esquivó FIREBREATH.
+  #210 Acontecimiento: clarisa esquivó FIREBREATH.
+  #211 Acontecimiento: hp_iosepus: 71 → 38
+  #212 Acontecimiento: FIREBREATH hizo 33 puntos a iosepus.
+  #213 Acontecimiento: Termina firebreath de tegularis
+  Acción confirmada:
+  #214 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #215 Acontecimiento: tp_tegularis: 35 → 15
+      #216 Acontecimiento: Dado d10: 6
+      #217 Acontecimiento: tail_hit_parnecio: 6 → 11
+      #218 Acontecimiento: Dado d10: 1
+      #219 Acontecimiento: tail_eva_parnecio: 1 → 10
+      #220 Acontecimiento: Dado d10: 10
+      #221 Acontecimiento: tail_dmg_parnecio: 10 → 55
+      #222 Acontecimiento: Dado d10: 3
+      #223 Acontecimiento: tail_hit_gillius: 3 → 8
+      #224 Acontecimiento: Dado d10: 6
+      #225 Acontecimiento: tail_eva_gillius: 6 → 14
+      #226 Acontecimiento: Dado d10: 2
+      #227 Acontecimiento: tail_dmg_gillius: 2 → 47
+      #228 Acontecimiento: Dado d10: 4
+      #229 Acontecimiento: tail_hit_clarisa: 4 → 9
+      #230 Acontecimiento: Dado d10: 10
+      #231 Acontecimiento: tail_eva_clarisa: 10 → 15
+      #232 Acontecimiento: Dado d10: 1
+      #233 Acontecimiento: tail_dmg_clarisa: 1 → 46
+      #234 Acontecimiento: Dado d10: 8
+      #235 Acontecimiento: tail_hit_iosepus: 8 → 13
+      #236 Acontecimiento: Dado d10: 3
+      #237 Acontecimiento: tail_eva_iosepus: 3 → 9
+      #238 Acontecimiento: Dado d10: 9
+      #239 Acontecimiento: tail_dmg_iosepus: 9 → 54
+      #240 Acontecimiento: hp_parnecio: 111 → 56
+      #241 Acontecimiento: COLETAZO hizo 55 puntos a parnecio.
+      #242 Acontecimiento: gillius esquivó COLETAZO.
+      #243 Acontecimiento: clarisa esquivó COLETAZO.
+      #244 Acontecimiento: hp_iosepus: 38 → 0
+      #245 Acontecimiento: COLETAZO hizo 54 puntos a iosepus.
+      #246 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+
+Ronda 2: clarisa (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 469 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #214 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #215 Acontecimiento: tp_tegularis: 35 → 15
+      #216 Acontecimiento: Dado d10: 6
+      #217 Acontecimiento: tail_hit_parnecio: 6 → 11
+      #218 Acontecimiento: Dado d10: 1
+      #219 Acontecimiento: tail_eva_parnecio: 1 → 10
+      #220 Acontecimiento: Dado d10: 10
+      #221 Acontecimiento: tail_dmg_parnecio: 10 → 55
+      #222 Acontecimiento: Dado d10: 3
+      #223 Acontecimiento: tail_hit_gillius: 3 → 8
+      #224 Acontecimiento: Dado d10: 6
+      #225 Acontecimiento: tail_eva_gillius: 6 → 14
+      #226 Acontecimiento: Dado d10: 2
+      #227 Acontecimiento: tail_dmg_gillius: 2 → 47
+      #228 Acontecimiento: Dado d10: 4
+      #229 Acontecimiento: tail_hit_clarisa: 4 → 9
+      #230 Acontecimiento: Dado d10: 10
+      #231 Acontecimiento: tail_eva_clarisa: 10 → 15
+      #232 Acontecimiento: Dado d10: 1
+      #233 Acontecimiento: tail_dmg_clarisa: 1 → 46
+      #234 Acontecimiento: Dado d10: 8
+      #235 Acontecimiento: tail_hit_iosepus: 8 → 13
+      #236 Acontecimiento: Dado d10: 3
+      #237 Acontecimiento: tail_eva_iosepus: 3 → 9
+      #238 Acontecimiento: Dado d10: 9
+      #239 Acontecimiento: tail_dmg_iosepus: 9 → 54
+      #240 Acontecimiento: hp_parnecio: 111 → 56
+      #241 Acontecimiento: COLETAZO hizo 55 puntos a parnecio.
+      #242 Acontecimiento: gillius esquivó COLETAZO.
+      #243 Acontecimiento: clarisa esquivó COLETAZO.
+      #244 Acontecimiento: hp_iosepus: 38 → 0
+      #245 Acontecimiento: COLETAZO hizo 54 puntos a iosepus.
+      #246 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #247 Acontecimiento: clarisa ejecuta curacion
+    Resultados y registros correlacionados:
+      #248 Acontecimiento: mp_clarisa: 27 → 7
+      #249 Acontecimiento: Dado d10: 10
+      #250 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #251 Acontecimiento: hp_parnecio: 56 → 93
+      #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+      #253 Acontecimiento: Termina curacion de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: clarisa recuperó maná: 37 MP.
+
+Ronda 2: gillius (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 |  0
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 469 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #218 Acontecimiento: Dado d10: 1
+  #219 Acontecimiento: tail_eva_parnecio: 1 → 10
+  #220 Acontecimiento: Dado d10: 10
+  #221 Acontecimiento: tail_dmg_parnecio: 10 → 55
+  #222 Acontecimiento: Dado d10: 3
+  #223 Acontecimiento: tail_hit_gillius: 3 → 8
+  #224 Acontecimiento: Dado d10: 6
+  #225 Acontecimiento: tail_eva_gillius: 6 → 14
+  #226 Acontecimiento: Dado d10: 2
+  #227 Acontecimiento: tail_dmg_gillius: 2 → 47
+  #228 Acontecimiento: Dado d10: 4
+  #229 Acontecimiento: tail_hit_clarisa: 4 → 9
+  #230 Acontecimiento: Dado d10: 10
+  #231 Acontecimiento: tail_eva_clarisa: 10 → 15
+  #232 Acontecimiento: Dado d10: 1
+  #233 Acontecimiento: tail_dmg_clarisa: 1 → 46
+  #234 Acontecimiento: Dado d10: 8
+  #235 Acontecimiento: tail_hit_iosepus: 8 → 13
+  #236 Acontecimiento: Dado d10: 3
+  #237 Acontecimiento: tail_eva_iosepus: 3 → 9
+  #238 Acontecimiento: Dado d10: 9
+  #239 Acontecimiento: tail_dmg_iosepus: 9 → 54
+  #240 Acontecimiento: hp_parnecio: 111 → 56
+  #241 Acontecimiento: COLETAZO hizo 55 puntos a parnecio.
+  #242 Acontecimiento: gillius esquivó COLETAZO.
+  #243 Acontecimiento: clarisa esquivó COLETAZO.
+  #244 Acontecimiento: hp_iosepus: 38 → 0
+  #245 Acontecimiento: COLETAZO hizo 54 puntos a iosepus.
+  #246 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #247 Acontecimiento: clarisa ejecuta curacion
+    Resultados y registros correlacionados:
+      #248 Acontecimiento: mp_clarisa: 27 → 7
+      #249 Acontecimiento: Dado d10: 10
+      #250 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #251 Acontecimiento: hp_parnecio: 56 → 93
+      #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+      #253 Acontecimiento: Termina curacion de clarisa
+  Acción confirmada:
+  #254 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #255 Acontecimiento: mp_clarisa: 7 → 37
+      #256 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #257 Acontecimiento: Termina concentracion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: tegularis esquivó HACHAZO.
+
+Ronda 2: gillius (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 10
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 469 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #228 Acontecimiento: Dado d10: 4
+  #229 Acontecimiento: tail_hit_clarisa: 4 → 9
+  #230 Acontecimiento: Dado d10: 10
+  #231 Acontecimiento: tail_eva_clarisa: 10 → 15
+  #232 Acontecimiento: Dado d10: 1
+  #233 Acontecimiento: tail_dmg_clarisa: 1 → 46
+  #234 Acontecimiento: Dado d10: 8
+  #235 Acontecimiento: tail_hit_iosepus: 8 → 13
+  #236 Acontecimiento: Dado d10: 3
+  #237 Acontecimiento: tail_eva_iosepus: 3 → 9
+  #238 Acontecimiento: Dado d10: 9
+  #239 Acontecimiento: tail_dmg_iosepus: 9 → 54
+  #240 Acontecimiento: hp_parnecio: 111 → 56
+  #241 Acontecimiento: COLETAZO hizo 55 puntos a parnecio.
+  #242 Acontecimiento: gillius esquivó COLETAZO.
+  #243 Acontecimiento: clarisa esquivó COLETAZO.
+  #244 Acontecimiento: hp_iosepus: 38 → 0
+  #245 Acontecimiento: COLETAZO hizo 54 puntos a iosepus.
+  #246 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #247 Acontecimiento: clarisa ejecuta curacion
+    Resultados y registros correlacionados:
+      #248 Acontecimiento: mp_clarisa: 27 → 7
+      #249 Acontecimiento: Dado d10: 10
+      #250 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #251 Acontecimiento: hp_parnecio: 56 → 93
+      #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+      #253 Acontecimiento: Termina curacion de clarisa
+  Acción confirmada:
+  #254 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #255 Acontecimiento: mp_clarisa: 7 → 37
+      #256 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #257 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #258 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #259 Acontecimiento: tp_gillius: 0 → 10
+      #260 Acontecimiento: Dado d10: 6
+      #261 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #262 Acontecimiento: Dado d10: 10
+      #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+      #264 Acontecimiento: Dado d10: 2
+      #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+      #266 Acontecimiento: tegularis esquivó HACHAZO.
+      #267 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: tegularis esquivó HACHAZO.
+
+Ronda 2: gillius (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 20
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 469 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #238 Acontecimiento: Dado d10: 9
+  #239 Acontecimiento: tail_dmg_iosepus: 9 → 54
+  #240 Acontecimiento: hp_parnecio: 111 → 56
+  #241 Acontecimiento: COLETAZO hizo 55 puntos a parnecio.
+  #242 Acontecimiento: gillius esquivó COLETAZO.
+  #243 Acontecimiento: clarisa esquivó COLETAZO.
+  #244 Acontecimiento: hp_iosepus: 38 → 0
+  #245 Acontecimiento: COLETAZO hizo 54 puntos a iosepus.
+  #246 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #247 Acontecimiento: clarisa ejecuta curacion
+    Resultados y registros correlacionados:
+      #248 Acontecimiento: mp_clarisa: 27 → 7
+      #249 Acontecimiento: Dado d10: 10
+      #250 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #251 Acontecimiento: hp_parnecio: 56 → 93
+      #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+      #253 Acontecimiento: Termina curacion de clarisa
+  Acción confirmada:
+  #254 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #255 Acontecimiento: mp_clarisa: 7 → 37
+      #256 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #257 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #258 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #259 Acontecimiento: tp_gillius: 0 → 10
+      #260 Acontecimiento: Dado d10: 6
+      #261 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #262 Acontecimiento: Dado d10: 10
+      #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+      #264 Acontecimiento: Dado d10: 2
+      #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+      #266 Acontecimiento: tegularis esquivó HACHAZO.
+      #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 29 puntos de daño a tegularis.
+
+Ronda 2: parnecio (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #249 Acontecimiento: Dado d10: 10
+  #250 Acontecimiento: scratch_damage_clarisa: 10 → 37
+  #251 Acontecimiento: hp_parnecio: 56 → 93
+  #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+  #253 Acontecimiento: Termina curacion de clarisa
+  Acción confirmada:
+  #254 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #255 Acontecimiento: mp_clarisa: 7 → 37
+      #256 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #257 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #258 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #259 Acontecimiento: tp_gillius: 0 → 10
+      #260 Acontecimiento: Dado d10: 6
+      #261 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #262 Acontecimiento: Dado d10: 10
+      #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+      #264 Acontecimiento: Dado d10: 2
+      #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+      #266 Acontecimiento: tegularis esquivó HACHAZO.
+      #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Protección → gillius  [accion proteccion_gillius_01]
+  B) Protección → clarisa  [accion proteccion_clarisa_01]
+  C) Slash  [accion slash_01]
+  D) Pasar  [accion pasar]
+
+Acción confirmada: Parnecio protege a gillius con su escudo.
+
+Ronda 2: parnecio (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #252 Acontecimiento: CURACIÓN restauró salud a Parnecio; HP actual: 93.
+  #253 Acontecimiento: Termina curacion de clarisa
+  Acción confirmada:
+  #254 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #255 Acontecimiento: mp_clarisa: 7 → 37
+      #256 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #257 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #258 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #259 Acontecimiento: tp_gillius: 0 → 10
+      #260 Acontecimiento: Dado d10: 6
+      #261 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #262 Acontecimiento: Dado d10: 10
+      #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+      #264 Acontecimiento: Dado d10: 2
+      #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+      #266 Acontecimiento: tegularis esquivó HACHAZO.
+      #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #289 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #290 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #291 Acontecimiento: Termina proteccion_gillius de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Slash  [accion slash_01]
+  B) Pasar  [accion pasar]
+
+Acción confirmada: tegularis esquivó SLASH.
+
+Ronda 2: iosepus (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #262 Acontecimiento: Dado d10: 10
+  #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+  #264 Acontecimiento: Dado d10: 2
+  #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+  #266 Acontecimiento: tegularis esquivó HACHAZO.
+  #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #289 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #290 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #291 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #292 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #293 Acontecimiento: tp_parnecio: 0 → 10
+      #294 Acontecimiento: Dado d10: 1
+      #295 Acontecimiento: scratch_hit_parnecio: 1 → 7
+      #296 Acontecimiento: Dado d10: 3
+      #297 Acontecimiento: scratch_eva_parnecio: 3 → 8
+      #298 Acontecimiento: Dado d10: 9
+      #299 Acontecimiento: scratch_damage_parnecio: 9 → 36
+      #300 Acontecimiento: tegularis esquivó SLASH.
+      #301 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 2: iosepus (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #262 Acontecimiento: Dado d10: 10
+  #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+  #264 Acontecimiento: Dado d10: 2
+  #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+  #266 Acontecimiento: tegularis esquivó HACHAZO.
+  #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #289 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #290 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #291 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #292 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #293 Acontecimiento: tp_parnecio: 0 → 10
+      #294 Acontecimiento: Dado d10: 1
+      #295 Acontecimiento: scratch_hit_parnecio: 1 → 7
+      #296 Acontecimiento: Dado d10: 3
+      #297 Acontecimiento: scratch_eva_parnecio: 3 → 8
+      #298 Acontecimiento: Dado d10: 9
+      #299 Acontecimiento: scratch_damage_parnecio: 9 → 36
+      #300 Acontecimiento: tegularis esquivó SLASH.
+      #301 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 3: tegularis (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 |  0 | 15
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #263 Acontecimiento: scratch_eva_gillius: 10 → 15
+  #264 Acontecimiento: Dado d10: 2
+  #265 Acontecimiento: scratch_damage_gillius: 2 → 35
+  #266 Acontecimiento: tegularis esquivó HACHAZO.
+  #267 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #268 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #269 Acontecimiento: tp_gillius: 10 → 20
+      #270 Acontecimiento: Dado d10: 2
+      #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+      #272 Acontecimiento: Dado d10: 9
+      #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+      #274 Acontecimiento: Dado d10: 8
+      #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+      #276 Acontecimiento: tegularis esquivó HACHAZO.
+      #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #289 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #290 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #291 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #292 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #293 Acontecimiento: tp_parnecio: 0 → 10
+      #294 Acontecimiento: Dado d10: 1
+      #295 Acontecimiento: scratch_hit_parnecio: 1 → 7
+      #296 Acontecimiento: Dado d10: 3
+      #297 Acontecimiento: scratch_eva_parnecio: 3 → 8
+      #298 Acontecimiento: Dado d10: 9
+      #299 Acontecimiento: scratch_damage_parnecio: 9 → 36
+      #300 Acontecimiento: tegularis esquivó SLASH.
+      #301 Acontecimiento: Termina slash de parnecio
+  #302 Acontecimiento: defense_tegularis: 5 → 0
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+
+Ronda 3: tegularis (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  66 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 | 40
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #269 Acontecimiento: tp_gillius: 10 → 20
+  #270 Acontecimiento: Dado d10: 2
+  #271 Acontecimiento: scratch_hit_gillius: 2 → 10
+  #272 Acontecimiento: Dado d10: 9
+  #273 Acontecimiento: scratch_eva_gillius: 9 → 14
+  #274 Acontecimiento: Dado d10: 8
+  #275 Acontecimiento: scratch_damage_gillius: 8 → 41
+  #276 Acontecimiento: tegularis esquivó HACHAZO.
+  #277 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #278 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #279 Acontecimiento: tp_gillius: 20 → 30
+      #280 Acontecimiento: Dado d10: 10
+      #281 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #282 Acontecimiento: Dado d10: 6
+      #283 Acontecimiento: scratch_eva_gillius: 6 → 11
+      #284 Acontecimiento: Dado d10: 6
+      #285 Acontecimiento: scratch_damage_gillius: 6 → 39
+      #286 Acontecimiento: hp_tegularis: 469 → 440
+      #287 Acontecimiento: HACHAZO hizo 29 puntos de daño a tegularis.
+      #288 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #289 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #290 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #291 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #292 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #293 Acontecimiento: tp_parnecio: 0 → 10
+      #294 Acontecimiento: Dado d10: 1
+      #295 Acontecimiento: scratch_hit_parnecio: 1 → 7
+      #296 Acontecimiento: Dado d10: 3
+      #297 Acontecimiento: scratch_eva_parnecio: 3 → 8
+      #298 Acontecimiento: Dado d10: 9
+      #299 Acontecimiento: scratch_damage_parnecio: 9 → 36
+      #300 Acontecimiento: tegularis esquivó SLASH.
+      #301 Acontecimiento: Termina slash de parnecio
+  #302 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #303 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #304 Acontecimiento: tp_tegularis: 15 → 40
+      #305 Acontecimiento: mp_tegularis: 0 → 15
+      #306 Acontecimiento: defense_tegularis: 0 → 5
+      #307 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #308 Acontecimiento: Termina preponderancia de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó COLETAZO.
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: COLETAZO hizo 47 puntos a clarisa.
+
+Ronda 3: tegularis (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  19 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 | 20
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #300 Acontecimiento: tegularis esquivó SLASH.
+  #301 Acontecimiento: Termina slash de parnecio
+  #302 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #303 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #304 Acontecimiento: tp_tegularis: 15 → 40
+      #305 Acontecimiento: mp_tegularis: 0 → 15
+      #306 Acontecimiento: defense_tegularis: 0 → 5
+      #307 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #308 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #309 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #310 Acontecimiento: tp_tegularis: 40 → 20
+      #311 Acontecimiento: Dado d10: 1
+      #312 Acontecimiento: tail_hit_parnecio: 1 → 6
+      #313 Acontecimiento: Dado d10: 5
+      #314 Acontecimiento: tail_eva_parnecio: 5 → 14
+      #315 Acontecimiento: Dado d10: 10
+      #316 Acontecimiento: tail_dmg_parnecio: 10 → 55
+      #317 Acontecimiento: Dado d10: 8
+      #318 Acontecimiento: tail_hit_gillius: 8 → 13
+      #319 Acontecimiento: Dado d10: 10
+      #320 Acontecimiento: tail_eva_gillius: 10 → 18
+      #321 Acontecimiento: Dado d10: 5
+      #322 Acontecimiento: tail_dmg_gillius: 5 → 50
+      #323 Acontecimiento: Dado d10: 5
+      #324 Acontecimiento: tail_hit_clarisa: 5 → 10
+      #325 Acontecimiento: Dado d10: 2
+      #326 Acontecimiento: tail_eva_clarisa: 2 → 7
+      #327 Acontecimiento: Dado d10: 2
+      #328 Acontecimiento: tail_dmg_clarisa: 2 → 47
+      #329 Acontecimiento: Dado d10: 5
+      #330 Acontecimiento: tail_hit_iosepus: 5 → 10
+      #331 Acontecimiento: Dado d10: 2
+      #332 Acontecimiento: tail_eva_iosepus: 2 → 8
+      #333 Acontecimiento: Dado d10: 10
+      #334 Acontecimiento: tail_dmg_iosepus: 10 → 55
+      #335 Acontecimiento: parnecio esquivó COLETAZO.
+      #336 Acontecimiento: gillius esquivó COLETAZO.
+      #337 Acontecimiento: hp_clarisa: 66 → 19
+      #338 Acontecimiento: COLETAZO hizo 47 puntos a clarisa.
+      #339 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó COLETAZO.
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: clarisa esquivó COLETAZO.
+
+Ronda 3: clarisa (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  19 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #330 Acontecimiento: tail_hit_iosepus: 5 → 10
+  #331 Acontecimiento: Dado d10: 2
+  #332 Acontecimiento: tail_eva_iosepus: 2 → 8
+  #333 Acontecimiento: Dado d10: 10
+  #334 Acontecimiento: tail_dmg_iosepus: 10 → 55
+  #335 Acontecimiento: parnecio esquivó COLETAZO.
+  #336 Acontecimiento: gillius esquivó COLETAZO.
+  #337 Acontecimiento: hp_clarisa: 66 → 19
+  #338 Acontecimiento: COLETAZO hizo 47 puntos a clarisa.
+  #339 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #340 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #341 Acontecimiento: tp_tegularis: 20 → 0
+      #342 Acontecimiento: Dado d10: 7
+      #343 Acontecimiento: tail_hit_parnecio: 7 → 12
+      #344 Acontecimiento: Dado d10: 7
+      #345 Acontecimiento: tail_eva_parnecio: 7 → 16
+      #346 Acontecimiento: Dado d10: 8
+      #347 Acontecimiento: tail_dmg_parnecio: 8 → 53
+      #348 Acontecimiento: Dado d10: 2
+      #349 Acontecimiento: tail_hit_gillius: 2 → 7
+      #350 Acontecimiento: Dado d10: 4
+      #351 Acontecimiento: tail_eva_gillius: 4 → 12
+      #352 Acontecimiento: Dado d10: 9
+      #353 Acontecimiento: tail_dmg_gillius: 9 → 54
+      #354 Acontecimiento: Dado d10: 3
+      #355 Acontecimiento: tail_hit_clarisa: 3 → 8
+      #356 Acontecimiento: Dado d10: 7
+      #357 Acontecimiento: tail_eva_clarisa: 7 → 12
+      #358 Acontecimiento: Dado d10: 9
+      #359 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #360 Acontecimiento: Dado d10: 7
+      #361 Acontecimiento: tail_hit_iosepus: 7 → 12
+      #362 Acontecimiento: Dado d10: 10
+      #363 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #364 Acontecimiento: Dado d10: 2
+      #365 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #366 Acontecimiento: parnecio esquivó COLETAZO.
+      #367 Acontecimiento: gillius esquivó COLETAZO.
+      #368 Acontecimiento: clarisa esquivó COLETAZO.
+      #369 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+
+Ronda 3: clarisa (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  50 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #337 Acontecimiento: hp_clarisa: 66 → 19
+  #338 Acontecimiento: COLETAZO hizo 47 puntos a clarisa.
+  #339 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #340 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #341 Acontecimiento: tp_tegularis: 20 → 0
+      #342 Acontecimiento: Dado d10: 7
+      #343 Acontecimiento: tail_hit_parnecio: 7 → 12
+      #344 Acontecimiento: Dado d10: 7
+      #345 Acontecimiento: tail_eva_parnecio: 7 → 16
+      #346 Acontecimiento: Dado d10: 8
+      #347 Acontecimiento: tail_dmg_parnecio: 8 → 53
+      #348 Acontecimiento: Dado d10: 2
+      #349 Acontecimiento: tail_hit_gillius: 2 → 7
+      #350 Acontecimiento: Dado d10: 4
+      #351 Acontecimiento: tail_eva_gillius: 4 → 12
+      #352 Acontecimiento: Dado d10: 9
+      #353 Acontecimiento: tail_dmg_gillius: 9 → 54
+      #354 Acontecimiento: Dado d10: 3
+      #355 Acontecimiento: tail_hit_clarisa: 3 → 8
+      #356 Acontecimiento: Dado d10: 7
+      #357 Acontecimiento: tail_eva_clarisa: 7 → 12
+      #358 Acontecimiento: Dado d10: 9
+      #359 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #360 Acontecimiento: Dado d10: 7
+      #361 Acontecimiento: tail_hit_iosepus: 7 → 12
+      #362 Acontecimiento: Dado d10: 10
+      #363 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #364 Acontecimiento: Dado d10: 2
+      #365 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #366 Acontecimiento: parnecio esquivó COLETAZO.
+      #367 Acontecimiento: gillius esquivó COLETAZO.
+      #368 Acontecimiento: clarisa esquivó COLETAZO.
+      #369 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #370 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #371 Acontecimiento: mp_clarisa: 37 → 17
+      #372 Acontecimiento: Dado d10: 4
+      #373 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #374 Acontecimiento: hp_clarisa: 19 → 50
+      #375 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+      #376 Acontecimiento: Termina curacion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: BLESS aumentó en 2 el atributo principal de parnecio.
+
+Ronda 3: gillius (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #341 Acontecimiento: tp_tegularis: 20 → 0
+  #342 Acontecimiento: Dado d10: 7
+  #343 Acontecimiento: tail_hit_parnecio: 7 → 12
+  #344 Acontecimiento: Dado d10: 7
+  #345 Acontecimiento: tail_eva_parnecio: 7 → 16
+  #346 Acontecimiento: Dado d10: 8
+  #347 Acontecimiento: tail_dmg_parnecio: 8 → 53
+  #348 Acontecimiento: Dado d10: 2
+  #349 Acontecimiento: tail_hit_gillius: 2 → 7
+  #350 Acontecimiento: Dado d10: 4
+  #351 Acontecimiento: tail_eva_gillius: 4 → 12
+  #352 Acontecimiento: Dado d10: 9
+  #353 Acontecimiento: tail_dmg_gillius: 9 → 54
+  #354 Acontecimiento: Dado d10: 3
+  #355 Acontecimiento: tail_hit_clarisa: 3 → 8
+  #356 Acontecimiento: Dado d10: 7
+  #357 Acontecimiento: tail_eva_clarisa: 7 → 12
+  #358 Acontecimiento: Dado d10: 9
+  #359 Acontecimiento: tail_dmg_clarisa: 9 → 54
+  #360 Acontecimiento: Dado d10: 7
+  #361 Acontecimiento: tail_hit_iosepus: 7 → 12
+  #362 Acontecimiento: Dado d10: 10
+  #363 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #364 Acontecimiento: Dado d10: 2
+  #365 Acontecimiento: tail_dmg_iosepus: 2 → 47
+  #366 Acontecimiento: parnecio esquivó COLETAZO.
+  #367 Acontecimiento: gillius esquivó COLETAZO.
+  #368 Acontecimiento: clarisa esquivó COLETAZO.
+  #369 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #370 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #371 Acontecimiento: mp_clarisa: 37 → 17
+      #372 Acontecimiento: Dado d10: 4
+      #373 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #374 Acontecimiento: hp_clarisa: 19 → 50
+      #375 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+      #376 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #377 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #378 Acontecimiento: mp_clarisa: 17 → 7
+      #379 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #380 Acontecimiento: Termina bless de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: tegularis esquivó EVISCERATE.
+
+Ronda 3: gillius (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 |  0
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 440 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #351 Acontecimiento: tail_eva_gillius: 4 → 12
+  #352 Acontecimiento: Dado d10: 9
+  #353 Acontecimiento: tail_dmg_gillius: 9 → 54
+  #354 Acontecimiento: Dado d10: 3
+  #355 Acontecimiento: tail_hit_clarisa: 3 → 8
+  #356 Acontecimiento: Dado d10: 7
+  #357 Acontecimiento: tail_eva_clarisa: 7 → 12
+  #358 Acontecimiento: Dado d10: 9
+  #359 Acontecimiento: tail_dmg_clarisa: 9 → 54
+  #360 Acontecimiento: Dado d10: 7
+  #361 Acontecimiento: tail_hit_iosepus: 7 → 12
+  #362 Acontecimiento: Dado d10: 10
+  #363 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #364 Acontecimiento: Dado d10: 2
+  #365 Acontecimiento: tail_dmg_iosepus: 2 → 47
+  #366 Acontecimiento: parnecio esquivó COLETAZO.
+  #367 Acontecimiento: gillius esquivó COLETAZO.
+  #368 Acontecimiento: clarisa esquivó COLETAZO.
+  #369 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #370 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #371 Acontecimiento: mp_clarisa: 37 → 17
+      #372 Acontecimiento: Dado d10: 4
+      #373 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #374 Acontecimiento: hp_clarisa: 19 → 50
+      #375 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+      #376 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #377 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #378 Acontecimiento: mp_clarisa: 17 → 7
+      #379 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #380 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #381 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #382 Acontecimiento: tp_gillius: 30 → 0
+      #383 Acontecimiento: Dado d10: 1
+      #384 Acontecimiento: scratch_hit_gillius: 1 → 9
+      #385 Acontecimiento: Dado d10: 6
+      #386 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #387 Acontecimiento: Dado d10: 8
+      #388 Acontecimiento: scratch_damage_gillius: 8 → 49
+      #389 Acontecimiento: tegularis esquivó EVISCERATE.
+      #390 Acontecimiento: Termina eviscerate de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 33 puntos de daño a tegularis.
+
+Ronda 3: gillius (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 10
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 407 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #362 Acontecimiento: Dado d10: 10
+  #363 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #364 Acontecimiento: Dado d10: 2
+  #365 Acontecimiento: tail_dmg_iosepus: 2 → 47
+  #366 Acontecimiento: parnecio esquivó COLETAZO.
+  #367 Acontecimiento: gillius esquivó COLETAZO.
+  #368 Acontecimiento: clarisa esquivó COLETAZO.
+  #369 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #370 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #371 Acontecimiento: mp_clarisa: 37 → 17
+      #372 Acontecimiento: Dado d10: 4
+      #373 Acontecimiento: scratch_damage_clarisa: 4 → 31
+      #374 Acontecimiento: hp_clarisa: 19 → 50
+      #375 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+      #376 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #377 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #378 Acontecimiento: mp_clarisa: 17 → 7
+      #379 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #380 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #381 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #382 Acontecimiento: tp_gillius: 30 → 0
+      #383 Acontecimiento: Dado d10: 1
+      #384 Acontecimiento: scratch_hit_gillius: 1 → 9
+      #385 Acontecimiento: Dado d10: 6
+      #386 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #387 Acontecimiento: Dado d10: 8
+      #388 Acontecimiento: scratch_damage_gillius: 8 → 49
+      #389 Acontecimiento: tegularis esquivó EVISCERATE.
+      #390 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #391 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #392 Acontecimiento: tp_gillius: 0 → 10
+      #393 Acontecimiento: Dado d10: 9
+      #394 Acontecimiento: scratch_hit_gillius: 9 → 17
+      #395 Acontecimiento: Dado d10: 4
+      #396 Acontecimiento: scratch_eva_gillius: 4 → 10
+      #397 Acontecimiento: Dado d10: 10
+      #398 Acontecimiento: scratch_damage_gillius: 10 → 43
+      #399 Acontecimiento: hp_tegularis: 440 → 407
+      #400 Acontecimiento: HACHAZO hizo 33 puntos de daño a tegularis.
+      #401 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 30 puntos de daño a tegularis.
+
+Ronda 3: parnecio (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 377 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #374 Acontecimiento: hp_clarisa: 19 → 50
+  #375 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 50.
+  #376 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #377 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #378 Acontecimiento: mp_clarisa: 17 → 7
+      #379 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #380 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #381 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #382 Acontecimiento: tp_gillius: 30 → 0
+      #383 Acontecimiento: Dado d10: 1
+      #384 Acontecimiento: scratch_hit_gillius: 1 → 9
+      #385 Acontecimiento: Dado d10: 6
+      #386 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #387 Acontecimiento: Dado d10: 8
+      #388 Acontecimiento: scratch_damage_gillius: 8 → 49
+      #389 Acontecimiento: tegularis esquivó EVISCERATE.
+      #390 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #391 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #392 Acontecimiento: tp_gillius: 0 → 10
+      #393 Acontecimiento: Dado d10: 9
+      #394 Acontecimiento: scratch_hit_gillius: 9 → 17
+      #395 Acontecimiento: Dado d10: 4
+      #396 Acontecimiento: scratch_eva_gillius: 4 → 10
+      #397 Acontecimiento: Dado d10: 10
+      #398 Acontecimiento: scratch_damage_gillius: 10 → 43
+      #399 Acontecimiento: hp_tegularis: 440 → 407
+      #400 Acontecimiento: HACHAZO hizo 33 puntos de daño a tegularis.
+      #401 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #402 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #403 Acontecimiento: tp_gillius: 10 → 20
+      #404 Acontecimiento: Dado d10: 6
+      #405 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #406 Acontecimiento: Dado d10: 2
+      #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #408 Acontecimiento: Dado d10: 7
+      #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #410 Acontecimiento: hp_tegularis: 407 → 377
+      #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Protección → clarisa  [accion proteccion_clarisa_01]
+  B) Double Slash  [accion double_slash_01]
+  C) Protección → gillius  [accion proteccion_gillius_01]
+  D) Slash  [accion slash_01]
+  E) Pasar  [accion pasar]
+
+Acción confirmada: Parnecio protege a clarisa con su escudo.
+
+Ronda 3: parnecio (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 377 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #377 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #378 Acontecimiento: mp_clarisa: 17 → 7
+      #379 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #380 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #381 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #382 Acontecimiento: tp_gillius: 30 → 0
+      #383 Acontecimiento: Dado d10: 1
+      #384 Acontecimiento: scratch_hit_gillius: 1 → 9
+      #385 Acontecimiento: Dado d10: 6
+      #386 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #387 Acontecimiento: Dado d10: 8
+      #388 Acontecimiento: scratch_damage_gillius: 8 → 49
+      #389 Acontecimiento: tegularis esquivó EVISCERATE.
+      #390 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #391 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #392 Acontecimiento: tp_gillius: 0 → 10
+      #393 Acontecimiento: Dado d10: 9
+      #394 Acontecimiento: scratch_hit_gillius: 9 → 17
+      #395 Acontecimiento: Dado d10: 4
+      #396 Acontecimiento: scratch_eva_gillius: 4 → 10
+      #397 Acontecimiento: Dado d10: 10
+      #398 Acontecimiento: scratch_damage_gillius: 10 → 43
+      #399 Acontecimiento: hp_tegularis: 440 → 407
+      #400 Acontecimiento: HACHAZO hizo 33 puntos de daño a tegularis.
+      #401 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #402 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #403 Acontecimiento: tp_gillius: 10 → 20
+      #404 Acontecimiento: Dado d10: 6
+      #405 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #406 Acontecimiento: Dado d10: 2
+      #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #408 Acontecimiento: Dado d10: 7
+      #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #410 Acontecimiento: hp_tegularis: 407 → 377
+      #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Double Slash  [accion double_slash_01]
+  B) Slash  [accion slash_01]
+  C) Pasar  [accion pasar]
+
+Acción confirmada: DOUBLE SLASH impacto 1: 21 puntos.
+
+Acción confirmada: Tegularis esquivó DOUBLE SLASH impacto 2.
+
+Ronda 3: parnecio (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 356 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #395 Acontecimiento: Dado d10: 4
+  #396 Acontecimiento: scratch_eva_gillius: 4 → 10
+  #397 Acontecimiento: Dado d10: 10
+  #398 Acontecimiento: scratch_damage_gillius: 10 → 43
+  #399 Acontecimiento: hp_tegularis: 440 → 407
+  #400 Acontecimiento: HACHAZO hizo 33 puntos de daño a tegularis.
+  #401 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #402 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #403 Acontecimiento: tp_gillius: 10 → 20
+      #404 Acontecimiento: Dado d10: 6
+      #405 Acontecimiento: scratch_hit_gillius: 6 → 14
+      #406 Acontecimiento: Dado d10: 2
+      #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #408 Acontecimiento: Dado d10: 7
+      #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #410 Acontecimiento: hp_tegularis: 407 → 377
+      #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+  Acción confirmada:
+  #418 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #419 Acontecimiento: tp_parnecio: 10 → 0
+      #420 Acontecimiento: Dado d10: 10
+      #421 Acontecimiento: double_hit_1: 10 → 16
+      #422 Acontecimiento: Dado d10: 6
+      #423 Acontecimiento: double_eva_1: 6 → 12
+      #424 Acontecimiento: Dado d10: 1
+      #425 Acontecimiento: double_dmg_1: 1 → 31
+      #426 Acontecimiento: Dado d10: 1
+      #427 Acontecimiento: double_hit_2: 1 → 7
+      #428 Acontecimiento: Dado d10: 7
+      #429 Acontecimiento: double_eva_2: 7 → 13
+      #430 Acontecimiento: Dado d10: 3
+      #431 Acontecimiento: double_dmg_2: 3 → 33
+      #432 Acontecimiento: hp_tegularis: 377 → 356
+      #433 Acontecimiento: DOUBLE SLASH impacto 1: 21 puntos.
+      #434 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #435 Acontecimiento: Termina double_slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Slash  [accion slash_01]
+  B) Pasar  [accion pasar]
+
+Acción confirmada: SLASH hizo 27 puntos de daño a tegularis.
+
+Ronda 3: iosepus (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #406 Acontecimiento: Dado d10: 2
+  #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+  #408 Acontecimiento: Dado d10: 7
+  #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #410 Acontecimiento: hp_tegularis: 407 → 377
+  #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+  Acción confirmada:
+  #418 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #419 Acontecimiento: tp_parnecio: 10 → 0
+      #420 Acontecimiento: Dado d10: 10
+      #421 Acontecimiento: double_hit_1: 10 → 16
+      #422 Acontecimiento: Dado d10: 6
+      #423 Acontecimiento: double_eva_1: 6 → 12
+      #424 Acontecimiento: Dado d10: 1
+      #425 Acontecimiento: double_dmg_1: 1 → 31
+      #426 Acontecimiento: Dado d10: 1
+      #427 Acontecimiento: double_hit_2: 1 → 7
+      #428 Acontecimiento: Dado d10: 7
+      #429 Acontecimiento: double_eva_2: 7 → 13
+      #430 Acontecimiento: Dado d10: 3
+      #431 Acontecimiento: double_dmg_2: 3 → 33
+      #432 Acontecimiento: hp_tegularis: 377 → 356
+      #433 Acontecimiento: DOUBLE SLASH impacto 1: 21 puntos.
+      #434 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #435 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #436 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #437 Acontecimiento: tp_parnecio: 0 → 10
+      #438 Acontecimiento: Dado d10: 10
+      #439 Acontecimiento: scratch_hit_parnecio: 10 → 16
+      #440 Acontecimiento: Dado d10: 8
+      #441 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #442 Acontecimiento: Dado d10: 4
+      #443 Acontecimiento: scratch_damage_parnecio: 4 → 37
+      #444 Acontecimiento: hp_tegularis: 356 → 329
+      #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+      #446 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 3: iosepus (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #406 Acontecimiento: Dado d10: 2
+  #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+  #408 Acontecimiento: Dado d10: 7
+  #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #410 Acontecimiento: hp_tegularis: 407 → 377
+  #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+  Acción confirmada:
+  #418 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #419 Acontecimiento: tp_parnecio: 10 → 0
+      #420 Acontecimiento: Dado d10: 10
+      #421 Acontecimiento: double_hit_1: 10 → 16
+      #422 Acontecimiento: Dado d10: 6
+      #423 Acontecimiento: double_eva_1: 6 → 12
+      #424 Acontecimiento: Dado d10: 1
+      #425 Acontecimiento: double_dmg_1: 1 → 31
+      #426 Acontecimiento: Dado d10: 1
+      #427 Acontecimiento: double_hit_2: 1 → 7
+      #428 Acontecimiento: Dado d10: 7
+      #429 Acontecimiento: double_eva_2: 7 → 13
+      #430 Acontecimiento: Dado d10: 3
+      #431 Acontecimiento: double_dmg_2: 3 → 33
+      #432 Acontecimiento: hp_tegularis: 377 → 356
+      #433 Acontecimiento: DOUBLE SLASH impacto 1: 21 puntos.
+      #434 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #435 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #436 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #437 Acontecimiento: tp_parnecio: 0 → 10
+      #438 Acontecimiento: Dado d10: 10
+      #439 Acontecimiento: scratch_hit_parnecio: 10 → 16
+      #440 Acontecimiento: Dado d10: 8
+      #441 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #442 Acontecimiento: Dado d10: 4
+      #443 Acontecimiento: scratch_damage_parnecio: 4 → 37
+      #444 Acontecimiento: hp_tegularis: 356 → 329
+      #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+      #446 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 4: tegularis (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 15 |  0
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #407 Acontecimiento: scratch_eva_gillius: 2 → 8
+  #408 Acontecimiento: Dado d10: 7
+  #409 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #410 Acontecimiento: hp_tegularis: 407 → 377
+  #411 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #412 Acontecimiento: Termina hachazo de gillius
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+  Acción confirmada:
+  #418 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #419 Acontecimiento: tp_parnecio: 10 → 0
+      #420 Acontecimiento: Dado d10: 10
+      #421 Acontecimiento: double_hit_1: 10 → 16
+      #422 Acontecimiento: Dado d10: 6
+      #423 Acontecimiento: double_eva_1: 6 → 12
+      #424 Acontecimiento: Dado d10: 1
+      #425 Acontecimiento: double_dmg_1: 1 → 31
+      #426 Acontecimiento: Dado d10: 1
+      #427 Acontecimiento: double_hit_2: 1 → 7
+      #428 Acontecimiento: Dado d10: 7
+      #429 Acontecimiento: double_eva_2: 7 → 13
+      #430 Acontecimiento: Dado d10: 3
+      #431 Acontecimiento: double_dmg_2: 3 → 33
+      #432 Acontecimiento: hp_tegularis: 377 → 356
+      #433 Acontecimiento: DOUBLE SLASH impacto 1: 21 puntos.
+      #434 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #435 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #436 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #437 Acontecimiento: tp_parnecio: 0 → 10
+      #438 Acontecimiento: Dado d10: 10
+      #439 Acontecimiento: scratch_hit_parnecio: 10 → 16
+      #440 Acontecimiento: Dado d10: 8
+      #441 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #442 Acontecimiento: Dado d10: 4
+      #443 Acontecimiento: scratch_damage_parnecio: 4 → 37
+      #444 Acontecimiento: hp_tegularis: 356 → 329
+      #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+      #446 Acontecimiento: Termina slash de parnecio
+  #449 Acontecimiento: defense_tegularis: 5 → 0
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+
+Ronda 4: tegularis (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 | 25
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #414 Acontecimiento: defense_gillius: 3 → 0
+  Acción confirmada:
+  #415 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #416 Acontecimiento: Parnecio protege a clarisa con su escudo.
+      #417 Acontecimiento: Termina proteccion_clarisa de parnecio
+  Acción confirmada:
+  #418 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #419 Acontecimiento: tp_parnecio: 10 → 0
+      #420 Acontecimiento: Dado d10: 10
+      #421 Acontecimiento: double_hit_1: 10 → 16
+      #422 Acontecimiento: Dado d10: 6
+      #423 Acontecimiento: double_eva_1: 6 → 12
+      #424 Acontecimiento: Dado d10: 1
+      #425 Acontecimiento: double_dmg_1: 1 → 31
+      #426 Acontecimiento: Dado d10: 1
+      #427 Acontecimiento: double_hit_2: 1 → 7
+      #428 Acontecimiento: Dado d10: 7
+      #429 Acontecimiento: double_eva_2: 7 → 13
+      #430 Acontecimiento: Dado d10: 3
+      #431 Acontecimiento: double_dmg_2: 3 → 33
+      #432 Acontecimiento: hp_tegularis: 377 → 356
+      #433 Acontecimiento: DOUBLE SLASH impacto 1: 21 puntos.
+      #434 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #435 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #436 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #437 Acontecimiento: tp_parnecio: 0 → 10
+      #438 Acontecimiento: Dado d10: 10
+      #439 Acontecimiento: scratch_hit_parnecio: 10 → 16
+      #440 Acontecimiento: Dado d10: 8
+      #441 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #442 Acontecimiento: Dado d10: 4
+      #443 Acontecimiento: scratch_damage_parnecio: 4 → 37
+      #444 Acontecimiento: hp_tegularis: 356 → 329
+      #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+      #446 Acontecimiento: Termina slash de parnecio
+  #449 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #450 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #451 Acontecimiento: tp_tegularis: 0 → 25
+      #452 Acontecimiento: mp_tegularis: 15 → 30
+      #453 Acontecimiento: defense_tegularis: 0 → 5
+      #454 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #455 Acontecimiento: Termina preponderancia de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: parnecio esquivó COLETAZO.
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: clarisa esquivó COLETAZO.
+
+Ronda 4: tegularis (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #444 Acontecimiento: hp_tegularis: 356 → 329
+  #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+  #446 Acontecimiento: Termina slash de parnecio
+  #449 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #450 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #451 Acontecimiento: tp_tegularis: 0 → 25
+      #452 Acontecimiento: mp_tegularis: 15 → 30
+      #453 Acontecimiento: defense_tegularis: 0 → 5
+      #454 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #455 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #456 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #457 Acontecimiento: tp_tegularis: 25 → 5
+      #458 Acontecimiento: Dado d10: 5
+      #459 Acontecimiento: tail_hit_parnecio: 5 → 12
+      #460 Acontecimiento: Dado d10: 9
+      #461 Acontecimiento: tail_eva_parnecio: 9 → 19
+      #462 Acontecimiento: Dado d10: 1
+      #463 Acontecimiento: tail_dmg_parnecio: 1 → 46
+      #464 Acontecimiento: Dado d10: 5
+      #465 Acontecimiento: tail_hit_gillius: 5 → 12
+      #466 Acontecimiento: Dado d10: 6
+      #467 Acontecimiento: tail_eva_gillius: 6 → 14
+      #468 Acontecimiento: Dado d10: 7
+      #469 Acontecimiento: tail_dmg_gillius: 7 → 52
+      #470 Acontecimiento: Dado d10: 1
+      #471 Acontecimiento: tail_hit_clarisa: 1 → 8
+      #472 Acontecimiento: Dado d10: 9
+      #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+      #474 Acontecimiento: Dado d10: 7
+      #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+      #476 Acontecimiento: Dado d10: 4
+      #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+      #478 Acontecimiento: Dado d10: 10
+      #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #480 Acontecimiento: Dado d10: 7
+      #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+      #482 Acontecimiento: parnecio esquivó COLETAZO.
+      #483 Acontecimiento: gillius esquivó COLETAZO.
+      #484 Acontecimiento: clarisa esquivó COLETAZO.
+      #485 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Ronda 4: clarisa (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #444 Acontecimiento: hp_tegularis: 356 → 329
+  #445 Acontecimiento: SLASH hizo 27 puntos de daño a tegularis.
+  #446 Acontecimiento: Termina slash de parnecio
+  #449 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #450 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #451 Acontecimiento: tp_tegularis: 0 → 25
+      #452 Acontecimiento: mp_tegularis: 15 → 30
+      #453 Acontecimiento: defense_tegularis: 0 → 5
+      #454 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #455 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #456 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #457 Acontecimiento: tp_tegularis: 25 → 5
+      #458 Acontecimiento: Dado d10: 5
+      #459 Acontecimiento: tail_hit_parnecio: 5 → 12
+      #460 Acontecimiento: Dado d10: 9
+      #461 Acontecimiento: tail_eva_parnecio: 9 → 19
+      #462 Acontecimiento: Dado d10: 1
+      #463 Acontecimiento: tail_dmg_parnecio: 1 → 46
+      #464 Acontecimiento: Dado d10: 5
+      #465 Acontecimiento: tail_hit_gillius: 5 → 12
+      #466 Acontecimiento: Dado d10: 6
+      #467 Acontecimiento: tail_eva_gillius: 6 → 14
+      #468 Acontecimiento: Dado d10: 7
+      #469 Acontecimiento: tail_dmg_gillius: 7 → 52
+      #470 Acontecimiento: Dado d10: 1
+      #471 Acontecimiento: tail_hit_clarisa: 1 → 8
+      #472 Acontecimiento: Dado d10: 9
+      #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+      #474 Acontecimiento: Dado d10: 7
+      #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+      #476 Acontecimiento: Dado d10: 4
+      #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+      #478 Acontecimiento: Dado d10: 10
+      #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #480 Acontecimiento: Dado d10: 7
+      #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+      #482 Acontecimiento: parnecio esquivó COLETAZO.
+      #483 Acontecimiento: gillius esquivó COLETAZO.
+      #484 Acontecimiento: clarisa esquivó COLETAZO.
+      #485 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: clarisa recuperó maná: 37 MP.
+
+Ronda 4: clarisa (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  50 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #450 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #451 Acontecimiento: tp_tegularis: 0 → 25
+      #452 Acontecimiento: mp_tegularis: 15 → 30
+      #453 Acontecimiento: defense_tegularis: 0 → 5
+      #454 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #455 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #456 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #457 Acontecimiento: tp_tegularis: 25 → 5
+      #458 Acontecimiento: Dado d10: 5
+      #459 Acontecimiento: tail_hit_parnecio: 5 → 12
+      #460 Acontecimiento: Dado d10: 9
+      #461 Acontecimiento: tail_eva_parnecio: 9 → 19
+      #462 Acontecimiento: Dado d10: 1
+      #463 Acontecimiento: tail_dmg_parnecio: 1 → 46
+      #464 Acontecimiento: Dado d10: 5
+      #465 Acontecimiento: tail_hit_gillius: 5 → 12
+      #466 Acontecimiento: Dado d10: 6
+      #467 Acontecimiento: tail_eva_gillius: 6 → 14
+      #468 Acontecimiento: Dado d10: 7
+      #469 Acontecimiento: tail_dmg_gillius: 7 → 52
+      #470 Acontecimiento: Dado d10: 1
+      #471 Acontecimiento: tail_hit_clarisa: 1 → 8
+      #472 Acontecimiento: Dado d10: 9
+      #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+      #474 Acontecimiento: Dado d10: 7
+      #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+      #476 Acontecimiento: Dado d10: 4
+      #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+      #478 Acontecimiento: Dado d10: 10
+      #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #480 Acontecimiento: Dado d10: 7
+      #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+      #482 Acontecimiento: parnecio esquivó COLETAZO.
+      #483 Acontecimiento: gillius esquivó COLETAZO.
+      #484 Acontecimiento: clarisa esquivó COLETAZO.
+      #485 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+
+Ronda 4: gillius (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #457 Acontecimiento: tp_tegularis: 25 → 5
+  #458 Acontecimiento: Dado d10: 5
+  #459 Acontecimiento: tail_hit_parnecio: 5 → 12
+  #460 Acontecimiento: Dado d10: 9
+  #461 Acontecimiento: tail_eva_parnecio: 9 → 19
+  #462 Acontecimiento: Dado d10: 1
+  #463 Acontecimiento: tail_dmg_parnecio: 1 → 46
+  #464 Acontecimiento: Dado d10: 5
+  #465 Acontecimiento: tail_hit_gillius: 5 → 12
+  #466 Acontecimiento: Dado d10: 6
+  #467 Acontecimiento: tail_eva_gillius: 6 → 14
+  #468 Acontecimiento: Dado d10: 7
+  #469 Acontecimiento: tail_dmg_gillius: 7 → 52
+  #470 Acontecimiento: Dado d10: 1
+  #471 Acontecimiento: tail_hit_clarisa: 1 → 8
+  #472 Acontecimiento: Dado d10: 9
+  #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+  #474 Acontecimiento: Dado d10: 7
+  #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+  #476 Acontecimiento: Dado d10: 4
+  #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+  #478 Acontecimiento: Dado d10: 10
+  #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #480 Acontecimiento: Dado d10: 7
+  #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+  #482 Acontecimiento: parnecio esquivó COLETAZO.
+  #483 Acontecimiento: gillius esquivó COLETAZO.
+  #484 Acontecimiento: clarisa esquivó COLETAZO.
+  #485 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #490 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #491 Acontecimiento: mp_clarisa: 37 → 17
+      #492 Acontecimiento: Dado d10: 10
+      #493 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #494 Acontecimiento: hp_clarisa: 50 → 87
+      #495 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+      #496 Acontecimiento: Termina curacion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: GRITO DE GUERRA aumentó el daño físico del grupo.
+
+Ronda 4: gillius (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 10
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 329 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #461 Acontecimiento: tail_eva_parnecio: 9 → 19
+  #462 Acontecimiento: Dado d10: 1
+  #463 Acontecimiento: tail_dmg_parnecio: 1 → 46
+  #464 Acontecimiento: Dado d10: 5
+  #465 Acontecimiento: tail_hit_gillius: 5 → 12
+  #466 Acontecimiento: Dado d10: 6
+  #467 Acontecimiento: tail_eva_gillius: 6 → 14
+  #468 Acontecimiento: Dado d10: 7
+  #469 Acontecimiento: tail_dmg_gillius: 7 → 52
+  #470 Acontecimiento: Dado d10: 1
+  #471 Acontecimiento: tail_hit_clarisa: 1 → 8
+  #472 Acontecimiento: Dado d10: 9
+  #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+  #474 Acontecimiento: Dado d10: 7
+  #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+  #476 Acontecimiento: Dado d10: 4
+  #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+  #478 Acontecimiento: Dado d10: 10
+  #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #480 Acontecimiento: Dado d10: 7
+  #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+  #482 Acontecimiento: parnecio esquivó COLETAZO.
+  #483 Acontecimiento: gillius esquivó COLETAZO.
+  #484 Acontecimiento: clarisa esquivó COLETAZO.
+  #485 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #490 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #491 Acontecimiento: mp_clarisa: 37 → 17
+      #492 Acontecimiento: Dado d10: 10
+      #493 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #494 Acontecimiento: hp_clarisa: 50 → 87
+      #495 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+      #496 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #498 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #499 Acontecimiento: tp_gillius: 20 → 10
+      #504 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #505 Acontecimiento: Termina grito_de_guerra de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 26 puntos de daño a tegularis.
+
+Ronda 4: gillius (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 303 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #472 Acontecimiento: Dado d10: 9
+  #473 Acontecimiento: tail_eva_clarisa: 9 → 14
+  #474 Acontecimiento: Dado d10: 7
+  #475 Acontecimiento: tail_dmg_clarisa: 7 → 52
+  #476 Acontecimiento: Dado d10: 4
+  #477 Acontecimiento: tail_hit_iosepus: 4 → 11
+  #478 Acontecimiento: Dado d10: 10
+  #479 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #480 Acontecimiento: Dado d10: 7
+  #481 Acontecimiento: tail_dmg_iosepus: 7 → 52
+  #482 Acontecimiento: parnecio esquivó COLETAZO.
+  #483 Acontecimiento: gillius esquivó COLETAZO.
+  #484 Acontecimiento: clarisa esquivó COLETAZO.
+  #485 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #490 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #491 Acontecimiento: mp_clarisa: 37 → 17
+      #492 Acontecimiento: Dado d10: 10
+      #493 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #494 Acontecimiento: hp_clarisa: 50 → 87
+      #495 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+      #496 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #498 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #499 Acontecimiento: tp_gillius: 20 → 10
+      #504 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #505 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #506 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #507 Acontecimiento: tp_gillius: 10 → 20
+      #508 Acontecimiento: Dado d10: 10
+      #509 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #510 Acontecimiento: Dado d10: 7
+      #511 Acontecimiento: scratch_eva_gillius: 7 → 13
+      #512 Acontecimiento: Dado d10: 3
+      #513 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #514 Acontecimiento: hp_tegularis: 329 → 303
+      #515 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #516 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 30 puntos de daño a tegularis.
+
+Ronda 4: parnecio (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 273 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #483 Acontecimiento: gillius esquivó COLETAZO.
+  #484 Acontecimiento: clarisa esquivó COLETAZO.
+  #485 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #490 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #491 Acontecimiento: mp_clarisa: 37 → 17
+      #492 Acontecimiento: Dado d10: 10
+      #493 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #494 Acontecimiento: hp_clarisa: 50 → 87
+      #495 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+      #496 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #498 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #499 Acontecimiento: tp_gillius: 20 → 10
+      #504 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #505 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #506 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #507 Acontecimiento: tp_gillius: 10 → 20
+      #508 Acontecimiento: Dado d10: 10
+      #509 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #510 Acontecimiento: Dado d10: 7
+      #511 Acontecimiento: scratch_eva_gillius: 7 → 13
+      #512 Acontecimiento: Dado d10: 3
+      #513 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #514 Acontecimiento: hp_tegularis: 329 → 303
+      #515 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #516 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #517 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #518 Acontecimiento: tp_gillius: 20 → 30
+      #519 Acontecimiento: Dado d10: 7
+      #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+      #521 Acontecimiento: Dado d10: 5
+      #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+      #523 Acontecimiento: Dado d10: 7
+      #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #525 Acontecimiento: hp_tegularis: 303 → 273
+      #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #527 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Protección → gillius  [accion proteccion_gillius_01]
+  B) Protección → clarisa  [accion proteccion_clarisa_01]
+  C) Double Slash  [accion double_slash_01]
+  D) Slash  [accion slash_01]
+  E) Pasar  [accion pasar]
+
+Acción confirmada: Parnecio protege a gillius con su escudo.
+
+Ronda 4: parnecio (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 273 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #486 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #487 Acontecimiento: mp_clarisa: 7 → 37
+      #488 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #489 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #490 Acontecimiento: clarisa ejecuta curacion_clarisa
+    Resultados y registros correlacionados:
+      #491 Acontecimiento: mp_clarisa: 37 → 17
+      #492 Acontecimiento: Dado d10: 10
+      #493 Acontecimiento: scratch_damage_clarisa: 10 → 37
+      #494 Acontecimiento: hp_clarisa: 50 → 87
+      #495 Acontecimiento: CURACIÓN restauró salud a Clarisa; HP actual: 87.
+      #496 Acontecimiento: Termina curacion_clarisa de clarisa
+  Acción confirmada:
+  #498 Acontecimiento: gillius ejecuta grito_de_guerra
+    Resultados y registros correlacionados:
+      #499 Acontecimiento: tp_gillius: 20 → 10
+      #504 Acontecimiento: GRITO DE GUERRA aumentó el daño físico del grupo.
+      #505 Acontecimiento: Termina grito_de_guerra de gillius
+  Acción confirmada:
+  #506 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #507 Acontecimiento: tp_gillius: 10 → 20
+      #508 Acontecimiento: Dado d10: 10
+      #509 Acontecimiento: scratch_hit_gillius: 10 → 18
+      #510 Acontecimiento: Dado d10: 7
+      #511 Acontecimiento: scratch_eva_gillius: 7 → 13
+      #512 Acontecimiento: Dado d10: 3
+      #513 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #514 Acontecimiento: hp_tegularis: 329 → 303
+      #515 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #516 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #517 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #518 Acontecimiento: tp_gillius: 20 → 30
+      #519 Acontecimiento: Dado d10: 7
+      #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+      #521 Acontecimiento: Dado d10: 5
+      #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+      #523 Acontecimiento: Dado d10: 7
+      #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #525 Acontecimiento: hp_tegularis: 303 → 273
+      #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Double Slash  [accion double_slash_01]
+  B) Slash  [accion slash_01]
+  C) Pasar  [accion pasar]
+
+Acción confirmada: DOUBLE SLASH impacto 1: 23 puntos.
+
+Acción confirmada: Tegularis esquivó DOUBLE SLASH impacto 2.
+
+Ronda 4: parnecio (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 |  0
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #509 Acontecimiento: scratch_hit_gillius: 10 → 18
+  #510 Acontecimiento: Dado d10: 7
+  #511 Acontecimiento: scratch_eva_gillius: 7 → 13
+  #512 Acontecimiento: Dado d10: 3
+  #513 Acontecimiento: scratch_damage_gillius: 3 → 36
+  #514 Acontecimiento: hp_tegularis: 329 → 303
+  #515 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+  #516 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #517 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #518 Acontecimiento: tp_gillius: 20 → 30
+      #519 Acontecimiento: Dado d10: 7
+      #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+      #521 Acontecimiento: Dado d10: 5
+      #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+      #523 Acontecimiento: Dado d10: 7
+      #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+      #525 Acontecimiento: hp_tegularis: 303 → 273
+      #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+      #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #531 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #532 Acontecimiento: tp_parnecio: 10 → 0
+      #533 Acontecimiento: Dado d10: 9
+      #534 Acontecimiento: double_hit_1: 9 → 15
+      #535 Acontecimiento: Dado d10: 5
+      #536 Acontecimiento: double_eva_1: 5 → 11
+      #537 Acontecimiento: Dado d10: 3
+      #538 Acontecimiento: double_dmg_1: 3 → 33
+      #539 Acontecimiento: Dado d10: 4
+      #540 Acontecimiento: double_hit_2: 4 → 10
+      #541 Acontecimiento: Dado d10: 8
+      #542 Acontecimiento: double_eva_2: 8 → 14
+      #543 Acontecimiento: Dado d10: 9
+      #544 Acontecimiento: double_dmg_2: 9 → 39
+      #545 Acontecimiento: hp_tegularis: 273 → 250
+      #546 Acontecimiento: DOUBLE SLASH impacto 1: 23 puntos.
+      #547 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #548 Acontecimiento: Termina double_slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Slash  [accion slash_01]
+  B) Pasar  [accion pasar]
+
+Acción confirmada: tegularis esquivó SLASH.
+
+Ronda 4: iosepus (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #519 Acontecimiento: Dado d10: 7
+  #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+  #521 Acontecimiento: Dado d10: 5
+  #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+  #523 Acontecimiento: Dado d10: 7
+  #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #525 Acontecimiento: hp_tegularis: 303 → 273
+  #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #531 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #532 Acontecimiento: tp_parnecio: 10 → 0
+      #533 Acontecimiento: Dado d10: 9
+      #534 Acontecimiento: double_hit_1: 9 → 15
+      #535 Acontecimiento: Dado d10: 5
+      #536 Acontecimiento: double_eva_1: 5 → 11
+      #537 Acontecimiento: Dado d10: 3
+      #538 Acontecimiento: double_dmg_1: 3 → 33
+      #539 Acontecimiento: Dado d10: 4
+      #540 Acontecimiento: double_hit_2: 4 → 10
+      #541 Acontecimiento: Dado d10: 8
+      #542 Acontecimiento: double_eva_2: 8 → 14
+      #543 Acontecimiento: Dado d10: 9
+      #544 Acontecimiento: double_dmg_2: 9 → 39
+      #545 Acontecimiento: hp_tegularis: 273 → 250
+      #546 Acontecimiento: DOUBLE SLASH impacto 1: 23 puntos.
+      #547 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #548 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #549 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #550 Acontecimiento: tp_parnecio: 0 → 10
+      #551 Acontecimiento: Dado d10: 4
+      #552 Acontecimiento: scratch_hit_parnecio: 4 → 10
+      #553 Acontecimiento: Dado d10: 8
+      #554 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #555 Acontecimiento: Dado d10: 2
+      #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+      #557 Acontecimiento: tegularis esquivó SLASH.
+      #558 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 4: iosepus (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #519 Acontecimiento: Dado d10: 7
+  #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+  #521 Acontecimiento: Dado d10: 5
+  #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+  #523 Acontecimiento: Dado d10: 7
+  #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #525 Acontecimiento: hp_tegularis: 303 → 273
+  #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #531 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #532 Acontecimiento: tp_parnecio: 10 → 0
+      #533 Acontecimiento: Dado d10: 9
+      #534 Acontecimiento: double_hit_1: 9 → 15
+      #535 Acontecimiento: Dado d10: 5
+      #536 Acontecimiento: double_eva_1: 5 → 11
+      #537 Acontecimiento: Dado d10: 3
+      #538 Acontecimiento: double_dmg_1: 3 → 33
+      #539 Acontecimiento: Dado d10: 4
+      #540 Acontecimiento: double_hit_2: 4 → 10
+      #541 Acontecimiento: Dado d10: 8
+      #542 Acontecimiento: double_eva_2: 8 → 14
+      #543 Acontecimiento: Dado d10: 9
+      #544 Acontecimiento: double_dmg_2: 9 → 39
+      #545 Acontecimiento: hp_tegularis: 273 → 250
+      #546 Acontecimiento: DOUBLE SLASH impacto 1: 23 puntos.
+      #547 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #548 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #549 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #550 Acontecimiento: tp_parnecio: 0 → 10
+      #551 Acontecimiento: Dado d10: 4
+      #552 Acontecimiento: scratch_hit_parnecio: 4 → 10
+      #553 Acontecimiento: Dado d10: 8
+      #554 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #555 Acontecimiento: Dado d10: 2
+      #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+      #557 Acontecimiento: tegularis esquivó SLASH.
+      #558 Acontecimiento: Termina slash de parnecio
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: iosepus  [accion continuar]
+
+Ronda 5: tegularis (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 30 |  5
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #520 Acontecimiento: scratch_hit_gillius: 7 → 15
+  #521 Acontecimiento: Dado d10: 5
+  #522 Acontecimiento: scratch_eva_gillius: 5 → 11
+  #523 Acontecimiento: Dado d10: 7
+  #524 Acontecimiento: scratch_damage_gillius: 7 → 40
+  #525 Acontecimiento: hp_tegularis: 303 → 273
+  #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #531 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #532 Acontecimiento: tp_parnecio: 10 → 0
+      #533 Acontecimiento: Dado d10: 9
+      #534 Acontecimiento: double_hit_1: 9 → 15
+      #535 Acontecimiento: Dado d10: 5
+      #536 Acontecimiento: double_eva_1: 5 → 11
+      #537 Acontecimiento: Dado d10: 3
+      #538 Acontecimiento: double_dmg_1: 3 → 33
+      #539 Acontecimiento: Dado d10: 4
+      #540 Acontecimiento: double_hit_2: 4 → 10
+      #541 Acontecimiento: Dado d10: 8
+      #542 Acontecimiento: double_eva_2: 8 → 14
+      #543 Acontecimiento: Dado d10: 9
+      #544 Acontecimiento: double_dmg_2: 9 → 39
+      #545 Acontecimiento: hp_tegularis: 273 → 250
+      #546 Acontecimiento: DOUBLE SLASH impacto 1: 23 puntos.
+      #547 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #548 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #549 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #550 Acontecimiento: tp_parnecio: 0 → 10
+      #551 Acontecimiento: Dado d10: 4
+      #552 Acontecimiento: scratch_hit_parnecio: 4 → 10
+      #553 Acontecimiento: Dado d10: 8
+      #554 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #555 Acontecimiento: Dado d10: 2
+      #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+      #557 Acontecimiento: tegularis esquivó SLASH.
+      #558 Acontecimiento: Termina slash de parnecio
+  #559 Acontecimiento: defense_tegularis: 5 → 0
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+
+Ronda 5: tegularis (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  87 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 30
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #526 Acontecimiento: HACHAZO hizo 30 puntos de daño a tegularis.
+  #527 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #528 Acontecimiento: parnecio ejecuta proteccion_gillius
+    Resultados y registros correlacionados:
+      #529 Acontecimiento: Parnecio protege a gillius con su escudo.
+      #530 Acontecimiento: Termina proteccion_gillius de parnecio
+  Acción confirmada:
+  #531 Acontecimiento: parnecio ejecuta double_slash
+    Resultados y registros correlacionados:
+      #532 Acontecimiento: tp_parnecio: 10 → 0
+      #533 Acontecimiento: Dado d10: 9
+      #534 Acontecimiento: double_hit_1: 9 → 15
+      #535 Acontecimiento: Dado d10: 5
+      #536 Acontecimiento: double_eva_1: 5 → 11
+      #537 Acontecimiento: Dado d10: 3
+      #538 Acontecimiento: double_dmg_1: 3 → 33
+      #539 Acontecimiento: Dado d10: 4
+      #540 Acontecimiento: double_hit_2: 4 → 10
+      #541 Acontecimiento: Dado d10: 8
+      #542 Acontecimiento: double_eva_2: 8 → 14
+      #543 Acontecimiento: Dado d10: 9
+      #544 Acontecimiento: double_dmg_2: 9 → 39
+      #545 Acontecimiento: hp_tegularis: 273 → 250
+      #546 Acontecimiento: DOUBLE SLASH impacto 1: 23 puntos.
+      #547 Acontecimiento: Tegularis esquivó DOUBLE SLASH impacto 2.
+      #548 Acontecimiento: Termina double_slash de parnecio
+  Acción confirmada:
+  #549 Acontecimiento: parnecio ejecuta slash
+    Resultados y registros correlacionados:
+      #550 Acontecimiento: tp_parnecio: 0 → 10
+      #551 Acontecimiento: Dado d10: 4
+      #552 Acontecimiento: scratch_hit_parnecio: 4 → 10
+      #553 Acontecimiento: Dado d10: 8
+      #554 Acontecimiento: scratch_eva_parnecio: 8 → 14
+      #555 Acontecimiento: Dado d10: 2
+      #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+      #557 Acontecimiento: tegularis esquivó SLASH.
+      #558 Acontecimiento: Termina slash de parnecio
+  #559 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #560 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #561 Acontecimiento: tp_tegularis: 5 → 30
+      #562 Acontecimiento: mp_tegularis: 30 → 45
+      #563 Acontecimiento: defense_tegularis: 0 → 5
+      #564 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #565 Acontecimiento: Termina preponderancia de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Acción confirmada: gillius esquivó COLETAZO.
+
+Acción confirmada: COLETAZO hizo 54 puntos a clarisa.
+
+Ronda 5: tegularis (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  33 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+  #557 Acontecimiento: tegularis esquivó SLASH.
+  #558 Acontecimiento: Termina slash de parnecio
+  #559 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #560 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #561 Acontecimiento: tp_tegularis: 5 → 30
+      #562 Acontecimiento: mp_tegularis: 30 → 45
+      #563 Acontecimiento: defense_tegularis: 0 → 5
+      #564 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #565 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #566 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #567 Acontecimiento: tp_tegularis: 30 → 10
+      #568 Acontecimiento: Dado d10: 7
+      #569 Acontecimiento: tail_hit_parnecio: 7 → 14
+      #570 Acontecimiento: Dado d10: 2
+      #571 Acontecimiento: tail_eva_parnecio: 2 → 12
+      #572 Acontecimiento: Dado d10: 5
+      #573 Acontecimiento: tail_dmg_parnecio: 5 → 50
+      #574 Acontecimiento: Dado d10: 5
+      #575 Acontecimiento: tail_hit_gillius: 5 → 12
+      #576 Acontecimiento: Dado d10: 6
+      #577 Acontecimiento: tail_eva_gillius: 6 → 14
+      #578 Acontecimiento: Dado d10: 5
+      #579 Acontecimiento: tail_dmg_gillius: 5 → 50
+      #580 Acontecimiento: Dado d10: 2
+      #581 Acontecimiento: tail_hit_clarisa: 2 → 9
+      #582 Acontecimiento: Dado d10: 3
+      #583 Acontecimiento: tail_eva_clarisa: 3 → 8
+      #584 Acontecimiento: Dado d10: 9
+      #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #586 Acontecimiento: Dado d10: 7
+      #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+      #588 Acontecimiento: Dado d10: 10
+      #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #590 Acontecimiento: Dado d10: 2
+      #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #592 Acontecimiento: gillius esquivó COLETAZO.
+      #593 Acontecimiento: hp_clarisa: 87 → 33
+      #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+      #595 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: tegularis  [accion continuar]
+
+Ronda 5: clarisa (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  33 | 17 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #556 Acontecimiento: scratch_damage_parnecio: 2 → 35
+  #557 Acontecimiento: tegularis esquivó SLASH.
+  #558 Acontecimiento: Termina slash de parnecio
+  #559 Acontecimiento: defense_tegularis: 5 → 0
+  Acción confirmada:
+  #560 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #561 Acontecimiento: tp_tegularis: 5 → 30
+      #562 Acontecimiento: mp_tegularis: 30 → 45
+      #563 Acontecimiento: defense_tegularis: 0 → 5
+      #564 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #565 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #566 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #567 Acontecimiento: tp_tegularis: 30 → 10
+      #568 Acontecimiento: Dado d10: 7
+      #569 Acontecimiento: tail_hit_parnecio: 7 → 14
+      #570 Acontecimiento: Dado d10: 2
+      #571 Acontecimiento: tail_eva_parnecio: 2 → 12
+      #572 Acontecimiento: Dado d10: 5
+      #573 Acontecimiento: tail_dmg_parnecio: 5 → 50
+      #574 Acontecimiento: Dado d10: 5
+      #575 Acontecimiento: tail_hit_gillius: 5 → 12
+      #576 Acontecimiento: Dado d10: 6
+      #577 Acontecimiento: tail_eva_gillius: 6 → 14
+      #578 Acontecimiento: Dado d10: 5
+      #579 Acontecimiento: tail_dmg_gillius: 5 → 50
+      #580 Acontecimiento: Dado d10: 2
+      #581 Acontecimiento: tail_hit_clarisa: 2 → 9
+      #582 Acontecimiento: Dado d10: 3
+      #583 Acontecimiento: tail_eva_clarisa: 3 → 8
+      #584 Acontecimiento: Dado d10: 9
+      #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #586 Acontecimiento: Dado d10: 7
+      #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+      #588 Acontecimiento: Dado d10: 10
+      #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #590 Acontecimiento: Dado d10: 2
+      #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #592 Acontecimiento: gillius esquivó COLETAZO.
+      #593 Acontecimiento: hp_clarisa: 87 → 33
+      #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+      #595 Acontecimiento: Termina coletazo de tegularis
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: BLESS aumentó en 2 el atributo principal de parnecio.
+
+Ronda 5: clarisa (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  33 |  7 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #560 Acontecimiento: tegularis ejecuta preponderancia
+    Resultados y registros correlacionados:
+      #561 Acontecimiento: tp_tegularis: 5 → 30
+      #562 Acontecimiento: mp_tegularis: 30 → 45
+      #563 Acontecimiento: defense_tegularis: 0 → 5
+      #564 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+      #565 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #566 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #567 Acontecimiento: tp_tegularis: 30 → 10
+      #568 Acontecimiento: Dado d10: 7
+      #569 Acontecimiento: tail_hit_parnecio: 7 → 14
+      #570 Acontecimiento: Dado d10: 2
+      #571 Acontecimiento: tail_eva_parnecio: 2 → 12
+      #572 Acontecimiento: Dado d10: 5
+      #573 Acontecimiento: tail_dmg_parnecio: 5 → 50
+      #574 Acontecimiento: Dado d10: 5
+      #575 Acontecimiento: tail_hit_gillius: 5 → 12
+      #576 Acontecimiento: Dado d10: 6
+      #577 Acontecimiento: tail_eva_gillius: 6 → 14
+      #578 Acontecimiento: Dado d10: 5
+      #579 Acontecimiento: tail_dmg_gillius: 5 → 50
+      #580 Acontecimiento: Dado d10: 2
+      #581 Acontecimiento: tail_hit_clarisa: 2 → 9
+      #582 Acontecimiento: Dado d10: 3
+      #583 Acontecimiento: tail_eva_clarisa: 3 → 8
+      #584 Acontecimiento: Dado d10: 9
+      #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #586 Acontecimiento: Dado d10: 7
+      #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+      #588 Acontecimiento: Dado d10: 10
+      #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #590 Acontecimiento: Dado d10: 2
+      #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #592 Acontecimiento: gillius esquivó COLETAZO.
+      #593 Acontecimiento: hp_clarisa: 87 → 33
+      #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+      #595 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #596 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #597 Acontecimiento: mp_clarisa: 17 → 7
+      #598 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #599 Acontecimiento: Termina bless de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: clarisa  [accion continuar]
+
+Acción confirmada: clarisa recuperó maná: 37 MP.
+
+Ronda 5: gillius (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 30
+  clarisa      |  33 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #564 Acontecimiento: PREPONDERANCIA recuperó 25 TP y 15 MP; Tegularis está protegido.
+  #565 Acontecimiento: Termina preponderancia de tegularis
+  Acción confirmada:
+  #566 Acontecimiento: tegularis ejecuta coletazo
+    Resultados y registros correlacionados:
+      #567 Acontecimiento: tp_tegularis: 30 → 10
+      #568 Acontecimiento: Dado d10: 7
+      #569 Acontecimiento: tail_hit_parnecio: 7 → 14
+      #570 Acontecimiento: Dado d10: 2
+      #571 Acontecimiento: tail_eva_parnecio: 2 → 12
+      #572 Acontecimiento: Dado d10: 5
+      #573 Acontecimiento: tail_dmg_parnecio: 5 → 50
+      #574 Acontecimiento: Dado d10: 5
+      #575 Acontecimiento: tail_hit_gillius: 5 → 12
+      #576 Acontecimiento: Dado d10: 6
+      #577 Acontecimiento: tail_eva_gillius: 6 → 14
+      #578 Acontecimiento: Dado d10: 5
+      #579 Acontecimiento: tail_dmg_gillius: 5 → 50
+      #580 Acontecimiento: Dado d10: 2
+      #581 Acontecimiento: tail_hit_clarisa: 2 → 9
+      #582 Acontecimiento: Dado d10: 3
+      #583 Acontecimiento: tail_eva_clarisa: 3 → 8
+      #584 Acontecimiento: Dado d10: 9
+      #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+      #586 Acontecimiento: Dado d10: 7
+      #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+      #588 Acontecimiento: Dado d10: 10
+      #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+      #590 Acontecimiento: Dado d10: 2
+      #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+      #592 Acontecimiento: gillius esquivó COLETAZO.
+      #593 Acontecimiento: hp_clarisa: 87 → 33
+      #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+      #595 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #596 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #597 Acontecimiento: mp_clarisa: 17 → 7
+      #598 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #599 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #600 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #601 Acontecimiento: mp_clarisa: 7 → 37
+      #602 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #603 Acontecimiento: Termina concentracion_clarisa de clarisa
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: tegularis esquivó EVISCERATE.
+
+Ronda 5: gillius (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 |  0
+  clarisa      |  33 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 250 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #574 Acontecimiento: Dado d10: 5
+  #575 Acontecimiento: tail_hit_gillius: 5 → 12
+  #576 Acontecimiento: Dado d10: 6
+  #577 Acontecimiento: tail_eva_gillius: 6 → 14
+  #578 Acontecimiento: Dado d10: 5
+  #579 Acontecimiento: tail_dmg_gillius: 5 → 50
+  #580 Acontecimiento: Dado d10: 2
+  #581 Acontecimiento: tail_hit_clarisa: 2 → 9
+  #582 Acontecimiento: Dado d10: 3
+  #583 Acontecimiento: tail_eva_clarisa: 3 → 8
+  #584 Acontecimiento: Dado d10: 9
+  #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+  #586 Acontecimiento: Dado d10: 7
+  #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+  #588 Acontecimiento: Dado d10: 10
+  #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #590 Acontecimiento: Dado d10: 2
+  #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+  #592 Acontecimiento: gillius esquivó COLETAZO.
+  #593 Acontecimiento: hp_clarisa: 87 → 33
+  #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+  #595 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #596 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #597 Acontecimiento: mp_clarisa: 17 → 7
+      #598 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #599 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #600 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #601 Acontecimiento: mp_clarisa: 7 → 37
+      #602 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #603 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #604 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #605 Acontecimiento: tp_gillius: 30 → 0
+      #606 Acontecimiento: Dado d10: 4
+      #607 Acontecimiento: scratch_hit_gillius: 4 → 12
+      #608 Acontecimiento: Dado d10: 10
+      #609 Acontecimiento: scratch_eva_gillius: 10 → 16
+      #610 Acontecimiento: Dado d10: 2
+      #611 Acontecimiento: scratch_damage_gillius: 2 → 43
+      #612 Acontecimiento: tegularis esquivó EVISCERATE.
+      #613 Acontecimiento: Termina eviscerate de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 26 puntos de daño a tegularis.
+
+Ronda 5: gillius (1 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 10
+  clarisa      |  33 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 224 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #585 Acontecimiento: tail_dmg_clarisa: 9 → 54
+  #586 Acontecimiento: Dado d10: 7
+  #587 Acontecimiento: tail_hit_iosepus: 7 → 14
+  #588 Acontecimiento: Dado d10: 10
+  #589 Acontecimiento: tail_eva_iosepus: 10 → 16
+  #590 Acontecimiento: Dado d10: 2
+  #591 Acontecimiento: tail_dmg_iosepus: 2 → 47
+  #592 Acontecimiento: gillius esquivó COLETAZO.
+  #593 Acontecimiento: hp_clarisa: 87 → 33
+  #594 Acontecimiento: COLETAZO hizo 54 puntos a clarisa.
+  #595 Acontecimiento: Termina coletazo de tegularis
+  Acción confirmada:
+  #596 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #597 Acontecimiento: mp_clarisa: 17 → 7
+      #598 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #599 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #600 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #601 Acontecimiento: mp_clarisa: 7 → 37
+      #602 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #603 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #604 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #605 Acontecimiento: tp_gillius: 30 → 0
+      #606 Acontecimiento: Dado d10: 4
+      #607 Acontecimiento: scratch_hit_gillius: 4 → 12
+      #608 Acontecimiento: Dado d10: 10
+      #609 Acontecimiento: scratch_eva_gillius: 10 → 16
+      #610 Acontecimiento: Dado d10: 2
+      #611 Acontecimiento: scratch_damage_gillius: 2 → 43
+      #612 Acontecimiento: tegularis esquivó EVISCERATE.
+      #613 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #614 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #615 Acontecimiento: tp_gillius: 0 → 10
+      #616 Acontecimiento: Dado d10: 3
+      #617 Acontecimiento: scratch_hit_gillius: 3 → 11
+      #618 Acontecimiento: Dado d10: 2
+      #619 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #620 Acontecimiento: Dado d10: 3
+      #621 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #622 Acontecimiento: hp_tegularis: 250 → 224
+      #623 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #624 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Actuar: gillius  [accion continuar]
+
+Acción confirmada: HACHAZO hizo 28 puntos de daño a tegularis.
+
+Ronda 5: parnecio (3 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  33 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 196 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  Acción confirmada:
+  #596 Acontecimiento: clarisa ejecuta bless
+    Resultados y registros correlacionados:
+      #597 Acontecimiento: mp_clarisa: 17 → 7
+      #598 Acontecimiento: BLESS aumentó en 2 el atributo principal de parnecio.
+      #599 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #600 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #601 Acontecimiento: mp_clarisa: 7 → 37
+      #602 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #603 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #604 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #605 Acontecimiento: tp_gillius: 30 → 0
+      #606 Acontecimiento: Dado d10: 4
+      #607 Acontecimiento: scratch_hit_gillius: 4 → 12
+      #608 Acontecimiento: Dado d10: 10
+      #609 Acontecimiento: scratch_eva_gillius: 10 → 16
+      #610 Acontecimiento: Dado d10: 2
+      #611 Acontecimiento: scratch_damage_gillius: 2 → 43
+      #612 Acontecimiento: tegularis esquivó EVISCERATE.
+      #613 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #614 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #615 Acontecimiento: tp_gillius: 0 → 10
+      #616 Acontecimiento: Dado d10: 3
+      #617 Acontecimiento: scratch_hit_gillius: 3 → 11
+      #618 Acontecimiento: Dado d10: 2
+      #619 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #620 Acontecimiento: Dado d10: 3
+      #621 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #622 Acontecimiento: hp_tegularis: 250 → 224
+      #623 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #624 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #625 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #626 Acontecimiento: tp_gillius: 10 → 20
+      #627 Acontecimiento: Dado d10: 9
+      #628 Acontecimiento: scratch_hit_gillius: 9 → 17
+      #629 Acontecimiento: Dado d10: 6
+      #630 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #631 Acontecimiento: Dado d10: 5
+      #632 Acontecimiento: scratch_damage_gillius: 5 → 38
+      #633 Acontecimiento: hp_tegularis: 224 → 196
+      #634 Acontecimiento: HACHAZO hizo 28 puntos de daño a tegularis.
+      #635 Acontecimiento: Termina hachazo de gillius
+
+ACCIONES AUTORIZADAS
+  Elija una letra o escriba: accion <id>
+  A) Protección → clarisa  [accion proteccion_clarisa_01]
+  B) Protección → gillius  [accion proteccion_gillius_01]
+  C) Double Slash  [accion double_slash_01]
+  D) Slash  [accion slash_01]
+  E) Pasar  [accion pasar]
+
+Acción confirmada: Parnecio protege a clarisa con su escudo.
+
+Ronda 5: parnecio (2 acciones)
+
+ESTADO PUBLICADO
+  PARTICIPANTE |  HP | MP | TP
+  -------------+-----+----+---
+  parnecio     |  93 | 64 | 10
+  gillius      | 133 | 58 | 20
+  clarisa      |  33 | 37 |  0
+  iosepus      |   0 |  0 |  0
+  tegularis    | 196 | 45 | 10
+
+ACONTECIMIENTOS SELECCIONADOS
+  40 de 40 registros seleccionados
+  #599 Acontecimiento: Termina bless de clarisa
+  Acción confirmada:
+  #600 Acontecimiento: clarisa ejecuta concentracion_clarisa
+    Resultados y registros correlacionados:
+      #601 Acontecimiento: mp_clarisa: 7 → 37
+      #602 Acontecimiento: clarisa recuperó maná: 37 MP.
+      #603 Acontecimiento: Termina concentracion_clarisa de clarisa
+  Acción confirmada:
+  #604 Acontecimiento: gillius ejecuta eviscerate
+    Resultados y registros correlacionados:
+      #605 Acontecimiento: tp_gillius: 30 → 0
+      #606 Acontecimiento: Dado d10: 4
+      #607 Acontecimiento: scratch_hit_gillius: 4 → 12
+      #608 Acontecimiento: Dado d10: 10
+      #609 Acontecimiento: scratch_eva_gillius: 10 → 16
+      #610 Acontecimiento: Dado d10: 2
+      #611 Acontecimiento: scratch_damage_gillius: 2 → 43
+      #612 Acontecimiento: tegularis esquivó EVISCERATE.
+      #613 Acontecimiento: Termina eviscerate de gillius
+  Acción confirmada:
+  #614 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #615 Acontecimiento: tp_gillius: 0 → 10
+      #616 Acontecimiento: Dado d10: 3
+      #617 Acontecimiento: scratch_hit_gillius: 3 → 11
+      #618 Acontecimiento: Dado d10: 2
+      #619 Acontecimiento: scratch_eva_gillius: 2 → 8
+      #620 Acontecimiento: Dado d10: 3
+      #621 Acontecimiento: scratch_damage_gillius: 3 → 36
+      #622 Acontecimiento: hp_tegularis: 250 → 224
+      #623 Acontecimiento: HACHAZO hizo 26 puntos de daño a tegularis.
+      #624 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #625 Acontecimiento: gillius ejecuta hachazo
+    Resultados y registros correlacionados:
+      #626 Acontecimiento: tp_gillius: 10 → 20
+      #627 Acontecimiento: Dado d10: 9
+      #628 Acontecimiento: scratch_hit_gillius: 9 → 17
+      #629 Acontecimiento: Dado d10: 6
+      #630 Acontecimiento: scratch_eva_gillius: 6 → 12
+      #631 Acontecimiento: Dado d10: 5
+      #632 Acontecimiento: scratch_damage_gillius: 5 → 38
+      #633 Acontecimiento: hp_tegularis: 224 → 196
+      #634 Acontecimiento: HACHAZO hizo 28 puntos de daño a tegularis.
+      #635 Acontecimiento: Termina hachazo de gillius
+  Acción confirmada:
+  #636 Acontecimiento: parnecio ejecuta proteccion_clarisa
+    Resultados y registros correlacionados:
+      #637 Acontecimiento: Parnecio protege a clarisa con su escudo.

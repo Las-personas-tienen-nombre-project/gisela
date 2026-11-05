@@ -1,0 +1,42 @@
+.............................................................................................. [ 11%]
+........................................................................ [ 20%]
+......................................................... [ 27%]
+................................................................. [ 35%]
+.s...................................................................... [ 44%]
+.......................................................F
+=================================== FAILURES ===================================
+___________ H45EIntegration.test_cli_save_and_load_preserve_history ____________
+
+self = <engine.tests.test_h45_cli.H45EIntegration testMethod=test_cli_save_and_load_preserve_history>
+
+    def test_cli_save_and_load_preserve_history(self):
+        import subprocess
+        from tempfile import TemporaryDirectory
+    
+        with TemporaryDirectory() as folder:
+            save = Path(folder) / "partida.json"
+            commands = (
+                f"guardar {save}\nir pasillo\ncargar {save}\nhistory all\nsalir\n"
+            )
+            run = subprocess.run(
+                [
+                    sys.executable,
+                    "tools/gisela_cli.py",
+                    "--package",
+                    "gisela/packages/h45_cli.package.json",
+                ],
+                cwd=ROOT,
+                input=commands,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+>           self.assertEqual(run.returncode, 0, run.stderr)
+E           AssertionError: 2 != 0 : /opt/pyvenv/bin/python: can't open file '/mnt/data/final_audit/tools/gisela_cli.py': [Errno 2] No such file or directory
+
+engine/tests/test_h45_cli.py:380: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] engine/tests/test_glauquir_mud.py:96: El paquete productivo externo no está instalado
+FAILED engine/tests/test_h45_cli.py::H45EIntegration::test_cli_save_and_load_preserve_history - AssertionError: 2 != 0 : /opt/pyvenv/bin/python: can't open file '/mnt/data/final_audit/tools/gisela_cli.py': [Errno 2] No such file or directory
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 414 passed, 1 skipped, 72 subtests passed in 29.38s

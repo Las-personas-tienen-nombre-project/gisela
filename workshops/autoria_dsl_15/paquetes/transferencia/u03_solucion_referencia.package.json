@@ -1,0 +1,294 @@
+{
+  "manifest": {
+    "id": "workshop_u03_condiciones",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "sofia_scale": {
+      "min": 0,
+      "max": 20
+    },
+    "variables": [
+      {
+        "scope": "session",
+        "id": "permiso_entrada",
+        "type": "boolean",
+        "initial": false
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "parnecio",
+      "kind": "character",
+      "title": {
+        "text": "Parnecio Esparcales"
+      },
+      "sofia": {
+        "strength": 8,
+        "openness": 5,
+        "fortune": 6,
+        "intelligence": 4,
+        "awareness": 6
+      },
+      "traits": [
+        "dodge"
+      ]
+    },
+    {
+      "id": "tegularis",
+      "kind": "character",
+      "title": {
+        "text": "Tegularis, el Hijo del Volcán"
+      },
+      "sofia": {
+        "strength": 15,
+        "openness": 7,
+        "fortune": 5,
+        "intelligence": 9,
+        "awareness": 7
+      },
+      "traits": [
+        "enorme",
+        "escamas"
+      ]
+    },
+    {
+      "id": "volcan",
+      "kind": "location",
+      "title": {
+        "text": "Cámara del volcán"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Parnecio y Tegularis se encuentran ante la puerta del volcán."
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "prompt": {
+            "text": "Elige una opción."
+          },
+          "options": [
+            {
+              "id": "abrir",
+              "label": {
+                "text": "Solicitar permiso y entrar"
+              },
+              "next": {
+                "node": "puerta_abierta"
+              },
+              "effects": [
+                {
+                  "op": "set",
+                  "target": {
+                    "var": {
+                      "scope": "session",
+                      "key": "permiso_entrada"
+                    }
+                  },
+                  "value": {
+                    "literal": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "seguir",
+              "label": {
+                "text": "Seguir de largo"
+              },
+              "next": {
+                "node": "pasillo"
+              },
+              "enabled_if": {
+                "compare": {
+                  "left": {
+                    "var": {
+                      "scope": "session",
+                      "key": "permiso_entrada"
+                    }
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": false
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puerta_abierta",
+      "steps": [
+        {
+          "id": "texto_puerta",
+          "op": "narrate",
+          "text": {
+            "text": "La puerta se abre. En la pieza hay luz."
+          }
+        },
+        {
+          "id": "fin_puerta",
+          "op": "ending",
+          "ending": "adentro"
+        }
+      ]
+    },
+    {
+      "id": "pasillo",
+      "steps": [
+        {
+          "id": "texto_pasillo",
+          "op": "narrate",
+          "text": {
+            "text": "Sigues caminando y dejas la puerta atrás."
+          }
+        },
+        {
+          "id": "fin_pasillo",
+          "op": "ending",
+          "ending": "afuera"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "adentro",
+      "title": {
+        "text": "Dentro de la pieza"
+      }
+    },
+    {
+      "id": "afuera",
+      "title": {
+        "text": "Al final del pasillo"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [
+      {
+        "id": "volcan",
+        "card": "volcan"
+      }
+    ],
+    "characters": [
+      {
+        "id": "parnecio",
+        "card": "parnecio",
+        "location": "volcan",
+        "status": {}
+      },
+      {
+        "id": "tegularis",
+        "card": "tegularis",
+        "location": "volcan",
+        "status": {}
+      }
+    ],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {
+      "permiso_entrada": false
+    },
+    "player_character": "parnecio"
+  },
+  "traits": {
+    "schema_version": "traits.v1",
+    "traits": [
+      {
+        "id": "dodge",
+        "label": "Evasión pasiva +2",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "evasion"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "enorme",
+        "label": "Penalización de evasión -5",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "evasion"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": -5
+            }
+          }
+        ]
+      },
+      {
+        "id": "escamas",
+        "label": "Reducción del daño físico 5",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "physical_damage_reduction"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": 5
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

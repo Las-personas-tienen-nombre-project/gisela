@@ -1,0 +1,69 @@
+
+RONDA 1 | parnecio | acciones: 2
+  parnecio ejecutó slash
+  SLASH hizo 22 puntos de daño a tegularis.
+
+RONDA 1 | parnecio | acciones: 1
+  parnecio ejecutó double_slash
+  DOUBLE SLASH impacto 1: 26 puntos.
+  DOUBLE SLASH impacto 2: 22 puntos.
+
+RONDA 1 | tegularis | acciones: 3
+  tegularis ejecutó firebreath
+  parnecio esquivó FIREBREATH.
+  FIREBREATH hizo 35 puntos a gillius.
+  clarisa esquivó FIREBREATH.
+  FIREBREATH hizo 32 puntos a iosepus.
+
+RONDA 1 | tegularis | acciones: 2
+  tegularis ejecutó coletazo
+  COLETAZO hizo 46 puntos a parnecio.
+  gillius esquivó COLETAZO.
+  clarisa esquivó COLETAZO.
+  iosepus esquivó COLETAZO.
+
+RONDA 1 | tegularis | acciones: 1
+  tegularis ejecutó coletazo
+  parnecio esquivó COLETAZO.
+  gillius esquivó COLETAZO.
+  clarisa esquivó COLETAZO.
+  COLETAZO hizo 51 puntos a iosepus.
+
+RONDA 1 | gillius | acciones: 3
+  gillius ejecutó stance_aggressive
+  Gillius adoptó STANCE AGGRESSIVE: +2 Hit y -2 Evasion.
+
+RONDA 1 | gillius | acciones: 2
+  gillius ejecutó hachazo
+  HACHAZO hizo 26 puntos de daño a tegularis.
+
+RONDA 1 | gillius | acciones: 1
+  gillius ejecutó grito_de_guerra
+  GRITO DE GUERRA aumentó el daño físico del grupo.
+  effect_started: {'effect': 'effect_000001', 'actor': 'parnecio', 'turns': 3}
+  effect_started: {'effect': 'effect_000002', 'actor': 'gillius', 'turns': 3}
+  effect_started: {'effect': 'effect_000003', 'actor': 'clarisa', 'turns': 3}
+  effect_started: {'effect': 'effect_000004', 'actor': 'iosepus', 'turns': 3}
+  effect_pulse: {'effect': 'effect_000003', 'actor': 'clarisa', 'remaining': 3}
+
+RONDA 1 | clarisa | acciones: 2
+  clarisa ejecutó curacion_iosepus
+  CURACIÓN restauró salud a Iosepus; HP actual: 109.
+
+RONDA 1 | clarisa | acciones: 1
+  clarisa ejecutó curacion_iosepus
+  CURACIÓN restauró salud a Iosepus; HP actual: 140.
+  effect_pulse: {'effect': 'effect_000004', 'actor': 'iosepus', 'remaining': 3}
+
+RONDA 1 | iosepus | acciones: 2
+  iosepus ejecutó agarraguirre
+  AGARRAGUIRRE redujo Awareness de Tegularis en 2.
+  effect_started: {'effect': 'effect_000005', 'actor': 'tegularis', 'turns': 2}
+
+RONDA 1 | iosepus | acciones: 1
+  iosepus ejecutó armadura_magica_gillius
+  ARMADURA_MAGICA se aplicó a Gillius.
+  effect_started: {'effect': 'effect_000006', 'actor': 'gillius', 'turns': 2}
+  effect_pulse: {'effect': 'effect_000001', 'actor': 'parnecio', 'remaining': 3}
+
+Laboratorio completado: 1 rondas verificables.

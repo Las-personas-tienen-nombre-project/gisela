@@ -1,0 +1,116 @@
+{
+  "manifest": {
+    "id": "workshop_01_otra_decision",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    }
+  },
+  "cards": [],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Una radio suena en la portería."
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué decide hacer?"
+          },
+          "options": [
+            {
+              "id": "abrir",
+              "label": {
+                "text": "Escuchar la radio"
+              },
+              "next": {
+                "node": "puerta_abierta"
+              }
+            },
+            {
+              "id": "seguir",
+              "label": {
+                "text": "Continuar caminando"
+              },
+              "next": {
+                "node": "pasillo"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puerta_abierta",
+      "steps": [
+        {
+          "id": "texto_puerta",
+          "op": "narrate",
+          "text": {
+            "text": "Alguien responde y la noche continúa."
+          }
+        },
+        {
+          "id": "fin_puerta",
+          "op": "ending",
+          "ending": "adentro"
+        }
+      ]
+    },
+    {
+      "id": "pasillo",
+      "steps": [
+        {
+          "id": "texto_pasillo",
+          "op": "narrate",
+          "text": {
+            "text": "El pasillo queda atrás."
+          }
+        },
+        {
+          "id": "fin_pasillo",
+          "op": "ending",
+          "ending": "afuera"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "adentro",
+      "title": {
+        "text": "La respuesta"
+      }
+    },
+    {
+      "id": "afuera",
+      "title": {
+        "text": "El pasillo"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [],
+    "characters": [],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

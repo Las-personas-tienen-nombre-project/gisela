@@ -1,0 +1,364 @@
+{
+  "manifest": {
+    "id": "workshop_u05_habilidad",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "sofia_scale": {
+      "min": 0,
+      "max": 20
+    },
+    "variables": [
+      {
+        "scope": "session",
+        "id": "permiso_entrada",
+        "type": "boolean",
+        "initial": false
+      }
+    ],
+    "facts": [
+      "esquiva_entrenamiento",
+      "golpe_ensayado"
+    ]
+  },
+  "cards": [
+    {
+      "id": "parnecio",
+      "kind": "character",
+      "title": {
+        "text": "Parnecio Esparcales"
+      },
+      "sofia": {
+        "strength": 8,
+        "openness": 5,
+        "fortune": 6,
+        "intelligence": 4,
+        "awareness": 6
+      },
+      "traits": [
+        "dodge"
+      ]
+    },
+    {
+      "id": "tegularis",
+      "kind": "character",
+      "title": {
+        "text": "Tegularis, el Hijo del Volcán"
+      },
+      "sofia": {
+        "strength": 15,
+        "openness": 7,
+        "fortune": 5,
+        "intelligence": 9,
+        "awareness": 7
+      },
+      "traits": [
+        "enorme",
+        "escamas"
+      ]
+    },
+    {
+      "id": "volcan",
+      "kind": "location",
+      "title": {
+        "text": "Cámara del volcán"
+      }
+    },
+    {
+      "id": "golpe_ensayo",
+      "kind": "skill",
+      "title": {
+        "text": "Golpe de ensayo"
+      },
+      "play": {
+        "label": {
+          "text": "Ejecutar golpe"
+        },
+        "requires": {
+          "constant": true
+        },
+        "effects": [
+          {
+            "op": "record_fact",
+            "fact": "golpe_ensayado"
+          }
+        ]
+      },
+      "return_policy": {
+        "default": "discard"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Parnecio y Tegularis se encuentran ante la puerta del volcán."
+          }
+        },
+        {
+          "id": "evaluar_esquiva",
+          "op": "evaluate",
+          "evaluation": {
+            "id": "ensayo_esquiva",
+            "profile": "reflejos",
+            "presentation": "hidden",
+            "inputs": {
+              "base": {
+                "stat": {
+                  "character": "parnecio",
+                  "name": "awareness",
+                  "component": "effective"
+                }
+              },
+              "difficulty": {
+                "literal": 10
+              }
+            },
+            "context": {
+              "participants": [
+                {
+                  "entity": "parnecio",
+                  "role": "defender"
+                }
+              ],
+              "tags": [
+                "evasion"
+              ]
+            },
+            "branches": [
+              {
+                "outcome": "fallo",
+                "effects": []
+              },
+              {
+                "outcome": "exito",
+                "effects": [
+                  {
+                    "op": "record_fact",
+                    "fact": "esquiva_entrenamiento"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "ventana",
+          "op": "skill_window",
+          "max_plays": 1
+        },
+        {
+          "id": "ir_final",
+          "op": "condition",
+          "test": {
+            "has_fact": "golpe_ensayado"
+          },
+          "then": {
+            "node": "puerta_abierta"
+          },
+          "else": {
+            "node": "pasillo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "puerta_abierta",
+      "steps": [
+        {
+          "id": "texto_puerta",
+          "op": "narrate",
+          "text": {
+            "text": "La puerta se abre. En la pieza hay luz."
+          }
+        },
+        {
+          "id": "fin_puerta",
+          "op": "ending",
+          "ending": "adentro"
+        }
+      ]
+    },
+    {
+      "id": "pasillo",
+      "steps": [
+        {
+          "id": "texto_pasillo",
+          "op": "narrate",
+          "text": {
+            "text": "Sigues caminando y dejas la puerta atrás."
+          }
+        },
+        {
+          "id": "fin_pasillo",
+          "op": "ending",
+          "ending": "afuera"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "adentro",
+      "title": {
+        "text": "Dentro de la pieza"
+      }
+    },
+    {
+      "id": "afuera",
+      "title": {
+        "text": "Al final del pasillo"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [
+      {
+        "id": "volcan",
+        "card": "volcan"
+      }
+    ],
+    "characters": [
+      {
+        "id": "parnecio",
+        "card": "parnecio",
+        "location": "volcan",
+        "status": {}
+      },
+      {
+        "id": "tegularis",
+        "card": "tegularis",
+        "location": "volcan",
+        "status": {}
+      }
+    ],
+    "objects": [],
+    "skills": [
+      {
+        "id": "golpe_01",
+        "card": "golpe_ensayo",
+        "character": "parnecio",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "parnecio",
+        "hand": 1,
+        "reserve": 0
+      }
+    ],
+    "facts": [],
+    "session_variables": {
+      "permiso_entrada": false
+    },
+    "player_character": "parnecio"
+  },
+  "traits": {
+    "schema_version": "traits.v1",
+    "traits": [
+      {
+        "id": "dodge",
+        "label": "Evasión pasiva +2",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "evasion"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "enorme",
+        "label": "Penalización de evasión -5",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "evasion"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": -5
+            }
+          }
+        ]
+      },
+      {
+        "id": "escamas",
+        "label": "Reducción del daño físico 5",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "contribucion",
+            "when": {
+              "role": "defender",
+              "all_tags": [
+                "physical_damage_reduction"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "dice_profiles": [
+    {
+      "schema_version": "dice.profile.v1",
+      "id": "reflejos",
+      "mode": "dice_sum",
+      "count": 1,
+      "sides": 10,
+      "bands": [
+        {
+          "id": "fallo",
+          "min": -500
+        },
+        {
+          "id": "exito",
+          "min": 4
+        }
+      ]
+    }
+  ]
+}
