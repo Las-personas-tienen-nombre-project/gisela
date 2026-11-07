@@ -48,6 +48,6 @@ Se amplía de forma opcional `scene.schema.json` v1.2; `observe.schema.json` ya 
 
 GLAUQUIR significa **GISELA's Lightweight Access Utility for Queries, User Interaction, and Rendering**. El cliente canónico se ejecuta mediante `python tools/glauquir.py --package ...`; `tools/gisela_cli.py` y `tools/play_mvp.py` se conservan para compatibilidad.
 
-Pruebas: `gisela/engine/tests/test_h45f_scene.py`. Registro de invariantes y test anclado: [INVARIANTES_H4_5F.md](../operatives/INVARIANTES_H4_5F.md).
+Pruebas: `gisela/engine/tests/test_h45f_scene.py`. Registro de invariantes y test anclado: [INVARIANTES_H4_5F.md](../../CHANGELOG.md).
 
 Las referencias dinámicas a actores mediante `query` siguen permitidas por el contrato semántico general, pero el ejecutor actual las rechaza en la puerta de soporte (`UNSUPPORTED_FORMAT`). No se silencian ni se selecciona una instancia por aproximación. Los actores literales duplicados se rechazan durante la admisión.

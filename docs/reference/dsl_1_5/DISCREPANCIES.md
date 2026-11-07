@@ -25,4 +25,4 @@ No engine defects are claimed without a reproducible public example.
 
 ## Status after topical reference pass
 
-Twelve topic chapters were added, along with a public API example verifier and a three-context Dodge test. The 13 schema inventories remain structural extraction, and there is no exhaustive semantic or executable test for every schema branch. The general engine test command reached 88 percent before the configured time limit, so global regression acceptance remains open. This is a documentation coverage and verification gap, not evidence of an engine fault.
+Twelve topic chapters were added, along with a public API example verifier and a three-context Dodge test. The 13 schema inventories remain structural extraction, and there is no exhaustive semantic or executable test for every schema branch. An earlier general engine test attempt reached 88 percent before its time limit. A subsequent full repository run completed with 18/18 checks on 2026-11-04 (see [verification](VERIFICATION.md)); this does not close field-by-field semantic or executable coverage. The remaining gap concerns reference coverage, not a demonstrated engine fault.

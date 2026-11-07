@@ -1,5 +1,16 @@
 # DSL 1.5 reference verification
 
+## Verification summary
+
+The last completed full run **recorded in this repository** is dated 2026-11-04:
+`python tools/check_gisela.py --full` exited 0 with 18/18 checks. Its
+[execution evidence](../../operatives/evidence/reparacion_y_revision_2026_11_04/check_gisela_full_final.log)
+is historical, not a claim that the current checkout was just reverified.
+Earlier incomplete attempts below are preserved as a chronology of this
+reference review. Structural inventories cover 13 v1.5 schemas; neither the
+full repository suite nor the example verifier proves every semantic branch.
+See [discrepancies and open limits](DISCREPANCIES.md).
+
 ## Repository identification
 
 Python distribution version: 0.1.21. Authored package format: 1.5. The extracted reference uses the 13 versioned schema files in gisela/contracts/v1_5.
@@ -46,7 +57,7 @@ After reviewing the Dodge test's B101 assertion and fixing its import order,
 passing: 841 core tests and 128 subtests, plus 69 tool tests and 100 subtests.
 The six narrative routes with restoration also passed. See the
 [completed run](../../operatives/evidence/reparacion_y_revision_2026_11_04/check_gisela_full_final.log)
-and the [review report](../../operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+and the [review report](../../../CHANGELOG.md).
 
 The earlier incomplete attempts above remain historical records. This follow-up
 also simplified display punctuation and authored example text, without changing

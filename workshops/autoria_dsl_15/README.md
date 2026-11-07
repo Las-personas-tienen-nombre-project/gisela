@@ -1,6 +1,8 @@
-# Workshop de autoría GISELA DSL 1.5: Tegularis
+# Material pedagógico anterior: Tegularis (DSL 1.5)
 
-**Estado:** nueve unidades documentadas y laboratorios reducidos 1 a 8 disponibles. La certificación integral y la prueba con alumnos reales siguen pendientes; no se debe confundir cobertura documental con aceptación final.
+**Archivo de trabajo:** este taller se conserva en su ruta original porque sus laboratorios y comprobadores dependen de rutas fijas. No es el recorrido pedagógico principal en preparación. Las explicaciones deben verificarse antes de reutilizarlas.
+
+**Estado anterior:** nueve unidades documentadas y laboratorios reducidos 1 a 8 disponibles. La certificación integral y la prueba con alumnos reales siguen pendientes; no se debe confundir cobertura documental con aceptación final.
 
 ## Comenzar
 

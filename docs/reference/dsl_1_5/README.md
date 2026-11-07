@@ -13,8 +13,8 @@ Public versioned schemas and semantic admission are the first source for authori
 - Public engine code and tests are in `gisela/engine` and `gisela/engine/tests`.
 - Productive packages are in `gisela/packages`, including Tegularis and Faro de Niebla.
 - Existing architecture is in `docs/architecture`.
-- Existing guides are in `docs/guides`; the teaching workshop remains in `workshops/autoria_dsl_15`.
-- Historical audits and evidence are in `docs/operatives`.
+- Current guides are in `docs/guides`. Earlier teaching material is linked from `docs/history/README.md`; the Tegularis workshop stays at its original path for executable exercises.
+- Historical changes are summarized in `CHANGELOG.md`; preserved execution evidence is in `docs/operatives/evidence`, and retired reports are recoverable through Git.
 
 ## Reference chapters
 

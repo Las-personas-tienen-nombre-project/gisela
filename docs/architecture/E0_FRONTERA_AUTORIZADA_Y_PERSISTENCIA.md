@@ -1,6 +1,6 @@
 # GISELA E0: Frontera de ejecución y recuperación
 
-**Estado:** implementado en la base Python; `evaluate`/ADR-019 continúa pendiente. Esta etapa **no** agrega `evaluate`, `pending_evaluation`, red ni un protocolo entre instancias. Las cartas y los snapshots 1.2/1.3 conservan sus esquemas y sus turnos. Se corrige aditivamente el catálogo de códigos de error devueltos en `result.schema.json`.
+**Estado:** contrato de la frontera E0 implementada. La ausencia de `evaluate` y `pending_evaluation` describe solo el alcance original de E0: las evaluaciones se incorporaron después en E2/E3 (contratos v1.4/v1.5). E0 no agrega red ni protocolo entre instancias. Las cartas y los snapshots 1.2/1.3 conservan sus esquemas y sus turnos. Se corrige aditivamente el catálogo de códigos de error devueltos en `result.schema.json`.
 
 ## Actores y autoridades
 
@@ -49,7 +49,7 @@ En `_commit`, `_publish_pending`, `_cancel` y el arranque: primero se construye 
 
 El contrato matemático DICE mantiene `dice.profile.v1`. `bands[].min` está ordenado y es único, al igual que `bands[].id`. El **primer resultado actúa como reserva inferior**: ningún total entero válido queda sin categoría, incluso si es menor a `bands[0].min`. `evaluate()` valida también un perfil enviado directamente, antes de llamar al RNG inyectado. La fuente aleatoria y su commit siguen siendo de GISELA; DICE no importa a los demás subsistemas.
 
-`traits_dice_bridge.resolve()` actualmente acepta una **especificación interna**, no el JSON autoral de `evaluate`: `participants`, `tags`, `base`, `difficulty`, `stat` opcional y `profile` materializado. Retorna `{dice, traits, rng_after}` sin mutar el estado. La conversión entre el contrato autoral propuesto y esa forma interna se especifica en `DICE_EVALUACION_DECLARATIVA_PROPUESTA.md`; implementarla pertenece a **E1/v1.4**, no a E0.
+`traits_dice_bridge.resolve()` recibe una **especificación interna** y propone un resultado y estado RNG sin confirmar el mundo por sí mismo. La admisión y ejecución del `evaluate` autoral corresponden a las rutas de evaluación del motor, descritas en [E2](E2_EVALUACIONES_OCULTAS.md) y [E3](E3_EVALUACIONES_VISIBLES.md); no forman parte del alcance original de E0.
 
 ## Límites y riesgos residuales
 
@@ -57,7 +57,7 @@ El contrato matemático DICE mantiene `dice.profile.v1`. `bands[].min` está ord
 - `observe_player` todavía presupone un protagonista: no habilitar acceso a terceros sin ese permiso explícito.
 - La identidad de un par GISELA remoto debe validarse en su protocolo de transporte futuro; no existe deduplicación ni orden de mensajes entre procesos remotos aquí.
 - La persistencia es de archivo local y su integridad no está autenticada criptográficamente; archivos alterados por el propio anfitrión fuera de GISELA pueden reintroducir estados antiguos.
-- Los eventos universales `trait_assigned` y `trait_removed`, y las tiradas visibles `pending_evaluation`, continúan sin implementación.
-- El contrato público v1.4 queda reservado a `evaluate`; no se han introducido campos nuevos en sesiones 1.2/1.3.
+- Los eventos universales `trait_assigned` y `trait_removed` no forman parte de las garantías E0. Las tiradas visibles con `pending_evaluation` se implementaron después en v1.5.
+- La extensión de `evaluate` pertenece a v1.4; E0 no modifica los contratos 1.2/1.3.
 
-Ver [ADR-020](../decisions/ADR_020_E0_FRONTERA_AUTORIDAD_Y_COMPROMISO.md), [matriz de invariantes](../operatives/E0_INVARIANTES_TRAZABILIDAD.json) y [plan de pruebas](../operatives/E0_CIERRE_Y_RIESGOS.md).
+Ver [ADR-020](../decisions/ADR_020_E0_FRONTERA_AUTORIDAD_Y_COMPROMISO.md), [matriz de invariantes](../operatives/E0_INVARIANTES_TRAZABILIDAD.json) y [plan de pruebas](../../CHANGELOG.md).

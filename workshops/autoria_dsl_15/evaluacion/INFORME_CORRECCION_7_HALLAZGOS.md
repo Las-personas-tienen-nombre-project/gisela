@@ -1,6 +1,6 @@
 # Corrección integral de los siete hallazgos de auditoría pedagógica
 
-Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../../CHANGELOG.md).
 
 ## Alcance
 

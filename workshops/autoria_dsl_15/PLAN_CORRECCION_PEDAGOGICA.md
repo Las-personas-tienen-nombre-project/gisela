@@ -14,7 +14,7 @@ No se crearán `REFERENCIA_DSL.md` ni `GLOSARIO.md` dentro del workshop. La docu
 | Primer paquete reducido acumulativo | Hecho | `paquetes/01_fundamentos/` y sus pruebas |
 | Paquetes mínimos de unidades 2 a 8 | Disponibles | `paquetes/02_progresivo/` a `paquetes/08_progresivo/`; los ejercicios productivos se conservan para integración |
 | Unidad 9 | Documentación y rúbrica disponibles | `unidades/09_integracion.md`; aceptación pedagógica pendiente |
-| Regresión integral | Consultar la evidencia actual | [Revisión documental](../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md); los informes anteriores conservan sus resultados históricos |
+| Regresión integral | Consultar la evidencia actual | [Revisión documental](../../CHANGELOG.md); los informes anteriores conservan sus resultados históricos |
 
 ## Próxima prioridad
 

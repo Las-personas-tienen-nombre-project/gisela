@@ -5,7 +5,7 @@ son un recorrido de diseño. Sus archivos completos no se incluyen en el reposit
 los comandos presuponen que el lector los ha construido y validado. Los resultados
 indicados son criterios que debe comprobar, no evidencias de ejecución de esta revisión.
 Para un primer ejemplo completo disponible, consulte
-[Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+[Crea tu primer paquete](../../../guides/CREAR_PAQUETE.md).
 
 # 3.6. La ficha de personaje: atributos, rasgos y azar
 

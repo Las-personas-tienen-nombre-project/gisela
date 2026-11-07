@@ -81,4 +81,4 @@ python -m unittest gisela.engine.tests.test_traits_dice_bridge -q
 
 The schema is the authoritative reference for accepted fields and numeric limits. The current engine uses assigned traits in v1.3 and later contracts. Older design proposals in `docs/architecture` may use future tense for features that are already implemented. Read the actual v1.5 schemas and tests to establish the current behavior.
 
-See [naming](../docs/reference/NAMING.md) and the original integration design at `docs/architecture/TRAITS_DICE_INTEGRACION_FASE_1.md`.
+See [naming](../docs/reference/NAMING.md), [v1.5 contracts](../gisela/contracts/README.md), and [E3 evaluation execution](../docs/architecture/E3_EVALUACIONES_VISIBLES.md). Earlier integration reports are recoverable in Git history.

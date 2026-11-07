@@ -1,6 +1,6 @@
 # Current project roadmap
 
-This file is a current status guide, not a timeline of every previous implementation step. The previous cumulative roadmap has been preserved in [Roadmap history](ROADMAP_BEFORE_DOC_REVIEW.md). Historical closure reports and architecture decisions remain in their original locations.
+This file is a current status guide, not a timeline of every previous implementation step. The previous cumulative roadmap has been preserved in [Roadmap history](../../CHANGELOG.md). Most completed implementation reports were retired during D2 and are recoverable through Git. Preserved evidence and architectural decisions remain available through the links below.
 
 ## Project direction
 
@@ -20,11 +20,10 @@ The current CLI also labels available actions with letters and accepts them as s
 
 DSL 1.5 also supports author-defined presentation regions and named views: public
 tables, causal grouping, restricted templates, and visual roles. These additions
-project public data without changing logical state or random outcomes. See the
-[presentation workshops](../guides/workshops/README.md). The
-[authoring workshop](../../workshops/autoria_dsl_15/README.md) has nine documented
-units and reduced laboratories for units 1 through 8. Pedagogical acceptance with
-real students remains outstanding.
+project public data without changing logical state or random outcomes. See the [presentation examples](../guides/workshops/README.md). The former
+[nine-unit Tegularis workshop](../../workshops/autoria_dsl_15/README.md) remains
+available as legacy teaching material with executable laboratories. A new
+Spanish-first course is planned; its content is not yet complete.
 
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
@@ -49,8 +48,12 @@ python tools/check_gisela.py
 python tools/check_gisela.py --full
 ```
 
-For a developer route, read [Quick start](../guides/QUICK_START.md), [GLAUQUIR](../guides/GLAUQUIR.md), [GISELA](../../gisela/README.md), [Ren'Py integration status](H5_RENPY_INTEGRACION.md), and the [documentation index](../README.md).
+For a developer route, read [Quick start](../guides/QUICK_START.md), [GLAUQUIR](../guides/GLAUQUIR.md), [GISELA](../../gisela/README.md), [Ren'Py integration status](../../CHANGELOG.md), and the [documentation index](../README.md).
+
+## Documentation work
+
+The next documentation stage is a Spanish-first practical course for authors, followed by an English translation. Older manuals are archived, while executable workshops stay in place until their materials can be replaced without breaking tests. See the [documentation index](../README.md).
 
 ## Historical records
 
-Implementation closure records are under `docs/operatives`. Architectural design records are under `docs/architecture`. Decisions are under `docs/decisions`. Some of these documents describe proposed or incomplete states from earlier milestones. Preserve that distinction when reading them.
+Completed milestones and document retirements are summarized in the [changelog](../../CHANGELOG.md); retired reports remain recoverable through Git. Preserved execution logs are indexed in [evidence](evidence/README.md), and architectural decisions are in [decisions](../decisions/GISELA_ADR_001_017.md). Documents under [architecture](../architecture/) may describe proposals or historical compatibility boundaries; their titles alone do not establish current implementation.

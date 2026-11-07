@@ -1,6 +1,6 @@
 # E2: Integración ejecutable de evaluaciones ocultas
 
-**Estado:** implementado sobre GISELA v1.4. Las versiones v1.2/v1.3 no cambian.
+**Estado:** referencia de compatibilidad para evaluaciones ocultas v1.4, implementadas. Para evaluaciones visibles v1.5 consulte [E3](E3_EVALUACIONES_VISIBLES.md). Las versiones v1.2/v1.3 no cambian.
 
 ## Recorrido causal
 
@@ -26,7 +26,7 @@ La evaluación no añade turno ni expone su resultado en `Observe`. Un paso ocul
 - `initial_state` materializa TRAITS en v1.4 igual que en v1.3; el catálogo es opcional.
 - Las sumas numéricas efectivas respetan +/-1.000.000 en cada componente neutral. Los resultados y RNG se confirman solo con el mundo y sus reacciones.
 - `pending_transaction` existente modela decisiones auxiliares; se reconstruye el borrador sin fijar una tirada visible.
-- `visible` y `acknowledged` permanecen **fuera del runtime E2**. E3 debe versionar cualquier nueva forma incompatible de guardado.
+- `visible` y `acknowledged` están fuera del **contrato v1.4 de E2**; se incorporaron posteriormente en E3/v1.5. Esto no es una limitación de la versión actual.
 
 ## Verificación
 

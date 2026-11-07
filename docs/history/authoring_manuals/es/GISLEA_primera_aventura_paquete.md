@@ -4,7 +4,7 @@
 Los archivos `paraguas_olvidado_etapa_*.package.json` mencionados no se incluyen
 en este repositorio. Los fragmentos requieren integración y validación; no forman
 por sí solos un paquete ejecutable. Para comenzar con un archivo completo disponible,
-consulte [Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+consulte [Crea tu primer paquete](../../../guides/CREAR_PAQUETE.md).
 
 # 3.1. Del relato al guion productivo
 

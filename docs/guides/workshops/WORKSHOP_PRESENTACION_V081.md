@@ -43,4 +43,4 @@ No hay selector de variantes en caliente dentro de una sesión: se selecciona el
 
 Las tres variantes presentan "Orden de actuación" y "Tiradas de iniciativa" como etiquetas autorales diferentes. La selección de acciones admite letras o `accion <id>`. Cuando la crónica publicada contiene más de diez elementos, la consola indica cuántos muestra de esa ventana. Un desenlace todavía no publicado se lee como "Pendiente de confirmación".
 
-Estos cambios no alteran Observe, Act, ni las consecuencias de las decisiones; el [informe v0.8.1c](../../operatives/RESULTADOS_V081C.md) documenta tres ejecuciones con trazas idénticas.
+Estos cambios no alteran Observe, Act, ni las consecuencias de las decisiones; el [informe v0.8.1c](../../../CHANGELOG.md) documenta tres ejecuciones con trazas idénticas.

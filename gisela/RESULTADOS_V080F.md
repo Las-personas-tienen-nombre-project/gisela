@@ -1,6 +1,6 @@
 # Evidencia v0.8.0f: Observe, Act y presentación de Tegularis
 
-Registro histórico. La [copia mantenida del informe](../docs/operatives/RESULTADOS_V080F.md)
+Registro histórico. La [copia mantenida del informe](../CHANGELOG.md)
 enlaza las comprobaciones actuales sin alterar los resultados de esta entrega.
 
 ## Base y alcance

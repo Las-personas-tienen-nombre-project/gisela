@@ -20,4 +20,4 @@ Guaranteed by the public contract: structural kinds, permitted expression forms,
 
 - `gisela/engine/runtime.py`, `action_handler.py`, `reactions.py`, `evaluation_execution.py`, `evaluation_pending.py`
 - `gisela/contracts/semantic_expressions.py`, `semantic_evaluations.py`
-- `docs/architecture/E2_EVALUACIONES_OCULTAS.md`, `E3_EVALUACIONES_VISIBLES.md`
+- `docs/architecture/E2_EVALUACIONES_OCULTAS.md` (v1.4), `E3_EVALUACIONES_VISIBLES.md` (v1.5)

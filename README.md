@@ -20,11 +20,21 @@ Beyond dialogue trees, declared events can depend on earlier events, world state
 
 For the language concepts and execution model, see [Narrative language](docs/architecture/NARRATIVE_LANGUAGE.md).
 
-## Main parts
+## Core definitions
 
-ALBERTO is the internal world model for characters, places, objects, knowledge, relations, skills, effects, and traits assigned to entities. S.O.F.I.A. is an optional set of five numerical attributes. TRAITS is an independent library for contextual trait contributions. DICE is an independent mathematical evaluator. MARY is an independent mission and objective evaluator. The narrative conditions package provides shared logical operations.
+This section is the single project-level glossary. Component manuals explain implementation details; the versioned schemas, semantic validation, engine, and tests define actual behavior.
 
-GLAUQUIR is the bundled CLI client. A Ren'Py adapter exists in the separate demo project. Clients show public content and send requests through the authorized client boundary; they do not decide world consequences or commit changes. For formal names and individual guides, read [Names and responsibilities](docs/reference/NAMING.md).
+- **GISELA:** the narrative engine. It admits story packages, runs sessions, offers public actions, and confirms authorized state changes. Given the same initial state, inputs, and random seed, execution is reproducible.
+- **ALBERTO:** the world model used by GISELA. It represents characters, places, objects, knowledge, relationships, skills, effects, and assigned traits. It is not a second engine.
+- **S.O.F.I.A.:** five optional character attributes: Strength, Openness, Fortune, Intelligence, and Awareness. A story can omit them.
+- **TRAITS:** an independent library that calculates contextual contributions from declared traits. It does not own a narrative session.
+- **DICE:** an independent mathematical evaluator for deterministic, seeded random calculations. GISELA controls when evaluation results affect a session.
+- **MARY:** an independent evaluator of missions and objectives. It proposes progress and results; GISELA validates and confirms their consequences.
+- **Narrative conditions:** shared logical checks used to decide whether declared requirements hold.
+- **GLAUQUIR:** the text-based client bundled with the repository. It displays public state and submits actions but cannot commit world changes.
+- **DSL 1.5:** the current JSON-based narrative language for packages, including visible evaluations and optional declarative presentation. Earlier contract versions remain for compatibility.
+
+The main boundaries are simple: packages declare what can happen, ALBERTO holds world state, supporting libraries evaluate specific rules, GISELA commits the results, and clients present the public view. See [architecture](docs/architecture/GISELA_Arquitectura_Consolidada_v1_5.md), [client API](docs/architecture/API_CLIENTES.md), and [DSL 1.5 reference](docs/reference/dsl_1_5/README.md) for details.
 
 ## Start an adventure
 
@@ -119,9 +129,7 @@ These projections do not change the logical state or consume random numbers.
 The public causal window contains at most 40 entries; a visual role alone does
 not establish that a resource change represents damage or healing.
 
-See the [presentation workshops](docs/guides/workshops/README.md) for examples and
-the [nine-unit authoring workshop](workshops/autoria_dsl_15/README.md) for the learning path.
-Workshop documentation and automated checks do not certify learning with real students.
+See the [presentation examples](docs/guides/workshops/README.md) and the [archived Tegularis workshop](workshops/autoria_dsl_15/README.md). The new Spanish course is being designed; older teaching material is not a validated learning path.
 
 ## World state and progression
 

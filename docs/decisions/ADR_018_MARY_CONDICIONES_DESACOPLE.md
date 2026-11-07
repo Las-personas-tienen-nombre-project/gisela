@@ -41,4 +41,4 @@ ALBERTO y S.O.F.I.A. siguen alojados parcialmente en `gisela/engine/`. La extrac
 
 ## Consecuencias y verificación
 
-El paquete GISELA puede omitir `mary`, conservando el comportamiento anterior. Las definiciones MARY y el progreso no dependen del cliente. Las transiciones participan en el mismo rollback y replay de la sesión GISELA. La documentación de las invariantes y los tests correspondientes está en `docs/operatives/INVARIANTES_MARY.md`.
+El paquete GISELA puede omitir `mary`, conservando el comportamiento anterior. Las definiciones MARY y el progreso no dependen del cliente. Las transiciones participan en el mismo rollback y replay de la sesión GISELA. La documentación de las invariantes y los tests correspondientes está en `CHANGELOG.md`.

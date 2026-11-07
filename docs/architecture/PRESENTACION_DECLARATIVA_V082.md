@@ -2,8 +2,8 @@
 
 **Estado:** capacidades implementadas hasta v0.8.2f sobre el DSL 1.5.
 Este documento describe el contrato actual. Los resultados y límites de cada
-entrega están en los [informes v0.8.2](../operatives/RESULTADOS_V082.md) y
-[v0.8.2f](../operatives/RESULTADOS_V082F.md). La
+entrega están en los [informes v0.8.2](../../CHANGELOG.md) y
+[v0.8.2f](../../CHANGELOG.md). La
 [guía práctica](../guides/workshops/WORKSHOP_PRESENTACION_V082.md) muestra ejemplos.
 
 ## Vistas, tablas y selección de acontecimientos

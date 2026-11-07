@@ -1,18 +1,13 @@
-# Evidencias de verificaciones
+# Evidencias históricas de verificaciones
 
-Este directorio conserva registros de ejecución, resúmenes JSON y snapshots
-citados por los informes operativos. Los subdirectorios `v077`, `v080f`, `v080g`,
-`v081ab`, `v081c`, `v082e` y `v082f` corresponden a sus entregas originales.
-Los registros de campañas v0.7.7 permanecen junto a este índice.
+Los subdirectorios conservan logs, snapshots y resúmenes JSON originales de
+etapas antiguas. **No se actualizan** con los resultados de comprobaciones
+posteriores ni sustituyen pruebas actuales.
 
-Los archivos originales se trasladaron sin modificar sus bytes. El
-[inventario de traslados](revision_documental_2026_11_04/traslados.json) conserva
-las rutas anteriores, las actuales y los hashes SHA-256 originales. Los documentos
-Markdown trasladados se revisaron por separado y no requieren conservar el mismo hash.
+Para el estado y las instrucciones de verificación vigentes consulte
+[Verificación de GISELA](../../guides/VERIFICACION_GISELA.md).
+El [changelog](../../../CHANGELOG.md) resume las entregas y el historial Git
+permite recuperar los informes de implementación asociados.
 
-Los snapshots contienen estado interno completo; no son vistas públicas del jugador.
-No sobrescriba estas evidencias al ejecutar los ejemplos. Guarde las partidas nuevas
-en su directorio de trabajo.
-
-Consulte el [informe de revisión](../REVISION_DOCUMENTAL_2026_11_04.md) para conocer
-las comprobaciones actuales y distinguirlas de los resultados históricos.
+Algunos snapshots contienen estado interno completo del motor; no son
+proyecciones públicas del jugador. No sobrescriba estos archivos con partidas.

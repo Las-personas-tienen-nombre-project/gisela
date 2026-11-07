@@ -3,7 +3,7 @@
 Registro histórico: los pendientes y digests de este diagnóstico corresponden
 al material examinado al comenzar el taller. Para el estado actual, consulte el
 [índice del taller](README.md) y la
-[revisión documental](../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+[revisión documental](../../CHANGELOG.md).
 
 ## Alcance verificado
 

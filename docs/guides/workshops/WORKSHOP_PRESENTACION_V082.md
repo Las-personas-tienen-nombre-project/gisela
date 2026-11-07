@@ -3,8 +3,8 @@
 Esta guía reúne las capacidades implementadas hasta v0.8.2f en el DSL 1.5:
 tablas, selección de acontecimientos, agrupación causal y plantillas restringidas.
 Los resultados de cada entrega y sus límites se conservan en los
-[informes v0.8.2](../../operatives/RESULTADOS_V082.md) y
-[v0.8.2f](../../operatives/RESULTADOS_V082F.md). Ejecute los comandos desde la raíz
+[informes v0.8.2](../../../CHANGELOG.md) y
+[v0.8.2f](../../../CHANGELOG.md). Ejecute los comandos desde la raíz
 del repositorio. La presencia de una capacidad no certifica todas las rutas del encuentro.
 
 Dentro de `presentation`, añadir `views` y declarar regiones con `view`:

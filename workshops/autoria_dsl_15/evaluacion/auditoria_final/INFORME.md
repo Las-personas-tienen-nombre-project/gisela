@@ -1,6 +1,6 @@
 # Auditoría de aceptación del workshop GISELA DSL 1.5
 
-Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../../../docs/operatives/REVISION_DOCUMENTAL_2026_11_04.md).
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../../../CHANGELOG.md).
 
 **Fecha:** 2026-11-04. **Base:** `GISELA_workshop_correccion_pedagogica_03_unidad_09.tar.gz`.
 

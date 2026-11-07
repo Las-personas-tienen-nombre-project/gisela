@@ -87,7 +87,7 @@ GISELA proyecta actores y elementos vinculados a entidades únicamente cuando es
 
 El campo opcional `scene.elements[].description` usa `localized_text` y llega a `Observe.elements[].description`. GLAUQUIR puede leerlo mediante `mirar ELEMENTO`; cuando no existe, usa la carta pública del `entity` autorizado. Leer no ejecuta efectos. `examinar ACCIÓN`, cuando `ACCIÓN` identifica inequívocamente por ID o etiqueta una oferta visible, consulta sus anotaciones sin ejecutarla, incluso si no tiene notas. Para los demás argumentos, `examinar` busca primero una acción declarada y, si no la encuentra, una ficha o elemento público. El contrato de Act y el registro narrativo confirmado no cambian.
 
-Véanse [semántica de escenas](ESCENAS_Y_PRESENCIA.md) y [pruebas ancladas](../operatives/INVARIANTES_H4_5F.md).
+Véanse [semántica de escenas](ESCENAS_Y_PRESENCIA.md) y [pruebas ancladas](../../CHANGELOG.md).
 
 ## E0: Software solicitante no humano (implementado, anfitrión confiable)
 

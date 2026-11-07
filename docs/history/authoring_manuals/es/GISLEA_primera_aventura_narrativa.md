@@ -70,7 +70,7 @@ El propósito no es escribir una obra extensa ni utilizar todas las capacidades 
 
 No necesita saber programar para comenzar. En las páginas siguientes conocerá las herramientas indispensables, aprenderá lo necesario para trabajar con archivos JSON y construirá su primera historia paso a paso.
 
-**Estado del material:** este manual desarrolla el diseño de *El paraguas olvidado*, pero sus paquetes por etapas aún no se incluyen en el repositorio. Los comandos de las etapas presuponen archivos construidos y validados por el lector. Para comenzar con un paquete completo disponible, consulte [Crea tu primer paquete](../../guides/CREAR_PAQUETE.md).
+**Estado del material:** este manual desarrolla el diseño de *El paraguas olvidado*, pero sus paquetes por etapas aún no se incluyen en el repositorio. Los comandos de las etapas presuponen archivos construidos y validados por el lector. Para comenzar con un paquete completo disponible, consulte [Crea tu primer paquete](../../../guides/CREAR_PAQUETE.md).
 
 2. Componentes y herramientas de GISELA
 =======================================

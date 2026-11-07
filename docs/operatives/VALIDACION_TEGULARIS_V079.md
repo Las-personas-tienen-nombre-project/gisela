@@ -1,6 +1,6 @@
 # GISELA: validación local v0.7.9
 
-Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](REVISION_DOCUMENTAL_2026_11_04.md).
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../CHANGELOG.md).
 
 ## Alcance
 

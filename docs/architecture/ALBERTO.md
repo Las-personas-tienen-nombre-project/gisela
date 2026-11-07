@@ -1,6 +1,6 @@
 # ALBERTO. Modelo de mundo y operaciones del motor GISELA
 
-**Estado del documento:** registro de la etapa H3; consulte el [roadmap vigente](../operatives/ROADMAP.md) para el estado actual.
+**Estado del documento:** referencia de responsabilidades e invariantes de ALBERTO. Las referencias a H3 identifican el origen de capacidades, no una limitación de la versión actual. Consulte el [roadmap vigente](../operatives/ROADMAP.md).
 
 **Público:** autores de paquetes, responsables de integración y desarrolladores del motor. La especificación de datos está en `gisela/contracts/` y el seguimiento se encuentra en `docs/operatives/ROADMAP.md`.
 
@@ -22,14 +22,14 @@ La frontera de operaciones es `gisela/engine/world.py`; los módulos `world_base
 | Lugar | ID y carta | Es destino de ubicaciones, pero no equivalente a una escena visual. |
 | Objeto | ID, carta, propietario o ubicación | Exactamente una forma de tenencia: personaje o lugar. |
 | Habilidad | ID, carta, personaje y zona | La zona es `hand` o `reserve` y respeta capacidades. |
-| Efecto | ID, carta, objetivo y datos de inicio | La estructura está admitida, pero su ejecución sigue pendiente. |
+| Efecto | ID, carta, objetivo y datos de inicio | La ejecución de efectos se incorporó durante H3.4c; consulte los contratos y las pruebas para los modos admitidos. |
 | Relación | Origen, destino, clave y valor | Relaciones dirigidas y dispersas; lectura predeterminada y escritura dinámica disponibles en H3.4a. |
 
 Los IDs de instancia son globales en la sesión. Se conserva `identity.used_instance_ids` incluso cuando una entidad se retira. El contador `identity.next_sequence` y el registro de utilizados son parte del mismo borrador causal que la operación originaria. No se reutiliza un ID confirmado anteriormente.
 
 Las cartas del paquete son definiciones; no se modifican al cambiar una instancia. Los datos de un personaje tampoco son idénticos a las variables narrativas de sesión ni a los hechos del historial.
 
-## 3. Operaciones ejecutables en H3
+## 3. Operaciones ejecutables
 
 Todas las entradas que siguen son consecuencias declarativas y requieren un paquete admitido. Las referencias de entidad deben ser explícitas, existentes y del tipo esperado. La excepción y el rechazo de una operación impiden confirmar toda la transacción causal. La validación final del estado corresponde a GISELA.
 
@@ -103,26 +103,26 @@ python tools/check_gisela.py --full
 
 Los errores de dominio se expresan mediante códigos estables como `INVALID_REFERENCE`, `INVALID_STATE`, `INSTANCE_COLLISION`, `ENTITY_IN_USE`, `CAPACITY_EXCEEDED` y `REACTION_CONFLICT`. Los casos exactos dependen de las precondiciones de cada operación. La API externa devuelve errores de ejecución tipados; el anfitrión no debe intentar reparar directamente el estado.
 
-## 7. Evolución y límites actuales
+## 7. Capacidades vigentes y límites
 
 H3.4a incorporó propiedades y relaciones mutables; H3.4b añadió atributos efectivos y Scoresheet; H3.4c incorporó efectos. Desde H4, el ejecutor también admite habilidades y acciones declaradas en escenas y elementos. Las referencias contextuales sin ligadura implementada siguen sin poder resolverse por aproximación: el motor rechaza su ejecución en la puerta de soporte.
 
-La [revisión histórica de H3](../operatives/H3_REVISION_PLAN_IMPLEMENTACION.md) registra las decisiones y pendientes de aquella etapa; no describe por sí sola el estado vigente. Para la proyección pública, las referencias autorales y los colores narrativos, consulte la [API de clientes](API_CLIENTES.md).
+La [revisión histórica de H3](../../CHANGELOG.md) registra las decisiones y pendientes de aquella etapa; no describe por sí sola el estado vigente. Para la proyección pública, las referencias autorales y los colores narrativos, consulte la [API de clientes](API_CLIENTES.md).
 
-## 8. Propiedades y relaciones en H3.4a
+## 8. Propiedades y relaciones
 
 Las propiedades se definen en cada carta de personaje, lugar u objeto. Las relaciones se declaran mediante `manifest.relationship_fields` y son dirigidas. Una lectura de una propiedad o relación ausente devuelve su valor inicial, sin materializarla. `set` y `add` escriben el borrador, comprueban tipos y límites y generan `state_changed` solo si cambia el valor.
 
-Las reglas de una ronda usan un estado base común. GISELA combina las operaciones `add` y consolida los `set` iguales; las asignaciones contradictorias y la mezcla `set` con `add` se rechazan. Consulte la [guía ejecutable](ALBERTO.md) y el [registro de H3.4a](../operatives/H3_4A_CIERRE.md).
+Las reglas de una ronda usan un estado base común. GISELA combina las operaciones `add` y consolida los `set` iguales; las asignaciones contradictorias y la mezcla `set` con `add` se rechazan. Consulte el [registro de H3.4a](../../CHANGELOG.md) y los contratos de operaciones del ejecutor.
 
-## H3.4b. Datos de S.O.F.I.A. implementados
+## 9. Atributos opcionales de S.O.F.I.A.
 
-ALBERTO resuelve los atributos opcionales de las cartas y las instancias. `base` es inmutable, `current` es transaccional y `effective` se calcula desde los modificadores de los efectos activos. La consulta Scoresheet lee únicamente el estado confirmado; no mantiene un segundo registro de atributos. Consulte [la especificación de S.O.F.I.A.](SOFIA.md) y [su guía ejecutable](SOFIA.md).
+ALBERTO resuelve los atributos opcionales de las cartas y las instancias. `base` es inmutable, `current` es transaccional y `effective` se calcula desde los modificadores de los efectos activos. La consulta Scoresheet lee únicamente el estado confirmado; no mantiene un segundo registro de atributos. Consulte [la especificación de S.O.F.I.A.](SOFIA.md).
 
-## H3.4d. Habilidades ejecutables
+## 10. Habilidades ejecutables
 
-GISELA autoriza y ejecuta las habilidades de ventanas de nodo. ALBERTO mantiene únicamente instancias, zonas, capacidad e identidad. Los destinos `discard`, `hand` y `reserve` se aplican transaccionalmente. Consulte [HABILIDADES.md](ALBERTO.md). Las acciones de exploración permanecen fuera del alcance actual.
+GISELA autoriza y ejecuta las habilidades de ventanas de nodo. ALBERTO mantiene únicamente instancias, zonas, capacidad e identidad. Los destinos `discard`, `hand` y `reserve` se aplican transaccionalmente. Consulte las operaciones de habilidades descritas arriba. Las acciones declarativas de exploración se incorporaron en H4; su contrato vigente se consulta en la API de clientes.
 
-## Integración opcional TRAITS (formato GISELA v1.3)
+## 11. Integración opcional TRAITS
 
-Las instancias `character`, `location` y `object` del nuevo formato admiten rasgos actuales, derivados inicialmente de su carta salvo sustitución explícita. ALBERTO ejecuta `assign_trait`, `remove_trait` y `has_trait` mediante `world_traits.py`; las validaciones de capacidad, exclusiones y pertinencia corresponden al núcleo independiente TRAITS. El guardado conserva las asignaciones actuales, no una segunda ficha separada. GISELA sigue siendo la única autoridad de commit. Los paquetes v1.2 no cambian. Véase [integración fase 1](TRAITS_DICE_INTEGRACION_FASE_1.md).
+Las instancias `character`, `location` y `object` del nuevo formato admiten rasgos actuales, derivados inicialmente de su carta salvo sustitución explícita. ALBERTO ejecuta `assign_trait`, `remove_trait` y `has_trait` mediante `world_traits.py`; las validaciones de capacidad, exclusiones y pertinencia corresponden al núcleo independiente TRAITS. El guardado conserva las asignaciones actuales, no una segunda ficha separada. GISELA sigue siendo la única autoridad de commit. Los paquetes v1.2 no cambian. Véanse [TRAITS](../../traits/README.md) y los [contratos versionados](../../gisela/contracts/README.md).

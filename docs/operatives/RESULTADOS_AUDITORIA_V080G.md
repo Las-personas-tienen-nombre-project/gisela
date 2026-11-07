@@ -1,6 +1,6 @@
 # GISELA v0.8.0: auditoría general de cierre (v0.8.0g)
 
-Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](REVISION_DOCUMENTAL_2026_11_04.md).
+Registro histórico: describe la entrega y el entorno examinados entonces. Para las comprobaciones de esta revisión, consulte el [informe actual](../../CHANGELOG.md).
 
 ## Alcance y fuente
 
