@@ -1,0 +1,189 @@
+{
+  "manifest": {
+    "id": "c9_turno_noche",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "variables": [
+      {
+        "scope": "session",
+        "id": "contesto",
+        "type": "boolean",
+        "initial": false
+      },
+      {
+        "scope": "session",
+        "id": "eco",
+        "type": "boolean",
+        "initial": false
+      }
+    ],
+    "facts": [
+      "llamada_atendida"
+    ]
+  },
+  "cards": [],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "guardia",
+          "op": "narrate",
+          "text": {
+            "text": "El teléfono de portería suena durante la ronda."
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "options": [
+            {
+              "id": "atender",
+              "label": {
+                "text": "Contestar el teléfono"
+              },
+              "next": {
+                "node": "contestada"
+              },
+              "effects": [
+                {
+                  "op": "record_fact",
+                  "fact": "llamada_atendida"
+                },
+                {
+                  "op": "set",
+                  "target": {
+                    "var": {
+                      "scope": "session",
+                      "key": "contesto"
+                    }
+                  },
+                  "value": {
+                    "literal": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "ignorar",
+              "label": {
+                "text": "Seguir con la ronda"
+              },
+              "next": {
+                "node": "ignorada"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contestada",
+      "steps": [
+        {
+          "id": "voz",
+          "op": "narrate",
+          "text": {
+            "text": "Al otro lado de la línea no responde nadie."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "silencio"
+        }
+      ]
+    },
+    {
+      "id": "ignorada",
+      "steps": [
+        {
+          "id": "pasos",
+          "op": "narrate",
+          "text": {
+            "text": "El timbre deja de sonar a tus espaldas."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "ronda"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "eco_de_llamada",
+      "trigger": {
+        "on": "fact_recorded",
+        "fact": "llamada_atendida"
+      },
+      "when": {
+        "not": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "eco"
+              }
+            },
+            "op": "eq",
+            "right": {
+              "literal": true
+            }
+          }
+        }
+      },
+      "effects": [
+        {
+          "op": "set",
+          "target": {
+            "var": {
+              "scope": "session",
+              "key": "eco"
+            }
+          },
+          "value": {
+            "literal": true
+          }
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "silencio",
+      "title": {
+        "text": "Silencio en la línea"
+      }
+    },
+    {
+      "id": "ronda",
+      "title": {
+        "text": "La ronda continúa"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [],
+    "characters": [],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {
+      "contesto": false,
+      "eco": false
+    }
+  }
+}

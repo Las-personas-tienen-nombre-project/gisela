@@ -19,6 +19,7 @@ from campaign_artifacts import (
     failure_document,
     save_failure,
 )
+from campaign_diagnostics import merge_coverage
 from campaign_execution import FATAL_ERRORS, SeedRun
 from campaign_replay import captured_logger, replay
 
@@ -79,6 +80,7 @@ def new_summary(args):
         "errors": {},
         "results": [],
         "exit_code": None,
+        "diagnostics_enabled": args.diagnostics,
     }
 
 
@@ -93,6 +95,23 @@ def save_summary(folder, summary):
     summary["errors"] = dict(
         Counter(item["exception"] for item in results if item["status"] == "error")
     )
+    if summary["diagnostics_enabled"]:
+        coverage = {}
+        for item in results:
+            if item["status"] == "success":
+                merge_coverage(coverage, item["coverage"])
+        summary["coverage"] = coverage
+        selected = Counter()
+        reasons = Counter()
+        for item in results:
+            if item["status"] == "success":
+                selected.update(item["decision_counts"]["selected"])
+                reasons.update(item["decision_counts"]["candidate_reasons"])
+        summary["candidate_selection_counts"] = dict(sorted(selected.items()))
+        summary["candidate_reason_counts"] = dict(sorted(reasons.items()))
+        summary["npc_candidates_not_selected_in_samples"] = sorted(
+            set(summary.get("declared_npc_candidates", [])) - set(selected)
+        )
     atomic_json(folder / "summary.json", summary)
 
 
@@ -113,6 +132,19 @@ def campaign(args):
         return campaign_with_log(args, (folder, summary), log)
 
 
+def declared_npc_candidates(admitted):
+    """Inventory the authored NPC decisions without altering the session."""
+    return sorted(
+        {
+            candidate["skill_instance"]
+            for participant in admitted.materialize()
+            .get("actuation", {})
+            .get("participants", [])
+            for candidate in participant.get("candidates", [])
+        }
+    )
+
+
 def campaign_with_log(args, destination, log):
     folder, summary = destination
     logger, buffer = log
@@ -123,11 +155,15 @@ def campaign_with_log(args, destination, log):
         check_supported(admitted.materialize())
         runtime = environment()
         summary.update(package_digest=admitted.digest, environment=runtime)
+        if args.diagnostics:
+            summary["declared_npc_candidates"] = declared_npc_candidates(admitted)
         for number in range(args.start, args.start + args.count):
             active = f"{number:064x}"
             summary["attempted"] += 1
             result = execute_seed(
-                SeedRun(admitted, active, args.strategy), folder, runtime
+                SeedRun(admitted, active, args.strategy, diagnostics=args.diagnostics),
+                folder,
+                runtime,
             )
             summary["results"].append(result)
             active = None
@@ -178,11 +214,16 @@ def arguments(argv):
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--replay", type=Path)
     parser.add_argument(
+        "--diagnostics",
+        action="store_true",
+        help="Registra cobertura y decisiones privadas de la campaña",
+    )
+    parser.add_argument(
         "--package", type=Path, help="Paquete del encuentro que se validará"
     )
     args = parser.parse_args(argv)
     if args.replay is not None:
-        if any(
+        if args.diagnostics or any(
             getattr(args, key) is not None
             for key in ("start", "count", "strategy", "output_dir", "package")
         ):

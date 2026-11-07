@@ -101,7 +101,7 @@ DICE is a pure numerical library. GISELA resolves effective values, calls DICE t
 
 A hidden evaluation resolves within the action transaction. A visible or acknowledged evaluation fixes the result and random state, then exposes a pending evaluation without applying its branch consequences. The client later chooses the offered continuation action. Saving or restoring must not roll new dice for that pending result. Several visible results can be preserved in an ordered replay when a causal operation contains multiple evaluation points.
 
-The default public view of a pending evaluation exposes the result category and dice only. Private attributes and internal contributions are not published automatically. Refer to [Engine execution](engine/README.md) and [Contracts](contracts/README.md).
+The default public view of a pending evaluation exposes the result category and dice only. Private attributes and internal contributions are not published automatically. Refer to [Engine execution](gisela/engine/README.md) and [Contracts](gisela/contracts/README.md).
 
 ## Auxiliary decisions and replay
 
@@ -156,7 +156,7 @@ The Ren'Py H5 bridge was implemented in the separate demo project and is not inc
 
 ## Further reading
 
-Read [Engine implementation](engine/README.md) for transaction and source module details, [Contracts](contracts/README.md) for authoring formats, [Documentation index](docs/README.md) for learning paths, and [Current roadmap](docs/operatives/ROADMAP.md) for the implementation status.
+Read [Engine implementation](gisela/engine/README.md) for transaction and source module details, [Contracts](gisela/contracts/README.md) for authoring formats, [Documentation index](docs/README.md) for learning paths, and [Current roadmap](docs/operatives/ROADMAP.md) for the implementation status.
 
 Read ADR 020 for authorized callers, ADR 021 for evaluation authoring, ADR 022 for hidden evaluations, and ADR 023 for visible evaluations. These source decision records remain in `docs/decisions` in their original language. The implemented v1.5 design is recorded in `docs/architecture/E3_EVALUACIONES_VISIBLES.md`.
 

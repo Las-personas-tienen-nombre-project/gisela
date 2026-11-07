@@ -73,6 +73,7 @@ def main() -> int:
                 "tools/test_doc_links.py",
                 "tools/test_static_quality.py",
                 "tools/test_tegularis_campaign.py",
+                "tools/test_campaign_diagnostics_c6.py",
             ),
         ),
     ]

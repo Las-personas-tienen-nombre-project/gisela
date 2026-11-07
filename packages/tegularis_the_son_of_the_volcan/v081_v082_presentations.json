@@ -1,0 +1,526 @@
+{
+  "11_presentacion_cronica_v081.package.json": {
+    "id": "tegularis_cronica_v081",
+    "regions": [
+      {
+        "id": "panel_cronica",
+        "component": "section",
+        "label": "Crónica del encuentro",
+        "children": [
+          {
+            "id": "round",
+            "component": "stat",
+            "label": "Ronda",
+            "source": "actuation.round"
+          },
+          {
+            "id": "actor",
+            "component": "text",
+            "label": "Actúa",
+            "source": "actuation.actor"
+          },
+          {
+            "id": "events",
+            "component": "event_log",
+            "label": "Historia causal confirmada",
+            "source": "actuation.causal"
+          }
+        ]
+      },
+      {
+        "id": "panel_estado",
+        "component": "section",
+        "label": "Estado del encuentro",
+        "children": [
+          {
+            "id": "resources",
+            "component": "entity_collection",
+            "label": "Recursos publicados",
+            "source": "actuation.resources"
+          },
+          {
+            "id": "effects",
+            "component": "entity_collection",
+            "label": "Efectos vigentes",
+            "source": "actuation.effects"
+          },
+          {
+            "id": "participants",
+            "component": "initiative_order",
+            "label": "Orden de actuación",
+            "source": "actuation.order"
+          },
+          {
+            "id": "initiative",
+            "component": "entity_collection",
+            "label": "Tiradas de iniciativa",
+            "source": "actuation.initiative"
+          }
+        ]
+      },
+      {
+        "id": "decisions",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      },
+      {
+        "id": "result",
+        "component": "text",
+        "label": "Desenlace",
+        "source": "actuation.outcome"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ]
+  },
+  "11_presentacion_decisiones_v081.package.json": {
+    "id": "tegularis_decisiones_v081",
+    "regions": [
+      {
+        "id": "panel_turno",
+        "component": "section",
+        "label": "Turno actual",
+        "children": [
+          {
+            "id": "round",
+            "component": "stat",
+            "label": "Ronda",
+            "source": "actuation.round"
+          },
+          {
+            "id": "actor",
+            "component": "text",
+            "label": "Actúa",
+            "source": "actuation.actor"
+          }
+        ]
+      },
+      {
+        "id": "decisions",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      },
+      {
+        "id": "panel_contexto",
+        "component": "section",
+        "label": "Contexto para decidir",
+        "children": [
+          {
+            "id": "resources",
+            "component": "entity_collection",
+            "label": "Recursos publicados",
+            "source": "actuation.resources"
+          },
+          {
+            "id": "effects",
+            "component": "entity_collection",
+            "label": "Efectos vigentes",
+            "source": "actuation.effects"
+          },
+          {
+            "id": "participants",
+            "component": "initiative_order",
+            "label": "Orden de actuación",
+            "source": "actuation.order"
+          },
+          {
+            "id": "initiative",
+            "component": "entity_collection",
+            "label": "Tiradas de iniciativa",
+            "source": "actuation.initiative"
+          }
+        ]
+      },
+      {
+        "id": "events",
+        "component": "event_log",
+        "label": "Historia causal confirmada",
+        "source": "actuation.causal"
+      },
+      {
+        "id": "result",
+        "component": "text",
+        "label": "Desenlace",
+        "source": "actuation.outcome"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ]
+  },
+  "11_presentacion_participantes_v081.package.json": {
+    "id": "tegularis_participantes_v081",
+    "regions": [
+      {
+        "id": "panel_participantes",
+        "component": "section",
+        "label": "Participantes y situación",
+        "children": [
+          {
+            "id": "round",
+            "component": "stat",
+            "label": "Ronda",
+            "source": "actuation.round"
+          },
+          {
+            "id": "actor",
+            "component": "text",
+            "label": "Actúa",
+            "source": "actuation.actor"
+          },
+          {
+            "id": "resources",
+            "component": "entity_collection",
+            "label": "Recursos publicados",
+            "source": "actuation.resources"
+          },
+          {
+            "id": "effects",
+            "component": "entity_collection",
+            "label": "Efectos vigentes",
+            "source": "actuation.effects"
+          },
+          {
+            "id": "participants",
+            "component": "initiative_order",
+            "label": "Orden de actuación",
+            "source": "actuation.order"
+          },
+          {
+            "id": "initiative",
+            "component": "entity_collection",
+            "label": "Tiradas de iniciativa",
+            "source": "actuation.initiative"
+          }
+        ]
+      },
+      {
+        "id": "decisions",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      },
+      {
+        "id": "events",
+        "component": "event_log",
+        "label": "Historia causal confirmada",
+        "source": "actuation.causal"
+      },
+      {
+        "id": "result",
+        "component": "text",
+        "label": "Desenlace",
+        "source": "actuation.outcome"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ]
+  },
+  "12_tablas_v082_parcial.package.json": {
+    "id": "tegularis_tabular_v082_parcial",
+    "regions": [
+      {
+        "id": "tabla",
+        "component": "table",
+        "label": "Estado publicado",
+        "view": "estado"
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "label": "Acontecimientos seleccionados",
+        "view": "hechos"
+      },
+      {
+        "id": "acciones",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ],
+    "views": [
+      {
+        "id": "estado",
+        "component": "table",
+        "source": "actuation.resources",
+        "transform": "pivot_resources",
+        "columns": [
+          {
+            "id": "entity",
+            "label": "PARTICIPANTE"
+          },
+          {
+            "id": "hp",
+            "label": "HP",
+            "align": "right"
+          },
+          {
+            "id": "mp",
+            "label": "MP",
+            "align": "right"
+          },
+          {
+            "id": "tp",
+            "label": "TP",
+            "align": "right"
+          }
+        ]
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "source": "actuation.causal",
+        "kinds": [
+          "skill_started",
+          "variable_changed"
+        ],
+        "limit": 8
+      }
+    ]
+  },
+  "13_tablas_causal_v082c.package.json": {
+    "id": "tegularis_tabular_causal_v082c",
+    "regions": [
+      {
+        "id": "tabla",
+        "component": "table",
+        "label": "Estado publicado",
+        "view": "estado"
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "label": "Acontecimientos seleccionados",
+        "view": "hechos"
+      },
+      {
+        "id": "acciones",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ],
+    "views": [
+      {
+        "id": "estado",
+        "component": "table",
+        "source": "actuation.resources",
+        "transform": "pivot_resources",
+        "columns": [
+          {
+            "id": "entity",
+            "label": "PARTICIPANTE"
+          },
+          {
+            "id": "hp",
+            "label": "HP",
+            "align": "right"
+          },
+          {
+            "id": "mp",
+            "label": "MP",
+            "align": "right"
+          },
+          {
+            "id": "tp",
+            "label": "TP",
+            "align": "right"
+          }
+        ]
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "source": "actuation.causal",
+        "kinds": [
+          "skill_started",
+          "contest_resolved",
+          "dice_roll",
+          "variable_changed",
+          "author_message",
+          "skill_played"
+        ],
+        "limit": 40,
+        "group_by": "action"
+      }
+    ]
+  },
+  "14_presentacion_semantica_v082d.package.json": {
+    "id": "tegularis_semantica_v082d",
+    "regions": [
+      {
+        "id": "tabla",
+        "component": "table",
+        "label": "Estado publicado",
+        "view": "estado"
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "label": "Acontecimientos seleccionados",
+        "view": "hechos"
+      },
+      {
+        "id": "acciones",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ],
+    "views": [
+      {
+        "id": "estado",
+        "component": "table",
+        "source": "actuation.resources",
+        "transform": "pivot_resources",
+        "columns": [
+          {
+            "id": "entity",
+            "label": "PARTICIPANTE"
+          },
+          {
+            "id": "hp",
+            "label": "HP",
+            "align": "right"
+          },
+          {
+            "id": "mp",
+            "label": "MP",
+            "align": "right"
+          },
+          {
+            "id": "tp",
+            "label": "TP",
+            "align": "right"
+          }
+        ]
+      },
+      {
+        "id": "hechos",
+        "component": "event_log",
+        "source": "actuation.causal",
+        "kinds": [
+          "skill_started",
+          "contest_resolved",
+          "dice_roll",
+          "variable_changed",
+          "author_message",
+          "skill_played"
+        ],
+        "limit": 40,
+        "group_by": "action",
+        "event_formats": [
+          {
+            "kind": "skill_started",
+            "role": "neutral",
+            "template": "{actor} ejecuta {card}"
+          },
+          {
+            "kind": "contest_resolved",
+            "role": "neutral",
+            "template": "Concurso {profile}: {left_total} frente a {right_total} ({winner})"
+          },
+          {
+            "kind": "dice_roll",
+            "role": "neutral",
+            "template": "Dado d{sides}: {result}"
+          },
+          {
+            "kind": "variable_changed",
+            "role": "neutral",
+            "template": "{variable}: {before} -> {after}"
+          },
+          {
+            "kind": "skill_played",
+            "role": "neutral",
+            "template": "Termina {card} de {actor}"
+          },
+          {
+            "kind": "author_message",
+            "role": "neutral",
+            "template": "{text}"
+          }
+        ]
+      }
+    ]
+  }
+}

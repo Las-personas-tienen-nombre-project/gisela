@@ -106,10 +106,48 @@ def tune_iosepus():
     candidates[:] = [existing[cid] for cid in chosen]
 
 
+def half_hp(who, op):
+    """Compara HP actual contra la mitad del máximo sin dividir ni redondear."""
+    return eq(calc("multiply", var("hp_" + who), lit(2)), op, var("max_hp_" + who))
+
+
+def tune_tegularis():
+    """Vuelve alcanzables Wingblast, Zarpa y Dentellada sin tocar cartas ni costos.
+
+    Firebreath y Wingblast cuestan 50 MP; Coletazo y Zarpa, 20 TP; Dentellada,
+    30 TP. Con la lista anterior, la primera candidata pagable eclipsaba siempre
+    a las siguientes. Sano, el dragón escupe fuego; herido, bate las alas. Con
+    Parnecio a la mitad de su HP o menos, lo muerde en lugar de barrer al grupo.
+    """
+    candidates = ACTORS["tegularis"]["candidates"]
+    previous_ids = [item["skill_instance"] for item in candidates]
+    parnecio_herido = half_hp("parnecio", "lte")
+    chosen = [
+        ("firebreath_01", half_hp("tegularis", "gt")),
+        ("wingblast_01", None),
+        ("dentellada_01", parnecio_herido),
+        ("zarpa_01", parnecio_herido),
+        ("coletazo_01", None),
+        ("preponderancia_01", None),
+    ]
+    if {cid for cid, _ in chosen} != set(previous_ids):
+        raise ValueError("La política de NPC perdió o añadió una carta")
+    candidates[:] = [
+        {"skill_instance": cid, **({"when": guard} if guard else {})}
+        for cid, guard in chosen
+    ]
+
+
 tune_gillius()
 tune_preponderancia()
 tune_clarisa()
 tune_iosepus()
+tune_tegularis()
+# Public view is authored separately from the combat logic, not copied from TARGET.
+VIEW = json.loads((HERE / "v078_public_view.json").read_text(encoding="utf-8"))
+PACKAGE["presentation"] = copy.deepcopy(VIEW["presentation"])
+for field in ("public_resources", "public_trace_variables"):
+    PACKAGE["actuation"][field] = copy.deepcopy(VIEW[field])
 PACKAGE["manifest"]["id"] = "tegularis_balance_v078"
-TARGET.write_text(compact_json(PACKAGE))
+TARGET.write_text(json.dumps(PACKAGE, ensure_ascii=False, indent=2) + "\n")
 print("Compilado:", TARGET.name)

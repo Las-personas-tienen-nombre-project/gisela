@@ -1,0 +1,253 @@
+{
+  "presentation": {
+    "id": "tegularis_encounter",
+    "regions": [
+      {
+        "id": "encounter",
+        "component": "section",
+        "label": "Encuentro",
+        "children": [
+          {
+            "id": "round",
+            "component": "stat",
+            "label": "Ronda",
+            "source": "actuation.round"
+          },
+          {
+            "id": "actor",
+            "component": "text",
+            "label": "Actúa",
+            "source": "actuation.actor"
+          },
+          {
+            "id": "participants",
+            "component": "initiative_order",
+            "label": "Participantes",
+            "source": "actuation.order"
+          },
+          {
+            "id": "initiative",
+            "component": "entity_collection",
+            "label": "Iniciativa",
+            "source": "actuation.initiative"
+          },
+          {
+            "id": "resources",
+            "component": "entity_collection",
+            "label": "Recursos publicados",
+            "source": "actuation.resources"
+          },
+          {
+            "id": "effects",
+            "component": "entity_collection",
+            "label": "Efectos vigentes",
+            "source": "actuation.effects"
+          }
+        ]
+      },
+      {
+        "id": "decisions",
+        "component": "choice_list",
+        "label": "Acciones autorizadas",
+        "source": "actions"
+      },
+      {
+        "id": "events",
+        "component": "event_log",
+        "label": "Historia causal confirmada",
+        "source": "actuation.causal"
+      },
+      {
+        "id": "result",
+        "component": "text",
+        "label": "Desenlace",
+        "source": "actuation.outcome"
+      }
+    ],
+    "action_targets": [
+      {
+        "skill": "proteccion_gillius_01",
+        "target": "gillius"
+      },
+      {
+        "skill": "proteccion_clarisa_01",
+        "target": "clarisa"
+      },
+      {
+        "skill": "proteccion_iosepus_01",
+        "target": "iosepus"
+      }
+    ]
+  },
+  "public_trace_variables": [
+    "tp_parnecio",
+    "hp_parnecio",
+    "mp_parnecio",
+    "scratch_hit_parnecio",
+    "scratch_eva_parnecio",
+    "scratch_damage_parnecio",
+    "defense_parnecio",
+    "hp_gillius",
+    "mp_gillius",
+    "tp_gillius",
+    "scratch_hit_gillius",
+    "scratch_eva_gillius",
+    "scratch_damage_gillius",
+    "defense_gillius",
+    "hp_clarisa",
+    "mp_clarisa",
+    "tp_clarisa",
+    "scratch_hit_clarisa",
+    "scratch_eva_clarisa",
+    "scratch_damage_clarisa",
+    "defense_clarisa",
+    "hp_iosepus",
+    "mp_iosepus",
+    "tp_iosepus",
+    "scratch_hit_iosepus",
+    "scratch_eva_iosepus",
+    "scratch_damage_iosepus",
+    "defense_iosepus",
+    "hp_tegularis",
+    "mp_tegularis",
+    "tp_tegularis",
+    "scratch_hit_tegularis",
+    "scratch_eva_tegularis",
+    "scratch_damage_tegularis",
+    "defense_tegularis",
+    "double_hit_1",
+    "double_eva_1",
+    "double_dmg_1",
+    "double_hit_2",
+    "double_eva_2",
+    "double_dmg_2",
+    "fire_common",
+    "zarpa_incap",
+    "tail_hit_parnecio",
+    "tail_eva_parnecio",
+    "tail_dmg_parnecio",
+    "tail_hit_gillius",
+    "tail_eva_gillius",
+    "tail_dmg_gillius",
+    "tail_hit_clarisa",
+    "tail_eva_clarisa",
+    "tail_dmg_clarisa",
+    "tail_hit_iosepus",
+    "tail_eva_iosepus",
+    "tail_dmg_iosepus",
+    "wing_hit_parnecio",
+    "wing_eva_parnecio",
+    "wing_res_parnecio",
+    "wing_hit_gillius",
+    "wing_eva_gillius",
+    "wing_res_gillius",
+    "wing_hit_clarisa",
+    "wing_eva_clarisa",
+    "wing_res_clarisa",
+    "wing_hit_iosepus",
+    "wing_eva_iosepus",
+    "wing_res_iosepus",
+    "wing_common",
+    "burst_die",
+    "burst_raw",
+    "burst_shield_snapshot",
+    "group_shield",
+    "max_hp_parnecio",
+    "max_mp_parnecio",
+    "max_hp_gillius",
+    "max_mp_gillius",
+    "max_hp_clarisa",
+    "max_mp_clarisa",
+    "max_hp_iosepus",
+    "max_mp_iosepus",
+    "max_hp_tegularis",
+    "max_mp_tegularis"
+  ],
+  "public_resources": [
+    {
+      "entity": "parnecio",
+      "id": "hp",
+      "current": "hp_parnecio",
+      "maximum": "max_hp_parnecio"
+    },
+    {
+      "entity": "parnecio",
+      "id": "mp",
+      "current": "mp_parnecio",
+      "maximum": "max_mp_parnecio"
+    },
+    {
+      "entity": "parnecio",
+      "id": "tp",
+      "current": "tp_parnecio"
+    },
+    {
+      "entity": "gillius",
+      "id": "hp",
+      "current": "hp_gillius",
+      "maximum": "max_hp_gillius"
+    },
+    {
+      "entity": "gillius",
+      "id": "mp",
+      "current": "mp_gillius",
+      "maximum": "max_mp_gillius"
+    },
+    {
+      "entity": "gillius",
+      "id": "tp",
+      "current": "tp_gillius"
+    },
+    {
+      "entity": "clarisa",
+      "id": "hp",
+      "current": "hp_clarisa",
+      "maximum": "max_hp_clarisa"
+    },
+    {
+      "entity": "clarisa",
+      "id": "mp",
+      "current": "mp_clarisa",
+      "maximum": "max_mp_clarisa"
+    },
+    {
+      "entity": "clarisa",
+      "id": "tp",
+      "current": "tp_clarisa"
+    },
+    {
+      "entity": "iosepus",
+      "id": "hp",
+      "current": "hp_iosepus",
+      "maximum": "max_hp_iosepus"
+    },
+    {
+      "entity": "iosepus",
+      "id": "mp",
+      "current": "mp_iosepus",
+      "maximum": "max_mp_iosepus"
+    },
+    {
+      "entity": "iosepus",
+      "id": "tp",
+      "current": "tp_iosepus"
+    },
+    {
+      "entity": "tegularis",
+      "id": "hp",
+      "current": "hp_tegularis",
+      "maximum": "max_hp_tegularis"
+    },
+    {
+      "entity": "tegularis",
+      "id": "mp",
+      "current": "mp_tegularis",
+      "maximum": "max_mp_tegularis"
+    },
+    {
+      "entity": "tegularis",
+      "id": "tp",
+      "current": "tp_tegularis"
+    }
+  ]
+}

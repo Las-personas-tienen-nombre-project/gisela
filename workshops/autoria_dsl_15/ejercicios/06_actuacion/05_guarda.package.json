@@ -20865,13 +20865,63 @@
             "skill_instance": "wingblast_01"
           },
           {
+            "skill_instance": "dentellada_01",
+            "when": {
+              "compare": {
+                "left": {
+                  "math": {
+                    "op": "multiply",
+                    "left": {
+                      "var": {
+                        "scope": "session",
+                        "key": "hp_parnecio"
+                      }
+                    },
+                    "right": {
+                      "literal": 2
+                    }
+                  }
+                },
+                "op": "lte",
+                "right": {
+                  "var": {
+                    "scope": "session",
+                    "key": "max_hp_parnecio"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "skill_instance": "zarpa_01",
+            "when": {
+              "compare": {
+                "left": {
+                  "math": {
+                    "op": "multiply",
+                    "left": {
+                      "var": {
+                        "scope": "session",
+                        "key": "hp_parnecio"
+                      }
+                    },
+                    "right": {
+                      "literal": 2
+                    }
+                  }
+                },
+                "op": "lte",
+                "right": {
+                  "var": {
+                    "scope": "session",
+                    "key": "max_hp_parnecio"
+                  }
+                }
+              }
+            }
+          },
+          {
             "skill_instance": "coletazo_01"
-          },
-          {
-            "skill_instance": "zarpa_01"
-          },
-          {
-            "skill_instance": "dentellada_01"
           },
           {
             "skill_instance": "preponderancia_01"

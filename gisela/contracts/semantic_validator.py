@@ -125,7 +125,7 @@ class Validator(
         self.issues.append(Diagnostic("warning", code, path, message))
 
     def use_version(self, version: str) -> bool:
-        if version not in self.schema_versions:
+        if not isinstance(version, str) or version not in self.schema_versions:
             self.report(
                 "UNSUPPORTED_VERSION", "/manifest/format_version", "Versión no admitida"
             )

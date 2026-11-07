@@ -7,12 +7,12 @@ from pathlib import Path
 from gisela.contracts.semantic_validator import Validator
 from gisela.engine.tests.test_h34a_values import PROP, load, op, ready, rule, send
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 
 
 class ErrorContractDrift(unittest.TestCase):
     def test_e0_c01_all_declared_world_errors_are_contractual(self):
-        sources = (ROOT / "engine").glob("*.py")
+        sources = (ROOT / "gisela" / "engine").glob("*.py")
         codes = set()
         for path in sources:
             codes.update(re.findall(r"WorldError\('([A-Z_]+)'", path.read_text()))

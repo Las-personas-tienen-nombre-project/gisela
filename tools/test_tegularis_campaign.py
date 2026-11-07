@@ -101,7 +101,11 @@ def test_valid_endings_exit_zero(tmp_path, monkeypatch, outcome):
         execution.SeedRun, "execute", lambda attempt: successful(attempt, outcome)
     )
     assert campaign.main(["--count", "1", "--output-dir", str(tmp_path)]) == 0
-    assert summary_at(tmp_path)["outcomes"] == {outcome: 1}
+    summary = summary_at(tmp_path)
+    assert summary["outcomes"] == {outcome: 1}
+    assert summary["diagnostics_enabled"] is False
+    assert "coverage" not in summary
+    assert "decision_counts" not in summary["results"][0]
 
 
 @pytest.mark.parametrize("exception", [OSError, ImportError, MemoryError])
@@ -151,6 +155,7 @@ def test_unsupported_shared_configuration_aborts_before_seeds(tmp_path, monkeypa
         ["--replay", ".", "--count", "1"],
         ["--replay", ".", "--strategy", "attack"],
         ["--replay", ".", "--output-dir", "."],
+        ["--replay", ".", "--diagnostics"],
     ],
 )
 def test_invalid_arguments(options):

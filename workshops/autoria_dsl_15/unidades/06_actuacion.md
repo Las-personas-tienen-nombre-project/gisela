@@ -75,7 +75,22 @@ Un candidato puede incluir una condición `when`, utilizando el mismo DSL de con
 {"skill_instance": "firebreath_01", "when": {"constant": false}}
 ```
 
-En un ejercicio, este ejemplo añade una guarda siempre falsa a una copia de Tegularis. No se pretende equilibrar el combate: se busca aprender por qué un candidato declarado puede no estar disponible. Retire la guarda añadida para restaurar el comportamiento original. Una guarda falsa no borra ni invalida la habilidad en su definición; solamente impide seleccionar ese candidato por esa vía.
+En un ejercicio, este ejemplo reemplaza la guarda real de `firebreath_01` por una siempre falsa en una copia de Tegularis. No se pretende equilibrar el combate: se busca aprender por qué un candidato declarado puede no estar disponible. Restaure la guarda original para recuperar el comportamiento productivo. Una guarda falsa no borra ni invalida la habilidad en su definición; solamente impide seleccionar ese candidato por esa vía.
+
+**Candidatos eclipsados.** El motor ejecuta la *primera* candidata cuyas guardas y requisitos se cumplan. Si dos habilidades cuestan lo mismo y la primera no tiene guarda, la segunda nunca se elige: Firebreath y Wingblast cuestan 50 MP; Coletazo y Zarpa, 20 TP, y Dentellada (30 TP) queda detrás de Coletazo. La lista productiva de Tegularis separa esos casos con guardas sobre el estado:
+
+```json
+[
+  {"skill_instance": "firebreath_01", "when": {"compare": {"left": {"math": {"op": "multiply", "left": {"var": {"scope": "session", "key": "hp_tegularis"}}, "right": {"literal": 2}}}, "op": "gt", "right": {"var": {"scope": "session", "key": "max_hp_tegularis"}}}}},
+  {"skill_instance": "wingblast_01"},
+  {"skill_instance": "dentellada_01", "when": {"compare": {"left": {"math": {"op": "multiply", "left": {"var": {"scope": "session", "key": "hp_parnecio"}}, "right": {"literal": 2}}}, "op": "lte", "right": {"var": {"scope": "session", "key": "max_hp_parnecio"}}}}},
+  {"skill_instance": "zarpa_01", "when": {"compare": {"left": {"math": {"op": "multiply", "left": {"var": {"scope": "session", "key": "hp_parnecio"}}, "right": {"literal": 2}}}, "op": "lte", "right": {"var": {"scope": "session", "key": "max_hp_parnecio"}}}}},
+  {"skill_instance": "coletazo_01"},
+  {"skill_instance": "preponderancia_01"}
+]
+```
+
+Sano (más de la mitad de su HP), Tegularis escupe fuego; herido, bate las alas. Cuando Parnecio está a la mitad de su HP o menos, el dragón lo muerde (Dentellada si tiene 30 TP, Zarpa si tiene 20) en vez de barrer al grupo con Coletazo. Multiplicar por 2 evita dividir y decidir cómo redondear, igual que la condición de Pride.
 
 No reduzca las políticas NPC al orden de una lista. La admisibilidad de una acción depende asimismo del estado, sus requisitos, las instancias disponibles y la autorización del motor. Para practicar una **prioridad condicional explícita** con alternativas y `otherwise`, examine el contrato real `play_first_skill` del paquete `packages/tegularis_npc_prioridades_v03.package.json` y la prueba `gisela/engine/tests/test_npc_skill_priorities.py`. Este ejemplo utiliza un guion con nodos y no debe confundirse con el bloque `actuation.participants` del encuentro completo.
 
@@ -100,8 +115,8 @@ Los cinco primeros archivos `ejercicios/06_actuacion/*.package.json` son **paque
 2. **`02_umbrales`:** el primer umbral subió de 7 a 8. Restáurelo. Prediga la diferencia para un valor efectivo de 7 y explique por qué el segundo umbral permanece en 10.
 3. **`03_atributo`:** Clarisa tiene `main_stat: strength` en lugar de `openness`. Restáurelo y explique qué responsabilidad tiene este atributo frente a los requisitos de sus cartas.
 4. **`04_candidatos`:** Gillius tiene intercambiados los dos primeros candidatos. Localice la diferencia, restituya el orden productivo y explique por qué, aunque el orden importe, no hay garantía de que la primera habilidad sea ejecutable en cualquier estado.
-5. **`05_guarda`:** `firebreath_01` de Tegularis tiene una guarda falsa añadida. Elimine exclusivamente la guarda y justifique la diferencia entre una habilidad inexistente y una habilidad temporalmente excluida de la selección.
-6. **`06_referencia_invalida`:** la primera candidata de Tegularis apunta a `habilidad_inexistente`. El paquete está diseñado para ser rechazado por admisión; localice la referencia y restáurela a `firebreath_01`, sin eliminar el candidato.
+5. **`05_guarda`:** la guarda de `firebreath_01` de Tegularis fue reemplazada por `{"constant": false}`. Restaure exclusivamente la guarda productiva (Tegularis con más de la mitad de su HP) y justifique la diferencia entre una habilidad inexistente y una habilidad temporalmente excluida de la selección. Prediga qué ocurre con Wingblast mientras la guarda falsa siga puesta.
+6. **`06_referencia_invalida`:** la primera candidata de Tegularis apunta a `habilidad_inexistente`. El paquete está diseñado para ser rechazado por admisión; localice la referencia y restáurela a `firebreath_01`, sin eliminar el candidato ni su guarda.
 
 **Ejercicio de integración adicional (sin solución predigerida):** abra el paquete de prioridades v0.3, encuentre `play_first_skill` en `respuesta_npc` y explique qué cambia entre una alternativa disponible, una descartada por `when` y la rama `otherwise`. Use el caso de Clarisa y maná insuficiente como contraste. No traslade literalmente ese bloque a `actuation.participants`: son contratos situados en estructuras diferentes.
 

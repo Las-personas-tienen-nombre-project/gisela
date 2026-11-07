@@ -1,34 +1,26 @@
-"""Constructores puros de expresiones del paquete autoral Tegularis."""
+"""Tegularis-specific authoring helpers and compatibility imports.
+
+Generic constructors are maintained in tools.authoring_expressions. Keep this
+module for existing historical builder scripts and their output contracts.
+"""
 
 from dataclasses import dataclass
+from pathlib import Path
+import sys
+
+# The historical builders also run directly, without installation.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from tools.authoring_expressions import (
+    add, calc, cond_all, eq, inc, lit, maximum, message, minimum,
+    mul, put, roll, stat, sub, trait, var,
+)
 
 
 @dataclass(frozen=True)
 class ResourceGain:
     amount: dict
     maximum: int
-
-
-def lit(x):
-    return {"literal": x}
-
-
-def var(x):
-    return {"var": {"scope": "session", "key": x}}
-
-
-def stat(w, x):
-    return {"stat": {"character": w, "name": x, "component": "effective"}}
-
-
-def trait(w, tags, role="defender"):
-    return {
-        "trait_total": {
-            "participants": [{"entity": w, "role": role}],
-            "tags": tags,
-            "slot": "bonus",
-        }
-    }
 
 
 def evasion(w):
@@ -40,57 +32,6 @@ def evasion(w):
 
 def reduce_damage(w, kind):
     return trait(w, [kind + "_damage_reduction"])
-
-
-def calc(op, a, b):
-    return {"math": {"op": op, "left": a, "right": b}}
-
-
-def add(*xs):
-    result = xs[0]
-    for x in xs[1:]:
-        result = calc("add", result, x)
-    return result
-
-
-def sub(a, b):
-    return calc("subtract", a, b)
-
-
-def mul(a, b):
-    return calc("multiply", a, b)
-
-
-def minimum(a, b):
-    return calc("min", a, b)
-
-
-def maximum(a, b):
-    return calc("max", a, b)
-
-
-def put(key, v):
-    return {"op": "set", "target": var(key), "value": v}
-
-
-def inc(key, v):
-    return {"op": "add", "target": var(key), "value": v}
-
-
-def roll(key, n=10):
-    return {"op": "roll", "sides": n, "store": var(key)}
-
-
-def message(template, **kwargs):
-    return {"op": "emit_message", "template": template, "values": kwargs}
-
-
-def eq(a, op, b):
-    return {"compare": {"left": a, "op": op, "right": b}}
-
-
-def cond_all(*v):
-    return {"all": list(v)}
 
 
 def active(k):

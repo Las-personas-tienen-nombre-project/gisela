@@ -237,6 +237,7 @@ class OrchestratorPolicyTest(unittest.TestCase):
                 self.assertIn(
                     "gisela/packages/tegularis_the_son_of_the_volcan", commands[0][1]
                 )
+                self.assertIn("tools/test_campaign_diagnostics_c6.py", commands[1][1])
                 self.assertEqual(
                     sum(label.startswith("Ruff") for label, _ in commands), 2
                 )

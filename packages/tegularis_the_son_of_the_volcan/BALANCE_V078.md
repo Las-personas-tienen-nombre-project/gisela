@@ -46,3 +46,52 @@ python tools/play_mvp.py --package packages/tegularis_the_son_of_the_volcan/10_b
 - La prioridad defensiva de Iosepus es heurística y puede modificarse según feedback de las partidas. No reemplaza la elección táctica consciente del jugador.
 - Un personaje realmente más herido puede seguir recibiendo más curaciones; eso es intencional. El cambio elimina la prioridad arbitraria del nombre Iosepus, no impone una cuota por personaje.
 - No se agregaron aserciones a código de construcción: los contratos del compilador se comprueban con `ValueError` explícitos.
+
+## Ajuste posterior: habilidades inalcanzables de Tegularis
+
+### Problema
+
+`actuation` ejecuta la primera candidata cuyas guardas y requisitos se cumplan. La lista anterior era Firebreath, Wingblast, Coletazo, Zarpa, Dentellada, Preponderancia, sin guardas. Wingblast cuesta 50 MP, como Firebreath, y está detrás; Zarpa cuesta 20 TP, como Coletazo, y Dentellada (30 TP) también queda detrás de Coletazo. Las tres eran inalcanzables mientras Coletazo y Firebreath siguieran en la mano. En 60 partidas (semillas 1–20 × `attack`, `pass`, `shield`) Tegularis jugó Wingblast, Zarpa y Dentellada cero veces. Wingblast es la única fuente de `ef_paralizado_*`, de modo que la parálisis tampoco ocurría en juego normal.
+
+### Cambio
+
+Solo se modifica `actuation.participants[tegularis].candidates` (función `tune_tegularis` de `build_v078.py`). No cambian cartas, costos, daños, variables ni el motor.
+
+| Orden | Candidata | Guarda |
+|---|---|---|
+| 1 | Firebreath | `hp_tegularis × 2 > max_hp_tegularis` (sano) |
+| 2 | Wingblast | — (se alcanza cuando Tegularis está herido) |
+| 3 | Dentellada | `hp_parnecio × 2 ≤ max_hp_parnecio` |
+| 4 | Zarpa | `hp_parnecio × 2 ≤ max_hp_parnecio` |
+| 5 | Coletazo | — |
+| 6 | Preponderancia | — |
+
+Firebreath conserva el primer lugar, de modo que los ejercicios `05_guarda` y `06_referencia_invalida` de la Unidad 6 siguen apuntando a la misma candidata.
+
+El cambio se aplicó directamente a los paquetes 10–14 y a todas sus copias del workshop `autoria_dsl_15`. En la versión anterior, `build_v078.py` no reproducía el paquete 10: faltaban `presentation`, `public_resources` y `public_trace_variables`. Ahora `v078_public_view.json` es la fuente de estos campos, y el generador reproduce el paquete 10 byte por byte. Se comprobó que `tune_tegularis` produce exactamente la misma lista que contienen los datos. Las instantáneas históricas 07–09 no se modificaron.
+
+### Verificación
+
+- `python -m pytest -q`: 720 aprobadas, 1 omitida (igual que antes del cambio).
+- `test_balance_v078.py`, `test_cierre_v077.py` y `test_build_packages.py`: 16 aprobadas.
+- `comprobar_unidad_04` a `08` y `comprobar_puentes_04_06`: conformes.
+- `tools/check_quality.py`: conforme.
+- 60 partidas por paquete con `SeedRun`, semillas 1–20:
+
+| Estrategia | Antes V/D/DM | Después V/D/DM | Rondas promedio |
+|---|---|---|---|
+| `attack` | 16/1/3 | 17/2/1 | 7,0 → 6,9 |
+| `pass` | 6/12/2 | 8/9/3 | 11,0 → 11,9 |
+| `shield` | 20/0/0 | 19/1/0 | 7,35 → 7,65 |
+
+| Habilidad de Tegularis (60 partidas) | Antes | Después |
+|---|---|---|
+| Firebreath | 213 | 139 |
+| Wingblast | 0 | 75 |
+| Coletazo | 676 | 541 |
+| Dentellada | 0 | 76 |
+| Zarpa | 0 | 57 |
+| Preponderancia | 444 | 467 |
+| Mensajes de parálisis | 0 | 25 |
+
+Con 20 semillas por estrategia, diferencias de uno a tres desenlaces están dentro del ruido: el ajuste no demuestra que el encuentro sea más fácil ni más difícil, solo que las tres habilidades ya participan.

@@ -665,11 +665,8 @@ class PackagesMixin(ActuationPackageMixin):
     def validate_package(self, package: dict) -> list[Diagnostic]:
         """Devuelve diagnósticos del paquete sin ejecutarlo."""
         self.issues = []
-        version = (
-            package.get("manifest", {}).get("format_version")
-            if isinstance(package, dict)
-            else None
-        )
+        manifest = package.get("manifest") if isinstance(package, dict) else None
+        version = manifest.get("format_version") if isinstance(manifest, dict) else None
         if not self.use_version(version):
             return self.issues[:]
         if not self.check_schema("package", package):

@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+from campaign_diagnostics import confirmed_delta, merge_coverage, summarize_decisions
+
 from gisela.contracts.admit_package import AdmittedPackage
+from gisela.engine.candidate_diagnostics import capture as capture_candidates
 from gisela.engine.runtime import new_session, restore_session
 
 MAX_ACTIONS = 600
@@ -41,6 +44,9 @@ class SeedRun:
     seed: str
     strategy: str
     max_actions: int = MAX_ACTIONS
+    diagnostics: bool = False
+    coverage: dict = field(default_factory=dict)
+    decisions: list = field(default_factory=list)
     phase: str = "initialize"
     actions: int = 0
     initial_turn: int | None = None
@@ -59,7 +65,16 @@ class SeedRun:
     def act(self, session):
         """Conserva el rechazo completo y utiliza la misma comprobación en replay."""
         self.phase = "act"
-        self.response = session.act(self.request)
+        if not self.diagnostics:
+            self.response = session.act(self.request)
+        else:
+            before = session.export()
+            with capture_candidates() as decisions:
+                self.response = session.act(self.request)
+            if self.response["status"] == "ok":
+                after = session.export()
+                merge_coverage(self.coverage, confirmed_delta(before, after))
+                self.decisions.extend(decisions)
         if self.response["status"] != "ok":
             raise CampaignError(f"Acción rechazada en paso {self.actions}")
 
@@ -77,7 +92,7 @@ class SeedRun:
         self.phase = "validate_end"
         if self.snapshot["turn"] != self.initial_turn:
             raise CampaignError("El encuentro modificó el turno narrativo")
-        return {
+        result = {
             "type": "seed",
             "status": "success",
             "seed": self.seed,
@@ -87,6 +102,11 @@ class SeedRun:
             "round": self.view["actuation"]["round"],
             "causal": len(self.snapshot["history"]["trace"]),
         }
+        if self.diagnostics:
+            result["coverage"] = self.coverage
+            result["decision_counts"] = summarize_decisions(self.decisions)
+            result["decisions"] = self.decisions
+        return result
 
     def execute(self):
         """Crea una sesión independiente y acepta cualquier desenlace válido."""

@@ -261,6 +261,42 @@ def execute_scripted(state: dict, effect: dict, context: EffectContext) -> list[
     )
 
 
+def _eligible_candidate(state, candidate, context):
+    """Return (skill, reason) while preserving the selection error policy."""
+    if "when" in candidate and not predicate(
+        state, candidate["when"], context.definitions
+    ):
+        return None, "guard_false"
+    skill = next(
+        (
+            item
+            for item in state["world"]["skills"]
+            if item["id"] == candidate["skill_instance"]
+        ),
+        None,
+    )
+    if skill is None:
+        return None, "missing_instance"
+    if skill["character"] == state.get("player_character"):
+        raise WorldError("INVALID_ACTION", "El guion no puede sustituir al jugador")
+    find(state, "characters", skill["character"])
+    card = context.definitions.cards[skill["card"]]
+    if card["kind"] != "skill":
+        raise WorldError("INVALID_STATE", "Instancia sin carta de habilidad")
+    if card.get("passive_traits"):
+        return None, "passive"
+    if skill["zone"] != "hand":
+        return None, "not_in_hand"
+    bound_card, _ = _bind_arguments(state, (candidate, card), context.definitions)
+    if not predicate(
+        state,
+        bound_card["play"].get("requires", {"constant": True}),
+        context.definitions,
+    ):
+        return None, "requirements_false"
+    return skill, "selected"
+
+
 def execute_first_available(
     state: dict, effect: dict, context: EffectContext
 ) -> list[dict]:
@@ -274,41 +310,17 @@ def execute_first_available(
 
     if context.skill_depth >= MAX_NESTED_PLAYS:
         raise WorldError("BUDGET_EXCEEDED", "Demasiadas habilidades anidadas")
+    from .candidate_diagnostics import record as record_candidates
+
+    assessments = []
     for candidate in effect["candidates"]:
-        if "when" in candidate and not predicate(
-            state, candidate["when"], context.definitions
-        ):
-            continue
-        # Una carta descartada previamente ya no está en el estado. Es una
-        # alternativa no disponible, no un error de transacción.
-        skill = next(
-            (
-                item
-                for item in state["world"]["skills"]
-                if item["id"] == candidate["skill_instance"]
-            ),
-            None,
-        )
+        skill, reason = _eligible_candidate(state, candidate, context)
+        assessments.append(reason)
         if skill is None:
             continue
-        # Un guion nunca puede jugar cartas del jugador por una alternativa.
-        if skill["character"] == state.get("player_character"):
-            raise WorldError("INVALID_ACTION", "El guion no puede sustituir al jugador")
-        find(state, "characters", skill["character"])
-        card = context.definitions.cards[skill["card"]]
-        if card["kind"] != "skill":
-            raise WorldError("INVALID_STATE", "Instancia sin carta de habilidad")
-        if card.get("passive_traits"):
-            continue
-        if skill["zone"] != "hand":
-            continue
-        bound_card, _ = _bind_arguments(state, (candidate, card), context.definitions)
-        if not predicate(
-            state,
-            bound_card["play"].get("requires", {"constant": True}),
-            context.definitions,
-        ):
-            continue
+        record_candidates(
+            skill["character"], (effect["candidates"], skill["id"]), assessments
+        )
         return execute_scripted(
             state,
             {
@@ -318,6 +330,7 @@ def execute_first_available(
             },
             context,
         )
+    record_candidates(context.source, (effect["candidates"], None), assessments)
     events = []
     fallback_context = replace(
         context,
