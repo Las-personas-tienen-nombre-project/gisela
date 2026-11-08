@@ -28,7 +28,7 @@ No necesitas aprender todos estos componentes para comenzar. Los conocerás cuan
 
 ## Cómo se escribe una historia
 
-Las historias se guardan en paquetes narrativos que contienen textos y reglas. Actualmente se escriben con el lenguaje DSL 1.5, representado mediante archivos JSON.
+Las historias se guardan en paquetes narrativos que contienen textos y reglas. Actualmente se escriben con el lenguaje DSL 1.5, representado mediante archivos JSON. **DSL** es el conjunto de reglas para describir la historia; **JSON** es el formato de texto utilizado para guardarla.
 
 No necesitas programar en Python, pero aprenderás algunas reglas de JSON. Comenzaremos con un relato preparado, que podrás modificar y comprobar.
 
@@ -36,4 +36,4 @@ No necesitas programar en Python, pero aprenderás algunas reglas de JSON. Comen
 
 Primero crearás una historia sencilla con decisiones y finales. Después podrás incorporar personajes, conversaciones, objetos y otras reglas, según las capacidades comprobadas del motor.
 
-Continúa con [Casos de uso](02_casos_de_uso.md).
+Continúa con [Casos de uso](02_casos_de_uso.md). Si algún nombre de componente todavía no te resulta familiar, no necesitas memorizarlo: cada taller introduce solamente los conceptos que utiliza.

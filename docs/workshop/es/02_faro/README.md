@@ -36,7 +36,7 @@ Abre `faro.package.json` y busca la elección `preparacion`. Su primera opción 
 ]
 ```
 
-Un **hecho** es una marca que el motor registra cuando ocurre algo relevante. Aquí significa que Lara consultó el plano. El nombre `plano_consultado` aparece también en `manifest.facts`, donde se declara el hecho que el paquete utilizará.
+Un **hecho** es una marca que el motor registra cuando ocurre algo relevante. No es una frase que aparece por sí sola en pantalla: sirve para recordar información de la sesión. Aquí significa que Lara consultó el plano. El nombre `plano_consultado` aparece también en `manifest.facts`, donde se declara el hecho que el paquete utilizará.
 
 Ambas opciones conducen al nodo `cupula`. No necesitamos escribir dos versiones de esa escena: GISELA conserva el hecho mientras se desarrolla la sesión.
 
@@ -68,7 +68,7 @@ Modifica únicamente el texto del paso `incierto`, dentro del nodo `ruta_inciert
 
 Cambia las consecuencias de ambas opciones sin modificar los nodos ni sus textos: retira el efecto `record_fact` de la opción `leer` y agrégalo a la opción `subir`. Mantén el hecho declarado en `manifest.facts`.
 
-Ejecuta las dos alternativas. Ahora subir directamente conducirá al final `La ruta segura` y consultar el plano al final `Esperar hasta el amanecer`. Esta inversión es intencional: permite comprobar que la condición responde al hecho registrado, no al nombre o al texto de una opción. Al terminar, restaura la versión original del paquete.
+Guarda el JSON, valídalo y ejecuta las dos alternativas. Ahora subir directamente conducirá al final `La ruta segura` y consultar el plano al final `Esperar hasta el amanecer`. Esta inversión es intencional: permite comprobar que la condición responde al hecho registrado, no al nombre o al texto de una opción. Al terminar, restaura la versión original del paquete.
 
 ## 6. Valida el paquete
 

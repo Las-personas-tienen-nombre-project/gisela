@@ -36,7 +36,7 @@ En `cards` encontrarás la ficha de la linterna:
 }
 ```
 
-La ficha describe **qué tipo de objeto es**. `portable: true` declara que puede transportarse. Su título sirve para presentar el objeto; el identificador `linterna` permite referirse a la ficha desde el estado inicial.
+La ficha describe **qué tipo de objeto es**. `portable: true` declara que puede transportarse. Su título sirve como dato de presentación del objeto, aunque este ejemplo no lo muestra automáticamente en cada escena; el identificador `linterna` permite referirse a la ficha desde el estado inicial.
 
 En `initial_state.objects` encontrarás una instancia concreta:
 
@@ -88,7 +88,7 @@ La historia comprueba la **pertenencia real** de la linterna, no el texto de la 
 
 ## 5. Ejercicios
 
-Primero cambia el título y la descripción de la linterna, sin modificar los identificadores. Ejecuta los dos recorridos y verifica que siguen funcionando.
+Primero cambia el título y la descripción de la linterna, sin modificar los identificadores. Valida el paquete y ejecuta los dos recorridos para verificar que siguen funcionando. No esperes que GLAUQUIR lea automáticamente esos campos: la narración de este ejemplo está escrita por separado.
 
 Después cambia la pertenencia inicial de la linterna: en `initial_state.objects`, reemplaza `"owner": "elio"` por `"owner": "lara"`. Prueba ambas elecciones. La opción de pedir la linterna ya no debería estar habilitada, pues Elio no la tiene; Lara podrá subir con luz porque la linterna ya le pertenece. Restaura el archivo para repetir el ejercicio original.
 

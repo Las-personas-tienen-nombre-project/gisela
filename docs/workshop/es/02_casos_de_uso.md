@@ -8,7 +8,7 @@ Una persona encuentra un paraguas olvidado. Puede devolverlo, guardarlo o averig
 
 ## Historias que recuerdan
 
-Alguien llega a un faro y encuentra una puerta cerrada. Si antes recogió una llave, podrá abrirla; si no lo hizo, deberá buscar otra solución. La historia recuerda los acontecimientos anteriores y los utiliza para decidir qué acciones están disponibles.
+Alguien llega a un faro y encuentra una puerta cerrada. Si antes recogió una llave, podrá abrirla; si no lo hizo, deberá buscar otra solución. La historia recuerda los acontecimientos anteriores y los utiliza para decidir qué acciones están disponibles. En el [taller 02](02_faro/README.md) aprenderás a representar ese recuerdo mediante un hecho registrado.
 
 ## Historias con personajes
 
@@ -30,6 +30,6 @@ Una aventura puede exigir encontrar una pista, conversar con un testigo y llegar
 
 GISELA separa el motor de la interfaz. Este repositorio incluye GLAUQUIR, un cliente de texto. La integración con Ren'Py pertenece a un proyecto separado y no es necesaria para usar el motor.
 
-Estos ejemplos ilustran usos posibles, no paquetes ya construidos ni promesas de sistemas especializados. Los talleres enseñarán cada capacidad después de comprobar su soporte.
+Estos ejemplos ilustran usos posibles: no todos corresponden a paquetes ya construidos ni a sistemas especializados del motor. Los talleres enseñarán cada capacidad después de comprobar su soporte.
 
 Continúa con [Instalación y requisitos](03_instalacion.md).

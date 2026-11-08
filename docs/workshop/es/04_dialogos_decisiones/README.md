@@ -61,7 +61,18 @@ Este ejemplo representa **dos conversaciones alternativas**, no una conversació
 
 Primero cambia el texto de la pregunta sobre la luz, sin modificar su `id` ni `next`. Ejecuta ambas rutas y comprueba que siguen funcionando.
 
-Después cambia la respuesta de Elio en `respuesta_barcos` y añade una intervención de Lara en ese mismo nodo. Usa un `id` nuevo para la intervención, `op: dialogue`, `speaker: lara` y `text` con su contenido. Respeta las comas y corchetes del JSON.
+Después cambia la respuesta de Elio en `respuesta_barcos` y añade una intervención de Lara en ese mismo nodo. Para hacerlo, inserta el siguiente objeto dentro de la lista `steps`, **entre** `explicacion_barcos` y `respuesta_lara_barcos`:
+
+```json
+{
+  "id": "pregunta_lara_adicional",
+  "op": "dialogue",
+  "speaker": "lara",
+  "text": {"text": "¿Podemos avisarles antes de que lleguen a las rocas?"}
+},
+```
+
+Conserva la intervención `respuesta_lara_barcos` que ya existe. La coma del ejemplo separa esta intervención de la siguiente. Cada paso de la misma lista debe tener un `id` diferente. Valida el archivo antes de ejecutar la historia.
 
 **Comprobación:** el primer recorrido debe terminar en «La señal encendida» y el segundo en «La campana del muelle». Restaura el ejemplo original si necesitas comparar.
 

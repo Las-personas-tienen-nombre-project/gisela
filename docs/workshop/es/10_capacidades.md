@@ -9,7 +9,9 @@ Esta guía permite decidir qué recursos usar al escribir una historia. Reúne l
 - **Limitado:** la capacidad existe, pero no incluye todas las funciones que podría sugerir su nombre. Se indica el límite concreto.
 - **No confirmado:** no se encontró una implementación general que permita prometer esa función como parte del curso.
 
-**Importante:** que un archivo JSON supere la validación de estructura no demuestra que todas sus operaciones puedan ejecutarse. El validador semántico, el motor y las pruebas determinan el alcance efectivo. Una historia puede combinar sistemas disponibles sin que GISELA ofrezca una mecánica universal para esa combinación.
+En las tablas, expresiones como **«Disponible, contextual»**, **«Disponible, opcional»** o **«Disponible, limitada»** no son estados adicionales: precisan una condición o restricción de una capacidad disponible.
+
+**Importante:** que un archivo JSON supere la validación de estructura no demuestra que todas sus operaciones puedan ejecutarse. El validador semántico, el motor y las pruebas determinan el alcance efectivo. Una historia puede combinar sistemas disponibles sin que GISELA ofrezca una mecánica universal para esa combinación. **Validar** comprueba si el paquete es admitido; **ejecutar** permite observar lo que realmente ocurre en la historia.
 
 ## Narración y decisiones
 
@@ -54,7 +56,7 @@ Consulta la [descripción de MARY](../../architecture/MARY.md) y sus ejemplos an
 
 ## Encuentros y combate
 
-**Laboratorio.** El motor incluye un reloj de actuación con participantes, iniciativa, oportunidades por turno, habilidades y políticas de resultado. GLAUQUIR lo ejecuta con `--actuation`; **no es todavía una pantalla de combate integrada al flujo habitual**. El [taller 08](08_combate/README.md) enseña un encuentro de dos personajes mediante esta modalidad.
+**Laboratorio.** El motor incluye un reloj de actuación con participantes, iniciativa, oportunidades por turno, habilidades y políticas de resultado. GLAUQUIR lo ejecuta con la opción de laboratorio `--actuation`; **no es todavía una pantalla de combate integrada al flujo habitual**. El [taller 08](08_combate/README.md) enseña un encuentro de dos personajes mediante esta modalidad.
 
 La resistencia del taller es una variable elegida por el autor. GISELA no impone puntos de vida, daño, armadura ni condiciones universales de victoria. Las reglas del intruso se declaran en el paquete: no equivalen a una inteligencia táctica general. Las políticas que cierran el reloj tampoco crean por sí mismas un final narrativo.
 
@@ -72,9 +74,9 @@ La resistencia del taller es una variable elegida por el autor. GISELA no impone
 
 ## Guardado, validación y reproducibilidad
 
-**Disponibles.** GISELA admite paquetes, crea sesiones, ofrece acciones mediante `Observe` y confirma cambios mediante `Act`. Puede exportar y restaurar una sesión, incluidas decisiones o evaluaciones pendientes que el contrato permite reconstruir. Una petición inválida no debe dejar cambios parciales confirmados.
+**Disponibles.** GISELA admite paquetes y crea sesiones. Internamente, `Observe` entrega la información y las acciones permitidas, mientras `Act` solicita ejecutar una de esas acciones. Puede exportar y restaurar una sesión, incluidas decisiones o evaluaciones pendientes que el contrato permite reconstruir. Una petición inválida no debe dejar cambios parciales confirmados.
 
-Los guardados están vinculados al contenido admitido del paquete. Si cambias las definiciones del relato, no debes suponer que un guardado antiguo seguirá siendo compatible. El estado exportado puede contener información privada y no debe mostrarse al lector como si fuera la observación pública. La reproducibilidad requiere repetir el estado inicial, las entradas y la semilla pertinente.
+Una **sesión** es una partida con su propio estado. Los guardados están vinculados al contenido admitido del paquete. Si cambias las definiciones del relato, no debes suponer que un guardado antiguo seguirá siendo compatible. El estado exportado puede contener información privada y no debe mostrarse al lector como si fuera la observación pública. La reproducibilidad requiere repetir el estado inicial, las entradas y la semilla pertinente.
 
 Consulta [Observe y Act](../../reference/dsl_1_5/08_OBSERVE_ACT.md), [determinismo](../../reference/dsl_1_5/07_DETERMINISM.md) y [validación](../../reference/dsl_1_5/12_VALIDATION.md).
 

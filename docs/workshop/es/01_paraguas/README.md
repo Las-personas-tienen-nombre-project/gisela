@@ -6,7 +6,7 @@ En este taller modificarás una historia breve y comprobarás cómo una elecció
 
 Completa la [instalación](../03_instalacion.md) y comprueba que puedes abrir GLAUQUIR. Todos los comandos se ejecutan desde la raíz del repositorio, donde está `pyproject.toml`.
 
-El archivo de trabajo es [`paraguas.package.json`](paraguas.package.json). Usa cualquier editor de texto que permita guardar archivos UTF-8. Antes de cambiarlo, conserva una copia para poder recuperar el ejemplo original.
+El archivo de trabajo es [`paraguas.package.json`](paraguas.package.json). Usa cualquier editor de texto que permita guardar archivos UTF-8. Antes de cambiarlo, conserva una copia para poder recuperar el ejemplo original. Un archivo JSON utiliza comillas dobles, comas y llaves; si cambias solo el texto entre comillas, es menos probable que rompas su estructura.
 
 ## 1. Juega la historia
 
@@ -39,7 +39,7 @@ Abre `paraguas.package.json`. Encontrarás estos elementos:
 | `options` | Define el texto de cada alternativa y su destino en `next.node`. |
 | `ending` y `endings` | Terminan el recorrido y dan un título al desenlace. |
 
-Los campos `id` son identificadores usados por el motor: no son el texto que lee la persona. En cambio, las cadenas incluidas en `text` o `label.text` son parte del relato. Las secciones vacías del archivo se mantienen porque forman parte de la estructura utilizada por el paquete mínimo.
+Los campos `id` son identificadores usados por el motor: no son el texto que lee la persona. En cambio, las cadenas incluidas en `text` o `label.text` son parte del relato. Los caminos de campos como `text.text` se leen de izquierda a derecha: el campo `text` contiene otro campo llamado `text`. Las secciones vacías del archivo se mantienen porque forman parte de la estructura utilizada por el paquete mínimo.
 
 ## 3. Cambia un texto
 

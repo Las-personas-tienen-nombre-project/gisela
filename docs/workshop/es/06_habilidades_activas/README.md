@@ -81,7 +81,7 @@ La diferencia depende del hecho registrado por el motor, no de una frase escrita
 
 Primero cambia el título y la etiqueta de uso de la habilidad, sin modificar sus identificadores. Comprueba que el nuevo texto aparece en GLAUQUIR.
 
-Después reemplaza `"default": "discard"` por `"default": "hand"`. Vuelve a ejecutar el recorrido. La historia seguirá registrando el mismo hecho, pero la instancia de habilidad permanecerá en la mano de Lara. Restaura el valor inicial cuando termines.
+Después reemplaza `"default": "discard"` por `"default": "hand"`. Valida el paquete y vuelve a ejecutar el recorrido. La historia seguirá registrando el mismo hecho, pero la instancia de habilidad permanecerá en la mano de Lara. **El final no cambia y esa permanencia puede no ser visible en la escena:** estás modificando una regla del estado, no el desenlace. Restaura el valor inicial cuando termines.
 
 Por último, cambia el texto del final `con_senal`, sin modificar `record_fact` ni `condition`, y comprueba que ambos recorridos siguen funcionando.
 

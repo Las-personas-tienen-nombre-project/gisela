@@ -10,7 +10,7 @@ Este curso enseña a escribir historias en GISELA modificando paquetes ejecutabl
 
 ## Talleres prácticos
 
-Cada taller tiene su propia guía y un paquete JSON que puedes ejecutar y modificar. Los talleres posteriores reutilizan conceptos anteriores.
+Cada taller tiene su propia guía y un paquete JSON que puedes ejecutar y modificar. Los talleres posteriores reutilizan conceptos anteriores. **No necesitas modificar los archivos de otros talleres:** cada ejemplo funciona por separado.
 
 | Taller | Aprenderás a... |
 | --- | --- |
@@ -23,6 +23,15 @@ Cada taller tiene su propia guía y un paquete JSON que puedes ejecutar y modifi
 | [07. Habilidades pasivas](07_habilidades_pasivas/README.md) | Aplicar rasgos pasivos. |
 | [08. Encuentro por turnos](08_combate/README.md) | Resolver resistencia y turnos en el laboratorio `--actuation`. |
 | [09. Relaciones y reglas automáticas](09_reglas_relaciones/README.md) | Cambiar relaciones y reaccionar a cambios de estado. |
+
+## Cómo trabajar con cada taller
+
+1. Abre el paquete original en GLAUQUIR y prueba todos los caminos indicados.
+2. Guarda una copia del archivo JSON antes de editarlo. Cambia solo lo que pida el ejercicio.
+3. Guarda el archivo, comprueba su validez con `gisela validate` y vuelve a ejecutar la historia para observar el cambio.
+4. Si algo falla, recupera la copia y repite un cambio a la vez. Los nombres `id` y las referencias no deben modificarse salvo indicación expresa.
+
+**Dos comprobaciones distintas:** que el validador admita el paquete no garantiza que el desenlace sea el esperado; comprueba también el resultado al ejecutarlo. El [taller 08](08_combate/README.md) requiere `--actuation` y es más técnico; el taller 09 funciona de forma independiente de ese laboratorio.
 
 ## Después de los talleres
 

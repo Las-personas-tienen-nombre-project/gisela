@@ -35,7 +35,7 @@ Busca `cards` al principio del archivo. Allí encontrarás esta ficha:
 }
 ```
 
-Una **ficha** describe qué personaje puede existir en el relato. `id` es su identificador estable; `title` es el nombre que verá el lector; `description` permite añadir una descripción. El campo `kind` indica que la ficha corresponde a un personaje. Hay otra ficha para Elio y una ficha de lugar para el faro.
+Una **ficha** describe qué personaje puede existir en el relato. `id` es su identificador estable; `title` guarda el nombre de presentación de la ficha; `description` permite añadir una descripción. Esos textos no se muestran automáticamente en todas las pantallas de GLAUQUIR. El campo `kind` indica que la ficha corresponde a un personaje. Hay otra ficha para Elio y una ficha de lugar para el faro.
 
 La ficha no coloca por sí sola al personaje en el mundo.
 
@@ -75,7 +75,7 @@ Modifica el `title.text` de la ficha `elio` para que se llame **Elías**. No cam
 
 Luego cambia la descripción de Lara. Comprueba que la historia sigue funcionando. La descripción pertenece a la ficha, pero no se incorpora automáticamente al texto narrado.
 
-**Comprobación:** cambiar un título o una descripción no exige modificar las referencias internas. Tampoco cambia el identificador que muestra GLAUQUIR en esta versión. Al terminar, restaura los textos originales.
+**Comprobación:** el paquete sigue admitiéndose y el diálogo continúa identificado como `elio`. No esperes ver «Elías» ni la nueva descripción en esta escena: el ejercicio comprueba que los datos de la ficha pueden cambiar sin romper las referencias, no su presentación automática. Al terminar, restaura los textos originales.
 
 ## 6. Valida el paquete
 

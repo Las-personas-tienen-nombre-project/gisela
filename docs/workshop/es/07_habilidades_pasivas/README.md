@@ -84,7 +84,13 @@ La condición consulta el rasgo efectivo de Lara, incluidos los que recibe de ha
 
 Primero cambia el título de **Paso seguro** y su descripción, sin modificar los identificadores. Comprueba que la historia sigue admitiéndose.
 
-Después elimina únicamente la instancia `paso_seguro_01` de `initial_state.skills` y vuelve a ejecutar **Cruzar la pasarela**. Esta vez Lara debe llegar a **Regresar a salvo**. No elimines el catálogo de rasgos ni la ficha de habilidad. Restaura la instancia cuando termines.
+Después elimina únicamente la instancia `paso_seguro_01` de `initial_state.skills`. Como es el único elemento de esa lista, debe quedar así:
+
+```json
+"skills": []
+```
+
+No elimines el campo `skills`, el catálogo de rasgos ni la ficha de habilidad. Valida el paquete y ejecuta **Cruzar la pasarela**. Esta vez Lara debe llegar a **Regresar a salvo**. Restaura la instancia cuando termines.
 
 Por último, devuelve la instancia y cambia el texto del final `cruce_seguro`. Comprueba que el resultado se mantiene y que no tuviste que agregar una acción para activar la habilidad.
 

@@ -6,7 +6,7 @@ Este taller utiliza el flujo narrativo normal de GLAUQUIR. No requiere el labora
 
 ## Antes de comenzar
 
-Completa el [taller 08](../08_combate/README.md) y abre [`reglas.package.json`](reglas.package.json) con un editor de texto. Ejecuta los comandos desde la raíz del repositorio.
+Para seguir el recorrido principal, completa primero el [taller 07](../07_habilidades_pasivas/README.md). Puedes hacer este taller aunque todavía no hayas completado el [laboratorio de actuación del taller 08](../08_combate/README.md): no utiliza sus operaciones. Abre [`reglas.package.json`](reglas.package.json) con un editor de texto. Ejecuta los comandos desde la raíz del repositorio.
 
 ## 1. Ejecuta la historia
 
@@ -28,11 +28,11 @@ Prueba las dos alternativas. Cuando Lara ayuda, ambos mantienen encendida la se�
 
 En `manifest.relationship_fields` aparece `confianza`, un valor entero que comienza en cero. No es un atributo universal del motor: el autor elige su nombre y su significado. La relación distingue la dirección `from: lara` y `to: elio`; no debes suponer que la confianza de Elio hacia Lara cambia automáticamente.
 
-En la primera opción, el efecto `add` suma 2 a esa relación. La segunda resta 1. Ninguno de los dos efectos contiene directamente el final de la historia.
+En la primera opción, el efecto `add` suma 2 a esa relación. Una **relación dirigida** registra lo que un personaje siente o representa respecto de otro, sin modificar automáticamente la dirección contraria. La segunda resta 1. Ninguno de los dos efectos contiene directamente el final de la historia.
 
 ## 3. Crea una reacción automática
 
-La regla `confianza_ganada` escucha el evento `state_changed` de la relación. Su condición `when` verifica que la confianza haya llegado al menos a 2 y que todavía no exista el hecho `apoyo_mutuo`. Si se cumplen ambas condiciones, el efecto `record_fact` registra ese hecho.
+La regla `confianza_ganada` escucha el evento `state_changed` de la relación. Un **evento** es un aviso interno de que algo cambió; la regla reacciona sin pedir una nueva elección al lector. Su condición `when` verifica que la confianza haya llegado al menos a 2 y que todavía no exista el hecho `apoyo_mutuo`. Si se cumplen ambas condiciones, el efecto `record_fact` registra ese hecho.
 
 La regla no es una conversación ni un paso del relato. Se activa como consecuencia del cambio de estado. La comprobación del hecho evita volver a registrarlo una vez concedido.
 

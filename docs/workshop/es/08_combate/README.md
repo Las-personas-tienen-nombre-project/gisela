@@ -2,7 +2,7 @@
 
 Lara sorprende a un intruso que intenta sabotear el reflector del faro. En lugar de representar heridas, este encuentro utiliza **resistencia**: cuando alguien llega a cero, no puede continuar la confrontación. Lara intenta detener al intruso; él trata de escapar.
 
-Este taller utiliza el **laboratorio de actuación** de GISELA. No es una pantalla de combate integrada al recorrido narrativo habitual: GLAUQUIR ejecuta el reloj autoral con `--actuation`. El ejemplo utiliza solamente DSL 1.5, sin generadores Python.
+Este taller utiliza el **laboratorio de actuación** de GISELA. No es una pantalla de combate integrada al recorrido narrativo habitual: GLAUQUIR ejecuta el reloj autoral con `--actuation`. El ejemplo utiliza solamente DSL 1.5, sin generadores Python. Es más técnico que los anteriores: aquí conocerás varias reglas a la vez, pero no necesitas memorizarlas para completar el taller 09.
 
 ## Antes de comenzar
 
@@ -24,11 +24,17 @@ En Windows PowerShell:
 
 Cuando llegue el turno de Lara, elige **Interceptar al intruso**. Los turnos del intruso se ejecutan automáticamente. En este recorrido, Lara consigue detenerlo. La opción **Pasar** permite gastar la oportunidad sin utilizar una habilidad.
 
-Para observar una derrota reproducible, cambia la semilla por 64 letras `d`. Mantén el resto del comando igual y elige siempre **Interceptar al intruso**. La semilla fija permite repetir exactamente las mismas tiradas e iniciativa. El límite `--rounds 12` es una protección para el laboratorio; no significa que el encuentro deba durar doce rondas.
+Para observar una derrota reproducible, usa este comando (la semilla contiene 64 letras `d`):
+
+```bash
+glauquir --package docs/workshop/es/08_combate/combate.package.json --actuation --rounds 12 --seed dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+```
+
+En Windows, sustituye `glauquir` por `.\.venv\Scripts\glauquir.exe`. Elige siempre **Interceptar al intruso**. La semilla fija permite repetir exactamente las mismas tiradas e iniciativa. El límite `--rounds 12` es una protección para el laboratorio; no significa que el encuentro deba durar doce rondas.
 
 ## 2. Define el encuentro y sus turnos
 
-En `actuation`, `participants` enumera a `lara` y `intruso`. El reloj calcula la iniciativa con sus atributos y un dado de seis caras (`initiative_die: 6`). `base_actions: 1` concede una oportunidad por turno a cada participante.
+**Iniciativa** es el criterio que determina el orden de actuación. Una **oportunidad** es una acción disponible durante el turno. En `actuation`, `participants` enumera a `lara` y `intruso`. El reloj calcula la iniciativa con sus atributos y un dado de seis caras (`initiative_die: 6`). `base_actions: 1` concede una oportunidad por turno a cada participante.
 
 Lara utiliza una habilidad que el lector escoge. El intruso tiene una candidata en `candidates`, por lo que GISELA la ejecuta mediante su política de actor no jugador. No hay una inteligencia táctica general: el autor declara qué acción intentará.
 
@@ -36,7 +42,7 @@ Lara utiliza una habilidad que el lector escoge. El intruso tiene una candidata 
 
 El apartado `manifest.variables` registra cuatro variables enteras: `resistencia_lara`, `resistencia_intruso`, `tirada_lara` y `tirada_intruso`. Sus valores iniciales aparecen también en `initial_state.session_variables`.
 
-Las dos resistencias comienzan en **3**. Las tiradas comienzan en **0** y se actualizan al ejecutar las habilidades. `actuation.setup` vuelve a fijar las resistencias en 3 al comenzar el encuentro. Resistencia es un nombre elegido por el autor, no un recurso especializado del motor.
+Las dos resistencias comienzan en **3**. Piensa en ellas como la capacidad de seguir enfrentándose, no como puntos de vida ni heridas. Las tiradas comienzan en **0** y se actualizan al ejecutar las habilidades. `actuation.setup` vuelve a fijar las resistencias en 3 al comenzar el encuentro. Resistencia es un nombre elegido por el autor, no un recurso especializado del motor.
 
 ## 4. Resuelve una acción
 
