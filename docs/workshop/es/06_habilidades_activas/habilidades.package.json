@@ -1,0 +1,177 @@
+{
+  "manifest": {
+    "id": "taller_06_habilidades_activas",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "facts": [
+      "senal_ajustada"
+    ]
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      },
+      "description": {
+        "text": "Una navegante que ayuda a mantener el faro."
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    },
+    {
+      "id": "orientar_senal",
+      "kind": "skill",
+      "title": {
+        "text": "Orientar la señal"
+      },
+      "description": {
+        "text": "Lara conoce el modo de ajustar el reflector."
+      },
+      "play": {
+        "label": {
+          "text": "Usar Orientar la señal"
+        },
+        "effects": [
+          {
+            "op": "record_fact",
+            "fact": "senal_ajustada"
+          }
+        ]
+      },
+      "return_policy": {
+        "default": "discard"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "llegada",
+          "op": "narrate",
+          "text": {
+            "text": "Lara llega a la cúpula del faro. El reflector está desalineado y la niebla no deja ver la costa. Puede usar su habilidad para orientar la señal o continuar sin hacerlo."
+          }
+        },
+        {
+          "id": "habilidad",
+          "op": "skill_window",
+          "max_plays": 1
+        },
+        {
+          "id": "resultado",
+          "op": "condition",
+          "test": {
+            "has_fact": "senal_ajustada"
+          },
+          "then": {
+            "node": "con_senal"
+          },
+          "else": {
+            "node": "sin_senal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "con_senal",
+      "steps": [
+        {
+          "id": "texto_exito",
+          "op": "narrate",
+          "text": {
+            "text": "Lara ajusta el reflector. El haz de luz vuelve a cruzar la niebla y los barcos recuperan una referencia."
+          }
+        },
+        {
+          "id": "fin_exito",
+          "op": "ending",
+          "ending": "luz_recuperada"
+        }
+      ]
+    },
+    {
+      "id": "sin_senal",
+      "steps": [
+        {
+          "id": "texto_espera",
+          "op": "narrate",
+          "text": {
+            "text": "Lara decide no ajustar el reflector. Sin una señal confiable, tendrá que esperar a que la niebla se disipe."
+          }
+        },
+        {
+          "id": "fin_espera",
+          "op": "ending",
+          "ending": "esperar_niebla"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "luz_recuperada",
+      "title": {
+        "text": "La señal recuperada"
+      }
+    },
+    {
+      "id": "esperar_niebla",
+      "title": {
+        "text": "Esperar a que despeje"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "1998-08-13T19:00:00-04:00",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro",
+        "status": {}
+      }
+    ],
+    "objects": [],
+    "skills": [
+      {
+        "id": "orientar_01",
+        "card": "orientar_senal",
+        "character": "lara",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "lara",
+        "hand": 1,
+        "reserve": 0
+      }
+    ],
+    "facts": [],
+    "player_character": "lara"
+  }
+}

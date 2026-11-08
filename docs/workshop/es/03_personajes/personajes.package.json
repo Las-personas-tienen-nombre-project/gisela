@@ -1,0 +1,176 @@
+{
+  "manifest": {
+    "id": "taller_03_personajes",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "encuentro"
+    }
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      },
+      "description": {
+        "text": "Una navegante que conoce las corrientes de la costa."
+      }
+    },
+    {
+      "id": "elio",
+      "kind": "character",
+      "title": {
+        "text": "Elio"
+      },
+      "description": {
+        "text": "El encargado del faro, prudente y atento a los barcos."
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "encuentro",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Lara llega al faro cuando comienza a oscurecer. Elio la espera junto a la escalera."
+          }
+        },
+        {
+          "id": "saludo_lara",
+          "op": "dialogue",
+          "speaker": "lara",
+          "text": {
+            "text": "El mar está cambiando. ¿Has visto las luces de los barcos?"
+          }
+        },
+        {
+          "id": "respuesta_elio",
+          "op": "dialogue",
+          "speaker": "elio",
+          "text": {
+            "text": "Sí. Desde la cúpula podremos orientarlos."
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué hace Lara?"
+          },
+          "options": [
+            {
+              "id": "acompanar",
+              "label": {
+                "text": "Acompañar a Elio hasta la cúpula"
+              },
+              "next": {
+                "node": "acompanados"
+              }
+            },
+            {
+              "id": "esperar",
+              "label": {
+                "text": "Esperar junto a la escalera"
+              },
+              "next": {
+                "node": "espera"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acompanados",
+      "steps": [
+        {
+          "id": "narracion",
+          "op": "narrate",
+          "text": {
+            "text": "Lara y Elio suben juntos. Desde lo alto ven las señales de los barcos."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "juntos"
+        }
+      ]
+    },
+    {
+      "id": "espera",
+      "steps": [
+        {
+          "id": "narracion",
+          "op": "narrate",
+          "text": {
+            "text": "Elio sube primero. Lara permanece abajo y observa la luz que gira sobre el muelle."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "abajo"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "juntos",
+      "title": {
+        "text": "Desde la cúpula"
+      }
+    },
+    {
+      "id": "abajo",
+      "title": {
+        "text": "Junto a la escalera"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro"
+      },
+      {
+        "id": "elio",
+        "card": "elio",
+        "location": "faro"
+      }
+    ],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

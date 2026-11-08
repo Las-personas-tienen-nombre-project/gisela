@@ -1,0 +1,200 @@
+{
+  "manifest": {
+    "id": "taller_04_dialogos_decisiones",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "encuentro"
+    }
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      },
+      "description": {
+        "text": "Una navegante que conoce las corrientes de la costa."
+      }
+    },
+    {
+      "id": "elio",
+      "kind": "character",
+      "title": {
+        "text": "Elio"
+      },
+      "description": {
+        "text": "El encargado del faro, prudente y atento a los barcos."
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "encuentro",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Lara llega al faro mientras Elio revisa la lámpara. Afuera, la niebla cubre el muelle."
+          }
+        },
+        {
+          "id": "saludo_elio",
+          "op": "dialogue",
+          "speaker": "elio",
+          "text": {
+            "text": "Tenemos poco tiempo. ¿Qué necesitas saber?"
+          }
+        },
+        {
+          "id": "pregunta",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué le pregunta Lara a Elio?"
+          },
+          "options": [
+            {
+              "id": "preguntar_luz",
+              "label": {
+                "text": "¿Por qué se apagó la luz?"
+              },
+              "next": {
+                "node": "respuesta_luz"
+              }
+            },
+            {
+              "id": "preguntar_barcos",
+              "label": {
+                "text": "¿Hay barcos cerca de la costa?"
+              },
+              "next": {
+                "node": "respuesta_barcos"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "respuesta_luz",
+      "steps": [
+        {
+          "id": "explicacion_luz",
+          "op": "dialogue",
+          "speaker": "elio",
+          "text": {
+            "text": "El viento dañó el mecanismo. Podemos repararlo si protegemos primero la lámpara."
+          }
+        },
+        {
+          "id": "respuesta_lara_luz",
+          "op": "dialogue",
+          "speaker": "lara",
+          "text": {
+            "text": "Entonces iré por la cubierta de repuesto."
+          }
+        },
+        {
+          "id": "salida_luz",
+          "op": "narrate",
+          "text": {
+            "text": "Lara encuentra la cubierta en el depósito y Elio consigue encender la señal."
+          }
+        },
+        {
+          "id": "fin_luz",
+          "op": "ending",
+          "ending": "luz_reparada"
+        }
+      ]
+    },
+    {
+      "id": "respuesta_barcos",
+      "steps": [
+        {
+          "id": "explicacion_barcos",
+          "op": "dialogue",
+          "speaker": "elio",
+          "text": {
+            "text": "Oí una sirena detrás de la niebla. Hay que avisar desde el muelle."
+          }
+        },
+        {
+          "id": "respuesta_lara_barcos",
+          "op": "dialogue",
+          "speaker": "lara",
+          "text": {
+            "text": "Llevaré la campana para guiarlos."
+          }
+        },
+        {
+          "id": "salida_barcos",
+          "op": "narrate",
+          "text": {
+            "text": "Lara hace sonar la campana junto al muelle. Desde el mar llega una respuesta."
+          }
+        },
+        {
+          "id": "fin_barcos",
+          "op": "ending",
+          "ending": "barcos_avisados"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "luz_reparada",
+      "title": {
+        "text": "La señal encendida"
+      }
+    },
+    {
+      "id": "barcos_avisados",
+      "title": {
+        "text": "La campana del muelle"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro"
+      },
+      {
+        "id": "elio",
+        "card": "elio",
+        "location": "faro"
+      }
+    ],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

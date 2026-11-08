@@ -1,0 +1,219 @@
+{
+  "manifest": {
+    "id": "taller_05_objetos",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    }
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      },
+      "description": {
+        "text": "Una navegante que conoce las corrientes de la costa."
+      }
+    },
+    {
+      "id": "elio",
+      "kind": "character",
+      "title": {
+        "text": "Elio"
+      },
+      "description": {
+        "text": "El encargado del faro, prudente y atento a los barcos."
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    },
+    {
+      "id": "linterna",
+      "kind": "object",
+      "title": {
+        "text": "Linterna de emergencia"
+      },
+      "description": {
+        "text": "Una linterna que funciona con baterías."
+      },
+      "portable": true
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Una avería deja el faro a oscuras. Elio guarda la única linterna de emergencia y Lara debe decidir si la lleva consigo."
+          }
+        },
+        {
+          "id": "decision",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué hace Lara?"
+          },
+          "options": [
+            {
+              "id": "pedir",
+              "label": {
+                "text": "Pedirle la linterna a Elio"
+              },
+              "enabled_if": {
+                "owns": {
+                  "owner": "elio",
+                  "object": "linterna_01"
+                }
+              },
+              "effects": [
+                {
+                  "op": "transfer",
+                  "object": "linterna_01",
+                  "from": "elio",
+                  "to": "lara"
+                }
+              ],
+              "next": {
+                "node": "escalera"
+              }
+            },
+            {
+              "id": "subir",
+              "label": {
+                "text": "Subir sin la linterna"
+              },
+              "next": {
+                "node": "escalera"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "escalera",
+      "steps": [
+        {
+          "id": "escalera_noche",
+          "op": "narrate",
+          "text": {
+            "text": "Lara llega al pie de la escalera. Arriba se escucha el viento que golpea las ventanas."
+          }
+        },
+        {
+          "id": "comprobar_linterna",
+          "op": "condition",
+          "test": {
+            "owns": {
+              "owner": "lara",
+              "object": "linterna_01"
+            }
+          },
+          "then": {
+            "node": "con_luz"
+          },
+          "else": {
+            "node": "sin_luz"
+          }
+        }
+      ]
+    },
+    {
+      "id": "con_luz",
+      "steps": [
+        {
+          "id": "luz",
+          "op": "narrate",
+          "text": {
+            "text": "Lara enciende la linterna y distingue los peldaños dañados. Consigue llegar a la cúpula."
+          }
+        },
+        {
+          "id": "fin_luz",
+          "op": "ending",
+          "ending": "ascenso_seguro"
+        }
+      ]
+    },
+    {
+      "id": "sin_luz",
+      "steps": [
+        {
+          "id": "oscuridad",
+          "op": "narrate",
+          "text": {
+            "text": "Sin luz, Lara no distingue los peldaños. Decide esperar a Elio antes de seguir."
+          }
+        },
+        {
+          "id": "fin_oscuro",
+          "op": "ending",
+          "ending": "esperar"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "ascenso_seguro",
+      "title": {
+        "text": "El ascenso seguro"
+      }
+    },
+    {
+      "id": "esperar",
+      "title": {
+        "text": "Esperar a Elio"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro"
+      },
+      {
+        "id": "elio",
+        "card": "elio",
+        "location": "faro"
+      }
+    ],
+    "objects": [
+      {
+        "id": "linterna_01",
+        "card": "linterna",
+        "owner": "elio"
+      }
+    ],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

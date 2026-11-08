@@ -1,0 +1,584 @@
+{
+  "manifest": {
+    "id": "taller_08_combate_resistencia",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "variables": [
+      {
+        "scope": "session",
+        "id": "resistencia_lara",
+        "type": "integer",
+        "initial": 3
+      },
+      {
+        "scope": "session",
+        "id": "resistencia_intruso",
+        "type": "integer",
+        "initial": 3
+      },
+      {
+        "scope": "session",
+        "id": "tirada_lara",
+        "type": "integer",
+        "initial": 0
+      },
+      {
+        "scope": "session",
+        "id": "tirada_intruso",
+        "type": "integer",
+        "initial": 0
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      },
+      "sofia": {
+        "strength": 7,
+        "openness": 5,
+        "fortune": 5,
+        "intelligence": 5,
+        "awareness": 7
+      }
+    },
+    {
+      "id": "intruso",
+      "kind": "character",
+      "title": {
+        "text": "Intruso"
+      },
+      "sofia": {
+        "strength": 5,
+        "openness": 5,
+        "fortune": 5,
+        "intelligence": 5,
+        "awareness": 5
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    },
+    {
+      "id": "interceptar",
+      "kind": "skill",
+      "title": {
+        "text": "Interceptar al intruso"
+      },
+      "play": {
+        "effects": [
+          {
+            "op": "roll",
+            "sides": 6,
+            "store": {
+              "var": {
+                "scope": "session",
+                "key": "tirada_lara"
+              }
+            }
+          }
+        ],
+        "requires": {
+          "all": [
+            {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_lara"
+                  }
+                },
+                "op": "gt",
+                "right": {
+                  "literal": 0
+                }
+              }
+            },
+            {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_intruso"
+                  }
+                },
+                "op": "gt",
+                "right": {
+                  "literal": 0
+                }
+              }
+            }
+          ]
+        },
+        "outcomes": [
+          {
+            "when": {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "tirada_lara"
+                  }
+                },
+                "op": "gte",
+                "right": {
+                  "literal": 3
+                }
+              }
+            },
+            "effects": [
+              {
+                "op": "set",
+                "target": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_intruso"
+                  }
+                },
+                "value": {
+                  "math": {
+                    "op": "max",
+                    "left": {
+                      "literal": 0
+                    },
+                    "right": {
+                      "math": {
+                        "op": "subtract",
+                        "left": {
+                          "var": {
+                            "scope": "session",
+                            "key": "resistencia_intruso"
+                          }
+                        },
+                        "right": {
+                          "literal": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "op": "emit_message",
+                "template": "lara acierta. resistencia_intruso: {restante}.",
+                "values": {
+                  "restante": {
+                    "var": {
+                      "scope": "session",
+                      "key": "resistencia_intruso"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "when": {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "tirada_lara"
+                  }
+                },
+                "op": "lt",
+                "right": {
+                  "literal": 3
+                }
+              }
+            },
+            "effects": [
+              {
+                "op": "emit_message",
+                "template": "lara falla el intento.",
+                "values": {}
+              }
+            ]
+          }
+        ]
+      },
+      "return_policy": {
+        "default": "hand"
+      }
+    },
+    {
+      "id": "forcejear",
+      "kind": "skill",
+      "title": {
+        "text": "Forcejear con Lara"
+      },
+      "play": {
+        "effects": [
+          {
+            "op": "roll",
+            "sides": 6,
+            "store": {
+              "var": {
+                "scope": "session",
+                "key": "tirada_intruso"
+              }
+            }
+          }
+        ],
+        "requires": {
+          "all": [
+            {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_lara"
+                  }
+                },
+                "op": "gt",
+                "right": {
+                  "literal": 0
+                }
+              }
+            },
+            {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_intruso"
+                  }
+                },
+                "op": "gt",
+                "right": {
+                  "literal": 0
+                }
+              }
+            }
+          ]
+        },
+        "outcomes": [
+          {
+            "when": {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "tirada_intruso"
+                  }
+                },
+                "op": "gte",
+                "right": {
+                  "literal": 3
+                }
+              }
+            },
+            "effects": [
+              {
+                "op": "set",
+                "target": {
+                  "var": {
+                    "scope": "session",
+                    "key": "resistencia_lara"
+                  }
+                },
+                "value": {
+                  "math": {
+                    "op": "max",
+                    "left": {
+                      "literal": 0
+                    },
+                    "right": {
+                      "math": {
+                        "op": "subtract",
+                        "left": {
+                          "var": {
+                            "scope": "session",
+                            "key": "resistencia_lara"
+                          }
+                        },
+                        "right": {
+                          "literal": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "op": "emit_message",
+                "template": "intruso acierta. resistencia_lara: {restante}.",
+                "values": {
+                  "restante": {
+                    "var": {
+                      "scope": "session",
+                      "key": "resistencia_lara"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "when": {
+              "compare": {
+                "left": {
+                  "var": {
+                    "scope": "session",
+                    "key": "tirada_intruso"
+                  }
+                },
+                "op": "lt",
+                "right": {
+                  "literal": 3
+                }
+              }
+            },
+            "effects": [
+              {
+                "op": "emit_message",
+                "template": "intruso falla el intento.",
+                "values": {}
+              }
+            ]
+          }
+        ]
+      },
+      "return_policy": {
+        "default": "hand"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "introduccion",
+          "op": "narrate",
+          "text": {
+            "text": "Lara sorprende a un intruso junto al reflector. Intenta detenerlo sin lastimarlo. Ambos empiezan con tres puntos de resistencia. Una tirada de seis caras con resultado 3 o mayor reduce en uno la resistencia rival."
+          }
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "fin",
+      "title": {
+        "text": "Fin de la demostración"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "1998-08-13T19:00:00-04:00",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro",
+        "status": {}
+      },
+      {
+        "id": "intruso",
+        "card": "intruso",
+        "location": "faro",
+        "status": {}
+      }
+    ],
+    "objects": [],
+    "skills": [
+      {
+        "id": "interceptar_01",
+        "card": "interceptar",
+        "character": "lara",
+        "zone": "hand"
+      },
+      {
+        "id": "forcejear_01",
+        "card": "forcejear",
+        "character": "intruso",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "lara",
+        "hand": 1,
+        "reserve": 0
+      },
+      {
+        "character": "intruso",
+        "hand": 1,
+        "reserve": 0
+      }
+    ],
+    "facts": [],
+    "session_variables": {
+      "resistencia_lara": 3,
+      "resistencia_intruso": 3,
+      "tirada_lara": 0,
+      "tirada_intruso": 0
+    },
+    "player_character": "lara"
+  },
+  "actuation": {
+    "initiative_die": 6,
+    "base_actions": 1,
+    "participants": [
+      {
+        "character": "lara",
+        "main_stat": "strength",
+        "allow_pass": true
+      },
+      {
+        "character": "intruso",
+        "main_stat": "strength",
+        "candidates": [
+          {
+            "skill_instance": "forcejear_01"
+          }
+        ],
+        "allow_pass": false
+      }
+    ],
+    "setup": [
+      {
+        "op": "set",
+        "target": {
+          "var": {
+            "scope": "session",
+            "key": "resistencia_lara"
+          }
+        },
+        "value": {
+          "literal": 3
+        }
+      },
+      {
+        "op": "set",
+        "target": {
+          "var": {
+            "scope": "session",
+            "key": "resistencia_intruso"
+          }
+        },
+        "value": {
+          "literal": 3
+        }
+      }
+    ],
+    "event_policies": [
+      {
+        "id": "aviso_victoria",
+        "phase": "after_action",
+        "when": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "resistencia_intruso"
+              }
+            },
+            "op": "lte",
+            "right": {
+              "literal": 0
+            }
+          }
+        },
+        "effects": [
+          {
+            "op": "emit_message",
+            "template": "Lara impide el sabotaje y detiene al intruso.",
+            "values": {}
+          }
+        ]
+      },
+      {
+        "id": "aviso_derrota",
+        "phase": "after_action",
+        "when": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "resistencia_lara"
+              }
+            },
+            "op": "lte",
+            "right": {
+              "literal": 0
+            }
+          }
+        },
+        "effects": [
+          {
+            "op": "emit_message",
+            "template": "Lara debe retirarse; el intruso logra escapar.",
+            "values": {}
+          }
+        ]
+      }
+    ],
+    "public_trace_variables": [
+      "resistencia_lara",
+      "resistencia_intruso",
+      "tirada_lara",
+      "tirada_intruso"
+    ],
+    "outcome_policies": [
+      {
+        "id": "lara_detiene_intruso",
+        "when": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "resistencia_intruso"
+              }
+            },
+            "op": "lte",
+            "right": {
+              "literal": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "intruso_escapa",
+        "when": {
+          "compare": {
+            "left": {
+              "var": {
+                "scope": "session",
+                "key": "resistencia_lara"
+              }
+            },
+            "op": "lte",
+            "right": {
+              "literal": 0
+            }
+          }
+        }
+      }
+    ]
+  }
+}

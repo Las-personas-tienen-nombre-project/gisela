@@ -1,0 +1,265 @@
+{
+  "manifest": {
+    "id": "taller_09_reglas_relaciones",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    },
+    "facts": [
+      "apoyo_mutuo"
+    ],
+    "relationship_fields": [
+      {
+        "id": "confianza",
+        "type": "integer",
+        "initial": 0
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      }
+    },
+    {
+      "id": "elio",
+      "kind": "character",
+      "title": {
+        "text": "Elio"
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "Una tormenta sacude el faro. Elio pide a Lara que lo ayude a asegurar la lámpara antes de que se rompa."
+          }
+        },
+        {
+          "id": "decidir",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué responde Lara?"
+          },
+          "options": [
+            {
+              "id": "ayudar",
+              "label": {
+                "text": "Ayudar a Elio con la lámpara"
+              },
+              "effects": [
+                {
+                  "op": "add",
+                  "target": {
+                    "relationship": {
+                      "from": "lara",
+                      "to": "elio",
+                      "key": "confianza"
+                    }
+                  },
+                  "value": {
+                    "literal": 2
+                  }
+                }
+              ],
+              "next": {
+                "node": "despues"
+              }
+            },
+            {
+              "id": "apartarse",
+              "label": {
+                "text": "Subir sola a revisar la señal"
+              },
+              "effects": [
+                {
+                  "op": "add",
+                  "target": {
+                    "relationship": {
+                      "from": "lara",
+                      "to": "elio",
+                      "key": "confianza"
+                    }
+                  },
+                  "value": {
+                    "literal": -1
+                  }
+                }
+              ],
+              "next": {
+                "node": "despues"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "despues",
+      "steps": [
+        {
+          "id": "puerta",
+          "op": "narrate",
+          "text": {
+            "text": "Cuando la tormenta arrecia, Lara necesita que Elio le alcance el cable de repuesto."
+          }
+        },
+        {
+          "id": "resolver",
+          "op": "condition",
+          "test": {
+            "has_fact": "apoyo_mutuo"
+          },
+          "then": {
+            "node": "juntos"
+          },
+          "else": {
+            "node": "solos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "juntos",
+      "steps": [
+        {
+          "id": "texto",
+          "op": "narrate",
+          "text": {
+            "text": "Elio confía en Lara y le pasa el cable sin dudar. Entre los dos mantienen encendida la señal."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "luz_encendida"
+        }
+      ]
+    },
+    {
+      "id": "solos",
+      "steps": [
+        {
+          "id": "texto",
+          "op": "narrate",
+          "text": {
+            "text": "Elio no alcanza a coordinarse con Lara. La lámpara queda apagada y ambos esperan a que amaine la tormenta."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "luz_apagada"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "confianza_ganada",
+      "trigger": {
+        "on": "state_changed",
+        "target": {
+          "relationship": {
+            "from": "lara",
+            "to": "elio",
+            "key": "confianza"
+          }
+        }
+      },
+      "when": {
+        "all": [
+          {
+            "not": {
+              "has_fact": "apoyo_mutuo"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "relationship": {
+                  "from": "lara",
+                  "to": "elio",
+                  "key": "confianza"
+                }
+              },
+              "op": "gte",
+              "right": {
+                "literal": 2
+              }
+            }
+          }
+        ]
+      },
+      "effects": [
+        {
+          "op": "record_fact",
+          "fact": "apoyo_mutuo"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "luz_encendida",
+      "title": {
+        "text": "La señal resiste"
+      }
+    },
+    {
+      "id": "luz_apagada",
+      "title": {
+        "text": "La noche sin luz"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2026-10-30T19:00:00-03:00",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "status": {},
+        "location": "faro"
+      },
+      {
+        "id": "elio",
+        "card": "elio",
+        "status": {},
+        "location": "faro"
+      }
+    ],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

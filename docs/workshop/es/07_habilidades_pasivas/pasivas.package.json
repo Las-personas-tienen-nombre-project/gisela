@@ -1,0 +1,247 @@
+{
+  "manifest": {
+    "id": "taller_07_habilidades_pasivas",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "inicio"
+    }
+  },
+  "traits": {
+    "schema_version": "traits.v1",
+    "traits": [
+      {
+        "id": "equilibrio",
+        "label": "Equilibrio en altura",
+        "entity_kinds": [
+          "character"
+        ],
+        "visibility": "public",
+        "contributions": [
+          {
+            "id": "apoyo",
+            "when": {
+              "role": "actor",
+              "all_tags": [
+                "equilibrio"
+              ]
+            },
+            "add": {
+              "slot": "bonus",
+              "amount": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "lara",
+      "kind": "character",
+      "title": {
+        "text": "Lara"
+      }
+    },
+    {
+      "id": "faro",
+      "kind": "location",
+      "title": {
+        "text": "Faro de niebla"
+      }
+    },
+    {
+      "id": "paso_seguro",
+      "kind": "skill",
+      "title": {
+        "text": "Paso seguro"
+      },
+      "description": {
+        "text": "Lara mantiene el equilibrio sobre superficies estrechas."
+      },
+      "passive_traits": [
+        "equilibrio"
+      ],
+      "play": {
+        "effects": []
+      },
+      "return_policy": {
+        "default": "hand"
+      }
+    }
+  ],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "inicio",
+      "steps": [
+        {
+          "id": "entrada",
+          "op": "narrate",
+          "text": {
+            "text": "La pasarela exterior del faro está mojada. Lara puede intentar cruzarla o esperar a que Elio le ayude."
+          }
+        },
+        {
+          "id": "elegir",
+          "op": "choice",
+          "prompt": {
+            "text": "¿Qué hará Lara?"
+          },
+          "options": [
+            {
+              "id": "cruzar",
+              "label": {
+                "text": "Cruzar la pasarela"
+              },
+              "next": {
+                "node": "pasarela"
+              }
+            },
+            {
+              "id": "esperar",
+              "label": {
+                "text": "Esperar a Elio"
+              },
+              "next": {
+                "node": "espera"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pasarela",
+      "steps": [
+        {
+          "id": "comprobar",
+          "op": "condition",
+          "test": {
+            "has_trait": {
+              "entity": "lara",
+              "trait": "equilibrio"
+            }
+          },
+          "then": {
+            "node": "cruce_seguro"
+          },
+          "else": {
+            "node": "cruce_detenido"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cruce_seguro",
+      "steps": [
+        {
+          "id": "texto",
+          "op": "narrate",
+          "text": {
+            "text": "Lara avanza con cuidado, mantiene el equilibrio y llega al otro extremo de la pasarela."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "llegada"
+        }
+      ]
+    },
+    {
+      "id": "cruce_detenido",
+      "steps": [
+        {
+          "id": "texto",
+          "op": "narrate",
+          "text": {
+            "text": "La pasarela está demasiado resbaladiza. Lara retrocede antes de arriesgarse a caer."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "retroceso"
+        }
+      ]
+    },
+    {
+      "id": "espera",
+      "steps": [
+        {
+          "id": "texto",
+          "op": "narrate",
+          "text": {
+            "text": "Lara decide no arriesgarse. Espera a Elio bajo el alero del faro."
+          }
+        },
+        {
+          "id": "fin",
+          "op": "ending",
+          "ending": "esperando"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "llegada",
+      "title": {
+        "text": "Al otro lado"
+      }
+    },
+    {
+      "id": "retroceso",
+      "title": {
+        "text": "Regresar a salvo"
+      }
+    },
+    {
+      "id": "esperando",
+      "title": {
+        "text": "Esperar a Elio"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "1998-08-13T19:00:00-04:00",
+    "locations": [
+      {
+        "id": "faro",
+        "card": "faro"
+      }
+    ],
+    "characters": [
+      {
+        "id": "lara",
+        "card": "lara",
+        "location": "faro",
+        "status": {}
+      }
+    ],
+    "objects": [],
+    "skills": [
+      {
+        "id": "paso_seguro_01",
+        "card": "paso_seguro",
+        "character": "lara",
+        "zone": "hand"
+      }
+    ],
+    "effects": [],
+    "capacities": [
+      {
+        "character": "lara",
+        "hand": 1,
+        "reserve": 0
+      }
+    ],
+    "facts": [],
+    "player_character": "lara"
+  }
+}
