@@ -81,3 +81,7 @@ La admisión confirma la estructura y las referencias. Para verificar las consec
 ## Qué aprendiste
 
 Un encuentro por turnos puede construirse con el reloj de actuación, dos habilidades, variables de sesión, tiradas, condiciones y políticas de cierre. GISELA no define puntos de vida ni daño de forma universal: el autor decide qué significa perder resistencia y cuándo termina una confrontación. Puedes consultar la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md) para conocer el resto de las operaciones.
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../09_reglas_relaciones/README.md)

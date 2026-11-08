@@ -104,3 +104,7 @@ La validación revisa la estructura y las referencias. Juega ambas alternativas 
 ## Qué aprendiste
 
 Una ficha `skill` define la habilidad; `initial_state.skills` crea una instancia que pertenece a un personaje. `skill_window` permite utilizarla, `play.effects` aplica sus consecuencias y `return_policy` determina qué ocurre con ella después. Este taller no utiliza parámetros elegidos por el jugador, dados ni rasgos pasivos; los estudiaremos por separado. Para revisar los campos disponibles, consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../07_habilidades_pasivas/README.md)

@@ -1,6 +1,6 @@
 # GISELA DSL 1.5 official reference
 
-This index describes the public contracts in the supplied repository. It is not a beginner tutorial.
+This index describes the public contracts in the supplied repository. It is not a beginner tutorial. For learning by doing, start with the [Spanish author course](../../workshop/es/README.md); to find a field or rule by authoring task, use its [DSL lookup guide](../../workshop/es/11_referencia_dsl.md).
 
 ## Authority
 
@@ -13,7 +13,7 @@ Public versioned schemas and semantic admission are the first source for authori
 - Public engine code and tests are in `gisela/engine` and `gisela/engine/tests`.
 - Productive packages are in `gisela/packages`, including Tegularis and Faro de Niebla.
 - Existing architecture is in `docs/architecture`.
-- Current guides are in `docs/guides`. Earlier teaching material is linked from `docs/history/README.md`; the Tegularis workshop stays at its original path for executable exercises.
+- Current guides are in `docs/guides`. Earlier teaching material is linked from `docs/history/README.md`; the archived Tegularis workshop is indexed under `docs/history/workshops/autoria_dsl_15/`.
 - Historical changes are summarized in `CHANGELOG.md`; preserved execution evidence is in `docs/operatives/evidence`, and retired reports are recoverable through Git.
 
 ## Reference chapters

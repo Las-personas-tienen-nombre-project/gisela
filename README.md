@@ -2,7 +2,7 @@
 
 GISELA means _enGine for Interactive Stories through Events, Links, and Actions_. It is a narrative engine built around a declarative domain-specific language (DSL) for state-based interactive storytelling. This repository contains the engine, its independent libraries, CLI client GLAUQUIR, tests, documentation, and example narrative packages. The Ren'Py integration belongs to a separate demo repository; it is not required to use GISELA.
 
-This README explains the current implementation. For design history and architecture decisions, use the links at the end. The older documents describe important decisions but some were written before later features were implemented.
+This README explains the current implementation. **New authors:** start with the [Spanish author course](docs/workshop/es/README.md) for installation, nine executable workshops, a capability catalog, and a DSL lookup guide. **Developers:** use the [documentation index](docs/README.md) for architecture, contracts, and verification. For design history and architecture decisions, use the links at the end. The older documents describe important decisions but some were written before later features were implemented.
 
 ## Narrative language and execution
 
@@ -129,7 +129,7 @@ These projections do not change the logical state or consume random numbers.
 The public causal window contains at most 40 entries; a visual role alone does
 not establish that a resource change represents damage or healing.
 
-See the [presentation examples](docs/history/workshops/presentacion/README.md) and the [archived Tegularis workshop](docs/history/workshops/autoria_dsl_15/README.md). The [new Spanish author course](docs/workshop/es/README.md) is being prepared; legacy exercises are indexed in the historical archive and are not the current learning path.
+See the [presentation examples](docs/history/workshops/presentacion/README.md) and the [archived Tegularis workshop](docs/history/workshops/autoria_dsl_15/README.md). The [Spanish author course](docs/workshop/es/README.md) has nine practical workshops, a [capability catalog](docs/workshop/es/10_capacidades.md), and a [DSL lookup guide](docs/workshop/es/11_referencia_dsl.md). Legacy exercises are indexed in the historical archive and are not the current learning path.
 
 ## World state and progression
 

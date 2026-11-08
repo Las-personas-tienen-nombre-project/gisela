@@ -91,3 +91,7 @@ Si hay un error, revisa las comillas y comas de JSON, la declaración en `manife
 `record_fact` conserva un hecho ocurrido durante la sesión. `has_fact` permite consultarlo y `condition` decide qué recorrido seguir según ese resultado. De esta manera, una decisión puede tener consecuencias posteriores, incluso si las alternativas vuelven a encontrarse en la misma escena.
 
 En talleres posteriores utilizaremos personajes, conversaciones y objetos. Para consultar los campos admitidos, utiliza la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../03_personajes/README.md)

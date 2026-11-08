@@ -82,3 +82,7 @@ Si el archivo deja de funcionar, revisa primero las comillas, las comas y que la
 Una historia sencilla puede tener un comienzo común y dos desenlaces. `choice` ofrece la decisión y cada `next.node` señala el fragmento que se ejecutará. En el siguiente taller utilizaremos estado y condiciones para que una decisión también influya en situaciones posteriores.
 
 Para conocer más campos y operaciones, consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md). El [material histórico del paraguas](../../../history/authoring_manuals/es/README.md) contiene ideas para ejercicios posteriores, pero sus antiguos paquetes por etapas no forman parte de este taller.
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../02_faro/README.md)

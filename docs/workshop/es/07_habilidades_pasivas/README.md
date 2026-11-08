@@ -107,3 +107,7 @@ La validación comprueba la estructura y las referencias. Ejecuta el recorrido c
 ## Qué aprendiste
 
 Una habilidad pasiva puede aportar un rasgo a un personaje sin que se utilice como una acción. `passive_traits` declara ese aporte; `initial_state.skills` asigna su fuente, y `has_trait` permite consultar si el personaje dispone del rasgo. TRAITS también puede aportar modificadores numéricos en evaluaciones que coincidan con su contexto, pero esa capacidad se estudiará más adelante. Consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../08_combate/README.md)

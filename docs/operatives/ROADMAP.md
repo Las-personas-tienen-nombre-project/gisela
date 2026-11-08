@@ -22,7 +22,7 @@ DSL 1.5 also supports author-defined presentation regions and named views: publi
 tables, causal grouping, restricted templates, and visual roles. These additions
 project public data without changing logical state or random outcomes. See the [presentation examples](../history/workshops/presentacion/README.md). The former
 [nine-unit Tegularis workshop](../history/workshops/autoria_dsl_15/README.md) remains
-available as legacy teaching material with executable laboratories. A [Spanish-first course](../workshop/es/README.md) is planned; its content is not yet complete.
+available as legacy teaching material with executable laboratories. The [Spanish author course](../workshop/es/README.md) now includes three introductory chapters, nine executable workshops, a [capability catalog](../workshop/es/10_capacidades.md), and a [DSL lookup guide](../workshop/es/11_referencia_dsl.md). A final editorial review and English translation remain outstanding.
 
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
@@ -51,7 +51,7 @@ For a developer route, read [Quick start](../guides/QUICK_START.md), [GLAUQUIR](
 
 ## Documentation work
 
-The next documentation stage is a Spanish-first practical course for authors, followed by an English translation. Older manuals are archived. Legacy workshops remain at their verified paths to preserve exercises and historical integrity, but are removed from the active learning route. See the [documentation index](../README.md).
+The Spanish-first [author course](../workshop/es/README.md) is drafted through its reference guide. The current documentation task is editorial review, navigation consistency, and verification; English translation remains outstanding. Older author manuals and legacy workshops have been moved to the [historical archive](../history/README.md), with their verified tools and integrity evidence preserved. See the [documentation index](../README.md) for entry points. Workshop 08 uses the separate GLAUQUIR `--actuation` laboratory, not the normal narrative flow.
 
 ## Historical records
 

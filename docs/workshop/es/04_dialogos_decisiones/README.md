@@ -84,3 +84,7 @@ El validador comprueba la estructura y las referencias, pero no decide si los di
 ## Qué aprendiste
 
 `dialogue` muestra lo que dice un personaje. `choice` presenta alternativas y conecta cada una con un nodo. Combinándolos, puedes escribir conversaciones con respuestas diferentes y consecuencias narrativas visibles. Para los campos admitidos, consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../05_objetos_equipo/README.md)

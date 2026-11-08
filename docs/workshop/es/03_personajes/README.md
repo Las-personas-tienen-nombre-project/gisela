@@ -98,3 +98,7 @@ Si aparece un error, revisa que cada instancia apunte a una ficha existente y qu
 Una ficha (`cards`) define un personaje o un lugar. Una instancia (`initial_state`) indica qué existe cuando comienza la historia y dónde se encuentra. Las referencias, como `speaker`, permiten utilizar esos personajes sin repetir sus definiciones.
 
 En el próximo taller trabajaremos con conversaciones y decisiones. Para consultar otros campos disponibles, utiliza la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../04_dialogos_decisiones/README.md)

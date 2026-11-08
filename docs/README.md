@@ -2,14 +2,17 @@
 
 Start with the [project README](../README.md) for the engine and its component definitions. Code, versioned contracts, and tests determine actual behavior. This index links to explanations and working material; it does not define a separate contract.
 
-## Use GISELA
+## Write a story (authors)
 
-- [Quick start](guides/QUICK_START.md): install and run an example.
-- [Create a package](guides/CREAR_PAQUETE.md): write a small story with decisions and endings.
-- [GLAUQUIR](guides/GLAUQUIR.md): use the text client.
-- [DSL 1.5 reference](reference/dsl_1_5/README.md): supported fields and semantic limits.
+Start with the [Spanish author course](workshop/es/README.md). Follow [what GISELA is](workshop/es/01_que_es_gisela.md), [use cases](workshop/es/02_casos_de_uso.md), and [installation](workshop/es/03_instalacion.md), then the nine workshops in order. If you already know what you need, use the [capability catalog](workshop/es/10_capacidades.md) or [find a DSL field by task](workshop/es/11_referencia_dsl.md). An English course translation is not yet available.
 
-The [Spanish author course](workshop/es/README.md) is being prepared for beginners and will be translated into English later. Its listed workshops are planned, not yet published. Previous teaching materials are indexed in the [historical archive](history/README.md).
+For short, standalone instructions, use [Quick start](guides/QUICK_START.md), [Create a package](guides/CREAR_PAQUETE.md), or the [GLAUQUIR client guide](guides/GLAUQUIR.md).
+
+## Look up a rule (reference)
+
+- [DSL 1.5 official reference](reference/dsl_1_5/README.md): normative chapters and schema field inventory, not a beginner course.
+- [Errors and validation](reference/dsl_1_5/06_ERRORS.md) and [validation reference](reference/dsl_1_5/12_VALIDATION.md): diagnose rejected packages.
+- [Known discrepancies](reference/dsl_1_5/DISCREPANCIES.md): documented limitations and differences.
 
 ## Develop GISELA
 

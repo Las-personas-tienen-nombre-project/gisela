@@ -67,3 +67,7 @@ La admisión comprueba el contrato; para comprobar las consecuencias debes ejecu
 ## Qué aprendiste
 
 Una relación puede cambiar por una decisión y provocar una regla automática. La regla registra un hecho que el relato consulta más adelante. Para más detalles consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Consultar el catálogo de capacidades](../10_capacidades.md)

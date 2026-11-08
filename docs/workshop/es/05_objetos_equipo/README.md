@@ -113,3 +113,7 @@ La validación revisa la estructura y las referencias. Recorre las dos alternati
 ## Qué aprendiste
 
 `cards` define los tipos de objetos; `initial_state.objects` contiene sus instancias. `transfer` cambia quién tiene un objeto y `owns` permite comprobarlo. Este taller trata **pertenencia y transferencia**, no un sistema de ranuras de equipo, ropa equipada o estadísticas de equipamiento. Para conocer los campos admitidos, consulta la [referencia DSL 1.5](../../../reference/dsl_1_5/README.md).
+
+---
+
+[Volver al índice del curso](../README.md) · [Siguiente taller](../06_habilidades_activas/README.md)
