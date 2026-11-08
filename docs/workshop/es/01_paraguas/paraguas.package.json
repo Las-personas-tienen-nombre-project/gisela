@@ -1,0 +1,78 @@
+{
+  "manifest": {
+    "id": "taller_01_paraguas",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": ["es_cl"],
+    "entry": {"node": "estacion"}
+  },
+  "cards": [],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "estacion",
+      "steps": [
+        {
+          "id": "encuentro",
+          "op": "narrate",
+          "text": {"text": "Elena encuentra un paraguas azul en el banco de una estación de tren. Tomás, que espera a su lado, dice que debe ser de Claudia, una compañera de trabajo. Elena no está tan segura."}
+        },
+        {
+          "id": "que_hacer",
+          "op": "choice",
+          "prompt": {"text": "¿Qué hará Elena con el paraguas?"},
+          "options": [
+            {
+              "id": "examinar",
+              "label": {"text": "Examinar el paraguas antes de entregarlo"},
+              "next": {"node": "etiqueta"}
+            },
+            {
+              "id": "entregar",
+              "label": {"text": "Llevarlo directamente a objetos perdidos"},
+              "next": {"node": "objetos_perdidos"}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etiqueta",
+      "steps": [
+        {
+          "id": "hallazgo",
+          "op": "narrate",
+          "text": {"text": "En la parte interior del mango hay una etiqueta con las iniciales M. R. Elena se las muestra a Tomás, que admite que su suposición sobre Claudia podría estar equivocada. Ambos dejan el paraguas en objetos perdidos y mencionan la etiqueta para ayudar a identificar a su dueño."}
+        },
+        {"id": "fin_etiqueta", "op": "ending", "ending": "con_pista"}
+      ]
+    },
+    {
+      "id": "objetos_perdidos",
+      "steps": [
+        {
+          "id": "entrega",
+          "op": "narrate",
+          "text": {"text": "Elena entrega el paraguas en objetos perdidos sin examinarlo. Tomás se despide convencido de que Claudia preguntará por él, aunque ninguno de los dos ha comprobado a quién pertenece."}
+        },
+        {"id": "fin_entrega", "op": "ending", "ending": "sin_pista"}
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {"id": "con_pista", "title": {"text": "Una pista útil"}},
+    {"id": "sin_pista", "title": {"text": "Una duda pendiente"}}
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [],
+    "characters": [],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

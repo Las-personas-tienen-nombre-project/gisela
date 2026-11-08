@@ -115,8 +115,8 @@ DSL 1.5 supports ordered presentation regions, public tables, causal event group
 and restricted templates. Presentation projects public data without changing the
 logical state or consuming random numbers. The public causal window contains at
 most 40 entries; author-defined visual roles do not prove damage or healing.
-See the [presentation workshops](../docs/guides/workshops/README.md) and the
-[nine-unit authoring workshop](../workshops/autoria_dsl_15/README.md).
+See the [presentation workshops](../docs/history/workshops/presentacion/README.md) and the
+[nine-unit authoring workshop](../docs/history/workshops/autoria_dsl_15/README.md).
 
 ## World state and progression
 

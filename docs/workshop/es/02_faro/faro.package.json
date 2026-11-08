@@ -1,0 +1,150 @@
+{
+  "manifest": {
+    "id": "taller_02_faro",
+    "format_version": "1.5",
+    "language": "es_cl",
+    "languages": [
+      "es_cl"
+    ],
+    "entry": {
+      "node": "muelle"
+    },
+    "facts": [
+      "plano_consultado"
+    ]
+  },
+  "cards": [],
+  "scenes": [],
+  "nodes": [
+    {
+      "id": "muelle",
+      "steps": [
+        {
+          "id": "llegada",
+          "op": "narrate",
+          "text": {
+            "text": "Lara llega al faro antes de que caiga la noche. La niebla oculta las boyas y Elio le pide ayuda para orientar la señal hacia los barcos."
+          }
+        },
+        {
+          "id": "preparacion",
+          "op": "choice",
+          "prompt": {
+            "text": "Antes de subir a la cúpula, Lara tiene tiempo para una sola tarea."
+          },
+          "options": [
+            {
+              "id": "leer",
+              "label": {
+                "text": "Consultar el plano de las corrientes"
+              },
+              "effects": [
+                {
+                  "op": "record_fact",
+                  "fact": "plano_consultado"
+                }
+              ],
+              "next": {
+                "node": "cupula"
+              }
+            },
+            {
+              "id": "subir",
+              "label": {
+                "text": "Subir directamente a la cúpula"
+              },
+              "next": {
+                "node": "cupula"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cupula",
+      "steps": [
+        {
+          "id": "noche",
+          "op": "narrate",
+          "text": {
+            "text": "En la cúpula, Lara encuentra la campana de señales. Elio señala dos canales casi invisibles entre la niebla. Solo uno conduce a la entrada segura."
+          }
+        },
+        {
+          "id": "recordar",
+          "op": "condition",
+          "test": {
+            "has_fact": "plano_consultado"
+          },
+          "then": {
+            "node": "ruta_segura"
+          },
+          "else": {
+            "node": "ruta_incierta"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ruta_segura",
+      "steps": [
+        {
+          "id": "seguro",
+          "op": "narrate",
+          "text": {
+            "text": "Lara recuerda el dibujo de las corrientes y orienta la señal hacia el canal profundo. Desde el mar llega la respuesta de los barcos: han encontrado la entrada."
+          }
+        },
+        {
+          "id": "fin_seguro",
+          "op": "ending",
+          "ending": "barcos_a_salvo"
+        }
+      ]
+    },
+    {
+      "id": "ruta_incierta",
+      "steps": [
+        {
+          "id": "incierto",
+          "op": "narrate",
+          "text": {
+            "text": "Sin el plano, Lara no puede distinguir los canales. Elio enciende una señal de espera para que los barcos se mantengan lejos de las rocas hasta el amanecer."
+          }
+        },
+        {
+          "id": "fin_incierto",
+          "op": "ending",
+          "ending": "espera_en_la_niebla"
+        }
+      ]
+    }
+  ],
+  "rules": [],
+  "endings": [
+    {
+      "id": "barcos_a_salvo",
+      "title": {
+        "text": "La ruta segura"
+      }
+    },
+    {
+      "id": "espera_en_la_niebla",
+      "title": {
+        "text": "Esperar hasta el amanecer"
+      }
+    }
+  ],
+  "initial_state": {
+    "world_time": "2000-01-01T12:00:00Z",
+    "locations": [],
+    "characters": [],
+    "objects": [],
+    "skills": [],
+    "effects": [],
+    "capacities": [],
+    "facts": [],
+    "session_variables": {}
+  }
+}

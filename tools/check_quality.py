@@ -1,6 +1,6 @@
 """Comprueba límites de tamaño en el código y la documentación mantenidos.
 
-Los manuscritos y los archivos históricos no se modifican por esta política.
+Los manuscritos y docs/history quedan fuera de esta política estructural.
 """
 
 from __future__ import annotations
@@ -43,6 +43,7 @@ def maintained_files(root: Path):
                 path.is_file()
                 and path.suffix in EXTENSIONS
                 and relative not in EXCLUDED
+                and not path.is_relative_to(root / "docs" / "history")
             ) and not any(
                 part in {".venv", "__pycache__", ".git"} for part in path.parts
             ):

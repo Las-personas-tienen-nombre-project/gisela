@@ -70,7 +70,7 @@ are pure projections: they do not modify logical state or draw random values.
 The causal window contains at most 40 entries. A visual role is an author
 label and does not prove that a resource change represents damage or healing.
 See the [presentation contract](../../docs/architecture/PRESENTACION_DECLARATIVA_V082.md)
-and [workshops](../../docs/guides/workshops/README.md).
+and [workshops](../../docs/history/workshops/presentacion/README.md).
 
 ## Implementation tests
 

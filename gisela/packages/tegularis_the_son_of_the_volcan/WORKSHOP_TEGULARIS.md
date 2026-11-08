@@ -4,7 +4,7 @@
 `01_cartas_gisela_v15.package.json`. Sus limitaciones no representan
 las capacidades actuales del motor. El [taller de cierre](WORKSHOP_CIERRE_V077.md)
 utiliza el combate completo del paquete 09; los
-[talleres de presentación](../../../docs/guides/workshops/README.md) explican las vistas posteriores.
+[talleres de presentación](../../../docs/history/workshops/presentacion/README.md) explican las vistas posteriores.
 
 **Laboratorio práctico de cartas, TRAITS, S.O.F.I.A. y DICE**  
 **Jugador:** Parnecio Esparcales; **Compañeros:** Gillius Cabezadeencina, Clarisa de la Hojarasca e Iosepus Knechti.

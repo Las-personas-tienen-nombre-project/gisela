@@ -66,11 +66,11 @@ def check_independent_narrative():
 def check_all():
     # Import late so that the tool still works when invoked from another cwd.
     sys.path.insert(0, str(ROOT))
+    from docs.history.workshops.autoria_dsl_15.evaluacion.build_canonical_copies import (
+        compile_copies,
+    )
     from packages.tegularis_the_son_of_the_volcan.build_presentations import (
         compile_variants,
-    )
-    from workshops.autoria_dsl_15.evaluacion.build_canonical_copies import (
-        compile_copies,
     )
 
     check_canonical()

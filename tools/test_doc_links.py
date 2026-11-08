@@ -89,7 +89,13 @@ class CurrentDocumentationIntegrity(unittest.TestCase):
         for entry in json.loads(manifest.read_text(encoding="utf-8")):
             with self.subTest(origin=entry["origen"]):
                 self.assertFalse((root / entry["origen"]).exists())
-                target = root / entry["destino"]
+                historical = Path(entry["destino"])
+                if historical.parts[:3] == ("docs", "guides", "workshops"):
+                    target = (
+                        root / "docs/history/workshops/presentacion" / historical.name
+                    )
+                else:
+                    target = root / historical
                 self.assertTrue(target.is_file())
                 if entry["evidencia"]:
                     self.assertEqual(

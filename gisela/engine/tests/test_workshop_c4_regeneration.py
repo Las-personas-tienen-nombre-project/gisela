@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from workshops.autoria_dsl_15.evaluacion.build_canonical_copies import (
+from docs.history.workshops.autoria_dsl_15.evaluacion.build_canonical_copies import (
     CANON,
     OVERLAYS,
     WORKSHOP,

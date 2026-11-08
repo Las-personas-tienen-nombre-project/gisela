@@ -5,7 +5,7 @@ This file summarizes changes relevant to using, authoring, integrating, and main
 ## 2026-11-07 - Documentation and author course preparation
 
 - Archived the three Spanish *El paraguas olvidado* manuals for reuse. Their staged practice packages are not included in this repository.
-- Kept the older Tegularis workshop in place because its scripts rely on fixed paths. It is no longer presented as the main learning path.
+- Archived the older Tegularis workshop and presentation workshops under `docs/history/workshops/`, updating teaching checks and links while preserving historical evidence files.
 - Centralized project-level component definitions in the root README, and aligned the documentation index and roadmap in English.
 - The new author course will be written in Spanish first and translated later. No engine or DSL contracts changed.
 
@@ -65,4 +65,4 @@ References: [client API](docs/architecture/API_CLIENTES.md), [ALBERTO](docs/arch
 - Declarative presentation with regions, views, tables, causal grouping, and restricted templates, without changing logical state when public data is rendered.
 - Revisions to Observe/Act projections, CLI behavior, and determinism checks.
 
-References: [narrative language](docs/architecture/NARRATIVE_LANGUAGE.md), [declarative presentation](docs/architecture/PRESENTACION_DECLARATIVA_V082.md), [DSL 1.5](docs/reference/dsl_1_5/README.md), and [presentation examples](docs/guides/workshops/README.md).
+References: [narrative language](docs/architecture/NARRATIVE_LANGUAGE.md), [declarative presentation](docs/architecture/PRESENTACION_DECLARATIVA_V082.md), [DSL 1.5](docs/reference/dsl_1_5/README.md), and [presentation examples](docs/history/workshops/presentacion/README.md).

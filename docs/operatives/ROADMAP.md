@@ -20,10 +20,9 @@ The current CLI also labels available actions with letters and accepts them as s
 
 DSL 1.5 also supports author-defined presentation regions and named views: public
 tables, causal grouping, restricted templates, and visual roles. These additions
-project public data without changing logical state or random outcomes. See the [presentation examples](../guides/workshops/README.md). The former
-[nine-unit Tegularis workshop](../../workshops/autoria_dsl_15/README.md) remains
-available as legacy teaching material with executable laboratories. A new
-Spanish-first course is planned; its content is not yet complete.
+project public data without changing logical state or random outcomes. See the [presentation examples](../history/workshops/presentacion/README.md). The former
+[nine-unit Tegularis workshop](../history/workshops/autoria_dsl_15/README.md) remains
+available as legacy teaching material with executable laboratories. A [Spanish-first course](../workshop/es/README.md) is planned; its content is not yet complete.
 
 H5 implemented a Ren'Py adapter in the source demo repository (not included here) and an offline test package. The adapter tests compare GISELA sessions and saved state against direct engine execution. The real Ren'Py SDK visual acceptance and target platform packaging have not been verified here.
 
@@ -52,7 +51,7 @@ For a developer route, read [Quick start](../guides/QUICK_START.md), [GLAUQUIR](
 
 ## Documentation work
 
-The next documentation stage is a Spanish-first practical course for authors, followed by an English translation. Older manuals are archived, while executable workshops stay in place until their materials can be replaced without breaking tests. See the [documentation index](../README.md).
+The next documentation stage is a Spanish-first practical course for authors, followed by an English translation. Older manuals are archived. Legacy workshops remain at their verified paths to preserve exercises and historical integrity, but are removed from the active learning route. See the [documentation index](../README.md).
 
 ## Historical records
 

@@ -50,6 +50,7 @@ gisela/contracts/session.schema.json
 gisela/contracts/test_admission_v12.py
 gisela/contracts/test_cli_description_pa001.py
 gisela/contracts/test_contracts.py
+gisela/contracts/test_corrective_admission_fuzz.py
 gisela/contracts/test_determinism.py
 gisela/contracts/test_e1_evaluations_v14.py
 gisela/contracts/test_package_import_errors.py
@@ -104,6 +105,7 @@ gisela/engine/actuation_session.py
 gisela/engine/annotations.py
 gisela/engine/author_presentation.py
 gisela/engine/authorized_gateway.py
+gisela/engine/candidate_diagnostics.py
 gisela/engine/causal_trace.py
 gisela/engine/checkpoint_store.py
 gisela/engine/conditions.py
@@ -145,6 +147,7 @@ gisela/engine/world_lifecycle.py
 gisela/engine/world_skills.py
 gisela/engine/world_traits.py
 gisela/engine/world_values.py
+gisela/packages/c9_turno_noche.package.json
 gisela/packages/e1_reparacion_sin_jugador.package.json
 gisela/packages/ejemplo_minimo.package.json
 gisela/packages/h2_descarte.package.json

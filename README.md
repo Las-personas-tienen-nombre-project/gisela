@@ -129,7 +129,7 @@ These projections do not change the logical state or consume random numbers.
 The public causal window contains at most 40 entries; a visual role alone does
 not establish that a resource change represents damage or healing.
 
-See the [presentation examples](docs/guides/workshops/README.md) and the [archived Tegularis workshop](workshops/autoria_dsl_15/README.md). The new Spanish course is being designed; older teaching material is not a validated learning path.
+See the [presentation examples](docs/history/workshops/presentacion/README.md) and the [archived Tegularis workshop](docs/history/workshops/autoria_dsl_15/README.md). The [new Spanish author course](docs/workshop/es/README.md) is being prepared; legacy exercises are indexed in the historical archive and are not the current learning path.
 
 ## World state and progression
 

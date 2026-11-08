@@ -9,7 +9,7 @@ Start with the [project README](../README.md) for the engine and its component d
 - [GLAUQUIR](guides/GLAUQUIR.md): use the text client.
 - [DSL 1.5 reference](reference/dsl_1_5/README.md): supported fields and semantic limits.
 
-The new author course will be written in Spanish first, then translated. Until it is ready, the current guides remain available. Previous teaching materials are listed in the [historical archive](history/README.md).
+The [Spanish author course](workshop/es/README.md) is being prepared for beginners and will be translated into English later. Its listed workshops are planned, not yet published. Previous teaching materials are indexed in the [historical archive](history/README.md).
 
 ## Develop GISELA
 

@@ -8,6 +8,7 @@ from pathlib import Path
 from tools.check_quality import (
     MAX_FILE_LINES,
     MAX_FUNCTION_LINES,
+    check,
     function_lines,
     function_parameters,
     problems,
@@ -15,6 +16,33 @@ from tools.check_quality import (
 
 
 class QualityGuardTest(unittest.TestCase):
+    def test_only_history_archive_is_excluded_from_structural_limits(self):
+        for folder, archived in (
+            ("docs/history", True),
+            ("docs/history/workshops/legacy", True),
+            ("docs/workshop/es", False),
+            ("docs/guides", False),
+            ("docs/history_extra", False),
+            ("gisela/history", False),
+        ):
+            with (
+                self.subTest(folder=folder),
+                tempfile.TemporaryDirectory() as directory,
+            ):
+                root = Path(directory)
+                path = root / folder / "example.py"
+                path.parent.mkdir(parents=True)
+                source = "def f(a, b, c, d): pass\n" + "# preserved\n" * MAX_FILE_LINES
+                path.write_text(source, encoding="utf-8")
+                issues = check(root)
+                if archived:
+                    self.assertEqual(issues, [])
+                else:
+                    self.assertEqual(len(issues), 2)
+                    self.assertIn("4 parámetros, máximo 3", " ".join(issues))
+                    self.assertIn("701 líneas, máximo 700", " ".join(issues))
+                self.assertEqual(path.read_text(encoding="utf-8"), source)
+
     def test_function_without_docblock(self):
         node = ast.parse("def f():\n    x = 1\n    return x\n").body[0]
         self.assertEqual(function_lines(node), 3)

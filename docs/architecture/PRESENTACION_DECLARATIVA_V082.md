@@ -4,7 +4,7 @@
 Este documento describe el contrato actual. Los resultados y límites de cada
 entrega están en los [informes v0.8.2](../../CHANGELOG.md) y
 [v0.8.2f](../../CHANGELOG.md). La
-[guía práctica](../guides/workshops/WORKSHOP_PRESENTACION_V082.md) muestra ejemplos.
+[guía práctica](../history/workshops/presentacion/WORKSHOP_PRESENTACION_V082.md) muestra ejemplos.
 
 ## Vistas, tablas y selección de acontecimientos
 
