@@ -116,14 +116,14 @@ class MudTest(unittest.TestCase):
             else:
                 os.environ["NO_COLOR"] = prior
 
-    def test_large_productive_scene(self):
+    def test_productive_scene(self):
         if not PRODUCT.exists():
             self.skipTest("El paquete productivo externo no está instalado")
         session = new_session(admit_package_file(PRODUCT))
         view = session.observe()
-        self.assertEqual(
-            (len(view["actions"]), sum(a["enabled"] for a in view["actions"])), (278, 1)
-        )
+        self.assertGreaterEqual(len(view["actions"]), 1)
+        self.assertEqual(sum(a["enabled"] for a in view["actions"]), 1)
+        self.assertEqual(len({a["id"] for a in view["actions"]}), len(view["actions"]))
         output = StringIO()
         with redirect_stdout(output):
             show(view, styler=Styler("never"))
@@ -135,6 +135,19 @@ class MudTest(unittest.TestCase):
             self.assertIs(
                 TextClient(session)._command(view, "accion night_1_handover_000"), False
             )
+
+    def test_large_synthetic_menu_retains_number_and_letter_navigation(self):
+        # Verify CLI large-menu behavior independently of an external demo's
+        # changing generator; do not require hundreds of redundant story actions.
+        actions = [{"id": str(i), "action_id": str(i), "kind": "interact",
+                    "label": str(i), "enabled": True} for i in range(300)]
+        view = {"actions": actions, "scene": "test", "content": {"kind": "choice"}}
+        client = TextClient(None)
+        self.assertEqual(client._command(view, "300")["id"], "299")
+        output = StringIO()
+        with redirect_stdout(output):
+            show(view, styler=Styler("never"))
+        self.assertIn("accion 299", output.getvalue())
 
     def test_explicit_diagnostics_and_color(self):
         view = {

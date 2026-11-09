@@ -44,6 +44,8 @@ def apply_operation(state: dict, effect: dict, context: EffectContext) -> list[d
         return _end_effect(state, effect["effect_instance"], context)
     if effect["op"] == "roll":
         return _roll(state, effect, context)
+    if effect["op"] == "advance_time_to":
+        return _advance_time_to(state, effect["at"])
     if effect["op"] == "advance_time":
         try:
             current = datetime.fromisoformat(state["world_time"].replace("Z", "+00:00"))
@@ -76,6 +78,21 @@ def apply_operation(state: dict, effect: dict, context: EffectContext) -> list[d
 
         resolve_policies(state, context.definitions, "immediate")
     return events
+
+
+def _advance_time_to(state: dict, at: str) -> list[dict]:
+    """Advance a transaction draft to an explicit minute-aligned target."""
+    try:
+        current = datetime.fromisoformat(state["world_time"].replace("Z", "+00:00"))
+        target = datetime.fromisoformat(at)
+        seconds = (target - current).total_seconds()
+        if (current.utcoffset() != target.utcoffset() or seconds <= 0
+                or seconds % 60 != 0):
+            raise ValueError("Target must be later, minute-aligned, with same UTC offset")
+    except (ValueError, OverflowError, TypeError) as exc:
+        raise WorldError("INVALID_TIME", "Destino temporal absoluto inválido") from exc
+    state["world_time"] = target.isoformat()
+    return [{"on": "clock_advanced"}]
 
 
 def _roll(state: dict, effect: dict, context: EffectContext) -> list[dict]:

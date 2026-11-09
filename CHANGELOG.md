@@ -2,6 +2,13 @@
 
 This file summarizes changes relevant to using, authoring, integrating, and maintaining GISELA. It is not a normative specification. For current behavior, consult contracts, code, and tests. Dates and versions come from preserved repository records; missing release dates have not been inferred.
 
+## 2026-11-08 - Candidate 0.1.24 / DSL 1.6 absolute time
+
+- Added a versioned `advance_time_to` operation with an explicit offset, strict forward-minute checks and transactional rollback.
+- Kept 1.2–1.5 admission/execution, including their existing save contracts, unchanged.
+- Included all 13 v1.6 JSON schemas in the build wheel and added boundary/determinism tests.
+- This local change is **not evidence of a published v0.1.24 Git tag** or a tested Ren'Py SDK build.
+
 ## 2026-11-07 - Documentation and author course preparation
 
 - Archived the three Spanish *El paraguas olvidado* manuals for reuse. Their staged practice packages are not included in this repository.

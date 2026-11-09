@@ -331,6 +331,10 @@ class ExpressionsMixin:
     def operation(self, op: dict, path: str) -> None:
         """Valida tipos, referencias y vocabulario de las consecuencias."""
         name = op["op"]
+        if name == "advance_time_to":
+            at = op["at"]
+            if not self._valid_datetime(at):
+                self.report("INVALID_TIME", path + "/at", "Destino temporal inválido")
         if name == "emit_message":
             for key, expression in op["values"].items():
                 self.value_type(expression, path + "/values/" + key)

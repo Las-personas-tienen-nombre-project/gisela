@@ -267,11 +267,11 @@ class PackagesMixin(ActuationPackageMixin):
                         self.condition(option[key], point + "/" + key)
                 if "next" in option:
                     self.destination(option["next"], node, point + "/next")
-                if self.active_version in ("1.4", "1.5") and "evaluation" in option:
+                if self.active_version in ("1.4", "1.5", "1.6") and "evaluation" in option:
                     self._check_evaluation(
                         option["evaluation"], node, point + "/evaluation"
                     )
-        if self.active_version in ("1.4", "1.5") and name == "evaluate":
+        if self.active_version in ("1.4", "1.5", "1.6") and name == "evaluate":
             self._check_evaluation(step["evaluation"], node, path + "/evaluation")
         self._check_step_destinations(step, node, path)
 
@@ -470,7 +470,7 @@ class PackagesMixin(ActuationPackageMixin):
         for k in ("visible_if", "enabled_if"):
             if k in action:
                 self.condition(action[k], path + "/" + k)
-        if self.active_version in ("1.4", "1.5") and "evaluation" in action:
+        if self.active_version in ("1.4", "1.5", "1.6") and "evaluation" in action:
             self._check_evaluation(action["evaluation"], node, path + "/evaluation")
         if "next" in action:
             if "step" in action["next"]:
@@ -671,7 +671,7 @@ class PackagesMixin(ActuationPackageMixin):
             return self.issues[:]
         if not self.check_schema("package", package):
             return self.issues[:]
-        if version in ("1.3", "1.4", "1.5"):
+        if version in ("1.3", "1.4", "1.5", "1.6"):
             self._check_traits_package(package)
         self._index_package(package)
         self._check_package_entry(package)
@@ -688,7 +688,7 @@ class PackagesMixin(ActuationPackageMixin):
             self.facts,
             ("initial_state/facts", "Hecho"),
         )
-        if version in ("1.4", "1.5"):
+        if version in ("1.4", "1.5", "1.6"):
             self._prepare_evaluations(package)
         self._check_card_and_nodes(package)
         self._check_language(package)

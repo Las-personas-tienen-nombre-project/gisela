@@ -46,6 +46,7 @@ def _load_versions(schema_root: Path) -> dict:
 
     third_specs = _read_schemas(schema_root / "v1_4", "1.4")
     fourth_specs = _read_schemas(schema_root / "v1_5", "1.5")
+    fifth_specs = _read_schemas(schema_root / "v1_6", "1.6")
     registry = Registry().with_resources(
         (s["$id"], Resource.from_contents(s))
         for s in [
@@ -53,6 +54,7 @@ def _load_versions(schema_root: Path) -> dict:
             *next_specs.values(),
             *third_specs.values(),
             *fourth_specs.values(),
+            *fifth_specs.values(),
             traits_schema,
             dice_schema,
         ]
@@ -81,6 +83,12 @@ def _load_versions(schema_root: Path) -> dict:
                 v, registry=registry, format_checker=FormatChecker()
             )
             for k, v in fourth_specs.items()
+        },
+        "1.6": {
+            k: Draft202012Validator(
+                v, registry=registry, format_checker=FormatChecker()
+            )
+            for k, v in fifth_specs.items()
         },
     }
 

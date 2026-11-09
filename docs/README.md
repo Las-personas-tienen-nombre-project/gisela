@@ -10,6 +10,7 @@ For short, standalone instructions, use [Quick start](guides/QUICK_START.md), [C
 
 ## Look up a rule (reference)
 
+- [DSL 1.6 absolute time extension](reference/dsl_1_6/README.md): the new `advance_time_to` operation, guarantees and compatibility.
 - [DSL 1.5 official reference](reference/dsl_1_5/README.md): normative chapters and schema field inventory, not a beginner course.
 - [Errors and validation](reference/dsl_1_5/06_ERRORS.md) and [validation reference](reference/dsl_1_5/12_VALIDATION.md): diagnose rejected packages.
 - [Known discrepancies](reference/dsl_1_5/DISCREPANCIES.md): documented limitations and differences.
