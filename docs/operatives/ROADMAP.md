@@ -2,26 +2,27 @@
 
 This file is a current status guide, not a timeline of every previous implementation step. The previous cumulative roadmap has been preserved in [Roadmap history](../../CHANGELOG.md). Most completed implementation reports were retired during D2 and are recoverable through Git. Preserved evidence and architectural decisions remain available through the links below.
 
-## 2026-11-09 active contract work: M2 reconciled source candidate
+## Current source baseline and M3 handoff — 2026-11-09
 
-The latest supplied repositories declare GISELA **0.3.2 / DSL 1.7** and a
-production demo dependency pinned to Git tag `v0.3.2`. The user reports green
-checks for those source revisions. The archives do not include `.git` metadata,
-so neither tag provenance nor their external test logs can be independently
-recovered here.
+The supplied source declares **GISELA 0.4.1** (`pyproject.toml`), and the
+separate production demo pins Git tag `v0.4.1`. The engine includes the 13
+**DSL 1.8** schemas, current-step `Observe.content.presentation`, and the
+corresponding tests. This supersedes the older 0.3.2 / 0.4.0rc1 candidate
+status printed in the historical development reports. M1 and M2 are present
+in the source; the user reports both repositories' official checks green.
+The archives omit `.git` metadata and original execution logs, so their
+tag provenance and external test outcomes have not been independently
+reconstructed here.
 
-The **0.4.0rc1 / DSL 1.8** M2 source candidate has been rebased onto the
-0.3.2 code without changing the existing DSL 1.6/1.7 schemas or the demo's
-published dependency. M2 adds validated current-step presentation hints and an
-`Observe` projection; see [stage direction](../reference/PRESENTATION_DIRECTION_1_8.md).
-The original M2 report covers the earlier 0.3.1 candidate and must not be
-misread as verification of this reconciled tree. The reconciliation report
-records fresh evidence. Visual acceptance in a real Ren'Py SDK and release
-provenance remain pending.
-
-The productive demo is still DSL 1.6 and its narrative text is not rewritten.
-M3 textual source comparison may proceed as an audit; any authorial wording
-change requires separate approval.
+The production demo still authors **DSL 1.6** and retains the same compiled
+narrative. The current work is M3 source-to-story textual traceability; the
+separately approved *interactive* manuscript is not in the delivered archives.
+The novel is a literary reference, not interchangeable with an approved game
+script. No wording, branch, or character decision is to be changed on the
+basis of an automated match alone. Actual Ren'Py SDK visual acceptance for
+M2/H5 remains a separate requirement even when offline suites are green.
+See [stage direction](../reference/PRESENTATION_DIRECTION_1_8.md) and the
+demo's M3 evidence catalogue for further details.
 
 ## Project direction
 

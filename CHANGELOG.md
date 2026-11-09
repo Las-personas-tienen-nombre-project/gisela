@@ -2,6 +2,16 @@
 
 This file summarizes changes relevant to using, authoring, integrating, and maintaining GISELA. It is not a normative specification. For current behavior, consult contracts, code, and tests. Dates and versions come from preserved repository records; missing release dates have not been inferred.
 
+## 2026-11-09 — Supplied 0.4.1 source / DSL 1.8 integration
+
+- The newly supplied source declares engine version 0.4.1 and contains the
+  DSL 1.8 schemas, public current-step presentation projection, and tests.
+- The separate demo now pins `v0.4.1` while retaining its DSL 1.6 story.
+- User-reported green checks are an incoming status, not a local re-run or
+  independent verification of Git tag provenance or visual SDK behavior.
+- Active release documentation was brought into line with this version;
+  development-candidate reports remain historical evidence.
+
 ## 2026-11-09 — M2 source candidate 0.4.0rc1 / DSL 1.8
 
 - Added 13 separate 1.8 schemas with closed `narrate`/`dialogue` stage direction.

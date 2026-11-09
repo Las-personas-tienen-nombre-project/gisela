@@ -1,10 +1,12 @@
 # DSL 1.8 — Narrative presentation direction (M2 candidate)
 
-**Status:** proposed source candidate GISELA `0.4.0rc1`, not a released engine
-revision. The initial source snapshot for M2 advertised GISELA `0.3.1`; the
-newer reconciliation baseline advertises GISELA `0.3.2` and the demo pins `v0.3.2`; neither is silently overwritten. The actual
-contracts are the 13 schemas under `gisela/contracts/v1_8/`. The original
-DSL 1.6 and 1.7 schema files remain unchanged.
+**Current source status:** DSL 1.8 is included in the supplied GISELA
+0.4.1 source and is pinned by the production demo as `v0.4.1`. Its original
+0.4.0rc1 implementation and 0.3.2 reconciliation were development milestones,
+not the current source versions. The source archive contains no `.git` history
+or attached SDK session evidence; this document describes the implemented
+contract and does not assert graphical acceptance in Ren'Py. The 13 schemas
+are under `gisela/contracts/v1_8/`; DSL 1.6 and 1.7 schemas remain available.
 
 ## Scope and authority
 
