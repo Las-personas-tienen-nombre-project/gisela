@@ -47,6 +47,7 @@ def _load_versions(schema_root: Path) -> dict:
     third_specs = _read_schemas(schema_root / "v1_4", "1.4")
     fourth_specs = _read_schemas(schema_root / "v1_5", "1.5")
     fifth_specs = _read_schemas(schema_root / "v1_6", "1.6")
+    sixth_specs = _read_schemas(schema_root / "v1_7", "1.7")
     registry = Registry().with_resources(
         (s["$id"], Resource.from_contents(s))
         for s in [
@@ -55,6 +56,7 @@ def _load_versions(schema_root: Path) -> dict:
             *third_specs.values(),
             *fourth_specs.values(),
             *fifth_specs.values(),
+            *sixth_specs.values(),
             traits_schema,
             dice_schema,
         ]
@@ -89,6 +91,12 @@ def _load_versions(schema_root: Path) -> dict:
                 v, registry=registry, format_checker=FormatChecker()
             )
             for k, v in fifth_specs.items()
+        },
+        "1.7": {
+            k: Draft202012Validator(
+                v, registry=registry, format_checker=FormatChecker()
+            )
+            for k, v in sixth_specs.items()
         },
     }
 
@@ -152,7 +160,14 @@ class Validator(
             self.report(
                 "SCHEMA_INVALID", pointer(*err.absolute_path), f"{kind}: {err.message}"
             )
-        return not errs
+        if not errs and kind == "package" and self.active_version == "1.7":
+            if __package__:
+                from .author_annotations import validate_author_annotations
+            else:
+                from author_annotations import validate_author_annotations
+            for code, path, message in validate_author_annotations(document):
+                self.report(code, path, message)
+        return not any(issue.severity == "error" for issue in self.issues)
 
     def unique(
         self, data: list[dict], prefix: str, name: str = "id"

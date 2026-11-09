@@ -206,7 +206,7 @@ def observe(session, language: str | None = None) -> dict:
         _pending(session, view, language)
     elif state["status"] == "ended":
         view["content"] = {"kind": "ending", "ending": state["ending"]}
-        if session._package["manifest"]["format_version"] in ("1.5", "1.6"):
+        if session._package["manifest"]["format_version"] in ("1.5", "1.6", "1.7"):
             ending = next(
                 (
                     item

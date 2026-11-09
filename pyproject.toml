@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gisela-narrative-engine"
-version = "0.2.0"
+version = "0.3.1"
 description = "Independent transactional narrative engine"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,7 +21,7 @@ include-package-data = false
 
 [tool.setuptools.package-data]
 "gisela" = ["packages/*.package.json"]
-"gisela.contracts" = ["*.json", "v1_3/*.json", "v1_4/*.json", "v1_5/*.json", "v1_6/*.json"]
+"gisela.contracts" = ["*.json", "v1_3/*.json", "v1_4/*.json", "v1_5/*.json", "v1_6/*.json", "v1_7/*.json"]
 "mary" = ["schemas/*.json"]
 "dice" = ["schemas/*.json"]
 "traits" = ["schemas/*.json"]

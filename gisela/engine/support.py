@@ -192,7 +192,14 @@ def _check_step(step: dict, version: str) -> None:
 
 def check_supported(package: dict) -> None:
     """Comprueba soporte dinámico además de la admisión semántica estática."""
-    if package["manifest"]["format_version"] not in ("1.2", "1.3", "1.4", "1.5", "1.6"):
+    if package["manifest"]["format_version"] not in (
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7",
+    ):
         raise EngineFailure("UNSUPPORTED_FORMAT", "Versión no ejecutable")
     if not any(k in package["manifest"]["entry"] for k in ("node", "scene")):
         raise EngineFailure("UNSUPPORTED_FORMAT", "Entrada inicial inválida")
@@ -300,7 +307,7 @@ def _check_scene(scene: dict, version: str) -> None:
 
 def _check_evaluation(spec: dict, version: str) -> None:
     """E3 habilita presentación visible solo con contrato v1.5."""
-    if version not in ("1.5", "1.6") and spec["presentation"] != "hidden":
+    if version not in ("1.5", "1.6", "1.7") and spec["presentation"] != "hidden":
         raise EngineFailure(
             "UNSUPPORTED_FORMAT", "La evaluación visible pertenece a E3"
         )

@@ -32,3 +32,5 @@ For short, standalone instructions, use [Quick start](guides/QUICK_START.md), [C
 - [Past test evidence](operatives/evidence/README.md): dated results, not proof of the current build.
 
 The Ren'Py host is maintained in a separate repository. Narrative content may have different rights from the engine software.
+
+- [DSL 1.7 author annotations (M1 candidate)](reference/AUTHOR_ANNOTATIONS_1_7.md): versioned `info` syntax, RFC 6901 pointers, inspection, budgets and privacy.

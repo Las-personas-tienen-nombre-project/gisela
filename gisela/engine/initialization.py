@@ -7,7 +7,7 @@ import copy
 
 def _traits_initial(state: dict, pkg: dict) -> None:
     """Materializa rasgos solo en paquetes que usan formato v1.3 o posterior."""
-    if pkg["manifest"]["format_version"] in ("1.3", "1.4", "1.5", "1.6"):
+    if pkg["manifest"]["format_version"] in ("1.3", "1.4", "1.5", "1.6", "1.7"):
         from .world_traits import materialize
 
         materialize(state, pkg)

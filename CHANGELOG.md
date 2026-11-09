@@ -2,6 +2,14 @@
 
 This file summarizes changes relevant to using, authoring, integrating, and maintaining GISELA. It is not a normative specification. For current behavior, consult contracts, code, and tests. Dates and versions come from preserved repository records; missing release dates have not been inferred.
 
+## 2026-11-09 - Candidate 0.3.0rc1 / DSL 1.7 author annotations (M1)
+
+- Added 13 separate v1.7 schemas; previous v1.6 contracts remain unchanged.
+- Added local `info` notes and addressed `author_annotations` for strict objects and scalars, RFC 6901 admission, bounded budgets, and opt-in author inspection.
+- Kept normal `Observe` and the existing `glauquir` audience separate from author metadata.
+- Added noninterference and compatibility tests and a standalone annotated example package.
+- This is a **source candidate, not a published tag**. Full quality and delivery gates must pass before M1 is marked complete or the demo dependency is updated.
+
 ## 2026-11-08 - Candidate 0.1.24 / DSL 1.6 absolute time
 
 - Added a versioned `advance_time_to` operation with an explicit offset, strict forward-minute checks and transactional rollback.
