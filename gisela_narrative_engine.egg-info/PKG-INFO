@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: gisela-narrative-engine
-Version: 0.1.23
+Version: 0.2.0
 Summary: Independent transactional narrative engine
 License-Expression: Apache-2.0
 Requires-Python: >=3.10

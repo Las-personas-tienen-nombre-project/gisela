@@ -139,8 +139,16 @@ class MudTest(unittest.TestCase):
     def test_large_synthetic_menu_retains_number_and_letter_navigation(self):
         # Verify CLI large-menu behavior independently of an external demo's
         # changing generator; do not require hundreds of redundant story actions.
-        actions = [{"id": str(i), "action_id": str(i), "kind": "interact",
-                    "label": str(i), "enabled": True} for i in range(300)]
+        actions = [
+            {
+                "id": str(i),
+                "action_id": str(i),
+                "kind": "interact",
+                "label": str(i),
+                "enabled": True,
+            }
+            for i in range(300)
+        ]
         view = {"actions": actions, "scene": "test", "content": {"kind": "choice"}}
         client = TextClient(None)
         self.assertEqual(client._command(view, "300")["id"], "299")

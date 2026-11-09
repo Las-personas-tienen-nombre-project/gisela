@@ -267,7 +267,10 @@ class PackagesMixin(ActuationPackageMixin):
                         self.condition(option[key], point + "/" + key)
                 if "next" in option:
                     self.destination(option["next"], node, point + "/next")
-                if self.active_version in ("1.4", "1.5", "1.6") and "evaluation" in option:
+                if (
+                    self.active_version in ("1.4", "1.5", "1.6")
+                    and "evaluation" in option
+                ):
                     self._check_evaluation(
                         option["evaluation"], node, point + "/evaluation"
                     )

@@ -86,9 +86,14 @@ def _advance_time_to(state: dict, at: str) -> list[dict]:
         current = datetime.fromisoformat(state["world_time"].replace("Z", "+00:00"))
         target = datetime.fromisoformat(at)
         seconds = (target - current).total_seconds()
-        if (current.utcoffset() != target.utcoffset() or seconds <= 0
-                or seconds % 60 != 0):
-            raise ValueError("Target must be later, minute-aligned, with same UTC offset")
+        if (
+            current.utcoffset() != target.utcoffset()
+            or seconds <= 0
+            or seconds % 60 != 0
+        ):
+            raise ValueError(
+                "Target must be later, minute-aligned, with same UTC offset"
+            )
     except (ValueError, OverflowError, TypeError) as exc:
         raise WorldError("INVALID_TIME", "Destino temporal absoluto inválido") from exc
     state["world_time"] = target.isoformat()
