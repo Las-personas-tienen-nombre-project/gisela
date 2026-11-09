@@ -18,6 +18,7 @@ gisela/cli/render_table.py
 gisela/contracts/__init__.py
 gisela/contracts/act.schema.json
 gisela/contracts/admit_package.py
+gisela/contracts/author_annotations.py
 gisela/contracts/canonical.py
 gisela/contracts/card.schema.json
 gisela/contracts/catalogs.py
@@ -110,6 +111,19 @@ gisela/contracts/v1_6/scene.schema.json
 gisela/contracts/v1_6/scoresheet.schema.json
 gisela/contracts/v1_6/session.schema.json
 gisela/contracts/v1_6/world_snapshot.schema.json
+gisela/contracts/v1_7/act.schema.json
+gisela/contracts/v1_7/card.schema.json
+gisela/contracts/v1_7/common.schema.json
+gisela/contracts/v1_7/initial_state.schema.json
+gisela/contracts/v1_7/node.schema.json
+gisela/contracts/v1_7/observe.schema.json
+gisela/contracts/v1_7/package.schema.json
+gisela/contracts/v1_7/result.schema.json
+gisela/contracts/v1_7/rule.schema.json
+gisela/contracts/v1_7/scene.schema.json
+gisela/contracts/v1_7/scoresheet.schema.json
+gisela/contracts/v1_7/session.schema.json
+gisela/contracts/v1_7/world_snapshot.schema.json
 gisela/engine/__init__.py
 gisela/engine/action_handler.py
 gisela/engine/actuation.py
@@ -160,6 +174,7 @@ gisela/engine/world_lifecycle.py
 gisela/engine/world_skills.py
 gisela/engine/world_traits.py
 gisela/engine/world_values.py
+gisela/packages/author_annotations_v17_example.package.json
 gisela/packages/c9_turno_noche.package.json
 gisela/packages/e1_reparacion_sin_jugador.package.json
 gisela/packages/ejemplo_minimo.package.json
