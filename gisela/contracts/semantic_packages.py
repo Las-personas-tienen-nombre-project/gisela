@@ -13,7 +13,7 @@ else:  # Compatibilidad de ejecución directa desde contracts/
 
 evaluation_operations = semantic_operation_paths.evaluation_operations
 COLOR_ROLES = {"default", "red", "yellow", "green", "cyan", "blue", "magenta", "white"}
-_EVALUATION_VERSIONS = ("1.4", "1.5", "1.6", "1.7")
+_EVALUATION_VERSIONS = ("1.4", "1.5", "1.6", "1.7", "1.8")
 
 
 class PackagesMixin(ActuationPackageMixin):
@@ -675,7 +675,7 @@ class PackagesMixin(ActuationPackageMixin):
             return self.issues[:]
         if not self.check_schema("package", package):
             return self.issues[:]
-        if version in ("1.3", "1.4", "1.5", "1.6", "1.7"):
+        if version in ("1.3", "1.4", "1.5", "1.6", "1.7", "1.8"):
             self._check_traits_package(package)
         self._index_package(package)
         self._check_package_entry(package)
@@ -692,7 +692,7 @@ class PackagesMixin(ActuationPackageMixin):
             self.facts,
             ("initial_state/facts", "Hecho"),
         )
-        if version in ("1.4", "1.5", "1.6", "1.7"):
+        if version in ("1.4", "1.5", "1.6", "1.7", "1.8"):
             self._prepare_evaluations(package)
         self._check_card_and_nodes(package)
         self._check_language(package)

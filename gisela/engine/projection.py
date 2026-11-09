@@ -5,6 +5,8 @@ from __future__ import annotations
 from .conditions import predicate
 from .world_base import WorldError
 
+_ENDING_TITLE_VERSIONS = {"1.5", "1.6", "1.7", "1.8"}
+
 
 def text(value: object, session=None, language: str | None = None) -> str:
     """Resuelve localized_text a partir del catálogo inmutable admitido.
@@ -173,6 +175,15 @@ def _node(session, view: dict, language: str | None = None) -> None:
         }
         if step["op"] == "dialogue":
             view["content"]["speaker"] = step["speaker"]
+        if (
+            session._package["manifest"]["format_version"] == "1.8"
+            and "presentation" in step
+        ):
+            # Admission already checked the closed declarative vocabulary.
+            # Never project surrounding steps, source annotations or hidden branches.
+            import copy
+
+            view["content"]["presentation"] = copy.deepcopy(step["presentation"])
         view["actions"].append(
             {
                 "kind": "advance",
@@ -198,6 +209,8 @@ def observe(session, language: str | None = None) -> dict:
         "status": state["status"],
         "actions": [],
     }
+    if session._package["manifest"]["format_version"] == "1.8":
+        view["dsl_version"] = "1.8"
     if "current_scene" in state:
         view["scene"] = state["current_scene"]
     if "pending_evaluation" in state:
@@ -206,7 +219,7 @@ def observe(session, language: str | None = None) -> dict:
         _pending(session, view, language)
     elif state["status"] == "ended":
         view["content"] = {"kind": "ending", "ending": state["ending"]}
-        if session._package["manifest"]["format_version"] in ("1.5", "1.6", "1.7"):
+        if session._package["manifest"]["format_version"] in _ENDING_TITLE_VERSIONS:
             ending = next(
                 (
                     item
@@ -245,9 +258,7 @@ def observe(session, language: str | None = None) -> dict:
 
         view["quests"] = public_quests(session._mary, state["mary"])
     if "presentation" in session._package:
-        from .author_presentation import project as project_presentation
+        from .author_presentation import project as project_hints
 
-        view["presentation"] = project_presentation(
-            session._package["presentation"], view
-        )
+        view["presentation"] = project_hints(session._package["presentation"], view)
     return view

@@ -33,4 +33,7 @@ For short, standalone instructions, use [Quick start](guides/QUICK_START.md), [C
 
 The Ren'Py host is maintained in a separate repository. Narrative content may have different rights from the engine software.
 
-- [DSL 1.7 author annotations (M1 candidate)](reference/AUTHOR_ANNOTATIONS_1_7.md): versioned `info` syntax, RFC 6901 pointers, inspection, budgets and privacy.
+- [DSL 1.7 author annotations](reference/AUTHOR_ANNOTATIONS_1_7.md): `info` syntax, RFC 6901 pointers, inspection and privacy.
+- [DSL 1.8 narrative presentation direction (M2 source candidate)](reference/PRESENTATION_DIRECTION_1_8.md): typed step hints, Observe projection, safety and compatibility.
+
+- [M2 reconciliation against GISELA 0.3.2](operatives/M2_RECONCILIATION_2026-11-09.md): source candidate verification and release blockers.

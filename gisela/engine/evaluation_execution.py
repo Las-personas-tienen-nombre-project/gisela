@@ -18,7 +18,8 @@ class EvaluationRoutes:
         """Compila evaluaciones una sola vez, sin consultar el mundo ni RNG."""
         plans = (
             compile_package_evaluations(package)
-            if package["manifest"]["format_version"] in ("1.4", "1.5", "1.6", "1.7")
+            if package["manifest"]["format_version"]
+            in ("1.4", "1.5", "1.6", "1.7", "1.8")
             else {}
         )
         self.routes = {}

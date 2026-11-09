@@ -2,6 +2,21 @@
 
 This file summarizes changes relevant to using, authoring, integrating, and maintaining GISELA. It is not a normative specification. For current behavior, consult contracts, code, and tests. Dates and versions come from preserved repository records; missing release dates have not been inferred.
 
+## 2026-11-09 — M2 source candidate 0.4.0rc1 / DSL 1.8
+
+- Added 13 separate 1.8 schemas with closed `narrate`/`dialogue` stage direction.
+- Projected only currently observable step hints as `content.presentation`,
+  with top-level `dsl_version: "1.8"` and no author-note leakage.
+- Added deterministic and compatibility tests and an example laboratory package.
+- Kept 1.6 and 1.7 contracts intact; M2 is not a released version or completed
+  visual SDK validation.
+
+## 2026-11-09 — Existing GISELA 0.3.1 / DSL 1.7 source baseline
+
+- The user-provided source now declares 0.3.1 and is pinned as `v0.3.1` in
+  the separate demo repository. The user reports the official suites green.
+  The archive itself does not include original Git tags or test logs.
+
 ## 2026-11-09 - Candidate 0.3.0rc1 / DSL 1.7 author annotations (M1)
 
 - Added 13 separate v1.7 schemas; previous v1.6 contracts remain unchanged.

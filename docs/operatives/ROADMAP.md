@@ -2,20 +2,26 @@
 
 This file is a current status guide, not a timeline of every previous implementation step. The previous cumulative roadmap has been preserved in [Roadmap history](../../CHANGELOG.md). Most completed implementation reports were retired during D2 and are recoverable through Git. Preserved evidence and architectural decisions remain available through the links below.
 
-## 2026-11-09 active contract work: M1 candidate
+## 2026-11-09 active contract work: M2 reconciled source candidate
 
-The production demo owns the approved M1–M5 work order. GISELA 0.3.0rc1
-is an **unreleased source candidate** for M1, not proof of complete gate
-acceptance. It adds DSL 1.7 `info` author notes, RFC 6901 addressed notes,
-semantic pointer validation, and opt-in inspection, preserving DSL 1.6.
-See [DSL 1.7 author annotations](../reference/AUTHOR_ANNOTATIONS_1_7.md)
-and the annotated [sample package](../../gisela/packages/author_annotations_v17_example.package.json).
+The latest supplied repositories declare GISELA **0.3.2 / DSL 1.7** and a
+production demo dependency pinned to Git tag `v0.3.2`. The user reports green
+checks for those source revisions. The archives do not include `.git` metadata,
+so neither tag provenance nor their external test logs can be independently
+recovered here.
 
-M1 remaining gates: full CI/static-tool verification, wheel provenance,
-source installation and demo integration. M2 presentation direction must not
-be declared implemented until M1 satisfies its complete acceptance criteria.
-M3 narrative fidelity and graphical Ren'Py work remain independent pending
-milestones; no production script wording has been changed.
+The **0.4.0rc1 / DSL 1.8** M2 source candidate has been rebased onto the
+0.3.2 code without changing the existing DSL 1.6/1.7 schemas or the demo's
+published dependency. M2 adds validated current-step presentation hints and an
+`Observe` projection; see [stage direction](../reference/PRESENTATION_DIRECTION_1_8.md).
+The original M2 report covers the earlier 0.3.1 candidate and must not be
+misread as verification of this reconciled tree. The reconciliation report
+records fresh evidence. Visual acceptance in a real Ren'Py SDK and release
+provenance remain pending.
+
+The productive demo is still DSL 1.6 and its narrative text is not rewritten.
+M3 textual source comparison may proceed as an audit; any authorial wording
+change requires separate approval.
 
 ## Project direction
 

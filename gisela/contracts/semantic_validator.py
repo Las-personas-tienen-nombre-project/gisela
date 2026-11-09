@@ -36,7 +36,7 @@ def _read_schemas(path: Path, version: str) -> dict:
     return specs
 
 
-@lru_cache(maxsize=4)
+@lru_cache(maxsize=8)
 def _load_versions(schema_root: Path) -> dict:
     """Carga contratos versionados; v1.4 solo es admisión E1."""
     specs = _read_schemas(schema_root, "1.2")
@@ -48,6 +48,7 @@ def _load_versions(schema_root: Path) -> dict:
     fourth_specs = _read_schemas(schema_root / "v1_5", "1.5")
     fifth_specs = _read_schemas(schema_root / "v1_6", "1.6")
     sixth_specs = _read_schemas(schema_root / "v1_7", "1.7")
+    seventh_specs = _read_schemas(schema_root / "v1_8", "1.8")
     registry = Registry().with_resources(
         (s["$id"], Resource.from_contents(s))
         for s in [
@@ -57,47 +58,28 @@ def _load_versions(schema_root: Path) -> dict:
             *fourth_specs.values(),
             *fifth_specs.values(),
             *sixth_specs.values(),
+            *seventh_specs.values(),
             traits_schema,
             dice_schema,
         ]
     )
+    version_schemas = (
+        ("1.2", specs),
+        ("1.3", next_specs),
+        ("1.4", third_specs),
+        ("1.5", fourth_specs),
+        ("1.6", fifth_specs),
+        ("1.7", sixth_specs),
+        ("1.8", seventh_specs),
+    )
     return {
-        "1.2": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
+        version: {
+            name: Draft202012Validator(
+                schema, registry=registry, format_checker=FormatChecker()
             )
-            for k, v in specs.items()
-        },
-        "1.3": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
-            )
-            for k, v in next_specs.items()
-        },
-        "1.4": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
-            )
-            for k, v in third_specs.items()
-        },
-        "1.5": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
-            )
-            for k, v in fourth_specs.items()
-        },
-        "1.6": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
-            )
-            for k, v in fifth_specs.items()
-        },
-        "1.7": {
-            k: Draft202012Validator(
-                v, registry=registry, format_checker=FormatChecker()
-            )
-            for k, v in sixth_specs.items()
-        },
+            for name, schema in bundle.items()
+        }
+        for version, bundle in version_schemas
     }
 
 
@@ -160,7 +142,7 @@ class Validator(
             self.report(
                 "SCHEMA_INVALID", pointer(*err.absolute_path), f"{kind}: {err.message}"
             )
-        if not errs and kind == "package" and self.active_version == "1.7":
+        if not errs and kind == "package" and self.active_version in ("1.7", "1.8"):
             if __package__:
                 from .author_annotations import validate_author_annotations
             else:

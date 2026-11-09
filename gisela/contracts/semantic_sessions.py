@@ -46,7 +46,7 @@ class SessionsMixin(ActuationSnapshotMixin):
                 "/schema_version",
                 "Versión de sesión incompatible",
             )
-        if version in ("1.3", "1.4", "1.5", "1.6", "1.7"):
+        if version in ("1.3", "1.4", "1.5", "1.6", "1.7", "1.8"):
             self._check_traits_snapshot(snapshot, package)
         self._index_package(package)
         self._validate_package_identity(snapshot, package, expected_digest)
@@ -71,7 +71,7 @@ class SessionsMixin(ActuationSnapshotMixin):
         self._check_session_history(snapshot)
         self._check_actuation_snapshot(snapshot, package)
         self._check_pending(snapshot)
-        if version in ("1.5", "1.6", "1.7"):
+        if version in ("1.5", "1.6", "1.7", "1.8"):
             self._check_pending_evaluation(snapshot)
         self._check_mary_snapshot(snapshot, package)
         self._check_revision_order(snapshot)

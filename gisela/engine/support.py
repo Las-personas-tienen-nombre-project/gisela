@@ -199,6 +199,7 @@ def check_supported(package: dict) -> None:
         "1.5",
         "1.6",
         "1.7",
+        "1.8",
     ):
         raise EngineFailure("UNSUPPORTED_FORMAT", "Versión no ejecutable")
     if not any(k in package["manifest"]["entry"] for k in ("node", "scene")):
@@ -307,7 +308,7 @@ def _check_scene(scene: dict, version: str) -> None:
 
 def _check_evaluation(spec: dict, version: str) -> None:
     """E3 habilita presentación visible solo con contrato v1.5."""
-    if version not in ("1.5", "1.6", "1.7") and spec["presentation"] != "hidden":
+    if version not in ("1.5", "1.6", "1.7", "1.8") and spec["presentation"] != "hidden":
         raise EngineFailure(
             "UNSUPPORTED_FORMAT", "La evaluación visible pertenece a E3"
         )
